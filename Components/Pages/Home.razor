@@ -1,0 +1,76 @@
+﻿@page "/"
+@using SchoolData
+
+<PageTitle>Home</PageTitle>
+
+<div class="homePage">
+    <section class="wellcome-section" id="s2">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">@schoolData.SchoolName</h1>
+                <h2 class="sub-title">@schoolData.SchoolSecondName</h2>
+                <CtaComponent Title="A maioria decora, a minoria aprende. Seja Nous Nova" Subtitle="" Color="colblack-1" ImageUrl="images/NousNovaLogo.png" ButtonHref="/registration"></CtaComponent>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses-section" id="s2">
+        <div class="container">
+            <h1>Disciplinas</h1>
+            <div class="content">
+                <div class="disciplines">
+                    <ul class="grid">
+                        @foreach (Discipline discipline in disciplinesData.Disciplines)
+                        {
+                            @if(discipline.Active){
+                                <NavLink class="card card-hover" href=@($"/disciplines/{discipline.Label}") ActiveClass="">
+                                    <div class="discipline-div">
+                                        <h2 class="card-title">@discipline.Name</h2>
+                                        <p class="card-content">@discipline.Subtitle</p>
+                                        <p class="card-cta">saber mais</p>
+                                    </div>
+                                </NavLink>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoiments-section" id="s1">
+        <div class="container">
+            <h1>Depoimentos</h1>
+            <div class="depoiments">
+                <p>Para preservar a identidade de nossos alunos utilizamos nomes fictícios em seus depoimentos</p>
+                <ul class="grid">
+                    @foreach (var depoiment in depoimentsData.Depoiments)
+                    {
+                        <div class="card">
+                            <div class="depoiments-dive">
+                                <h2 class="card-title">@depoiment.Key</h2>
+                                <p class="card-content">@depoiment.Value</p>
+                            </div>
+                        </div>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="s2">
+        <div class="container">
+            <div class="content">
+                <CtaComponent Title="Sobre Nós" Subtitle=@($"Na {schoolData.SchoolName} oferecemos cursos em diversas disciplinas focando em prepara-lo para as grandes provas. Desde um simples teste escola até concursos altamente competitivos, nós o conduziremos desde os fundamentos até a profunda compreensão.") ButtonText="Saiba Mais" ButtonHref="/about"></CtaComponent>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@code {
+    DisciplinesData disciplinesData = new DisciplinesData();
+    DepoimentsData depoimentsData = new DepoimentsData();
+    SchoolData schoolData = new SchoolData();
+    decimal Price = 140m;
+}

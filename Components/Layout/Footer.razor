@@ -1,0 +1,49 @@
+@using SchoolData
+<div class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <!-- Coluna 1: Sobre -->
+            <div class="footer-col">
+                <h3 class="footer-title">@schoolData.SchoolName</h3>
+                <p>Preparando mentes para o futuro. Cursos e formações para quem busca excelência nos estudos e concursos.</p>
+                <div class="footer-social">
+                    <a href="https://wa.me/5518996181770" target="_blank" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="mailto:contato@nousnova.com" target="_blank" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Links Rápidos -->
+            <div class="footer-col">
+            </div>
+
+            <!-- Coluna 3: Contato -->
+            <div class="footer-col">
+                <h3 class="footer-title">Contato</h3>
+                <ul class="footer-contact">
+                    <li><i class="fa-solid fa-location-dot"></i> Melem Isaac 110 – Jardim das Rosas - PP / SP</li>
+                    <li><i class="fa-solid fa-phone"></i>(18) 99618-1770</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="footer-separator" />
+
+        <div class="footer-bottom">
+            <p>Oferecimento DerwolfGroup</p>
+            <p>© @DateTime.Now.Year Derwolf Group. Todos os direitos reservados.</p>
+            <p>Desenvolvido com ❤️ por @schoolData.SchoolName</p>
+        </div>
+    </div>
+</div>
+
+@code{
+    SchoolData schoolData = new SchoolData();
+}

@@ -1,0 +1,71 @@
+@page "/disciplines/{DisciplineLabel}"
+@using SchoolData
+
+<PageTitle>@discipline?.Name</PageTitle>
+
+<div class="discipline-page">
+    @if (discipline != null)
+    {
+        <section>
+            <CtaComponent Subtitle=@($"Domine a {@discipline.Name}") Price="@discipline.Price" Color="colgold-3" ImageUrl="images/CtaImage.png" ButtonHref="/registration">
+            </CtaComponent>
+        </section>
+        @foreach (var content in discipline.Sections ?? new Dictionary<string, object>())
+        {
+            <section>
+                <h1>@content.Key</h1>
+
+                @if (content.Value is string text)
+                {
+                    <p>@text</p>
+                }
+                else if (content.Value is List<Course> courses)
+                {
+                    <div class="grid">
+                        @foreach (Course course in courses)
+                        {
+                            <div class="card">
+                                <h2 class="card-title">@course.Name</h2>
+                                @foreach (Content curriculum in course.Curriculum)
+                                {
+                                    <div class="curriculum-section">
+                                        <h3 class="colgold-1">@curriculum.Name</h3>
+                                        <ul>
+                                            @foreach (string topic in curriculum.Contents)
+                                            {
+                                                <li>@topic</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+            </section>
+        }
+        <section>
+            <CtaComponent Subtitle=@($"Domine a {@discipline.Name}") Price="@discipline.Price" Color="colgold-3"
+                ImageUrl="images/CtaImage.png" ButtonHref="/registration">
+            </CtaComponent>
+        </section>
+
+    }
+    else
+    {
+        <p>Discipline not found.</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string DisciplineLabel { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+    Discipline? discipline;
+
+    protected override void OnInitialized()
+    {
+        discipline = disciplineData.Disciplines.FirstOrDefault(d => d.Label == DisciplineLabel);
+    }
+}

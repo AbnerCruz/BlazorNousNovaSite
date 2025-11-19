@@ -1,0 +1,81 @@
+.homePage[b-swpeewdqbl] {
+    width: 100%;
+}
+
+.disciplinas[b-swpeewdqbl] {
+    display: flex;
+    justify-content: center;
+}
+
+section[b-swpeewdqbl] {
+    height: 100vh;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+section h1[b-swpeewdqbl],
+section h2[b-swpeewdqbl],
+section p[b-swpeewdqbl] {
+    margin: 2% 0 2% 0;
+    text-align: center;
+}
+
+section p[b-swpeewdqbl] {
+    max-width: 80%;
+    justify-self: center;
+    align-self: center;
+}
+
+#s1[b-swpeewdqbl] {
+    background-color: var(--color-primary-translucent-2);
+}
+
+#s2[b-swpeewdqbl] {
+    background-color: var(--color-primary-translucent-1);
+}
+
+.wellcome-section[b-swpeewdqbl] {
+    background-image: url("images/ClassRoomBackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: var(--shadow-1);
+}
+
+.wellcome-section .container[b-swpeewdqbl] {
+    border-radius: var(--border-1);
+    box-shadow: var(--shadow-1);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-1);
+}
+
+.wellcome-section .container .content[b-swpeewdqbl] {
+    padding: 3%;
+}
+
+.wellcome-section .container .content .title[b-swpeewdqbl] {
+    width: 100%;
+    margin: 0;
+    font-size: 8rem;
+}
+
+.wellcome-section .container .content .sub-title[b-swpeewdqbl] {
+    width: 100%;
+    margin: 0;
+    font-size: 4rem;
+}
+
+.courses-section .container[b-swpeewdqbl],
+.depoiments-section .container[b-swpeewdqbl] {
+    width: 100%;
+    height: 100%;
+}
+
+.grid[b-swpeewdqbl] {
+    max-height: 60vh;
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    overflow-y: auto;
+}

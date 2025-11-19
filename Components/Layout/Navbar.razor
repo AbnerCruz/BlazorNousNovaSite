@@ -1,0 +1,31 @@
+@using SchoolData
+<div class="navbar">
+    <div class="container">
+        <NavLink ActiveClass="" href="/">
+            <div class=navbar-logo>
+                <img src="images/NousNovaLogo.png" class="logo"/><p>@schoolData.SchoolName</p>
+            </div>
+        </NavLink>
+        <div class=navbar-links>
+            <div class="nav-link">
+                <NavLink ActiveClass="" href="" >
+                    <p>Home</p>
+                </NavLink>
+            </div>
+            <div class="nav-link">
+                <NavLink ActiveClass="" href="/about">
+                    <p>Sobre</p>
+                </NavLink>
+            </div>
+            <div class="nav-link">
+                <NavLink ActiveClass="" href="/registration">
+                    <p>Matrícula</p>
+                </NavLink>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+    SchoolData schoolData = new SchoolData();
+}

@@ -1,0 +1,25 @@
+.button[b-k08xr1gmrx] {
+    width: 100%;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--border-1);
+    box-shadow: var(--shadow-1);
+}
+
+.button-hover[b-k08xr1gmrx]{
+    border-radius: var(--border-1);
+}
+
+.text[b-k08xr1gmrx]{
+    padding: 1%;
+}
+
+.button-hover:hover[b-k08xr1gmrx] {
+    background-color: var(--color-primary-translucent-1);
+}
+
+
+.button-hover:hover[b-k08xr1gmrx] {
+    background-color: var(--color-primary-translucent-3);
+}

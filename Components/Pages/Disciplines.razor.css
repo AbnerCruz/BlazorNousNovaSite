@@ -1,0 +1,17 @@
+.discipline-page{
+    width: 100%;
+}
+
+section{
+    background-color: rgba(0, 128, 0, 0);
+    margin: 1%;
+    padding: 1%;
+}
+
+section h1{
+    margin: 2% 0 2% 0;
+}
+
+.grid{
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}

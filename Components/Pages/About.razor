@@ -1,0 +1,134 @@
+@page "/about"
+@using SchoolData
+
+<div class="about">
+    <div class="container">
+        <div class="content">
+            <section class="aboutUs">
+                <h1 class="title">Sobre Nós</h1>
+                @if (videoUrl != "")
+                {
+                    <div class="video-container">
+                        <iframe width="300" height="100" src="@videoUrl" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <CtaComponent Color="colgold-3" ImageUrl="images/CtaImage.png" ButtonHref="/registration">
+                    </CtaComponent>
+                }
+                <div class="lead">
+                    <h2>Aprendizagem Com Propósito</h2>
+                    <p class="label">Oferecemos uma jornada educacional focada no entendimento profundo e na sua
+                        autonomia. Aqui, o objetivo não é
+                        apenas cumprir um cronograma, mas dominar de verdade cada disciplina, com acompanhamento próximo
+                        e
+                        um método que respeita seu conhecimento e ritmo de aprendizagem.</p>
+                </div>
+                <div class="values">
+                    <h2>Nossos Princípios</h2>
+                    <h3>Personalização</h3>
+                    <p class="label">Suas aulas individuais são moldadas para seus objetivos e seu ritmo de aprendizado.
+                    </p>
+                    <h3>Profundidade</h3>
+                    <p class="label">Acreditamos que o aprendizado sólido não acontece com prazos. Você avança em um
+                        tópico apenas quando atinge 100% de compreensão, garantindo uma base forte para os próximos
+                        desafios.</p>
+                    <h3>Comunidade de Aprendizagem</h3>
+                    <p class="label">Da mesma forma que você compartilha o que sabe, pode aprender com aqueles que passaram pelos mesmos desafios. Acreditamos que debates ativos surgem novas ideias e soluções</p>
+                    <h3>Equilíbrio</h3>
+                    <p class="label">Promovemos um ambiente saudável, onde o descanso e o lazer são parte do processo.
+                        Mentes descansadas aprendem melhor, de forma mais criativa e duradoura.</p>
+                </div>
+                <div class="howItWorks">
+                    <h2>Metodologia Ativa</h2>
+                    <h3>1. Avaliação e Ponto de Partida</h3>
+                    <p class="label">Realizamos um diagnóstico inicial para entender seu nível de conhecimento e assim
+                        compreendermos os conteúdos a serem trabalhados</p>
+                    <h3>2. Aulas Individuais</h3>
+                    <p class="label">Em seu encontro semanal com o professor, você recebe conteúdo novo, tira dúvidas e
+                        aprofunda a teoria de forma totalmente personalizada, respeitando seu ritmo de aprendizado.</p>
+                    <h3>3. Aulas Em Grupo</h3>
+                    <p class="label">De maneira mais acessivel oferecemos aulas em turmas de alunos que compartilham o
+                        mesmo nivel de conhecimento prático e teórico crescendo juntos sob a orientação do professor.
+                    </p>
+                    <h3>4. Práticas em Grupo</h3>
+                    <p class="label">Nas práticas em grupo, você resolve listas de exercícios em grupo, discute
+                        resoluções e teorias com
+                        colegas enquanto aprende a novas soluções, com a mediação do professor.</p>
+                    <h3>5. Domínio e Avanço Consciente</h3>
+                    <p class="label">Aplicamos avaliações e simulados periódicamente para que o aluno tenha feedbacks
+                        constantes quanto a seus resultados, podendo acessar seu histórico de pontuações sempre que
+                        desejar</p>
+                </div>
+                @if (videoUrl == "")
+                {
+                    <CtaComponent Color="colgold-3" ImageUrl="images/CtaImage.png" ButtonHref="/registration">
+                    </CtaComponent>
+                }
+            </section>
+
+            <section>
+                <h1 class="title">Professores</h1>
+                <div class="grid">
+                    @foreach (Teacher teacher in teachersData.Teachers)
+                    {
+                        <div class="card">
+                            <img src="@teacher.ImageUrl" class="teacher-image" />
+                            <h3 class="card-title">@teacher.Name</h3>
+                            <span>@string.Join(" | ", teacher.Disciplines.Select(d => d.Name))</span>
+                        </div>
+                    }
+                </div>
+            </section>
+
+            <section>
+                <h1 class="title">Objetivos</h1>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>Domínio real do conteúdo</h3>
+                        <p>Do zero ao avançado, cada disciplina é explorada profundamente para garantir compreensão
+                            total e aplicação prática.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Acompanhamento personalizado</h3>
+                        <p>Cada aluno tem sua avaliação inicial e acompanhamento próximo, permitindo evolução
+                            consistente e adaptada ao seu ritmo.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Aprendizado colaborativo</h3>
+                        <p>Nas práticas em grupo, alunos resolvem exercícios, argumentam e aprendem uns com os outros,
+                            com o professor mediando o processo.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Autonomia intelectual</h3>
+                        <p>Nosso foco é desenvolver a capacidade de aplicar conceitos, argumentar soluções e resolver
+                            problemas de forma independente.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Equilíbrio e bem-estar</h3>
+                        <p>Promovemos um ambiente acolhedor com momentos de descanso e lazer, pois uma mente descansada
+                            aprende melhor e mais duradouramente.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Preparação para o futuro</h3>
+                        <p>Formamos estudantes confiantes, críticos e preparados para desafios acadêmicos e
+                            profissionais, construindo uma base sólida para toda a vida.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@code {
+    TeachersData teachersData = new TeachersData();
+    string videoUrl = "";
+    decimal Price = 140m;
+}

@@ -1,0 +1,159 @@
+@page "/registration"
+@rendermode InteractiveServer
+@inject IJSRuntime JS
+@using SchoolData;
+@using MimeKit;
+@using MailKit.Net.Smtp;
+
+<div class="registration">
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <h1 class="title">Matrícula</h1>
+                <h3 class="subtitle">Preencha o formulário e em até 24h entraremos em contato!</h3>
+            </div>
+            <EditForm Model="Model" OnValidSubmit="Submit" FormName="Registration">
+                <DataAnnotationsValidator />
+                <div class="input-content">
+                    <label for="name">Nome:</label>
+                    <InputText id="name" @bind-Value="Model.Name" class="input"></InputText>
+                    <ValidationMessage For="@(() => Model.Name)" />
+
+                </div>
+                <div class="input-content">
+                    <label for="email">Email:</label>
+                    <InputText id="email" type="email" @bind-Value="Model.Email" class="input"></InputText>
+                    <ValidationMessage For="@(() => Model.Email)" />
+                </div>
+                <div class="input-content">
+                    <label for="phone">Telefone:</label>
+                    <InputText id="phone" @bind-Value="Model.Phone" class="input"></InputText>
+                    <ValidationMessage For="@(() => Model.Phone)" />
+                </div>
+                <div class="input-content">
+                    <label for="text">Mensagem</label>
+                    <InputTextArea id="text" type="note" placeholder="Olá! Eu gostaria de fazer a minha matrícula."
+                        @bind-Value="Model.Text" class="input" />
+                    <ValidationMessage For="@(() => Model.Text)" />
+                </div>
+                <div class="">
+                    <h3>Selecione as disciplinas que deseja estudar</h3>
+                    @if (Model.Options is not null)
+                    {
+                        @foreach (DisciplinesOptions option in Model.Options)
+                        {
+                            <InputCheckbox id="@option.Label" @bind-Value="option.Selected" />
+                            <label for="@option.Label">@option.Label</label>
+                        }
+                        <ValidationMessage For="@(() => Model.Options)" />
+                    }
+
+                </div>
+                <button type="submit" href="">Enviar solicitação</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private RegistrationModel Model { get; set; } = new();
+    private SchoolData schoolData = new();
+    bool CurrentValue;
+    bool activeEmails = true;
+    string whatsappMessage => $"https://wa.me/{schoolData.SchoolPhone}?text=";
+
+    protected override void OnInitialized() => Model ??= new();
+
+    private async Task Submit()
+    {
+        string disciplinesList = "";
+        if (Model.Options is not null)
+        {
+            foreach (DisciplinesOptions options in Model.Options)
+            {
+                if (options.Selected)
+                {
+                    disciplinesList = disciplinesList + " " + (options.Label);
+                }
+            }
+        }
+
+        if (activeEmails)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Centro de Estudos - Nous Nova", "no-reply@nousnova.com.br"));
+            message.To.Add(new MailboxAddress("Secretaria", "abner.cruz@unesp.br"));
+            message.Subject = $"Novo Agendamento - {Model.Name}";
+
+
+            var disciplines = string.Join(", ", disciplinesList.Split(" ", StringSplitOptions.RemoveEmptyEntries));
+            Model.Text = string.IsNullOrWhiteSpace(Model.Text) ? "Olá! Eu gostaria de fazer a minha matrícula." : Model.Text;
+            var bodyBuilder = new BodyBuilder
+            {
+                HtmlBody = $@"
+<p>Nova Solicitação de Matrícula:</p>
+<ul>
+<li>Nome: {Model.Name}</li>
+<li>Email: {Model.Email}</li>
+<li>Whatsapp: {Model.Phone}</li>
+<li>Mensagem: {Model.Text}</li>
+<li>Disciplinas: {disciplines}</li>
+</ul>
+"
+            };
+            message.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                await client.AuthenticateAsync("abner.cruz@unesp.br", "ayrh zzhf jeyp lgdx");
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+            }
+            var whatsappUrl = $"{whatsappMessage}{Uri.EscapeDataString(Model.Text)}";
+            await JS.InvokeVoidAsync("open", whatsappUrl, "_blank");
+        }
+        Model = new();
+    }
+
+    public class RegistrationModel : IValidatableObject
+    {
+        public List<DisciplinesOptions> Options { get; set; } = new(){
+new DisciplinesOptions{Label = "Português"},
+new DisciplinesOptions{Label = "Matemática"},
+new DisciplinesOptions{Label = "Física"},
+};
+
+        [Required(ErrorMessage = "Informe seu Nome")]
+        public string Name { get; set; } = "";
+
+        [Required(ErrorMessage = "Informe seu e-mail")]
+        [EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required(ErrorMessage = "Informe seu telefone.")]
+        [MinLength(8, ErrorMessage = "Telefone inválido.")]
+        public string Phone { get; set; } = "";
+
+        public string Text { get; set; } = "";
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Options is null || !Options.Any(o => o.Selected))
+            {
+                yield return new ValidationResult(
+                "Selecione pelo menos uma disciplina.",
+                new[] { nameof(Options) }
+                );
+            }
+        }
+    }
+
+
+    public class DisciplinesOptions
+    {
+        public string? Label { get; set; } = string.Empty;
+        public bool Selected { get; set; }
+    }
+}
