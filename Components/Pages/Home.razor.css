@@ -135,8 +135,6 @@ section p {
     overflow-y: auto;
     /* Estilização sutil na área de scroll */
     background: var(--color-primary-translucent-1);
-    border-radius: var(--border-1);
-    border: 1px solid var(--color-secundary-border-2);
 }
 
 /* ================================

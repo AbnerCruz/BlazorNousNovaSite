@@ -81,6 +81,6 @@ C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-No
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\FrontEnd.csproj.Up2Date
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\FrontEnd.sourcelink.json
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\ctwso3o80w-oiczpur0ze.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\t481byrqko-lwjmb03lbt.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-f80tn1wc65.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-f80tn1wc65.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\t481byrqko-90rvidwble.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-5lxxgbm2cr.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-5lxxgbm2cr.gz

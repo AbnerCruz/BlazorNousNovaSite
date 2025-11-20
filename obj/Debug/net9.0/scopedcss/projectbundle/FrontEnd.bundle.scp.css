@@ -466,47 +466,93 @@
 }
 /* _content/FrontEnd/Components/Pages/About.razor.rz.scp.css */
 .about[b-u28ymlant2] {
+    /* Mantém o background-color (transparente) e width */
     background-color: rgba(255, 0, 0, 0);
-    width: 100%;
+    width: 90%;
+    box-shadow: var(--shadow-1);
 }
 
-h2[b-u28ymlant2]{
+h2[b-u28ymlant2] {
     color: var(--color-gold-3);
+    /* Adiciona uma transição sutil para mudança de cor ou tamanho se aplicado em hover */
+    transition: color 0.3s ease;
 }
 
-h3[b-u28ymlant2]{
-    color: var(--color-gold-2)
-}
-
-.container[b-u28ymlant2]{
-    display: flex;
-    justify-content: center;
-}
-
-.content[b-u28ymlant2]{
-    width: 95%;
-    text-align: center;
+h3[b-u28ymlant2] {
+    color: var(--color-gold-2);
+    transition: color 0.3s ease;
 }
 
 section[b-u28ymlant2] {
     width: 100%;
     background-color: rgba(0, 60, 255, 0);
-    margin: 5% 0 5% 0;
+    /* Adiciona padding horizontal para evitar que o conteúdo toque as bordas em telas pequenas */
+    margin: 5% 0;
+    padding: 0 5%;
+    box-sizing: border-box;
+    /* Garante que o padding não aumente o width total */
 }
 
-section .title[b-u28ymlant2]{
-    margin-bottom: 2%;
+section .title[b-u28ymlant2] {
+    margin-bottom: 3%;
+    /* Aumentado ligeiramente para melhor espaçamento */
+}
+
+.container[b-u28ymlant2] {
+    display: flex;
+    justify-content: center;
+}
+
+.content[b-u28ymlant2] {
+    width: 95%;
+    /* Limita a largura máxima do conteúdo para melhor legibilidade em telas grandes */
+    max-width: 1200px;
+    text-align: center;
+}
+
+.label[b-u28ymlant2],
+.lead[b-u28ymlant2],
+.values[b-u28ymlant2],
+.howItWorks[b-u28ymlant2] {
+    margin-bottom: 3%;
+    text-align: left;
+    /* Adicionado transição para possíveis efeitos de visualização, como fade-in */
+    transition: opacity 0.5s ease;
+    line-height: 1.6;
+    /* Melhora a legibilidade do texto */
+    color: var(--color-primary-text-1);
+    /* Garante que o texto use a cor principal */
+}
+
+/* Garante que o texto dentro desses elementos seja renderizado de forma clara */
+p[b-u28ymlant2],
+li[b-u28ymlant2] {
+    color: var(--color-primary-text-1);
 }
 
 .video-container[b-u28ymlant2] {
     justify-self: center;
-    width: 70%;
-    height: 400px;
+    width: 80%;
+    /* Aumentado para melhor visualização em desktops */
+    max-width: 800px;
+    /* Limite máximo para o vídeo */
+    height: 450px;
+    /* Aumentado a altura para um formato mais agradável */
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: var(--border-1);
+    /* Usando token do root */
     box-shadow: var(--shadow-1);
     margin-bottom: 5%;
+    /* Transição para os efeitos de hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de Leve Zoom e Sombra ao passar o mouse */
+.video-container:hover[b-u28ymlant2] {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    /* Sombra mais intensa no hover */
 }
 
 .video-container iframe[b-u28ymlant2] {
@@ -518,22 +564,78 @@ section .title[b-u28ymlant2]{
     border: 0;
 }
 
-
-.label[b-u28ymlant2]{
-    margin-top: 1%;
-    text-align: left;
-}
-
-.lead[b-u28ymlant2], .values[b-u28ymlant2], .howItWorks[b-u28ymlant2]{
-    margin-bottom: 3%;
-    text-align: left;
-}
-
-.teacher-image[b-u28ymlant2]{
-    width: 100px;
-    height: 100px;
+.teacher-image[b-u28ymlant2] {
+    width: 120px;
+    /* Aumentado um pouco o tamanho */
+    height: 120px;
     justify-self: center;
     align-self: center;
+    border-radius: 50%;
+    /* Adiciona borda arredondada para fotos de perfil */
+    border: 4px solid var(--color-gold-2);
+    /* Borda destacada */
+    object-fit: cover;
+    /* Garante que a imagem preencha a área sem distorcer */
+    /* Transição para o efeito de hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de Leve Rotação e Sombra no hover da imagem */
+.teacher-image:hover[b-u28ymlant2] {
+    transform: rotate(3deg) scale(1.05);
+    box-shadow: var(--shadow-2);
+}
+
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+
+/* Telas Pequenas (celulares, tablets pequenos, até 768px) */
+@media (max-width: 768px) {
+
+    /* Reduz o padding da seção para dar mais espaço ao conteúdo */
+    section[b-u28ymlant2] {
+        padding: 0 3%;
+        margin: 8% 0;
+        /* Aumenta a margem vertical entre as seções */
+    }
+
+    /* O conteúdo ocupa a largura máxima da tela com o padding da section */
+    .content[b-u28ymlant2] {
+        width: 100%;
+    }
+
+    /* Ajusta o contêiner de vídeo para caber melhor em telas menores */
+    .video-container[b-u28ymlant2] {
+        width: 100%;
+        height: 250px;
+        /* Reduz a altura para não ocupar muito espaço vertical */
+        box-shadow: var(--shadow-2);
+        /* Sombra mais sutil em mobile */
+    }
+
+    /* Ajusta a imagem do professor */
+    .teacher-image[b-u28ymlant2] {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Melhora a leitura do texto */
+    .lead[b-u28ymlant2],
+    .values[b-u28ymlant2],
+    .howItWorks[b-u28ymlant2] {
+        /* Justifica o texto para um visual mais limpo */
+        padding: 0 10px;
+        /* Adiciona um pequeno padding para o texto não ficar colado nas bordas */
+    }
+}
+
+/* Telas Médias (tablets, até 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .video-container[b-u28ymlant2] {
+        width: 70%;
+        height: 350px;
+    }
 }
 /* _content/FrontEnd/Components/Pages/Disciplines.razor.rz.scp.css */
 .discipline-page[b-wfnqutia9y]{
@@ -687,8 +789,6 @@ section p[b-swpeewdqbl] {
     overflow-y: auto;
     /* Estilização sutil na área de scroll */
     background: var(--color-primary-translucent-1);
-    border-radius: var(--border-1);
-    border: 1px solid var(--color-secundary-border-2);
 }
 
 /* ================================
