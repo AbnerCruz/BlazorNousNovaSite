@@ -1,15 +1,41 @@
+/* ================================
+   CTA SECTION - ESTILO APRIMORADO
+   ================================ */
+
 .cta-section[b-u0mvelfu3t] {
-    width: 80%;
-    padding: 1rem;
+    /* Layout e Posicionamento */
+    width: 90%;
+    /* Aumentei levemente para mobile first, ajustado no max-width */
+    max-width: 1200px;
+    margin: 2rem auto;
+    /* Centraliza na página */
+    padding: 3rem;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* Estilo Visual (Glassmorphism) */
+    background: var(--color-primary-translucent-2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-secundary-border-2);
     border-radius: var(--border-1);
     box-shadow: var(--shadow-1);
-    background: var(--color-primary-translucent-2);
-    text-align: center;
-    align-self: center;
-    justify-self: center;
+
+    /* Transições Suaves */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    /* Para conter brilhos ou efeitos internos */
+}
+
+/* Efeito Hover no Card Inteiro */
+.cta-section:hover[b-u0mvelfu3t] {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-gold-2);
+    /* Detalhe sutil na borda ao focar */
 }
 
 .cta-section .container[b-u0mvelfu3t] {
@@ -19,46 +45,130 @@
 .cta-content[b-u0mvelfu3t] {
     display: flex;
     flex-wrap: wrap;
+    /* Permite quebrar linha no mobile */
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem;
+    /* Aumentei o gap para mais respiro */
 }
+
+/* ================================
+   ÁREA DE TEXTO
+   ================================ */
 
 .text-area[b-u0mvelfu3t] {
-    flex: 1 1 50%;
+    flex: 1 1 400px;
+    /* Base de 400px. Se a tela for menor, ele encolhe/quebra */
     width: 100%;
-    padding-left: 1rem;
-}
-
-.image-area[b-u0mvelfu3t] {
-    flex: 1 1 40%;
+    text-align: left;
+    /* Texto alinhado à esquerda é mais legível em cards largos */
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.image-area img[b-u0mvelfu3t] {
-    width: 70%;
-    border-radius: var(--border-1);
-}
-
 .cta-title[b-u0mvelfu3t] {
-    font-size: 2rem;
+    /* Tipografia Fluida */
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
     margin-bottom: 1rem;
+    color: var(--color-primary-text-1);
+    line-height: 1.2;
 }
 
 .cta-subtitle[b-u0mvelfu3t] {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     margin-bottom: 2rem;
-    opacity: 0.9;
+    color: var(--color-primary-text-2);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* ================================
+   ÁREA DE PREÇO E BOTÃO (Sugestão)
+   ================================ */
+
+.price-container[b-u0mvelfu3t] {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
 }
 
 .cta-price[b-u0mvelfu3t] {
-    color: var(--color-green-2)
+    color: var(--color-green-2);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.cta-oldprice[b-u0mvelfu3t]{
-    margin-left: 1%;
-    color: red;
+.cta-oldprice[b-u0mvelfu3t] {
+    color: var(--color-red-3);
+    /* Vermelho mais suave para não brigar com o verde */
     font-size: 1.2rem;
-    text-decoration:line-through;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+/* ================================
+   ÁREA DE IMAGEM
+   ================================ */
+
+.image-area[b-u0mvelfu3t] {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    /* Prepara para efeitos 3D se desejar */
+}
+
+.image-area img[b-u0mvelfu3t] {
+    width: 100%;
+    max-width: 400px;
+    /* Limite máximo para não estourar */
+    height: auto;
+
+    /* Transição da imagem */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Efeito ao passar o mouse no container, a imagem reage */
+.cta-section:hover .image-area img[b-u0mvelfu3t] {
+    transform: scale(1.05) rotate(2deg);
+    /* Zoom leve e rotação sutil */
+}
+
+/* ================================
+   MEDIA QUERIES (Mobile)
+   ================================ */
+
+@media (max-width: 768px) {
+    .cta-section[b-u0mvelfu3t] {
+        width: 80%;
+        padding: 2rem 1.5rem;
+    }
+
+    .cta-content[b-u0mvelfu3t] {
+        flex-direction: column-reverse;
+        /* Imagem em cima, texto embaixo no mobile? Ou normal. */
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .text-area[b-u0mvelfu3t] {
+        text-align: center;
+        /* Centraliza texto no mobile */
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .price-container[b-u0mvelfu3t] {
+        justify-content: center;
+    }
+
+    .image-area img[b-u0mvelfu3t] {
+        width: 100%;
+        /* Imagem um pouco menor no mobile */
+    }
 }

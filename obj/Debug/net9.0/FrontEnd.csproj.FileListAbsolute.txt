@@ -74,12 +74,13 @@ C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-No
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\ButtonComponent.razor.rz.scp.css
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\CtaComponent.razor.rz.scp.css
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\Registration.razor.rz.scp.css
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\t481byrqko-bvdxbl8f3h.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\ctwso3o80w-6lgglnsisn.gz
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\bin\Debug\net9.0\MailKit.dll
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\bin\Debug\net9.0\MimeKit.dll
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\FrontEnd.csproj.AssemblyReference.cache
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-t08ktyjtm6.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-t08ktyjtm6.gz
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\FrontEnd.csproj.Up2Date
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\FrontEnd.sourcelink.json
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\ctwso3o80w-oiczpur0ze.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\t481byrqko-lwjmb03lbt.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-f80tn1wc65.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-f80tn1wc65.gz

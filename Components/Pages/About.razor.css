@@ -31,10 +31,6 @@ section .title{
     margin-bottom: 2%;
 }
 
-.grid{
-    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-}
-
 .video-container {
     justify-self: center;
     width: 70%;
@@ -69,4 +65,6 @@ section .title{
 .teacher-image{
     width: 100px;
     height: 100px;
+    justify-self: center;
+    align-self: center;
 }

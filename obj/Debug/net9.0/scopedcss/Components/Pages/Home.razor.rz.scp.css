@@ -1,81 +1,177 @@
+/* ================================
+   ESTILOS GERAIS DE SEÇÃO & LAYOUT
+   ================================ */
+
+/* Container principal */
 .homePage[b-swpeewdqbl] {
     width: 100%;
+    overflow-x: hidden;
+    /* Previne scroll lateral indesejado */
 }
 
-.disciplinas[b-swpeewdqbl] {
-    display: flex;
-    justify-content: center;
-}
-
+/* Configuração base das seções */
 section[b-swpeewdqbl] {
-    height: 100vh;
-    padding: 2%;
+    /* Muda de height fixa para min-height para não cortar conteúdo em telas pequenas */
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 2%;
+    /* Mais respiro vertical */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    position: relative;
 }
 
-
+/* Títulos e textos genéricos de seção */
 section h1[b-swpeewdqbl],
-section h2[b-swpeewdqbl],
-section p[b-swpeewdqbl] {
-    margin: 2% 0 2% 0;
+section h2[b-swpeewdqbl] {
     text-align: center;
+    line-height: 1.2;
+    /* Efeito sutil de sombra no texto para destacar do fundo */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 section p[b-swpeewdqbl] {
-    max-width: 80%;
-    justify-self: center;
-    align-self: center;
+    margin: 1.5rem 0;
+    text-align: center;
+    max-width: 800px;
+    /* Limite em pixels é melhor que % para leitura */
+    line-height: 1.6;
+    color: var(--color-primary-text-2);
 }
 
+/* Fundos alternados com suas variáveis */
 #s1[b-swpeewdqbl] {
-    background-color: var(--color-primary-translucent-2);
+    background-color: var(--color-primary-background-1);
 }
 
 #s2[b-swpeewdqbl] {
-    background-color: var(--color-primary-translucent-1);
+    background-color: var(--color-primary-background-2);
 }
+
+/* ================================
+   HERO SECTION / WELCOME (Efeito Vidro)
+   ================================ */
 
 .wellcome-section[b-swpeewdqbl] {
     background-image: url("images/ClassRoomBackground.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: var(--shadow-1);
+    /* Adiciona um overlay escuro sutil para garantir leitura se a imagem for clara */
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .wellcome-section .container[b-swpeewdqbl] {
+    /* Glassmorphism Profissional */
+    background: rgba(255, 255, 255, 0.05);
+    /* Transparência sutil */
+    backdrop-filter: blur(12px);
+    /* Desfoque mais forte */
+    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--border-1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borda de vidro */
     box-shadow: var(--shadow-1);
-    backdrop-filter: blur(5px);
-    box-shadow: var(--shadow-1);
-}
 
-.wellcome-section .container .content[b-swpeewdqbl] {
-    padding: 3%;
+    padding: 3rem;
+    max-width: 90%;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Animação de entrada suave */
+    animation: fadeUp-b-swpeewdqbl 1s ease-out forwards;
 }
 
 .wellcome-section .container .content .title[b-swpeewdqbl] {
     width: 100%;
     margin: 0;
-    font-size: 8rem;
+    font-weight: 800;
+    /* Responsividade mágica: mínimo 3rem, ideal 8vw, máximo 8rem */
+    font-size: clamp(3rem, 8vw, 8rem);
+    color: var(--color-primary-text-3);
+    text-align: center;
+    letter-spacing: -2px;
 }
 
 .wellcome-section .container .content .sub-title[b-swpeewdqbl] {
     width: 100%;
-    margin: 0;
-    font-size: 4rem;
+    margin-top: 1rem;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 4vw, 4rem);
+    color: var(--color-gold-2);
+    /* Usando sua cor de destaque */
+    text-align: center;
+}
+
+/* ================================
+   GRID DE CURSOS / DISCIPLINAS
+   ================================ */
+
+.disciplinas[b-swpeewdqbl] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .courses-section .container[b-swpeewdqbl],
 .depoiments-section .container[b-swpeewdqbl] {
     width: 100%;
-    height: 100%;
+    max-width: 1200px;
+    /* Container centralizado padrão */
+    padding: 1rem;
 }
 
 .grid[b-swpeewdqbl] {
-    max-height: 60vh;
-    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    display: grid;
+    gap: 2rem;
     overflow-y: auto;
+    /* Estilização sutil na área de scroll */
+    background: var(--color-primary-translucent-1);
+    border-radius: var(--border-1);
+    border: 1px solid var(--color-secundary-border-2);
+}
+
+/* ================================
+   ANIMAÇÕES (KEYFRAMES)
+   ================================ */
+
+@keyframes fadeUp-b-swpeewdqbl {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   MEDIA QUERIES (Ajustes Finos)
+   ================================ */
+
+@media (max-width: 768px) {
+    section[b-swpeewdqbl] {
+        padding: 2rem 1rem;
+    }
+
+    .wellcome-section .container[b-swpeewdqbl] {
+        padding: 1.5rem;
+    }
+
+    /* Grid em mobile vira uma coluna com scroll vertical */
+    .grid[b-swpeewdqbl] {
+        max-height: none;
+        /* Remove limite de altura em mobile se preferir scroll da página */
+        overflow-y: visible;
+    }
 }

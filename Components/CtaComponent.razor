@@ -11,7 +11,7 @@
                     @if(Price != 0m){
                         <h1 class="cta-price">R$@Price.ToString("N2")/hora<span class="cta-oldprice">R$@OldPrice.ToString("N2")</span></h1>
                     }
-                    <ButtonComponent Text="@ButtonText" Href="@ButtonHref" Color="@ButtonColor" Width="100%">
+                    <ButtonComponent Text="@ButtonText" Href="@ButtonHref" Color="@ButtonColor">
                     </ButtonComponent>
                 }
             </div>
@@ -31,7 +31,7 @@
     [Parameter] public string Subtitle { get; set; } = "Domine os conteúdos com propósito e método.";
     [Parameter] public string ButtonText { get; set; } = "Matricule-se";
     [Parameter] public string ButtonHref { get; set; } = "/";
-    [Parameter] public string ButtonColor { get; set; } = "bggold-1";
+    [Parameter] public string ButtonColor { get; set; } = "bggold-2";
     [Parameter] public string ImageUrl { get; set; } = "";
     [Parameter] public string Color { get; set; } = "";
     [Parameter] public decimal Price { get; set; } = 0;

@@ -1,25 +1,117 @@
+/* ================================
+   BOTÃO BASE — Mobile First
+   ================================ */
+
 .button {
-    width: 100%;
-    justify-self: center;
+    /* Layout & Posicionamento */
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+
+    width: 100%;
+    max-width: 320px;
+    /* Um pouco maior, mais confortável */
+    padding: 0.9rem 1.6rem;
+
+    margin: 0 auto;
+    /* Mantém centralizado */
+    box-sizing: border-box;
+    /* Evita estourar largura */
+
+    /* Estética */
+    border: 1px solid var(--color-secundary-border-2);
     border-radius: var(--border-1);
+    backdrop-filter: blur(6px);
+    /* Glass mais elegante */
     box-shadow: var(--shadow-1);
+
+    /* Tipografia */
+    color: var(--color-primary-text-1);
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    /* Ajusta com a tela */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+
+    /* Transições mais fluidas */
+    transition:
+        background-color 0.25s ease,
+        transform 0.18s cubic-bezier(.2, .8, .4, 1),
+        box-shadow 0.3s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
 }
 
-.button-hover{
-    border-radius: var(--border-1);
+/* ================================
+   HOVER / ACTIVE / FOCUS
+   ================================ */
+
+@media (hover:hover) {
+
+    /* Evita problemas em dispositivos touch */
+    .button:hover {
+        border-color: var(--color-gold-2);
+        color: var(--color-primary-text-3);
+        transform: translateY(-3px);
+        box-shadow:
+            var(--shadow-2),
+            0 8px 18px rgba(0, 0, 0, 0.18);
+    }
 }
 
-.text{
-    padding: 1%;
+.button:active {
+    transform: translateY(-1px) scale(0.97);
+    box-shadow: none;
+    background-color: var(--color-primary-translucent-2);
 }
 
-.button-hover:hover {
-    background-color: var(--color-primary-translucent-1);
+.button:focus-visible {
+    outline: 2px solid var(--color-blue-2);
+    outline-offset: 4px;
 }
 
+/* ================================
+   TEXTO INTERNO
+   ================================ */
 
-.button-hover:hover {
-    background-color: var(--color-primary-translucent-3);
+.text {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ================================
+   RESPONSIVIDADE EXTRA
+   ================================ */
+
+/* Telas muito pequenas */
+@media (max-width: 360px) {
+    .button {
+        padding: 0.75rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Telas médias */
+@media (min-width: 768px) {
+    .button {
+        max-width: 340px;
+        padding: 1rem 2rem;
+        font-size: 1.05rem;
+    }
+}
+
+/* Telas grandes */
+@media (min-width: 1200px) {
+    .button {
+        max-width: 360px;
+        font-size: 1.1rem;
+        border-radius: calc(var(--border-1) * 1.2);
+    }
 }

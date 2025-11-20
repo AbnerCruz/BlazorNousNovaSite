@@ -11,7 +11,3 @@ section[b-wfnqutia9y]{
 section h1[b-wfnqutia9y]{
     margin: 2% 0 2% 0;
 }
-
-.grid[b-wfnqutia9y]{
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-}
