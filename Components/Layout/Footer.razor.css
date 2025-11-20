@@ -1,85 +1,186 @@
+/* ================================
+   1. RODAPÉ PRINCIPAL
+   ================================ */
+
 .footer {
-    background-color: var(--color-black-1, #000);
-    padding: 3rem 1rem;
+    /* Usa o token de cor mais escuro para o fundo do rodapé */
+    background-color: var(--color-black-1);
+    padding: 3.5rem 1rem 1.5rem;
+    /* Aumenta o padding superior e reduz o inferior */
     font-family: 'Inter', sans-serif;
+    color: var(--color-primary-text-3);
+    /* Garante que o texto base seja branco puro no tema escuro */
+    /* Transição para suavizar mudanças de tema se o --color-black-1 for dinâmico */
+    transition: background-color 0.4s ease;
 }
 
 .footer .container {
-    max-width: 1200px;
+    max-width: 1300px;
+    /* Aumentado ligeiramente para mais espaço em telas grandes */
     margin: auto;
+    padding: 0 20px;
+    /* Padding horizontal para telas médias e grandes */
 }
+
+/* ================================
+   2. GRID E COLUNAS
+   ================================ */
 
 .footer-grid {
+    /* Mantém a estratégia de grid responsivo */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.footer-title {
-    color: var(--color-gold-1, #94782c);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Reduz o minmax para melhor ajuste em tablets */
+    gap: 3rem;
+    /* Aumenta o espaço entre as colunas */
+    margin-bottom: 2rem;
 }
 
 .footer-col {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-primary-text-2);
+    /* Cor do texto da coluna: um cinza claro suave */
     font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.footer-links,
-.footer-contact {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-links li,
-.footer-contact li {
-    margin-bottom: 0.6rem;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
+    line-height: 1.7;
+    /* Mais espaço entre linhas para leitura */
     transition: color 0.3s ease;
 }
 
+.footer-title {
+    color: var(--color-gold-2);
+    /* Usa Gold-2 para o título (mais claro e visível) */
+    font-size: 1.3rem;
+    /* Levemente maior */
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    position: relative;
+}
+
+/* Efeito de Sublinhado Sutil no Título */
+.footer-title::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-gold-1);
+    margin-top: 5px;
+    transition: width 0.3s ease;
+}
+
+/* ================================
+   3. LINKS E CONTATOS (Micro-Interações)
+   ================================ */
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 0.8rem;
+    /* Mais espaçamento entre os itens */
+}
+
+.footer-links a {
+    color: var(--color-primary-text-2);
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    /* Adiciona transição para movimento */
+    display: inline-block;
+    /* Permite a transição de padding */
+}
+
+/* Efeito de deslize sutil no hover do link */
 .footer-links a:hover {
-    color: var(--color-gold-1, #94782c);
-}
-
-.footer-social a {
-    margin-right: 1rem;
-    font-size: 1.4rem;
-    color: var(--color-gold-1, #94782c);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.footer-social a:hover {
-    transform: scale(1.2);
-    color: var(--color-pink-1, #E0569A);
+    color: var(--color-gold-3);
+    /* Cor ouro mais brilhante no hover */
+    padding-left: 5px;
 }
 
 .footer-contact i {
-    color: var(--color-gold-1, #94782c);
-    margin-right: 0.5rem;
+    color: var(--color-gold-3);
+    /* Cor ouro mais brilhante para ícones */
+    margin-right: 0.8rem;
+    /* Aumenta o espaço entre ícone e texto */
+    transition: color 0.3s ease;
 }
+
+/* Redes Sociais com Efeito 3D */
+.footer-social a {
+    margin-right: 1.2rem;
+    /* Mais espaçamento */
+    font-size: 1.6rem;
+    /* Ícones maiores */
+    color: var(--color-gold-2);
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.footer-social a:hover {
+    transform: translateY(-3px) scale(1.15);
+    /* Efeito de 'flutuação' sutil */
+    color: var(--color-pink-2);
+    /* Cor de destaque (pink) no hover */
+    text-shadow: 0 0 15px var(--color-pink-2);
+    /* Efeito de brilho */
+}
+
+/* ================================
+   4. SEPARADOR E BOTTOM
+   ================================ */
 
 .footer-separator {
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 2rem 0 1rem;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    /* Linha mais suave */
+    margin: 3rem 0 1.5rem;
+    /* Aumenta o espaço vertical */
+    opacity: 0.7;
+    transition: border-top 0.4s ease;
 }
 
 .footer-bottom {
     text-align: center;
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-black-4);
+    /* Cinza claro para o copyright */
 }
 
 .footer-bottom p:last-child {
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
+}
+
+
+/* ================================
+   5. RESPONSIVIDADE (MOBILE) 📱
+   ================================ */
+
+@media (max-width: 650px) {
+    .footer {
+        padding: 2.5rem 1rem 1rem;
+        /* Reduz o padding em telas muito pequenas */
+    }
+
+    .footer .container {
+        padding: 0 15px;
+    }
+
+    /* Reduz o minmax do grid para garantir que as colunas se empilhem mais cedo */
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2.5rem 1.5rem;
+        /* Ajuste o gap entre linhas e colunas */
+    }
+
+    /* Garante que o rodapé seja mais legível em telas pequenas, empilhando as colunas */
+    .footer-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer-title::after {
+        width: 25px;
+        /* Sublinhado menor em mobile */
+    }
+
+    .footer-social a {
+        font-size: 1.4rem;
+        margin-right: 0.8rem;
+    }
 }

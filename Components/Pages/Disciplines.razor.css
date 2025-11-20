@@ -1,13 +1,149 @@
-.discipline-page{
-    width: 100%;
+/* ================================
+   PÁGINA DE DISCIPLINA
+   ================================ */
+
+.discipline-page {
+    /* Centraliza o conteúdo principal da página */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    /* Padding nas laterais para telas maiores */
+    box-sizing: border-box;
 }
 
-section{
-    background-color: rgba(0, 128, 0, 0);
-    margin: 1%;
-    padding: 1%;
+/* Estilo para todas as seções de conteúdo */
+.discipline-page section {
+    padding: 40px 0;
+    /* Espaçamento vertical generoso entre as seções */
+    margin: 0;
+    /* Remove margem padrão */
+    border-bottom: 1px solid var(--color-primary-translucent-3);
+    /* Linha divisória sutil */
+    transition: background-color 0.3s ease;
 }
 
-section h1{
-    margin: 2% 0 2% 0;
+/* Remove a linha divisória da última seção para um visual mais limpo */
+.discipline-page section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 80px;
+}
+
+/* Títulos de Seção (o H1 dentro de <section>) */
+.discipline-page section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-gold-3);
+    /* Cor principal do título da seção */
+    margin-bottom: 25px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* Parágrafos de texto */
+.discipline-page section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-primary-text-1);
+    max-width: 800px;
+    /* Limita a largura para melhor legibilidade */
+    margin: 0 auto 30px auto;
+    /* Centraliza e adiciona margem inferior */
+    opacity: 0.9;
+    text-align: center;
+}
+
+/* Estilo para a mensagem de "Discipline not found" */
+.discipline-page>p {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-red-2);
+    margin-top: 50px;
+}
+
+/* ================================
+   CURRÍCULO (dentro dos cards)
+   ================================ */
+
+.curriculum-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--color-secundary-border-1);
+    /* Linha divisória dentro do card */
+}
+
+/* Título da seção do currículo (o H3) */
+.curriculum-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Lista de Tópicos do Currículo */
+.curriculum-section ul {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.curriculum-section li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 5px 0;
+    color: var(--color-primary-text-2);
+    /* Efeito sutil de lista */
+    position: relative;
+    padding-left: 20px;
+}
+
+.curriculum-section li::before {
+    content: "•";
+    /* Ícone de marcador customizado */
+    color: var(--color-gold-2);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    transition: color 0.3s ease;
+}
+
+/* Efeito de destaque ao passar o mouse sobre o item do currículo */
+.curriculum-section li:hover {
+    color: var(--color-gold-3);
+    cursor: default;
+}
+
+.grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+
+/* ================================
+   RESPONSIVIDADE (MOBILE) 📱
+   ================================ */
+
+@media (max-width: 768px) {
+    .discipline-page {
+        padding: 0 15px;
+        /* Reduz padding lateral em mobile */
+    }
+
+    .discipline-page section {
+        padding: 30px 0;
+        /* Reduz espaçamento vertical */
+    }
+
+    .discipline-page section h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .discipline-page section p {
+        font-size: 1rem;
+        padding: 0 5px;
+        /* Adiciona um pequeno padding para texto em mobile */
+    }
+
+    .curriculum-section h3 {
+        font-size: 1.1rem;
+    }
 }

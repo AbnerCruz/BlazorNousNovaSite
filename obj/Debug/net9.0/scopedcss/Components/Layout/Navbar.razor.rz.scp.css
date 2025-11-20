@@ -1,49 +1,155 @@
+/* ================================
+   1. NAVBAR PRINCIPAL (Fixed)
+   ================================ */
+
 .navbar[b-ubt05h4dhc] {
+    /* Usaremos um fundo levemente transparente para o efeito blur */
     background-color: var(--color-primary-background-1);
-    display: flex;
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    height: 60px;
+
+    /* Adiciona transição para suavizar mudanças (como a cor de fundo) */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.container[b-ubt05h4dhc] {
+.navbar .container[b-ubt05h4dhc] {
     width: 100%;
-    height: 50px;
+    max-width: 1400px;
+    /* Largura máxima do conteúdo */
+    height: 100%;
+    margin: 0 auto;
+    /* Centraliza o conteúdo */
+    padding: 0 20px;
+
     display: flex;
     align-items: center;
-    box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(100px);
+    justify-content: space-between;
+    /* Espaço entre logo e links */
+
+    /* Efeito de Glassmorphism/Neumorphism Sutil */
+    box-shadow: var(--shadow-1);
+    backdrop-filter: blur(8px);
+    /* Desfoque suave no conteúdo por baixo */
+    -webkit-backdrop-filter: blur(8px);
 }
+
+/* ================================
+   2. LOGOTIPO
+   ================================ */
 
 .navbar-logo[b-ubt05h4dhc] {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 128, 0, 0);
     display: flex;
     align-items: center;
-}
-
-.navbar-links[b-ubt05h4dhc] {
-    margin-left: 30%;
-    width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.nav-link[b-ubt05h4dhc] {
-    margin: 0 2% 0 2%;
-}
-
-.nav-link:hover[b-ubt05h4dhc] {
-    color: var(--color-gold-1)
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-gold-3);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .logo[b-ubt05h4dhc] {
-    width: 30px;
+    width: 35px;
+    height: auto;
     margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover .logo[b-ubt05h4dhc] {
+    transform: rotate(5deg) scale(1.05);
+    /* Efeito de giro e zoom sutil no hover */
+}
+
+/* ================================
+   3. LINKS DE NAVEGAÇÃO (Horizontal)
+   ================================ */
+
+.navbar-links[b-ubt05h4dhc] {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0 2rem;
+    margin: 0;
+    height: 100%;
+
+    /* Garante que os links fiquem em uma linha */
+    flex-wrap: nowrap;
+}
+
+.nav-item[b-ubt05h4dhc] {
+    padding: 0 15px;
+    /* Espaçamento entre os links */
+}
+
+.nav-link[b-ubt05h4dhc] {
+    color: var(--color-primary-text-2);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+    display: block;
+    white-space: nowrap;
+    /* Impede a quebra de linha dos links */
+}
+
+/* Efeito de Sublinhado Animado no Hover */
+.nav-link[b-ubt05h4dhc]::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-gold-2);
+    transition: width 0.3s ease-out;
+}
+
+.nav-link:hover[b-ubt05h4dhc] {
+    color: var(--color-gold-3);
+}
+
+.nav-link:hover[b-ubt05h4dhc]::after {
+    width: 100%;
+}
+
+/* ================================
+   4. RESPONSIVIDADE (Ajuste de Espaçamento)
+   ================================ */
+
+@media (max-width: 992px) {
+    .navbar .container[b-ubt05h4dhc] {
+        padding: 0 15px;
+    }
+
+    .nav-item[b-ubt05h4dhc] {
+        padding: 0 10px;
+        /* Reduz o espaçamento entre os links em telas menores */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar[b-ubt05h4dhc] {
+        height: 50px;
+        /* Reduz ligeiramente a altura em telas pequenas */
+    }
+
+    .navbar-logo[b-ubt05h4dhc]{
+        font-size: 1rem;
+    }
+
+    .nav-link[b-ubt05h4dhc] {
+        font-size: 1rem;
+        /* Reduz a fonte do link */
+    }
 }
