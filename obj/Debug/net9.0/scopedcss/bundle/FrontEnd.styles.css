@@ -4,43 +4,53 @@
    ================================ */
 
 .button[b-k08xr1gmrx] {
-    /* Layout & Posicionamento */
-    display: inline-flex;
+    /* Layout & Box Model */
+    display: flex;
+    /* Flex é melhor que inline-flex p/ largura 100% */
     justify-content: center;
     align-items: center;
 
     width: 100%;
+    /* Ocupa largura total no mobile */
     max-width: 320px;
-    /* Um pouco maior, mais confortável */
-    padding: 0.9rem 1.6rem;
+    /* Limite seguro para mobile */
+    min-height: 48px;
+    /* Acessibilidade: tamanho mínimo p/ toque */
 
+    padding: 0.875rem 1.5rem;
+    /* Rem é mais seguro que fixo */
     margin: 0 auto;
-    /* Mantém centralizado */
+    /* Centraliza o bloco */
     box-sizing: border-box;
-    /* Evita estourar largura */
 
     /* Estética */
     border: 1px solid var(--color-secundary-border-2);
     border-radius: var(--border-1);
     backdrop-filter: blur(6px);
-    /* Glass mais elegante */
+    -webkit-backdrop-filter: blur(6px);
+    /* Compatibilidade Safari */
     box-shadow: var(--shadow-1);
 
     /* Tipografia */
     color: var(--color-primary-text-1);
-    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-    /* Ajusta com a tela */
+    /* Simplifiquei o clamp: mínimo 15px, responsivo, máximo 18px */
+    font-size: clamp(0.9375rem, 4vw, 1.125rem);
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;
+    /* Evita quebra de linha feia no texto */
 
+    /* Comportamento */
     cursor: pointer;
     position: relative;
     overflow: hidden;
     user-select: none;
+    touch-action: manipulation;
+    /* Melhora resposta ao toque */
 
-    /* Transições mais fluidas */
+    /* Transições */
     transition:
         background-color 0.25s ease,
         transform 0.18s cubic-bezier(.2, .8, .4, 1),
@@ -53,9 +63,8 @@
    HOVER / ACTIVE / FOCUS
    ================================ */
 
-@media (hover:hover) {
-
-    /* Evita problemas em dispositivos touch */
+/* Hover apenas em dispositivos que têm mouse */
+@media (hover: hover) {
     .button:hover[b-k08xr1gmrx] {
         border-color: var(--color-gold-2);
         color: var(--color-primary-text-3);
@@ -67,14 +76,15 @@
 }
 
 .button:active[b-k08xr1gmrx] {
-    transform: translateY(-1px) scale(0.97);
+    transform: translateY(-1px) scale(0.98);
+    /* Scale 0.97 pode ser muito brusco */
     box-shadow: none;
     background-color: var(--color-primary-translucent-2);
 }
 
 .button:focus-visible[b-k08xr1gmrx] {
     outline: 2px solid var(--color-blue-2);
-    outline-offset: 4px;
+    outline-offset: 2px;
 }
 
 /* ================================
@@ -88,32 +98,44 @@
 }
 
 /* ================================
-   RESPONSIVIDADE EXTRA
+   RESPONSIVIDADE (Media Queries)
    ================================ */
 
-/* Telas muito pequenas */
+/* Telas muito pequenas (iPhone SE, Fold, etc) */
 @media (max-width: 360px) {
     .button[b-k08xr1gmrx] {
-        padding: 0.75rem 1.2rem;
-        font-size: 0.9rem;
+        max-width: 100%;
+        /* Aproveita todo espaço */
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        /* 14px */
     }
 }
 
-/* Telas médias */
+/* Tablet e Desktop (A partir de 768px) */
+/* MUDANÇA CRÍTICA: Botão deixa de ser bloco esticado */
 @media (min-width: 768px) {
     .button[b-k08xr1gmrx] {
-        max-width: 340px;
-        padding: 1rem 2rem;
-        font-size: 1.05rem;
+        display: inline-flex;
+        /* Volta a comportar-se como botão inline */
+        width: auto;
+        /* Largura baseada no conteúdo */
+        max-width: none;
+        /* Remove a trava de 320px */
+        min-width: 200px;
+        /* Garante uma presença mínima elegante */
+        padding: 1rem 2.5rem;
+        /* Mais ar nas laterais */
     }
 }
 
-/* Telas grandes */
+/* Telas grandes (Monitores Wide) */
 @media (min-width: 1200px) {
     .button[b-k08xr1gmrx] {
-        max-width: 360px;
         font-size: 1.1rem;
-        border-radius: calc(var(--border-1) * 1.2);
+        /* Aumenta um pouco o arredondamento proporcionalmente */
+        border-radius: calc(var(--border-1) * 1.25);
+        transition: transform 0.2s cubic-bezier(.2, .8, .4, 1);
     }
 }
 /* _content/FrontEnd/Components/CtaComponent.razor.rz.scp.css */
@@ -123,14 +145,17 @@
 
 .cta-section[b-u0mvelfu3t] {
     /* Layout e Posicionamento */
-    width: 90%;
-    /* Aumentei levemente para mobile first, ajustado no max-width */
+    width: 95%;
+    /* Mobile: Aproveita quase toda a tela */
     max-width: 1200px;
     margin: 2rem auto;
-    /* Centraliza na página */
-    padding: 3rem;
+
+    /* Padding responsivo: menor no mobile (definido aqui como base) */
+    padding: 2rem 1.5rem;
 
     display: flex;
+    flex-direction: column;
+    /* Mobile First: empilha nativamente */
     align-items: center;
     justify-content: center;
 
@@ -142,33 +167,32 @@
     border-radius: var(--border-1);
     box-shadow: var(--shadow-1);
 
-    /* Transições Suaves */
+    /* Transições e Otimização */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
     overflow: hidden;
-    /* Para conter brilhos ou efeitos internos */
+
+    /* Otimização de renderização */
+    will-change: transform;
 }
 
-/* Efeito Hover no Card Inteiro */
-.cta-section:hover[b-u0mvelfu3t] {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-2), 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-gold-2);
-    /* Detalhe sutil na borda ao focar */
-}
-
-.cta-section .container[b-u0mvelfu3t] {
-    width: 100%;
+/* Efeito Hover (apenas para dispositivos com mouse) */
+@media (hover: hover) {
+    .cta-section:hover[b-u0mvelfu3t] {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-2), 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-color: var(--color-gold-2);
+    }
 }
 
 .cta-content[b-u0mvelfu3t] {
     display: flex;
-    flex-wrap: wrap;
-    /* Permite quebrar linha no mobile */
+    flex-direction: column;
+    /* Mobile: Coluna */
+    width: 100%;
     align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    /* Aumentei o gap para mais respiro */
+    gap: 2.5rem;
+    /* Espaço vertical no mobile */
 }
 
 /* ================================
@@ -176,19 +200,19 @@
    ================================ */
 
 .text-area[b-u0mvelfu3t] {
-    flex: 1 1 400px;
-    /* Base de 400px. Se a tela for menor, ele encolhe/quebra */
     width: 100%;
-    text-align: left;
-    /* Texto alinhado à esquerda é mais legível em cards largos */
+    text-align: center;
+    /* Mobile: centralizado */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Ordem visual: Texto em cima, imagem em baixo no mobile? 
+       Se quiser imagem primeiro, use 'order: 2' aqui */
 }
 
 .cta-title[b-u0mvelfu3t] {
-    /* Tipografia Fluida */
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    /* Clamp ajustado para não ficar gigante em tablets */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-weight: 800;
     margin-bottom: 1rem;
     color: var(--color-primary-text-1);
@@ -196,37 +220,46 @@
 }
 
 .cta-subtitle[b-u0mvelfu3t] {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    margin-bottom: 2rem;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    margin-bottom: 1.5rem;
     color: var(--color-primary-text-2);
-    opacity: 0.8;
+    opacity: 0.9;
+    /* Aumentei levemente a legibilidade */
     line-height: 1.6;
+    max-width: 600px;
+    /* Evita linhas de texto muito longas */
+    margin-left: auto;
+    margin-right: auto;
+    /* Centraliza o bloco de texto */
 }
 
 /* ================================
-   ÁREA DE PREÇO E BOTÃO (Sugestão)
+   ÁREA DE PREÇO E BOTÃO
    ================================ */
 
 .price-container[b-u0mvelfu3t] {
     margin-bottom: 1.5rem;
     display: flex;
     align-items: baseline;
-    gap: 1rem;
+    justify-content: center;
+    /* Mobile: centraliza */
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    /* Evita quebrar preço em telas minúsculas */
 }
 
 .cta-price[b-u0mvelfu3t] {
     color: var(--color-green-2);
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    /* Preço responsivo */
     font-weight: 900;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cta-oldprice[b-u0mvelfu3t] {
     color: var(--color-red-3);
-    /* Vermelho mais suave para não brigar com o verde */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-decoration: line-through;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* ================================
@@ -234,61 +267,81 @@
    ================================ */
 
 .image-area[b-u0mvelfu3t] {
-    flex: 1 1 300px;
+    width: 100%;
+    max-width: 450px;
+    /* Limita o tamanho da imagem */
     display: flex;
     justify-content: center;
     align-items: center;
     perspective: 1000px;
-    /* Prepara para efeitos 3D se desejar */
 }
 
 .image-area img[b-u0mvelfu3t] {
     width: 100%;
-    max-width: 400px;
-    /* Limite máximo para não estourar */
     height: auto;
-
-    /* Transição da imagem */
+    /* Drop shadow na imagem destaca ela do fundo glass */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Efeito ao passar o mouse no container, a imagem reage */
-.cta-section:hover .image-area img[b-u0mvelfu3t] {
-    transform: scale(1.05) rotate(2deg);
-    /* Zoom leve e rotação sutil */
+/* Efeito Hover Imagem (apenas desktop) */
+@media (hover: hover) {
+    .cta-section:hover .image-area img[b-u0mvelfu3t] {
+        transform: scale(1.03) rotate(2deg);
+    }
 }
 
 /* ================================
-   MEDIA QUERIES (Mobile)
+   DESKTOP E TABLET (min-width: 768px)
    ================================ */
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .cta-section[b-u0mvelfu3t] {
-        width: 80%;
-        padding: 2rem 1.5rem;
+        padding: 4rem 3rem;
+        /* Padding maior no desktop */
+        flex-direction: row;
+        /* Volta para linha */
+        width: 90%;
+        /* Largura um pouco menor para estética */
     }
 
     .cta-content[b-u0mvelfu3t] {
-        flex-direction: column-reverse;
-        /* Imagem em cima, texto embaixo no mobile? Ou normal. */
-        gap: 2rem;
-        text-align: center;
+        flex-direction: row;
+        /* Lado a lado */
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        gap: 4rem;
+        /* Gap maior no desktop */
     }
 
     .text-area[b-u0mvelfu3t] {
-        text-align: center;
-        /* Centraliza texto no mobile */
-        align-items: center;
-        padding-left: 0;
+        text-align: left;
+        /* Alinha à esquerda no desktop */
+        flex: 1;
+        /* Ocupa o espaço disponível */
+        align-items: flex-start;
+        /* Alinha itens (botão) à esquerda */
+    }
+
+    .cta-subtitle[b-u0mvelfu3t] {
+        margin-left: 0;
+        /* Remove centralização forçada */
+        margin-right: 0;
     }
 
     .price-container[b-u0mvelfu3t] {
-        justify-content: center;
+        justify-content: flex-start;
+        /* Preço à esquerda */
     }
 
-    .image-area img[b-u0mvelfu3t] {
-        width: 100%;
-        /* Imagem um pouco menor no mobile */
+    .image-area[b-u0mvelfu3t] {
+        flex: 1;
+        /* Divide espaço igualmente */
+        max-width: 500px;
+        /* Imagem pode ser maior no desktop */
+        justify-content: flex-end;
+        /* Joga imagem para a direita */
     }
 }
 /* _content/FrontEnd/Components/Layout/Footer.razor.rz.scp.css */
@@ -672,94 +725,120 @@
     }
 }
 /* _content/FrontEnd/Components/Pages/About.razor.rz.scp.css */
-.about[b-u28ymlant2] {
-    /* Mantém o background-color (transparente) e width */
-    background-color: rgba(255, 0, 0, 0);
-    width: 90%;
-    box-shadow: var(--shadow-1);
+/* ================================
+   ESTRUTURA E SEÇÃO
+   ================================ */
+
+section[b-u28ymlant2] {
+    width: 100%;
+    /* Removemos background transparente desnecessário */
+    /* Padding vertical fixo e horizontal seguro */
+    padding: 4rem 1.5rem;
+    margin: 0;
+    box-sizing: border-box;
 }
+
+section .title[b-u28ymlant2] {
+    margin-bottom: 2rem;
+}
+
+.container[b-u28ymlant2] {
+    width: 100%;
+    /* Centraliza o bloco container na tela */
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    /* Garante empilhamento vertical padrão */
+    align-items: center;
+    /* Centraliza itens horizontalmente */
+}
+
+.content[b-u28ymlant2] {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.about[b-u28ymlant2] {
+    width: 100%;
+    /* Mudado de 90% fixo para 100% com max-width no pai */
+    box-shadow: var(--shadow-1);
+    border-radius: var(--border-1);
+    padding: 2rem;
+    /* Adicionado padding interno para o texto não colar na borda */
+    background-color: rgba(255, 255, 255, 0.02);
+    /* Leve tint para ver a área */
+}
+
+/* ================================
+   TIPOGRAFIA
+   ================================ */
 
 h2[b-u28ymlant2] {
     color: var(--color-gold-3);
-    /* Adiciona uma transição sutil para mudança de cor ou tamanho se aplicado em hover */
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    /* Tamanho fluido */
+    margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 
 h3[b-u28ymlant2] {
     color: var(--color-gold-2);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 
-section[b-u28ymlant2] {
-    width: 100%;
-    background-color: rgba(0, 60, 255, 0);
-    /* Adiciona padding horizontal para evitar que o conteúdo toque as bordas em telas pequenas */
-    margin: 5% 0;
-    padding: 0 5%;
-    box-sizing: border-box;
-    /* Garante que o padding não aumente o width total */
-}
-
-section .title[b-u28ymlant2] {
-    margin-bottom: 3%;
-    /* Aumentado ligeiramente para melhor espaçamento */
-}
-
-.container[b-u28ymlant2] {
-    display: flex;
-    justify-content: center;
-}
-
-.content[b-u28ymlant2] {
-    width: 95%;
-    /* Limita a largura máxima do conteúdo para melhor legibilidade em telas grandes */
-    max-width: 1200px;
-    text-align: center;
+/* Garante que o texto use a cor principal */
+p[b-u28ymlant2],
+li[b-u28ymlant2],
+.label[b-u28ymlant2],
+.lead[b-u28ymlant2],
+.values[b-u28ymlant2],
+.howItWorks[b-u28ymlant2] {
+    color: var(--color-primary-text-1);
+    line-height: 1.6;
 }
 
 .label[b-u28ymlant2],
 .lead[b-u28ymlant2],
 .values[b-u28ymlant2],
 .howItWorks[b-u28ymlant2] {
-    margin-bottom: 3%;
+    margin-bottom: 1.5rem;
     text-align: left;
-    /* Adicionado transição para possíveis efeitos de visualização, como fade-in */
     transition: opacity 0.5s ease;
-    line-height: 1.6;
-    /* Melhora a legibilidade do texto */
-    color: var(--color-primary-text-1);
-    /* Garante que o texto use a cor principal */
 }
 
-/* Garante que o texto dentro desses elementos seja renderizado de forma clara */
-p[b-u28ymlant2],
-li[b-u28ymlant2] {
-    color: var(--color-primary-text-1);
-}
+/* ================================
+   VÍDEO RESPONSIVO (Moderno)
+   ================================ */
 
 .video-container[b-u28ymlant2] {
-    justify-self: center;
-    width: 80%;
-    /* Aumentado para melhor visualização em desktops */
+    /* Centralização robusta (funciona em flex, grid ou block) */
+    margin: 0 auto 2rem auto;
+
+    width: 100%;
     max-width: 800px;
-    /* Limite máximo para o vídeo */
-    height: 450px;
-    /* Aumentado a altura para um formato mais agradável */
+
+    /* A MÁGICA: Mantém proporção de TV/YouTube automaticamente */
+    aspect-ratio: 16 / 9;
+    height: auto;
+    /* Remove altura fixa */
+
     position: relative;
     overflow: hidden;
     border-radius: var(--border-1);
-    /* Usando token do root */
     box-shadow: var(--shadow-1);
-    margin-bottom: 5%;
-    /* Transição para os efeitos de hover */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #000;
+    /* Fundo preto enquanto carrega */
 }
 
-/* Efeito de Leve Zoom e Sombra ao passar o mouse */
 .video-container:hover[b-u28ymlant2] {
     transform: scale(1.02);
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
-    /* Sombra mais intensa no hover */
 }
 
 .video-container iframe[b-u28ymlant2] {
@@ -771,77 +850,66 @@ li[b-u28ymlant2] {
     border: 0;
 }
 
+/* ================================
+   IMAGEM E GRID
+   ================================ */
+
 .teacher-image[b-u28ymlant2] {
+    display: block;
+    /* Garante que margin auto funcione */
+    margin: 0 auto 1rem auto;
+
     width: 120px;
-    /* Aumentado um pouco o tamanho */
     height: 120px;
-    justify-self: center;
-    align-self: center;
+
     border-radius: 50%;
-    /* Adiciona borda arredondada para fotos de perfil */
     border: 4px solid var(--color-gold-2);
-    /* Borda destacada */
     object-fit: cover;
-    /* Garante que a imagem preencha a área sem distorcer */
-    /* Transição para o efeito de hover */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efeito de Leve Rotação e Sombra no hover da imagem */
 .teacher-image:hover[b-u28ymlant2] {
     transform: rotate(3deg) scale(1.05);
     box-shadow: var(--shadow-2);
 }
 
+.grid[b-u28ymlant2] {
+    display: grid;
+    gap: 1.5rem;
+    /* CORREÇÃO: 280px garante que cabe em telas iPhone 5/SE/Fold */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    width: 100%;
+}
+
 /* ================================
-   RESPONSIVIDADE
+   MEDIA QUERIES
    ================================ */
 
-/* Telas Pequenas (celulares, tablets pequenos, até 768px) */
+/* Tablet Portrait e Mobile (Abaixo de 768px) */
 @media (max-width: 768px) {
-
-    /* Reduz o padding da seção para dar mais espaço ao conteúdo */
     section[b-u28ymlant2] {
-        padding: 0 3%;
-        margin: 8% 0;
-        /* Aumenta a margem vertical entre as seções */
+        padding: 3rem 1rem;
+        /* Menos padding lateral */
     }
 
-    /* O conteúdo ocupa a largura máxima da tela com o padding da section */
-    .content[b-u28ymlant2] {
-        width: 100%;
+    .about[b-u28ymlant2] {
+        padding: 1.5rem;
+        /* Menos padding interno no card */
     }
 
-    /* Ajusta o contêiner de vídeo para caber melhor em telas menores */
-    .video-container[b-u28ymlant2] {
-        width: 100%;
-        height: 250px;
-        /* Reduz a altura para não ocupar muito espaço vertical */
-        box-shadow: var(--shadow-2);
-        /* Sombra mais sutil em mobile */
-    }
-
-    /* Ajusta a imagem do professor */
-    .teacher-image[b-u28ymlant2] {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* Melhora a leitura do texto */
+    /* Ajuste de texto para mobile */
+    .label[b-u28ymlant2],
     .lead[b-u28ymlant2],
     .values[b-u28ymlant2],
     .howItWorks[b-u28ymlant2] {
-        /* Justifica o texto para um visual mais limpo */
-        padding: 0 10px;
-        /* Adiciona um pequeno padding para o texto não ficar colado nas bordas */
+        text-align: left;
+        /* Justify cria buracos feios no mobile, left é melhor */
+        font-size: 0.95rem;
     }
-}
 
-/* Telas Médias (tablets, até 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .video-container[b-u28ymlant2] {
-        width: 70%;
-        height: 350px;
+    /* Grid vira coluna única se a tela for muito estreita */
+    .grid[b-u28ymlant2] {
+        gap: 1rem;
     }
 }
 /* _content/FrontEnd/Components/Pages/Disciplines.razor.rz.scp.css */
@@ -853,36 +921,36 @@ li[b-u28ymlant2] {
     /* Centraliza o conteúdo principal da página */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    /* Padding nas laterais para telas maiores */
+    /* Padding lateral base */
+    padding: 0 1.5rem;
     box-sizing: border-box;
+    width: 100%;
 }
 
 /* Estilo para todas as seções de conteúdo */
 .discipline-page section[b-wfnqutia9y] {
-    padding: 40px 0;
-    /* Espaçamento vertical generoso entre as seções */
+    padding: 3rem 0;
+    /* Usando REM para consistência */
     margin: 0;
-    /* Remove margem padrão */
     border-bottom: 1px solid var(--color-primary-translucent-3);
-    /* Linha divisória sutil */
     transition: background-color 0.3s ease;
 }
 
-/* Remove a linha divisória da última seção para um visual mais limpo */
 .discipline-page section:last-of-type[b-wfnqutia9y] {
     border-bottom: none;
-    padding-bottom: 80px;
+    padding-bottom: 5rem;
 }
 
 /* Títulos de Seção (o H1 dentro de <section>) */
 .discipline-page section h1[b-wfnqutia9y] {
-    font-size: 2.5rem;
+    /* MÁGICA FLUIDA: O texto escala entre 1.8rem e 2.5rem automaticamente */
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 700;
     color: var(--color-gold-3);
-    /* Cor principal do título da seção */
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
     text-align: center;
+    line-height: 1.2;
+    /* Evita quebra de linha feia em títulos longos */
     transition: color 0.3s ease;
 }
 
@@ -892,9 +960,7 @@ li[b-u28ymlant2] {
     line-height: 1.7;
     color: var(--color-primary-text-1);
     max-width: 800px;
-    /* Limita a largura para melhor legibilidade */
-    margin: 0 auto 30px auto;
-    /* Centraliza e adiciona margem inferior */
+    margin: 0 auto 2rem auto;
     opacity: 0.9;
     text-align: center;
 }
@@ -904,7 +970,7 @@ li[b-u28ymlant2] {
     text-align: center;
     font-size: 1.5rem;
     color: var(--color-red-2);
-    margin-top: 50px;
+    margin-top: 3rem;
 }
 
 /* ================================
@@ -912,17 +978,17 @@ li[b-u28ymlant2] {
    ================================ */
 
 .curriculum-section[b-wfnqutia9y] {
-    margin-top: 20px;
-    padding-top: 15px;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px dashed var(--color-secundary-border-1);
-    /* Linha divisória dentro do card */
 }
 
-/* Título da seção do currículo (o H3) */
 .curriculum-section h3[b-wfnqutia9y] {
     font-size: 1.2rem;
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     font-weight: 600;
+    /* Garante contraste se estiver no dark mode */
+    color: var(--color-primary-text-1);
 }
 
 /* Lista de Tópicos do Currículo */
@@ -935,34 +1001,40 @@ li[b-u28ymlant2] {
 .curriculum-section li[b-wfnqutia9y] {
     font-size: 0.95rem;
     line-height: 1.5;
-    padding: 5px 0;
+    padding: 0.35rem 0;
+    /* Área de clique melhorada */
     color: var(--color-primary-text-2);
-    /* Efeito sutil de lista */
     position: relative;
-    padding-left: 20px;
+    padding-left: 1.25rem;
+    /* Espaço para o bullet */
 }
 
 .curriculum-section li[b-wfnqutia9y]::before {
     content: "•";
-    /* Ícone de marcador customizado */
     color: var(--color-gold-2);
     font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+    position: absolute;
+    /* Posicionamento absoluto é mais seguro para bullets customizados */
+    left: 0;
+    top: 0.35rem;
+    /* Alinha visualmente com o texto */
     transition: color 0.3s ease;
 }
 
-/* Efeito de destaque ao passar o mouse sobre o item do currículo */
 .curriculum-section li:hover[b-wfnqutia9y] {
     color: var(--color-gold-3);
     cursor: default;
 }
 
+/* ================================
+   CORREÇÃO DO GRID 🚧
+   ================================ */
 .grid[b-wfnqutia9y] {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
 }
-
 
 /* ================================
    RESPONSIVIDADE (MOBILE) 📱
@@ -970,28 +1042,39 @@ li[b-u28ymlant2] {
 
 @media (max-width: 768px) {
     .discipline-page[b-wfnqutia9y] {
-        padding: 0 15px;
-        /* Reduz padding lateral em mobile */
+        padding: 0 1rem;
+        /* Padding menor para ganhar área útil */
     }
 
     .discipline-page section[b-wfnqutia9y] {
-        padding: 30px 0;
-        /* Reduz espaçamento vertical */
+        padding: 2rem 0;
     }
 
-    .discipline-page section h1[b-wfnqutia9y] {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
+    /* Melhoria de Leitura:
+       Texto centralizado é ruim de ler em celular.
+       Mudamos para alinhamento à esquerda (ou justify) em telas pequenas. */
     .discipline-page section p[b-wfnqutia9y] {
         font-size: 1rem;
-        padding: 0 5px;
-        /* Adiciona um pequeno padding para texto em mobile */
+        text-align: left;
+        padding: 0;
+        /* Removemos padding extra desnecessário */
     }
 
-    .curriculum-section h3[b-wfnqutia9y] {
-        font-size: 1.1rem;
+    /* Caso tenha subtítulos centralizados, forçamos esquerda também */
+    .discipline-page section h1[b-wfnqutia9y] {
+        text-align: center;
+        /* Título pode manter centro */
+        margin-bottom: 1rem;
+    }
+
+    /* Ajuste fino para listas */
+    .curriculum-section li[b-wfnqutia9y] {
+        font-size: 0.9rem;
+    }
+
+    .grid[b-wfnqutia9y] {
+        gap: 1rem;
+        grid-template-columns: 1fr;
     }
 }
 /* _content/FrontEnd/Components/Pages/Home.razor.rz.scp.css */
@@ -1126,6 +1209,10 @@ section p[b-swpeewdqbl] {
     padding: 1rem;
 }
 
+.depoiments-section p[b-swpeewdqbl]{
+    justify-self: center;
+}
+
 .grid[b-swpeewdqbl] {
     display: grid;
     gap: 2rem;
@@ -1178,30 +1265,36 @@ section p[b-swpeewdqbl] {
 /* --- Contêiner Principal --- */
 .registration .container[b-slmr3s8spi] {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Usa vh para garantir que o formulário seja visível, mas usa 'auto' em telas pequenas */
+
+    /* Fallback para navegadores antigos */
     min-height: 100vh;
-    padding: 2rem;
+    /* Moderno: dvh ignora a barra de endereço do navegador mobile */
+    min-height: 100dvh;
+
+    padding: 1.5rem;
+    box-sizing: border-box;
+
+    /* Garante que o scroll funcione se a tela for menor que o formulário */
+    overflow-y: auto;
 }
 
 /* --- Bloco de Conteúdo do Formulário --- */
 .registration .content[b-slmr3s8spi] {
     width: 100%;
     max-width: 750px;
-    /* Aumentado ligeiramente o max-width para melhor visualização em desktop */
-    /* Usando cores do tema */
     background-color: var(--color-primary-background-2);
-    /* Fundo mais sólido do tema */
     border: 1px solid var(--color-secundary-border-2);
-    /* Borda sutil */
     border-radius: var(--border-1);
     box-shadow: var(--shadow-1);
     padding: 3rem;
-    /* Aumentado o padding para mais espaço interno */
     text-align: center;
-    /* Transição para suavizar a entrada ou mudança de tema */
     transition: all 0.5s ease;
+
+    /* Garante que o box não estoure a largura */
+    box-sizing: border-box;
 }
 
 /* ================================
@@ -1214,15 +1307,15 @@ section p[b-swpeewdqbl] {
 
 .registration .title[b-slmr3s8spi] {
     color: var(--color-gold-2);
-    /* Ouro um pouco mais forte para o título */
     margin-bottom: 0.5rem;
-    font-size: 2rem;
+    /* Clamp: Texto fluido que não fica gigante no mobile nem minúsculo no PC */
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .registration .subtitle[b-slmr3s8spi] {
     color: var(--color-primary-text-1);
-    /* Texto principal para o subtítulo */
     font-weight: 400;
     font-size: 1.1rem;
 }
@@ -1230,8 +1323,9 @@ section p[b-swpeewdqbl] {
 .registration form[b-slmr3s8spi] {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
-    /* Aumentado o espaçamento entre os campos */
+    gap: 1.5rem;
+    /* Ajuste leve para caber melhor em telas médias */
+    width: 100%;
 }
 
 /* --- Labels e Inputs Wrapper --- */
@@ -1240,173 +1334,172 @@ section p[b-swpeewdqbl] {
     display: flex;
     flex-direction: column;
     text-align: left;
-    gap: 0.6rem;
-    /* Espaço entre label e input */
+    gap: 0.5rem;
     position: relative;
-    /* Necessário para posicionar o foco da label */
+    width: 100%;
+    /* Garante largura total */
 }
 
 .registration .select-content h3[b-slmr3s8spi] {
     color: var(--color-primary-text-2);
     font-size: 1rem;
     font-weight: 500;
-    /* Levemente mais pesado para destaque */
     margin: 0;
 }
 
-/* --- Estilo das Labels com Micro-interação --- */
+/* --- Estilo das Labels --- */
 .registration label[b-slmr3s8spi] {
     color: var(--color-primary-text-1);
-    font-size: 1rem;
+    font-size: 0.95rem;
+    /* Levemente menor para elegância */
     padding-left: 0.2rem;
-    /* Transição para o efeito de foco */
     transition: color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
 }
 
-/* Efeito sutil na label quando o input é focado */
 .registration .input:focus+label[b-slmr3s8spi],
 .registration .input:focus-within+label[b-slmr3s8spi] {
     color: var(--color-gold-3);
-    /* Leve movimento para indicar foco */
     transform: translateX(2px);
+}
+
+/* --- INPUTS GERAIS --- */
+/* Adicionado seletor genérico para input e textarea */
+.registration .input[b-slmr3s8spi] {
+    width: 100%;
+    /* Garante que o input preencha o wrapper */
+    box-sizing: border-box;
+    /* Evita que padding aumente a largura */
+    font-size: 1rem;
+    /* CRUCIAL: 16px evita zoom automático no iOS */
 }
 
 /* --- Estilo Específico para o Text Area --- */
 .registration textarea.input[b-slmr3s8spi] {
-    min-height: 150px;
-    /* Aumentado a altura mínima */
+    min-height: 120px;
+    /* Reduzi levemente para mobile */
+    max-height: 300px;
+    /* Limite máximo */
     resize: vertical;
     font-family: inherit;
     line-height: 1.6;
-    /* Melhorando a legibilidade */
 }
 
 /* ================================
    3. TRANSIÇÕES E EFEITOS (INPUTS)
    ================================ */
 
-/* Pega qualquer .input que esteja em foco */
 .registration .input:focus[b-slmr3s8spi] {
     outline: none;
     border-color: var(--color-gold-3);
-    /* Box-shadow mais evidente, usando o ouro com translucidez */
     box-shadow: 0 0 0 4px var(--color-secundary-translucent-3);
 }
 
-/* Adicionando um efeito de transição aos inputs base */
 .registration .input[b-slmr3s8spi] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Input INVÁLIDO */
+/* Estados de Validação */
 .registration .input.invalid[b-slmr3s8spi] {
     border-color: var(--color-red-2);
 }
 
 .registration .input.invalid:focus[b-slmr3s8spi] {
-    border-color: var(--color-red-2);
-    /* Ajustando o brilho vermelho para usar a variável red */
     box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
 }
 
-/* Input VÁLIDO */
 .registration .input.valid.modified[b-slmr3s8spi] {
     border-color: var(--color-green-2);
 }
 
 .registration .input.valid.modified:focus[b-slmr3s8spi] {
-    border-color: var(--color-green-2);
-    /* Ajustando o brilho verde para usar a variável green */
     box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
 }
 
 /* ================================
-   4. BOTÃO DE ENVIO (Com Efeito de Pressão)
+   4. BOTÃO DE ENVIO
    ================================ */
 
 .registration button[type="submit"][b-slmr3s8spi] {
+    width: 100%;
+    /* Botão largura total fica melhor em formulários */
+    max-width: 300px;
+    /* Mas com um limite para não ficar feio em Desktop */
+    align-self: center;
+    /* Centraliza o botão se tiver max-width */
+
     padding: 1rem 2rem;
-    /* Aumentado o padding horizontal */
-    margin-top: 1.5rem;
-    /* Mais espaço acima */
-    background-color: var(--color-gold-2);
+    margin-top: 1rem;
+    background-color: var(--color-blue-2);
     color: var(--color-black-1);
     border: none;
     border-radius: 10px;
-    /* Borda levemente maior */
-    font-size: 1.2rem;
-    /* Fonte um pouco maior */
+    font-size: 1.1rem;
     font-weight: 700;
-    /* Mais pesado */
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    /* Sombra mais destacada */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .registration button[type="submit"]:hover[b-slmr3s8spi] {
-    background-color: var(--color-gold-1);
+    background-color: var(--color-blue-3);
     transform: translateY(-2px);
-    /* Efeito de elevação mais suave */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Efeito de 'Pressão' ao clicar */
 .registration button[type="submit"]:active[b-slmr3s8spi] {
     transform: translateY(0);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--color-gold-3);
-    /* Mudar para uma cor mais clara ao pressionar */
 }
 
 /* ================================
-   5. RESPONSIVIDADE (MOBILE FIRST) 📱
+   5. RESPONSIVIDADE (MOBILE & TABLET) 📱
    ================================ */
 
-@media (max-width: 600px) {
-
-    /* Diminui a altura mínima da tela para evitar scroll desnecessário em mobile */
+@media (max-width: 768px) {
     .registration .container[b-slmr3s8spi] {
-        min-height: auto;
+        /* MUDANÇA CRÍTICA:
+           Em mobile, removemos o 'center' vertical. 
+           Isso permite que o topo do formulário não seja cortado 
+           se o conteúdo for maior que a tela (ex: teclado aberto).
+        */
+        display: block;
+        height: auto;
+        min-height: 100dvh;
         padding: 1rem;
     }
 
-    /* Ajuste de padding e max-width para telas pequenas */
     .registration .content[b-slmr3s8spi] {
-        max-width: 100%;
-        padding: 1.5rem;
-        box-shadow: var(--shadow-2);
-        /* Sombra mais sutil em mobile */
-        /* Garante que o fundo do container de registro use a cor principal do tema em mobile */
-        background-color: var(--color-primary-background-2);
+        /* Margem superior para não colar no topo */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        padding: 1.5rem 1rem;
+        /* Padding lateral menor */
+        box-shadow: none;
+        /* Remove sombra pesada para performance/visual limpo */
+        border: 1px solid var(--color-secundary-border-1);
     }
 
-    .registration .header[b-slmr3s8spi] {
-        margin-bottom: 1.5rem;
+    .registration .title[b-slmr3s8spi] {
+        font-size: 1.75rem;
+    }
+
+    .registration button[type="submit"][b-slmr3s8spi] {
+        max-width: 100%;
+        /* Botão full width no mobile facilita o toque */
+    }
+}
+
+/* Telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .registration .content[b-slmr3s8spi] {
+        padding: 1.2rem 0.8rem;
+        margin-top: 1rem;
     }
 
     .registration .title[b-slmr3s8spi] {
         font-size: 1.5rem;
-    }
-
-    .registration .subtitle[b-slmr3s8spi] {
-        font-size: 1rem;
-    }
-
-    .registration form[b-slmr3s8spi] {
-        gap: 1.2rem;
-        /* Reduz o espaçamento entre os campos */
-    }
-
-    .registration button[type="submit"][b-slmr3s8spi] {
-        font-size: 1.1rem;
-        padding: 0.8rem 1.5rem;
-        margin-top: 1rem;
-    }
-
-    /* Ajusta a margem da mensagem de validação */
-    .registration .validation-message[b-slmr3s8spi] {
-        margin-top: -0.8rem;
     }
 }

@@ -6,36 +6,36 @@
     /* Centraliza o conteúdo principal da página */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    /* Padding nas laterais para telas maiores */
+    /* Padding lateral base */
+    padding: 0 1.5rem;
     box-sizing: border-box;
+    width: 100%;
 }
 
 /* Estilo para todas as seções de conteúdo */
 .discipline-page section[b-wfnqutia9y] {
-    padding: 40px 0;
-    /* Espaçamento vertical generoso entre as seções */
+    padding: 3rem 0;
+    /* Usando REM para consistência */
     margin: 0;
-    /* Remove margem padrão */
     border-bottom: 1px solid var(--color-primary-translucent-3);
-    /* Linha divisória sutil */
     transition: background-color 0.3s ease;
 }
 
-/* Remove a linha divisória da última seção para um visual mais limpo */
 .discipline-page section:last-of-type[b-wfnqutia9y] {
     border-bottom: none;
-    padding-bottom: 80px;
+    padding-bottom: 5rem;
 }
 
 /* Títulos de Seção (o H1 dentro de <section>) */
 .discipline-page section h1[b-wfnqutia9y] {
-    font-size: 2.5rem;
+    /* MÁGICA FLUIDA: O texto escala entre 1.8rem e 2.5rem automaticamente */
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 700;
     color: var(--color-gold-3);
-    /* Cor principal do título da seção */
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
     text-align: center;
+    line-height: 1.2;
+    /* Evita quebra de linha feia em títulos longos */
     transition: color 0.3s ease;
 }
 
@@ -45,9 +45,7 @@
     line-height: 1.7;
     color: var(--color-primary-text-1);
     max-width: 800px;
-    /* Limita a largura para melhor legibilidade */
-    margin: 0 auto 30px auto;
-    /* Centraliza e adiciona margem inferior */
+    margin: 0 auto 2rem auto;
     opacity: 0.9;
     text-align: center;
 }
@@ -57,7 +55,7 @@
     text-align: center;
     font-size: 1.5rem;
     color: var(--color-red-2);
-    margin-top: 50px;
+    margin-top: 3rem;
 }
 
 /* ================================
@@ -65,17 +63,17 @@
    ================================ */
 
 .curriculum-section[b-wfnqutia9y] {
-    margin-top: 20px;
-    padding-top: 15px;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px dashed var(--color-secundary-border-1);
-    /* Linha divisória dentro do card */
 }
 
-/* Título da seção do currículo (o H3) */
 .curriculum-section h3[b-wfnqutia9y] {
     font-size: 1.2rem;
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     font-weight: 600;
+    /* Garante contraste se estiver no dark mode */
+    color: var(--color-primary-text-1);
 }
 
 /* Lista de Tópicos do Currículo */
@@ -88,34 +86,40 @@
 .curriculum-section li[b-wfnqutia9y] {
     font-size: 0.95rem;
     line-height: 1.5;
-    padding: 5px 0;
+    padding: 0.35rem 0;
+    /* Área de clique melhorada */
     color: var(--color-primary-text-2);
-    /* Efeito sutil de lista */
     position: relative;
-    padding-left: 20px;
+    padding-left: 1.25rem;
+    /* Espaço para o bullet */
 }
 
 .curriculum-section li[b-wfnqutia9y]::before {
     content: "•";
-    /* Ícone de marcador customizado */
     color: var(--color-gold-2);
     font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+    position: absolute;
+    /* Posicionamento absoluto é mais seguro para bullets customizados */
+    left: 0;
+    top: 0.35rem;
+    /* Alinha visualmente com o texto */
     transition: color 0.3s ease;
 }
 
-/* Efeito de destaque ao passar o mouse sobre o item do currículo */
 .curriculum-section li:hover[b-wfnqutia9y] {
     color: var(--color-gold-3);
     cursor: default;
 }
 
+/* ================================
+   CORREÇÃO DO GRID 🚧
+   ================================ */
 .grid[b-wfnqutia9y] {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
 }
-
 
 /* ================================
    RESPONSIVIDADE (MOBILE) 📱
@@ -123,27 +127,38 @@
 
 @media (max-width: 768px) {
     .discipline-page[b-wfnqutia9y] {
-        padding: 0 15px;
-        /* Reduz padding lateral em mobile */
+        padding: 0 1rem;
+        /* Padding menor para ganhar área útil */
     }
 
     .discipline-page section[b-wfnqutia9y] {
-        padding: 30px 0;
-        /* Reduz espaçamento vertical */
+        padding: 2rem 0;
     }
 
-    .discipline-page section h1[b-wfnqutia9y] {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
+    /* Melhoria de Leitura:
+       Texto centralizado é ruim de ler em celular.
+       Mudamos para alinhamento à esquerda (ou justify) em telas pequenas. */
     .discipline-page section p[b-wfnqutia9y] {
         font-size: 1rem;
-        padding: 0 5px;
-        /* Adiciona um pequeno padding para texto em mobile */
+        text-align: left;
+        padding: 0;
+        /* Removemos padding extra desnecessário */
     }
 
-    .curriculum-section h3[b-wfnqutia9y] {
-        font-size: 1.1rem;
+    /* Caso tenha subtítulos centralizados, forçamos esquerda também */
+    .discipline-page section h1[b-wfnqutia9y] {
+        text-align: center;
+        /* Título pode manter centro */
+        margin-bottom: 1rem;
+    }
+
+    /* Ajuste fino para listas */
+    .curriculum-section li[b-wfnqutia9y] {
+        font-size: 0.9rem;
+    }
+
+    .grid[b-wfnqutia9y] {
+        gap: 1rem;
+        grid-template-columns: 1fr;
     }
 }

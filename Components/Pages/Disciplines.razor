@@ -7,8 +7,14 @@
     @if (discipline != null)
     {
         <section>
-            <CtaComponent Subtitle=@($"Domine a {@discipline.Name}") Price="@discipline.Price" Color="colgold-3" ImageUrl="images/CtaImage.png" ButtonHref="/registration">
-            </CtaComponent>
+            <CtaComponent 
+                Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em olimpíadas e vestibulares.")
+                ButtonText="Matrícula" 
+                ButtonHref="/ciclo-avancado" 
+                ButtonColor="bggreen-2" 
+                ImageUrl="images/CtaImage.png" 
+                Price="@discipline.Price"
+            />
         </section>
         @foreach (var content in discipline.Sections ?? new Dictionary<string, object>())
         {
@@ -45,9 +51,14 @@
             </section>
         }
         <section>
-            <CtaComponent Subtitle=@($"Domine a {@discipline.Name}") Price="@discipline.Price" Color="colgold-3"
-                ImageUrl="images/CtaImage.png" ButtonHref="/registration">
-            </CtaComponent>
+            <CtaComponent 
+                Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em olimpíadas e vestibulares.")
+                ButtonText="Matrícula" 
+                ButtonHref="/ciclo-avancado" 
+                ButtonColor="bggreen-2" 
+                ImageUrl="images/CtaImage.png" 
+                Price="@discipline.Price"
+            />
         </section>
 
     }

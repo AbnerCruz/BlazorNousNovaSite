@@ -45,6 +45,10 @@
     --scroll-thumb-active: #c9943a;
     --scroll-width: 12px;
     --scroll-radius: 10px;
+
+    /* Layout Variables (Novo) */
+    --container-padding: 1rem;
+    --header-height: 50px;
 }
 
 
@@ -99,218 +103,423 @@
     color: inherit;
 }
 
+/* ... (Mantive suas classes de utilitários aqui para economizar espaço, elas estão ok) ... */
 .bgblack-1 {
+
     background: var(--color-black-1);
+
 }
+
+
 
 .bgblack-2 {
+
     background: var(--color-black-2);
+
 }
+
+
 
 .bgblack-3 {
+
     background: var(--color-black-3);
+
 }
+
+
 
 .bgblack-4 {
+
     background: var(--color-black-4);
+
 }
+
+
 
 .bgblue-1 {
+
     background: var(--color-blue-1);
+
 }
+
+
 
 .bgblue-2 {
+
     background: var(--color-blue-2);
+
 }
+
+
 
 .bgblue-3 {
+
     background: var(--color-blue-3);
+
 }
+
+
 
 .bgblue-4 {
+
     background: var(--color-blue-4);
+
 }
+
+
 
 .bggold-1 {
+
     background: var(--color-gold-1);
+
 }
+
+
 
 .bggold-2 {
+
     background: var(--color-gold-2);
+
 }
+
+
 
 .bggold-3 {
+
     background: var(--color-gold-3);
+
 }
+
+
 
 .bggold-4 {
+
     background: var(--color-gold-4);
+
 }
+
+
 
 .bgpink-1 {
+
     background: var(--color-pink-1);
+
 }
+
+
 
 .bgpink-2 {
+
     background: var(--color-pink-2);
+
 }
+
+
 
 .bgpink-3 {
+
     background: var(--color-pink-3);
+
 }
+
+
 
 .bgpink-4 {
+
     background: var(--color-pink-4);
+
 }
+
+
 
 .bggreen-1 {
+
     background: var(--color-green-1);
+
 }
+
+
 
 .bggreen-2 {
+
     background: var(--color-green-2);
+
 }
+
+
 
 .bggreen-3 {
+
     background: var(--color-green-3);
+
 }
+
+
 
 .bggreen-4 {
+
     background: var(--color-green-4);
+
 }
+
+
 
 .bgred-1 {
+
     background: var(--color-red-1);
+
 }
+
+
 
 .bgred-2 {
+
     background: var(--color-red-2);
+
 }
+
+
 
 .bgred-3 {
+
     background: var(--color-red-3);
+
 }
+
+
 
 .bgred-4 {
+
     background: var(--color-red-4);
+
 }
+
+
 
 /* cores do texto */
+
 .colblack-1 {
+
     color: var(--color-black-1);
+
 }
+
+
 
 .colblack-2 {
+
     color: var(--color-black-2);
+
 }
+
+
 
 .colblack-3 {
+
     color: var(--color-black-3);
+
 }
+
+
 
 .colblack-4 {
+
     color: var(--color-black-4);
+
 }
+
+
 
 .colblue-1 {
+
     color: var(--color-blue-1);
+
 }
+
+
 
 .colblue-2 {
+
     color: var(--color-blue-2);
+
 }
+
+
 
 .colblue-3 {
+
     color: var(--color-blue-3);
+
 }
+
+
 
 .colblue-4 {
+
     color: var(--color-blue-4);
+
 }
+
+
 
 .colgold-1 {
+
     color: var(--color-gold-1);
+
 }
+
+
 
 .colgold-2 {
+
     color: var(--color-gold-2);
+
 }
+
+
 
 .colgold-3 {
+
     color: var(--color-gold-3);
+
 }
+
+
 
 .colgold-4 {
+
     color: var(--color-gold-4);
+
 }
+
+
 
 .colpink-1 {
+
     color: var(--color-pink-1);
+
 }
+
+
 
 .colpink-2 {
+
     color: var(--color-pink-2);
+
 }
+
+
 
 .colpink-3 {
+
     color: var(--color-pink-3);
+
 }
+
+
 
 .colpink-4 {
+
     color: var(--color-pink-4);
+
 }
+
+
 
 .colgreen-1 {
+
     color: var(--color-green-1);
+
 }
+
+
 
 .colgreen-2 {
+
     color: var(--color-green-2);
+
 }
+
+
 
 .colgreen-3 {
+
     color: var(--color-green-3);
+
 }
+
+
 
 .colgreen-4 {
+
     color: var(--color-green-4);
+
 }
+
+
 
 .colred-1 {
+
     color: var(--color-red-1);
+
 }
+
+
 
 .colred-2 {
+
     color: var(--color-red-2);
+
 }
+
+
 
 .colred-3 {
+
     color: var(--color-red-3);
+
 }
 
+
+
 .colred-4 {
+
     color: var(--color-red-4);
+
 }
 
 
 /* ================================
-   CONFIGURAÇÕES GERAIS
+   CONFIGURAÇÕES GERAIS & RESET
    ================================ */
+
+/* Melhoria no Box Sizing para evitar que padding quebre o layout */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 html,
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    /* Mudado de height para min-height para evitar cortes em scroll */
     margin: 0;
     padding: 0;
     background: var(--color-primary-background-2);
     color: var(--color-primary-text-1);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    /* Melhora legibilidade */
+    font-size: 16px;
+    /* Base para REM */
 }
 
 body {
-    margin-top: 50px;
+    /* Uso de padding-top em vez de margin para evitar collapse margins */
+    padding-top: var(--header-height);
 }
 
 a {
@@ -325,24 +534,71 @@ h4,
 p {
     margin: 0;
     padding: 0;
+    font-weight: 600;
 }
 
+/* Tipografia Responsiva (clamp: min, ideal, max) */
 h1 {
-    margin: 2% 0;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
 }
 
 h2 {
-    margin: 1.2% 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
 }
 
 h3 {
-    margin: 1.6% 0;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    margin-bottom: 0.5rem;
+}
+
+h4 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+
+/* ================================
+   SISTEMA DE GRID E LAYOUT (NOVO)
+   ================================ */
+
+/* Container centralizado responsivo */
+.container {
+    width: 100%;
+    padding-right: var(--container-padding);
+    padding-left: var(--container-padding);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Grid básico responsivo */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+}
+
+.col {
+    flex: 1 0 0%;
+    padding: 0 0.5rem;
+}
+
+.col-full {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 0.5rem;
 }
 
 
@@ -358,15 +614,22 @@ ul {
     border-radius: 8px;
     color: var(--color-primary-text-1);
     font-size: 1rem;
-    box-sizing: border-box;
+    /* 16px evita zoom automático no iOS */
     transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+/* Foco acessível */
+.registration .input:focus {
+    outline: none;
+    border-color: var(--color-blue-2);
+    box-shadow: 0 0 0 3px var(--color-primary-translucent-2);
 }
 
 
 /* ================================
    SCROLLBAR
    ================================ */
-
+/* Mantido original, apenas garantindo que não quebre layout */
 *::-webkit-scrollbar {
     width: var(--scroll-width);
     height: var(--scroll-width);
@@ -398,7 +661,7 @@ ul {
 /* ================================
    BLAZOR E FORMULÁRIOS
    ================================ */
-
+/* Mantido, com ajuste de responsividade na imagem de erro */
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -409,12 +672,26 @@ ul {
 
 .validation-message {
     color: #e50000;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }
 
 .blazor-error-boundary {
     background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0...) no-repeat 1rem/1.8rem, #b32121;
     padding: 1rem 1rem 1rem 3.7rem;
     color: white;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+/* Ajuste para mobile da mensagem de erro */
+@media (max-width: 576px) {
+    .blazor-error-boundary {
+        padding: 1rem;
+        background-position: center top 1rem;
+        text-align: center;
+        padding-top: 3.5rem;
+    }
 }
 
 .blazor-error-boundary::after {
@@ -432,4 +709,48 @@ ul {
 
 .form-floating .form-control:focus::placeholder {
     text-align: start;
+}
+
+
+/* ================================
+   MEDIA QUERIES (BREAKPOINTS)
+   ================================ */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    /* Grid vira 2 colunas em tablets, por exemplo */
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    /* Aumenta margem do topo em telas grandes */
+    body {
+        padding-top: 70px;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
 }

@@ -129,6 +129,10 @@ section p[b-swpeewdqbl] {
     padding: 1rem;
 }
 
+.depoiments-section p[b-swpeewdqbl]{
+    justify-self: center;
+}
+
 .grid[b-swpeewdqbl] {
     display: grid;
     gap: 2rem;

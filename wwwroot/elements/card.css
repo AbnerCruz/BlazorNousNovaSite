@@ -3,7 +3,11 @@
    ================================ */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* CORREÇÃO PRINCIPAL: 
+       Baixei de 300px para 260px para caber em telas de 320px (iPhone SE/5).
+       O 'auto-fit' garante que ele preencha a linha se sobrar espaço. 
+    */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
     padding: 2rem;
     width: 100%;
@@ -20,14 +24,13 @@
     /* Layout Flex para empurrar o conteúdo */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+
 
     /* Estética Base */
     background-color: var(--color-primary-translucent-1);
     border: 1px solid var(--color-black-4);
     border-radius: var(--border-1);
     padding: 2rem;
-    /* Mais respiro interno */
     text-align: center;
 
     /* Efeito de Vidro (Glassmorphism) */
@@ -35,14 +38,13 @@
     -webkit-backdrop-filter: blur(8px);
     box-shadow: var(--shadow-1);
 
-    /* Transições Suaves para tudo */
+    /* Transições */
     transition:
         transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
         box-shadow 0.4s ease,
         border-color 0.3s ease,
         background-color 0.3s ease;
 
-    /* Para conter efeitos de overflow */
     position: relative;
     overflow: hidden;
 }
@@ -52,23 +54,33 @@
    ================================ */
 
 .card-content {
-    margin-bottom: 1rem;
-    /* Espaço entre texto e botão */
+
+    /* IMPORTANTE PARA RESPONSIVIDADE VISUAL:
+       Isso faz o conteúdo de texto crescer e ocupar o espaço vazio,
+       empurrando o botão (CTA) sempre para o rodapé do card.
+    */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Alinha texto no topo */
 }
 
 .card-title {
     color: var(--color-gold-3);
-    font-size: 1.5rem;
+    /* Clamp torna o tamanho da fonte fluido entre 1.25rem e 1.5rem */
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 
-/* Texto do corpo do card (caso haja <p>) */
+/* Texto do corpo do card */
 .card p {
     color: var(--color-primary-text-2);
     line-height: 1.6;
-    justify-self: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* ================================
@@ -76,62 +88,84 @@
    ================================ */
 
 .card-cta {
+    /* Impede que o botão fique muito largo em telas grandes, se desejar */
+    align-self: center;
+
     color: var(--color-gold-2);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
+    /* Aumentei um pouco a área de toque */
     border-radius: 8px;
     transition: all 0.3s ease;
     display: inline-block;
-    /* Para aceitar padding/transform */
-
-    /* Opcional: borda sutil no botão */
     border: 1px solid transparent;
+
+    /* Garante que o texto não quebre em telas minúsculas */
+    white-space: nowrap;
 }
 
 /* ================================
    INTERATIVIDADE (HOVER EFFECTS)
    ================================ */
+/* Mantive a lógica original, apenas garantindo suporte a hover */
 
-/* Aplique a classe .card-hover no HTML ou use .card:hover diretamente */
-.card.card-hover:hover {
-    /* Levanta o card */
-    transform: translateY(-8px);
+@media (hover: hover) {
+    .card.card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-2), 0 12px 24px rgba(0, 0, 0, 0.15);
+        background-color: var(--color-primary-translucent-2);
+        border-color: var(--color-gold-2);
+    }
 
-    /* Aumenta a sombra e o brilho */
-    box-shadow: var(--shadow-2), 0 12px 24px rgba(0, 0, 0, 0.15);
-    background-color: var(--color-primary-translucent-2);
+    .card.card-hover:hover .card-title {
+        color: var(--color-gold-2);
+    }
 
-    /* Destaque na borda */
-    border-color: var(--color-gold-2);
-}
-
-/* Efeito no título ao passar o mouse no card */
-.card.card-hover:hover .card-title {
-    color: var(--color-gold-2);
-    /* Fica mais vivo */
-}
-
-/* Efeito no CTA ao passar o mouse no card */
-.card.card-hover:hover .card-cta {
-    color: var(--color-primary-text-1);
-    background-color: var(--color-gold-2);
-    /* Preenche o botão */
-    box-shadow: 0 0 10px var(--color-gold-1);
+    .card.card-hover:hover .card-cta {
+        color: var(--color-primary-text-1);
+        background-color: var(--color-gold-2);
+        box-shadow: 0 0 10px var(--color-gold-1);
+    }
 }
 
 /* ================================
-   RESPONSIVIDADE FINA (MOBILE)
+   RESPONSIVIDADE FINA (MEDIA QUERIES)
    ================================ */
+
+/* Tablet e Mobile Grande */
 @media (max-width: 768px) {
     .grid {
-        padding: 1rem;
-        gap: 1rem;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        /* Em telas médias, 2 colunas é melhor que 1 esticada */
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 
     .card {
         padding: 1.5rem;
+    }
+}
+
+/* Mobile Pequeno (Celulares em pé) */
+@media (max-width: 480px) {
+    .grid {
+        /* Removemos padding excessivo do container para ganhar espaço */
+        padding: 1rem;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+        /* Força 1 coluna inteira */
+        border: none;
+        /* Remove borda do container para limpar o visual */
+    }
+
+    .card {
+        padding: 1.25rem;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
     }
 }

@@ -8,8 +8,10 @@
                 <p class="cta-subtitle">@Subtitle</p>
                 @if (!string.IsNullOrEmpty(ButtonText))
                 {
-                    @if(Price != 0m){
-                        <h1 class="cta-price">R$@Price.ToString("N2")/hora<span class="cta-oldprice">R$@OldPrice.ToString("N2")</span></h1>
+                    @if (Price != 0m)
+                    {
+                        <h1 class="cta-price">R$@Price.ToString("N2")/hora<span
+                                class="cta-oldprice">R$@OldPrice.ToString("N2")</span></h1>
                     }
                     <ButtonComponent Text="@ButtonText" Href="@ButtonHref" Color="@ButtonColor">
                     </ButtonComponent>

@@ -3,43 +3,53 @@
    ================================ */
 
 .button[b-k08xr1gmrx] {
-    /* Layout & Posicionamento */
-    display: inline-flex;
+    /* Layout & Box Model */
+    display: flex;
+    /* Flex é melhor que inline-flex p/ largura 100% */
     justify-content: center;
     align-items: center;
 
     width: 100%;
+    /* Ocupa largura total no mobile */
     max-width: 320px;
-    /* Um pouco maior, mais confortável */
-    padding: 0.9rem 1.6rem;
+    /* Limite seguro para mobile */
+    min-height: 48px;
+    /* Acessibilidade: tamanho mínimo p/ toque */
 
+    padding: 0.875rem 1.5rem;
+    /* Rem é mais seguro que fixo */
     margin: 0 auto;
-    /* Mantém centralizado */
+    /* Centraliza o bloco */
     box-sizing: border-box;
-    /* Evita estourar largura */
 
     /* Estética */
     border: 1px solid var(--color-secundary-border-2);
     border-radius: var(--border-1);
     backdrop-filter: blur(6px);
-    /* Glass mais elegante */
+    -webkit-backdrop-filter: blur(6px);
+    /* Compatibilidade Safari */
     box-shadow: var(--shadow-1);
 
     /* Tipografia */
     color: var(--color-primary-text-1);
-    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-    /* Ajusta com a tela */
+    /* Simplifiquei o clamp: mínimo 15px, responsivo, máximo 18px */
+    font-size: clamp(0.9375rem, 4vw, 1.125rem);
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;
+    /* Evita quebra de linha feia no texto */
 
+    /* Comportamento */
     cursor: pointer;
     position: relative;
     overflow: hidden;
     user-select: none;
+    touch-action: manipulation;
+    /* Melhora resposta ao toque */
 
-    /* Transições mais fluidas */
+    /* Transições */
     transition:
         background-color 0.25s ease,
         transform 0.18s cubic-bezier(.2, .8, .4, 1),
@@ -52,9 +62,8 @@
    HOVER / ACTIVE / FOCUS
    ================================ */
 
-@media (hover:hover) {
-
-    /* Evita problemas em dispositivos touch */
+/* Hover apenas em dispositivos que têm mouse */
+@media (hover: hover) {
     .button:hover[b-k08xr1gmrx] {
         border-color: var(--color-gold-2);
         color: var(--color-primary-text-3);
@@ -66,14 +75,15 @@
 }
 
 .button:active[b-k08xr1gmrx] {
-    transform: translateY(-1px) scale(0.97);
+    transform: translateY(-1px) scale(0.98);
+    /* Scale 0.97 pode ser muito brusco */
     box-shadow: none;
     background-color: var(--color-primary-translucent-2);
 }
 
 .button:focus-visible[b-k08xr1gmrx] {
     outline: 2px solid var(--color-blue-2);
-    outline-offset: 4px;
+    outline-offset: 2px;
 }
 
 /* ================================
@@ -87,31 +97,43 @@
 }
 
 /* ================================
-   RESPONSIVIDADE EXTRA
+   RESPONSIVIDADE (Media Queries)
    ================================ */
 
-/* Telas muito pequenas */
+/* Telas muito pequenas (iPhone SE, Fold, etc) */
 @media (max-width: 360px) {
     .button[b-k08xr1gmrx] {
-        padding: 0.75rem 1.2rem;
-        font-size: 0.9rem;
+        max-width: 100%;
+        /* Aproveita todo espaço */
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        /* 14px */
     }
 }
 
-/* Telas médias */
+/* Tablet e Desktop (A partir de 768px) */
+/* MUDANÇA CRÍTICA: Botão deixa de ser bloco esticado */
 @media (min-width: 768px) {
     .button[b-k08xr1gmrx] {
-        max-width: 340px;
-        padding: 1rem 2rem;
-        font-size: 1.05rem;
+        display: inline-flex;
+        /* Volta a comportar-se como botão inline */
+        width: auto;
+        /* Largura baseada no conteúdo */
+        max-width: none;
+        /* Remove a trava de 320px */
+        min-width: 200px;
+        /* Garante uma presença mínima elegante */
+        padding: 1rem 2.5rem;
+        /* Mais ar nas laterais */
     }
 }
 
-/* Telas grandes */
+/* Telas grandes (Monitores Wide) */
 @media (min-width: 1200px) {
     .button[b-k08xr1gmrx] {
-        max-width: 360px;
         font-size: 1.1rem;
-        border-radius: calc(var(--border-1) * 1.2);
+        /* Aumenta um pouco o arredondamento proporcionalmente */
+        border-radius: calc(var(--border-1) * 1.25);
+        transition: transform 0.2s cubic-bezier(.2, .8, .4, 1);
     }
 }

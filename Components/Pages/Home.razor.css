@@ -129,6 +129,10 @@ section p {
     padding: 1rem;
 }
 
+.depoiments-section p{
+    justify-self: center;
+}
+
 .grid {
     display: grid;
     gap: 2rem;

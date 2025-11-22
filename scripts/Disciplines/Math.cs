@@ -7,8 +7,8 @@ public class DisciplineMath : Discipline
         Name = "Matemática";
         Label = "math";
         Price = 45;
-        Subtitle = "A matemática é usada em áreas como finanças, engenharia, culinária e até no planejamento do dia a dia. Aprenda agora e descubra como usar a matemática como uma ferramenta prática em suas tarefas diárias e profissionais.";
-        Description = $"Por apenas R${Price.ToString("F2")} onde pode aprender matemática desde o zero até o mais avançado focando totalmente em seus próprios objetivos, com acompanhamento contínuo com professores qualificados e que acreditam na sua educação!";
+        Subtitle = "Esqueça os truques de memorização. Aqui, você vai entender a estrutura da realidade. Inspirados pelas mentes que construíram a ciência moderna, desenhamos um caminho que leva você da Lógica Pura ao Cálculo Avançado com um rigor nunca antes visto no Brasil.";
+        Description = "A disciplina de Matemática do nosso Centro de Estudos rejeita a fragmentação tradicional do ensino escolar. Em vez de memorizar fórmulas desconexas, adotamos o Sistema Hexagonal, uma arquitetura curricular inspirada no rigor de grupos com sucesso internacional como os Bourbaki, Harvard entre outros. O curso é estruturado em 6 Domínios Sinfônicos, que operam integrados para construir não apenas o conhecimento, mas a capacidade de raciocínio abstrato superior.";
         Courses = GenerateCourses();
         Sections = GenerateSections();
         Sections.Add("Conteúdos", Courses);
@@ -17,219 +17,403 @@ public class DisciplineMath : Discipline
 
     public override List<Course> GenerateCourses()
     {
-        return new()
+        return new List<Course>
         {
+            // ---------------------------------------------------------
+            // DOMÍNIO A: LÓGICA, FUNDAMENTOS E MATEMÁTICA
+            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Matemática I",
+                Name = "Domínio A - Lógica, Fundamentos e Matemática",
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Números e Operações Básicas",
-                        Duration = "",
+                        Name = "Nível I: Alfabetização Lógica",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Introdução à história da matemática",
-                            "Noções de quantidade",
-                            "Algarismos e sistemas de numeração",
-                            "Soma e subtração",
-                            "Multiplicação e Divisão"
-                        },
-                    },
-                    new()
-                    {
-                        Name = "Noções de Lógica Matemática",
-                        Duration = "",
-                        Contents = new()
-                        {
-                            "Proposição",
-                            "Negação",
-                            "Conectivos",
-                            "Condicionais",
-                            "Proposições logicamente falsas",
-                            "Relação de implicação",
-                            "Relação de equivalência",
-                            "Sentenças abertas",
-                            "Como negar proposições"
+                            "Lógica Proposicional Básica (Conectivos, Tabelas-Verdade).",
+                            "Teoria Ingênua dos Conjuntos (Pertinência, Inclusão).",
+                            "Estrutura dos Naturais (N) e Indução Informal."
                         }
                     },
                     new()
                     {
-                        Name = "Conjuntos",
-                        Duration = "",
+                        Name = "Nível II: Formalismo e Demonstração",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Noções básicas",
-                            "Igualdade de conjuntos",
-                            "Relação de pertinência e de inclusão",
-                            "Operações",
-                            "Conjuntos numéricos",
-                            "Geratriz das Dizimas Periódicas Simples e Compostas",
-                            "Intervalos",
-                            "Operações com Intervalos",
+                            "Lógica de Predicados (Quantificadores: Para todo, Existe).",
+                            "O Método Axiomático e Regras de Inferência.",
+                            "Relações Binárias (Ordem, Equivalência)."
                         }
                     },
                     new()
                     {
-                        Name = "Fundamentos da Aritmética",
-                        Duration = "",
-                        Contents = new(){
-                            "Noção intuitiva de igualdade",
-                            "Operações com números inteiros",
-                            "Operações com números fracionários",
-                            "Operações com números decimais",
-                            "Potenciação e radiciação",
-                            "Múltiplos e divisores",
-                            "Critérios de divisibilidade",
-                            "Números pares, ímpares, primos, compostos, mistos",
-                            "MDC e MMC"
-                        }
-                    },
-                },
-            },
-
-            new Course()
-            {
-                Name = "Matemática II",
-                Curriculum = new()
-                {
-                    new()
-                    {
-                        Name = "Introdução à Álgebra",
-                        Duration = "",
+                        Name = "Nível III: Mapeamentos e Funções (Set-Theoretic)",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Propriedades dos números reais",
-                            "Produtos notaveis",
-                            "Racionalização",
-                            "Fatoração"
+                            "Definição Formal de Função (Domínio, Contradomínio, Imagem).",
+                            "Injetividade, Sobrejetividade e Bijetividade.",
+                            "Famílias de Conjuntos."
                         }
                     },
                     new()
                     {
-                        Name = "Razão e Proporção",
-                        Duration = "",
+                        Name = "Nível IV: Infinito e Cardinalidade",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Razões e Proporções",
-                            "Regra da sociedade",
-                            "Regra de três simples e composta",
+                            "Equipotência e Contabilidade.",
+                            "Aritmética dos Cardinais (Cantor).",
+                            "Hierarquia do Infinito (Alephs)."
                         }
                     },
                     new()
                     {
-                        Name = "Unidades de medida",
-                        Duration = "",
+                        Name = "Nível V: Metamatemática e Sistemas Formais",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Sistema internacional de unidades e medidas",
-                            "Conversão entre unidades",
-                            "Grandezas compostas e derivadas",
-                        }
-                    },
-                    new()
-                    {
-                        Name = "Matemática Financeira",
-                        Duration = "",
-                        Contents = new()
-                        {
-                            "Porcentagem",
-                            "Juros compostos",
-                            "Descontos e acréscimos",
-                        }
-                    },
-                    new()
-                    {
-                        Name = "Equações",
-                        Duration = "",
-                        Contents = new()
-                        {
-                            "Conceito de equação e propriedades da igualdade",
-                            "Equações do 1° e 2° grau",
-                            "Sistemas lineares simples",
-                            "Introdução aos logaritmos e exponenciais",
-                            "Noções de trigonometria"
+                            "Fundamentos Axiomáticos (ZFC - Zermelo-Fraenkel com Escolha).",
+                            "Consistência e Completude.",
+                            "Limites da Lógica (Teoremas de Gödel - Introdução Conceitual)."
                         }
                     }
                 }
             },
 
+            // ---------------------------------------------------------
+            // DOMÍNIO B: ÁLGEBRA E TEORIA DOS NÚMEROS
+            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Matemática III",
+                Name = "Domínio B - Álgebra e Teoria dos Números",
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Funções",
-                        Duration = "",
+                        Name = "Nível I: Aritmética Operacional",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Conceito",
-                            "Função sobrejetora",
-                            "Função injetora",
-                            "Função bijetora",
-                            "Lei de formação",
-                            "Construindo gráficos",
-                            "Função inversa",
-                            "Função polinômial de grau 1 e 2",
-                            "Função constante",
-                            "Função linear",
-                            "Função afim",
-                            "Função identidade",
-                            "Gráfico e concavidade de uma função quadrática",
-                            "Raizes da função",
-                            "Vertice, valor máximo e valor mínimo",
-                            "Crescimento e decrescimento",
-                            "Função par e função impar",
-                            "Função composta",
-                            "Algumas funções",
+                            "O Sistema Decimal Posicional.",
+                            "Algoritmos das Operações em N.",
+                            "Expressões Numéricas e Ordem de Operações."
                         }
                     },
                     new()
                     {
-                        Name = "Sequências",
-                        Duration = "",
+                        Name = "Nível II: O Anel dos Inteiros (Z)",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Determinando uma sequência",
-                            "Progressão Aritmética",
-                            "Soma dos termos de uma PA",
-                            "Progressão Geométrica",
-                            "Soma dos termos de uma PG",
-                            "Produto dos termos de uma PG",
-                            "Relação entre juros e progressões"
+                            "Números Negativos e a Reta Inteira.",
+                            "Divisibilidade (MDC, MMC, Algoritmo de Euclides).",
+                            "Teorema Fundamental da Aritmética (Primos)."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível III: O Corpo dos Racionais (Q)",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Frações como Classes de Equivalência.",
+                            "Dízimas e Expansão Decimal.",
+                            "Potenciação e Radiciação em R."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível IV: Polinômios e Estruturas Algébricas",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "O Anel de Polinômios R[x].",
+                            "Fatoração e Produtos Notáveis.",
+                            "Desigualdades Clássicas (Médias, Cauchy-Schwarz)."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível V: Álgebra Superior e Complexos",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "O Corpo dos Complexos (C) - Forma Algébrica e Polar.",
+                            "Introdução a Grupos, Anéis e Corpos.",
+                            "Teorema Fundamental da Álgebra."
                         }
                     }
                 }
             },
 
+            // ---------------------------------------------------------
+            // DOMÍNIO C: GEOMETRIA E ÁLGEBRA LINEAR
+            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Matemática IV",
+                Name = "Domínio C - Geometria e Álgebra Linear",
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Análise combinatória",
-                        Duration = "",
+                        Name = "Nível I: Geometria Intuitiva e Topológica",
+                        Duration = "Semestral",
                         Contents = new()
                         {
-                            "Principio fundamental da contagem",
-                            "Fatorial",
-                            "Agrupamentos",
-                            "Arranjos",
-                            "Permutações",
-                            "Combinações",
-                            "Número binomial",
-                            "Propriedades do triângulo de Pascal",
-                            "Binômio de Newton",
+                            "Entes Primitivos (Ponto, Reta, Plano).",
+                            "Ângulos e Polígonos Convexos.",
+                            "Noções de Topologia (Interior, Fronteira, Exterior)."
                         }
                     },
+                    new()
+                    {
+                        Name = "Nível II: Geometria Euclidiana Plana",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Congruência de Triângulos e Teorema de Tales.",
+                            "Semelhança e Relações Métricas.",
+                            "Área e Círculo."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível III: Geometria Analítica (Plano R2)",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Sistema Cartesiano e Distância.",
+                            "Estudo da Reta e Circunferência.",
+                            "Vetores no Plano (Operações Geométricas)."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível IV: Matrizes e Transformações",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Álgebra Matricial e Determinantes.",
+                            "Sistemas Lineares.",
+                            "Cônicas (Elipse, Hipérbole, Parábola)."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível V: Espaço (R3) e Vetores",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Geometria de Posição Espacial (Poliedros).",
+                            "Volumes e Sólidos de Revolução.",
+                            "Produto Escalar e Vetorial no Espaço."
+                        }
+                    }
+                }
+            },
+
+            // ---------------------------------------------------------
+            // DOMÍNIO D: ANÁLISE REAL E CÁLCULO
+            // ---------------------------------------------------------
+            new Course()
+            {
+                Name = "Domínio D - Análise Real e Cálculo",
+                Curriculum = new()
+                {
+                    new()
+                    {
+                        Name = "Nível I: Fundamentos da Variação",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Razão, Proporção e Grandezas.",
+                            "Variação Linear e Afim.",
+                            "Modelagem de Fenômenos Simples."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível II: Anatomia das Funções",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Definição Rigorosa de Função Real (f: A -> B).",
+                            "Composição e Inversão de Funções.",
+                            "Análise de Gráficos (Crescimento, Paridade)."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível III: Funções Elementares",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Funções Quadráticas e Modulares.",
+                            "Trigonometria no Ciclo (Funções Circulares).",
+                            "Identidades Trigonométricas."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível IV: Transcendentes e Limites",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Exponenciais e Logaritmos.",
+                            "Sequências e Séries Numéricas.",
+                            "Limites e Continuidade (Definição epsilon-delta)."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível V: Cálculo Infinitesimal",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "A Derivada (Taxa de variação e Reta Tangente).",
+                            "A Integral (Área e Teorema Fundamental do Cálculo).",
+                            "Equações Diferenciais Ordinárias (Intro)."
+                        }
+                    }
+                }
+            },
+
+            // ---------------------------------------------------------
+            // DOMÍNIO E: MATEMÁTICA DISCRETA (COMBINATÓRIA)
+            // ---------------------------------------------------------
+            new Course()
+            {
+                Name = "Domínio E - Matemática Discreta (Combinatória)",
+                Curriculum = new()
+                {
+                    new()
+                    {
+                        Name = "Nível I: Lógica de Contagem",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Listagem Sistemática e Árvore de Possibilidades.",
+                            "O Princípio Aditivo.",
+                            "Padrões Numéricos Discretos."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível II: Princípios Multiplicativos",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "O Princípio Fundamental da Contagem (PFC).",
+                            "Fatorial e Permutações Simples.",
+                            "Arranjos Simples."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível III: Estruturas Combinatórias",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Combinação Simples e o Triângulo de Pascal.",
+                            "Permutação com Repetição.",
+                            "Binômio de Newton."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível IV: Combinatória Avançada",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Princípio da Casa dos Pombos (Dirichlet).",
+                            "Princípio da Inclusão-Exclusão.",
+                            "Lemas de Kaplansky."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível V: Teoria dos Grafos e Algoritmos",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Grafos: Vértices, Arestas, Caminhos e Ciclos.",
+                            "Grafos Eulerianos e Hamiltonianos.",
+                            "Árvores e Algoritmos de Busca."
+                        }
+                    }
+                }
+            },
+
+            // ---------------------------------------------------------
+            // DOMÍNIO F: ESTOCÁSTICA (PROBABILIDADE E ESTATÍSTICA)
+            // ---------------------------------------------------------
+            new Course()
+            {
+                Name = "Domínio F - Estocástica (Probabilidade e Estatística)",
+                Curriculum = new()
+                {
+                    new()
+                    {
+                        Name = "Nível I: Tratamento da Informação",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Coleta e Organização de Dados Brutos.",
+                            "Tabelas de Frequência (Absoluta e Relativa).",
+                            "Leitura Crítica de Gráficos Básicos."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível II: Estatística Descritiva",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Medidas de Tendência Central (Média, Mediana, Moda).",
+                            "Medidas de Dispersão (Amplitude, Variância, Desvio Padrão).",
+                            "Histogramas e Diagramas de Box-Plot."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível III: Introdução à Incerteza",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Experimentos Aleatórios e Espaço Amostral.",
+                            "Definição Clássica de Probabilidade (Laplace).",
+                            "Eventos Complementares e União."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível IV: Probabilidade Intermediária",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Probabilidade Condicional.",
+                            "Independência de Eventos.",
+                            "Teorema de Bayes e Probabilidade Total."
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Nível V: Variáveis Aleatórias",
+                        Duration = "Semestral",
+                        Contents = new()
+                        {
+                            "Variáveis Discretas e Valor Esperado.",
+                            "A Distribuição Binomial.",
+                            "A Distribuição Normal (Gaussiana)."
+                        }
+                    }
                 }
             }
         };
     }
-
 }

@@ -1,91 +1,117 @@
-.about {
-    /* Mantém o background-color (transparente) e width */
-    background-color: rgba(255, 0, 0, 0);
-    width: 90%;
-    box-shadow: var(--shadow-1);
+/* ================================
+   ESTRUTURA E SEÇÃO
+   ================================ */
+
+section {
+    width: 100%;
+    /* Removemos background transparente desnecessário */
+    /* Padding vertical fixo e horizontal seguro */
+    padding: 4rem 1.5rem;
+    margin: 0;
+    box-sizing: border-box;
 }
+
+section .title {
+    margin-bottom: 2rem;
+}
+
+.container {
+    width: 100%;
+    /* Centraliza o bloco container na tela */
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    /* Garante empilhamento vertical padrão */
+    align-items: center;
+    /* Centraliza itens horizontalmente */
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.about {
+    width: 100%;
+    /* Mudado de 90% fixo para 100% com max-width no pai */
+    box-shadow: var(--shadow-1);
+    border-radius: var(--border-1);
+    padding: 2rem;
+    /* Adicionado padding interno para o texto não colar na borda */
+    background-color: rgba(255, 255, 255, 0.02);
+    /* Leve tint para ver a área */
+}
+
+/* ================================
+   TIPOGRAFIA
+   ================================ */
 
 h2 {
     color: var(--color-gold-3);
-    /* Adiciona uma transição sutil para mudança de cor ou tamanho se aplicado em hover */
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    /* Tamanho fluido */
+    margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 
 h3 {
     color: var(--color-gold-2);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 
-section {
-    width: 100%;
-    background-color: rgba(0, 60, 255, 0);
-    /* Adiciona padding horizontal para evitar que o conteúdo toque as bordas em telas pequenas */
-    margin: 5% 0;
-    padding: 0 5%;
-    box-sizing: border-box;
-    /* Garante que o padding não aumente o width total */
-}
-
-section .title {
-    margin-bottom: 3%;
-    /* Aumentado ligeiramente para melhor espaçamento */
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-}
-
-.content {
-    width: 95%;
-    /* Limita a largura máxima do conteúdo para melhor legibilidade em telas grandes */
-    max-width: 1200px;
-    text-align: center;
+/* Garante que o texto use a cor principal */
+p,
+li,
+.label,
+.lead,
+.values,
+.howItWorks {
+    color: var(--color-primary-text-1);
+    line-height: 1.6;
 }
 
 .label,
 .lead,
 .values,
 .howItWorks {
-    margin-bottom: 3%;
+    margin-bottom: 1.5rem;
     text-align: left;
-    /* Adicionado transição para possíveis efeitos de visualização, como fade-in */
     transition: opacity 0.5s ease;
-    line-height: 1.6;
-    /* Melhora a legibilidade do texto */
-    color: var(--color-primary-text-1);
-    /* Garante que o texto use a cor principal */
 }
 
-/* Garante que o texto dentro desses elementos seja renderizado de forma clara */
-p,
-li {
-    color: var(--color-primary-text-1);
-}
+/* ================================
+   VÍDEO RESPONSIVO (Moderno)
+   ================================ */
 
 .video-container {
-    justify-self: center;
-    width: 80%;
-    /* Aumentado para melhor visualização em desktops */
+    /* Centralização robusta (funciona em flex, grid ou block) */
+    margin: 0 auto 2rem auto;
+
+    width: 100%;
     max-width: 800px;
-    /* Limite máximo para o vídeo */
-    height: 450px;
-    /* Aumentado a altura para um formato mais agradável */
+
+    /* A MÁGICA: Mantém proporção de TV/YouTube automaticamente */
+    aspect-ratio: 16 / 9;
+    height: auto;
+    /* Remove altura fixa */
+
     position: relative;
     overflow: hidden;
     border-radius: var(--border-1);
-    /* Usando token do root */
     box-shadow: var(--shadow-1);
-    margin-bottom: 5%;
-    /* Transição para os efeitos de hover */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #000;
+    /* Fundo preto enquanto carrega */
 }
 
-/* Efeito de Leve Zoom e Sombra ao passar o mouse */
 .video-container:hover {
     transform: scale(1.02);
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
-    /* Sombra mais intensa no hover */
 }
 
 .video-container iframe {
@@ -97,76 +123,65 @@ li {
     border: 0;
 }
 
+/* ================================
+   IMAGEM E GRID
+   ================================ */
+
 .teacher-image {
+    display: block;
+    /* Garante que margin auto funcione */
+    margin: 0 auto 1rem auto;
+
     width: 120px;
-    /* Aumentado um pouco o tamanho */
     height: 120px;
-    justify-self: center;
-    align-self: center;
+
     border-radius: 50%;
-    /* Adiciona borda arredondada para fotos de perfil */
     border: 4px solid var(--color-gold-2);
-    /* Borda destacada */
     object-fit: cover;
-    /* Garante que a imagem preencha a área sem distorcer */
-    /* Transição para o efeito de hover */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efeito de Leve Rotação e Sombra no hover da imagem */
 .teacher-image:hover {
     transform: rotate(3deg) scale(1.05);
     box-shadow: var(--shadow-2);
 }
 
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    /* CORREÇÃO: 280px garante que cabe em telas iPhone 5/SE/Fold */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    width: 100%;
+}
+
 /* ================================
-   RESPONSIVIDADE
+   MEDIA QUERIES
    ================================ */
 
-/* Telas Pequenas (celulares, tablets pequenos, até 768px) */
+/* Tablet Portrait e Mobile (Abaixo de 768px) */
 @media (max-width: 768px) {
-
-    /* Reduz o padding da seção para dar mais espaço ao conteúdo */
     section {
-        padding: 0 3%;
-        margin: 8% 0;
-        /* Aumenta a margem vertical entre as seções */
+        padding: 3rem 1rem;
+        /* Menos padding lateral */
     }
 
-    /* O conteúdo ocupa a largura máxima da tela com o padding da section */
-    .content {
-        width: 100%;
+    .about {
+        padding: 1.5rem;
+        /* Menos padding interno no card */
     }
 
-    /* Ajusta o contêiner de vídeo para caber melhor em telas menores */
-    .video-container {
-        width: 100%;
-        height: 250px;
-        /* Reduz a altura para não ocupar muito espaço vertical */
-        box-shadow: var(--shadow-2);
-        /* Sombra mais sutil em mobile */
-    }
-
-    /* Ajusta a imagem do professor */
-    .teacher-image {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* Melhora a leitura do texto */
+    /* Ajuste de texto para mobile */
+    .label,
     .lead,
     .values,
     .howItWorks {
-        /* Justifica o texto para um visual mais limpo */
-        padding: 0 10px;
-        /* Adiciona um pequeno padding para o texto não ficar colado nas bordas */
+        text-align: left;
+        /* Justify cria buracos feios no mobile, left é melhor */
+        font-size: 0.95rem;
     }
-}
 
-/* Telas Médias (tablets, até 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .video-container {
-        width: 70%;
-        height: 350px;
+    /* Grid vira coluna única se a tela for muito estreita */
+    .grid {
+        gap: 1rem;
     }
 }

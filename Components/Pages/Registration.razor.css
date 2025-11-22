@@ -5,30 +5,36 @@
 /* --- Contêiner Principal --- */
 .registration .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Usa vh para garantir que o formulário seja visível, mas usa 'auto' em telas pequenas */
+
+    /* Fallback para navegadores antigos */
     min-height: 100vh;
-    padding: 2rem;
+    /* Moderno: dvh ignora a barra de endereço do navegador mobile */
+    min-height: 100dvh;
+
+    padding: 1.5rem;
+    box-sizing: border-box;
+
+    /* Garante que o scroll funcione se a tela for menor que o formulário */
+    overflow-y: auto;
 }
 
 /* --- Bloco de Conteúdo do Formulário --- */
 .registration .content {
     width: 100%;
     max-width: 750px;
-    /* Aumentado ligeiramente o max-width para melhor visualização em desktop */
-    /* Usando cores do tema */
     background-color: var(--color-primary-background-2);
-    /* Fundo mais sólido do tema */
     border: 1px solid var(--color-secundary-border-2);
-    /* Borda sutil */
     border-radius: var(--border-1);
     box-shadow: var(--shadow-1);
     padding: 3rem;
-    /* Aumentado o padding para mais espaço interno */
     text-align: center;
-    /* Transição para suavizar a entrada ou mudança de tema */
     transition: all 0.5s ease;
+
+    /* Garante que o box não estoure a largura */
+    box-sizing: border-box;
 }
 
 /* ================================
@@ -41,15 +47,15 @@
 
 .registration .title {
     color: var(--color-gold-2);
-    /* Ouro um pouco mais forte para o título */
     margin-bottom: 0.5rem;
-    font-size: 2rem;
+    /* Clamp: Texto fluido que não fica gigante no mobile nem minúsculo no PC */
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .registration .subtitle {
     color: var(--color-primary-text-1);
-    /* Texto principal para o subtítulo */
     font-weight: 400;
     font-size: 1.1rem;
 }
@@ -57,8 +63,9 @@
 .registration form {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
-    /* Aumentado o espaçamento entre os campos */
+    gap: 1.5rem;
+    /* Ajuste leve para caber melhor em telas médias */
+    width: 100%;
 }
 
 /* --- Labels e Inputs Wrapper --- */
@@ -67,173 +74,172 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    gap: 0.6rem;
-    /* Espaço entre label e input */
+    gap: 0.5rem;
     position: relative;
-    /* Necessário para posicionar o foco da label */
+    width: 100%;
+    /* Garante largura total */
 }
 
 .registration .select-content h3 {
     color: var(--color-primary-text-2);
     font-size: 1rem;
     font-weight: 500;
-    /* Levemente mais pesado para destaque */
     margin: 0;
 }
 
-/* --- Estilo das Labels com Micro-interação --- */
+/* --- Estilo das Labels --- */
 .registration label {
     color: var(--color-primary-text-1);
-    font-size: 1rem;
+    font-size: 0.95rem;
+    /* Levemente menor para elegância */
     padding-left: 0.2rem;
-    /* Transição para o efeito de foco */
     transition: color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
 }
 
-/* Efeito sutil na label quando o input é focado */
 .registration .input:focus+label,
 .registration .input:focus-within+label {
     color: var(--color-gold-3);
-    /* Leve movimento para indicar foco */
     transform: translateX(2px);
+}
+
+/* --- INPUTS GERAIS --- */
+/* Adicionado seletor genérico para input e textarea */
+.registration .input {
+    width: 100%;
+    /* Garante que o input preencha o wrapper */
+    box-sizing: border-box;
+    /* Evita que padding aumente a largura */
+    font-size: 1rem;
+    /* CRUCIAL: 16px evita zoom automático no iOS */
 }
 
 /* --- Estilo Específico para o Text Area --- */
 .registration textarea.input {
-    min-height: 150px;
-    /* Aumentado a altura mínima */
+    min-height: 120px;
+    /* Reduzi levemente para mobile */
+    max-height: 300px;
+    /* Limite máximo */
     resize: vertical;
     font-family: inherit;
     line-height: 1.6;
-    /* Melhorando a legibilidade */
 }
 
 /* ================================
    3. TRANSIÇÕES E EFEITOS (INPUTS)
    ================================ */
 
-/* Pega qualquer .input que esteja em foco */
 .registration .input:focus {
     outline: none;
     border-color: var(--color-gold-3);
-    /* Box-shadow mais evidente, usando o ouro com translucidez */
     box-shadow: 0 0 0 4px var(--color-secundary-translucent-3);
 }
 
-/* Adicionando um efeito de transição aos inputs base */
 .registration .input {
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Input INVÁLIDO */
+/* Estados de Validação */
 .registration .input.invalid {
     border-color: var(--color-red-2);
 }
 
 .registration .input.invalid:focus {
-    border-color: var(--color-red-2);
-    /* Ajustando o brilho vermelho para usar a variável red */
     box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
 }
 
-/* Input VÁLIDO */
 .registration .input.valid.modified {
     border-color: var(--color-green-2);
 }
 
 .registration .input.valid.modified:focus {
-    border-color: var(--color-green-2);
-    /* Ajustando o brilho verde para usar a variável green */
     box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
 }
 
 /* ================================
-   4. BOTÃO DE ENVIO (Com Efeito de Pressão)
+   4. BOTÃO DE ENVIO
    ================================ */
 
 .registration button[type="submit"] {
+    width: 100%;
+    /* Botão largura total fica melhor em formulários */
+    max-width: 300px;
+    /* Mas com um limite para não ficar feio em Desktop */
+    align-self: center;
+    /* Centraliza o botão se tiver max-width */
+
     padding: 1rem 2rem;
-    /* Aumentado o padding horizontal */
-    margin-top: 1.5rem;
-    /* Mais espaço acima */
-    background-color: var(--color-gold-2);
+    margin-top: 1rem;
+    background-color: var(--color-blue-2);
     color: var(--color-black-1);
     border: none;
     border-radius: 10px;
-    /* Borda levemente maior */
-    font-size: 1.2rem;
-    /* Fonte um pouco maior */
+    font-size: 1.1rem;
     font-weight: 700;
-    /* Mais pesado */
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    /* Sombra mais destacada */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .registration button[type="submit"]:hover {
-    background-color: var(--color-gold-1);
+    background-color: var(--color-blue-3);
     transform: translateY(-2px);
-    /* Efeito de elevação mais suave */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Efeito de 'Pressão' ao clicar */
 .registration button[type="submit"]:active {
     transform: translateY(0);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--color-gold-3);
-    /* Mudar para uma cor mais clara ao pressionar */
 }
 
 /* ================================
-   5. RESPONSIVIDADE (MOBILE FIRST) 📱
+   5. RESPONSIVIDADE (MOBILE & TABLET) 📱
    ================================ */
 
-@media (max-width: 600px) {
-
-    /* Diminui a altura mínima da tela para evitar scroll desnecessário em mobile */
+@media (max-width: 768px) {
     .registration .container {
-        min-height: auto;
+        /* MUDANÇA CRÍTICA:
+           Em mobile, removemos o 'center' vertical. 
+           Isso permite que o topo do formulário não seja cortado 
+           se o conteúdo for maior que a tela (ex: teclado aberto).
+        */
+        display: block;
+        height: auto;
+        min-height: 100dvh;
         padding: 1rem;
     }
 
-    /* Ajuste de padding e max-width para telas pequenas */
     .registration .content {
-        max-width: 100%;
-        padding: 1.5rem;
-        box-shadow: var(--shadow-2);
-        /* Sombra mais sutil em mobile */
-        /* Garante que o fundo do container de registro use a cor principal do tema em mobile */
-        background-color: var(--color-primary-background-2);
+        /* Margem superior para não colar no topo */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        padding: 1.5rem 1rem;
+        /* Padding lateral menor */
+        box-shadow: none;
+        /* Remove sombra pesada para performance/visual limpo */
+        border: 1px solid var(--color-secundary-border-1);
     }
 
-    .registration .header {
-        margin-bottom: 1.5rem;
+    .registration .title {
+        font-size: 1.75rem;
+    }
+
+    .registration button[type="submit"] {
+        max-width: 100%;
+        /* Botão full width no mobile facilita o toque */
+    }
+}
+
+/* Telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .registration .content {
+        padding: 1.2rem 0.8rem;
+        margin-top: 1rem;
     }
 
     .registration .title {
         font-size: 1.5rem;
-    }
-
-    .registration .subtitle {
-        font-size: 1rem;
-    }
-
-    .registration form {
-        gap: 1.2rem;
-        /* Reduz o espaçamento entre os campos */
-    }
-
-    .registration button[type="submit"] {
-        font-size: 1.1rem;
-        padding: 0.8rem 1.5rem;
-        margin-top: 1rem;
-    }
-
-    /* Ajusta a margem da mensagem de validação */
-    .registration .validation-message {
-        margin-top: -0.8rem;
     }
 }
