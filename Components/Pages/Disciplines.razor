@@ -3,14 +3,16 @@
 @inject IJSRuntime JSRuntime
 @rendermode InteractiveServer
 
+
 <PageTitle>@discipline?.Name</PageTitle>
 
 <div class="discipline-page">
     @if (discipline != null)
     {
         <section>
-            <CtaComponent Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a            capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em   olimpíadas e vestibulares.") ButtonText="Matrícula" ButtonHref="/ciclo-avancado" ButtonColor="bggreen-2"
-                ImageUrl="images/CtaImage.png" Price="@discipline.Price" />
+            <CtaComponent Title="Garanta seu acesso!" Subtitle="@($"Escolha o plano ideal e domine {discipline?.Name}")"
+                ButtonText="Ver Planos" ButtonHref="/subscription" ButtonColor="bggreen-2"
+                ImageUrl="images/SubscriptionsCtaImage.png" />
         </section>
         @foreach (var content in discipline.Sections ?? new Dictionary<string, object>())
         {
@@ -47,8 +49,8 @@
             </section>
         }
         <section>
-            <CtaComponent Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a        capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em          olimpíadas e vestibulares.") ButtonText="Matrícula" ButtonHref="/ciclo-avancado" ButtonColor="bggreen-2"
-                ImageUrl="images/CtaImage.png" Price="@discipline.Price" />
+            <CtaComponent Title="Garanta Sua Vaga!" Subtitle=@($"Estude {@discipline.Name} e desenvolva a            capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em            olimpíadas e vestibulares.") ButtonText="Matrícula" ButtonHref="/registration" ButtonColor="bggreen-2"
+                ImageUrl="images/RegistrationCtaImage.png"/>
         </section>
 
     }

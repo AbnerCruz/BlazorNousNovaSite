@@ -2,8 +2,10 @@
 @rendermode InteractiveServer
 @inject IJSRuntime JS
 @using SchoolData;
+@using SchoolData.Disciplines;
 @using MimeKit;
 @using MailKit.Net.Smtp;
+@using System.ComponentModel.DataAnnotations;
 
 <div class="registration">
     <div class="container">
@@ -12,13 +14,14 @@
                 <h1 class="title">Matrícula</h1>
                 <h3 class="subtitle">Preencha o formulário e em até 24h entraremos em contato!</h3>
             </div>
+
             <EditForm Model="Model" OnValidSubmit="Submit" FormName="Registration">
                 <DataAnnotationsValidator />
+                
                 <div class="input-content">
                     <label for="name">Nome:</label>
                     <InputText id="name" @bind-Value="Model.Name" class="input"></InputText>
                     <ValidationMessage For="@(() => Model.Name)" />
-
                 </div>
                 <div class="input-content">
                     <label for="email">Email:</label>
@@ -32,24 +35,77 @@
                 </div>
                 <div class="input-content">
                     <label for="text">Mensagem</label>
-                    <InputTextArea id="text" type="note" placeholder="Olá! Eu gostaria de fazer a minha matrícula."
+                    <InputTextArea id="text" placeholder="Olá! Gostaria de fazer minha matrícula."
                         @bind-Value="Model.Text" class="input" />
                     <ValidationMessage For="@(() => Model.Text)" />
                 </div>
-                <div class="">
-                    <h3>Selecione as disciplinas que deseja estudar</h3>
-                    @if (Model.Options is not null)
-                    {
-                        @foreach (DisciplinesOptions option in Model.Options)
-                        {
-                            <InputCheckbox id="@option.Label" @bind-Value="option.Selected" />
-                            <label for="@option.Label">@option.Label</label>
-                        }
-                        <ValidationMessage For="@(() => Model.Options)" />
-                    }
 
+                <div class="section-block">
+                    <h3>Selecione as disciplinas</h3>
+                    <div class="disciplines-list">
+                         @foreach (var option in Model.Options)
+                        {
+                            <div class="checkbox-item">
+                                <InputCheckbox id="@option.Label" @bind-Value="option.Selected" />
+                                <label for="@option.Label">@option.Label</label>
+                            </div>
+                        }
+                    </div>
+                    <ValidationMessage For="@(() => Model.Options)" />
                 </div>
-                <button type="submit" href="">Enviar solicitação</button>
+
+                <div class="section-block">
+                    <h3>Selecione sua assinatura</h3>
+                    <InputRadioGroup @bind-Value="Model.SelectedPlan">
+                        <div class="grid">
+                            @foreach (var plan in Model.SubscriptionsList)
+                            {
+                                @* Lógica para identificar o recomendado *@
+                                var isRecommended = plan.Name == "Pleno";
+
+                                @* Adiciona a classe 'highlight' se for recomendado *@
+                                <label class="card @(isRecommended ? "highlight" : "")" for="@plan.Name">
+
+                                    @* Renderiza o selo se for recomendado *@
+                                    @if (isRecommended)
+                                    {
+                                        <div class="badge">Recomendado</div>
+                                    }
+
+                                    <InputRadio Value="@plan.Name" id="@plan.Name" />
+
+                                    <div class="card-content">
+                                        <h4 class="plan-name">@plan.Name</h4>
+
+                                        <div class="price-container">
+                                            <span class="fake-price">de @plan.FakePrice.ToString("C")</span>
+                                            <span class="real-price">por @plan.Price.ToString("C")<span
+                                                    class="period">/mês</span></span>
+                                        </div>
+                                    </div>
+
+                                    <p class="plan-description">@plan.Description</p>
+
+                                    <div class="divider"></div>
+
+                                    <ul class="features-list">
+                                        @foreach (var feature in plan.Features)
+                                        {
+                                            <li>
+                                                <span class="check-icon">✓</span>
+                                                @feature
+                                            </li>
+                                        }
+                                    </ul>
+                                </label>
+                            }
+                        </div>
+                    </InputRadioGroup>
+                    <ValidationMessage For="@(() => Model.SelectedPlan)" />
+                </div>
+
+                <br/>
+                <button type="submit" class="btn-submit">Enviar solicitação</button>
             </EditForm>
         </div>
     </div>
@@ -58,26 +114,35 @@
 @code {
     [SupplyParameterFromForm]
     private RegistrationModel Model { get; set; } = new();
+    
+    // Supondo que SchoolData tenha essas infos
     private SchoolData schoolData = new();
-    bool CurrentValue;
+    
+    // Corrigido o acesso estático conforme erro anterior
+    public List<PlanDetail> AvailablePlans => SubscriptionPlanRepository.GetPlans(); 
+
     bool activeEmails = true;
     string whatsappMessage => $"https://wa.me/{schoolData.SchoolPhone}?text=";
 
-    protected override void OnInitialized() => Model ??= new();
+    protected override void OnInitialized()
+    {
+        Model ??= new();
+        // Carrega a lista de planos no Model para exibir
+        Model.SubscriptionsList = AvailablePlans;
+    }
 
     private async Task Submit()
     {
-        string disciplinesList = "";
-        if (Model.Options is not null)
-        {
-            foreach (DisciplinesOptions options in Model.Options)
-            {
-                if (options.Selected)
-                {
-                    disciplinesList = disciplinesList + " " + (options.Label);
-                }
-            }
-        }
+        // 1. Processar Disciplinas
+        var selectedDisciplines = Model.Options
+            .Where(x => x.Selected)
+            .Select(x => x.Label)
+            .ToList();
+        
+        string disciplinesString = string.Join(", ", selectedDisciplines);
+
+        // 2. Processar Plano (agora é direto, pois é uma string única)
+        string selectedPlan = Model.SelectedPlan;
 
         if (activeEmails)
         {
@@ -86,44 +151,60 @@
             message.To.Add(new MailboxAddress("Secretaria", "abner.cruz@unesp.br"));
             message.Subject = $"Novo Agendamento - {Model.Name}";
 
-
-            var disciplines = string.Join(", ", disciplinesList.Split(" ", StringSplitOptions.RemoveEmptyEntries));
             Model.Text = string.IsNullOrWhiteSpace(Model.Text) ? "Olá! Eu gostaria de fazer a minha matrícula." : Model.Text;
+            
             var bodyBuilder = new BodyBuilder
             {
                 HtmlBody = $@"
-<p>Nova Solicitação de Matrícula:</p>
-<ul>
-<li>Nome: {Model.Name}</li>
-<li>Email: {Model.Email}</li>
-<li>Whatsapp: {Model.Phone}</li>
-<li>Mensagem: {Model.Text}</li>
-<li>Disciplinas: {disciplines}</li>
-</ul>
-"
+                    <p>Nova Solicitação de Matrícula:</p>
+                    <ul>
+                        <li><strong>Nome:</strong> {Model.Name}</li>
+                        <li><strong>Email:</strong> {Model.Email}</li>
+                        <li><strong>Whatsapp:</strong> {Model.Phone}</li>
+                        <li><strong>Mensagem:</strong> {Model.Text}</li>
+                        <li><strong>Assinatura Escolhida:</strong> {selectedPlan}</li>
+                        <li><strong>Disciplinas:</strong> {disciplinesString}</li>
+                    </ul>"
             };
+            
             message.Body = bodyBuilder.ToMessageBody();
 
             using (var client = new SmtpClient())
             {
                 await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                await client.AuthenticateAsync("abner.cruz@unesp.br", "ayrh zzhf jeyp lgdx");
+                // Cuidado ao deixar credenciais no código
+                await client.AuthenticateAsync("abner.cruz@unesp.br", "ayrh zzhf jeyp lgdx"); 
                 await client.SendAsync(message);
                 await client.DisconnectAsync(true);
             }
-            var whatsappUrl = $"{whatsappMessage}{Uri.EscapeDataString(Model.Text)}";
+
+            var whatsappUrl = $"{whatsappMessage}{Uri.EscapeDataString(Model.Text + $" (Plano: {selectedPlan})")}";
             await JS.InvokeVoidAsync("open", whatsappUrl, "_blank");
         }
-        Model = new();
+        
+        // Reinicia o formulário
+        Model = newRegistration();
+    }
+
+    private RegistrationModel newRegistration()
+    {
+        var m = new RegistrationModel();
+        m.SubscriptionsList = AvailablePlans;
+        return m;
     }
 
     public class RegistrationModel : IValidatableObject
     {
         public List<DisciplinesOptions> Options { get; set; } = new(){
-new DisciplinesOptions{Label = "Português"},
-new DisciplinesOptions{Label = "Matemática"},
-new DisciplinesOptions{Label = "Física"},
-};
+            new DisciplinesOptions{Label = "Matemática"},
+        };
+
+        // Lista apenas para exibir na tela (não guarda o estado de selecionado individualmente)
+        public List<PlanDetail> SubscriptionsList { get; set; } = new();
+
+        // AQUI ESTÁ A MUDANÇA: Uma string simples para guardar o plano escolhido
+        [Required(ErrorMessage = "Por favor, selecione um plano de assinatura.")]
+        public string SelectedPlan { get; set; }
 
         [Required(ErrorMessage = "Informe seu Nome")]
         public string Name { get; set; } = "";
@@ -143,13 +224,12 @@ new DisciplinesOptions{Label = "Física"},
             if (Options is null || !Options.Any(o => o.Selected))
             {
                 yield return new ValidationResult(
-                "Selecione pelo menos uma disciplina.",
-                new[] { nameof(Options) }
+                    "Selecione pelo menos uma disciplina.",
+                    new[] { nameof(Options) }
                 );
             }
         }
     }
-
 
     public class DisciplinesOptions
     {

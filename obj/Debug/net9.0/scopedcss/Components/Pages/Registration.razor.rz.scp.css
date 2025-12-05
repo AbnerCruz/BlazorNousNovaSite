@@ -1,46 +1,34 @@
-/* ================================
-   1. CONTÊINER E CONTEÚDO
-   ================================ */
+/* ============================================================
+   1. LAYOUT PRINCIPAL DA PÁGINA (REGISTRATION)
+   ============================================================ */
 
-/* --- Contêiner Principal --- */
 .registration .container[b-slmr3s8spi] {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* Fallback para navegadores antigos */
+    /* Altura total e ajuste para mobile */
     min-height: 100vh;
-    /* Moderno: dvh ignora a barra de endereço do navegador mobile */
     min-height: 100dvh;
-
     padding: 1.5rem;
-    box-sizing: border-box;
-
-    /* Garante que o scroll funcione se a tela for menor que o formulário */
     overflow-y: auto;
 }
 
-/* --- Bloco de Conteúdo do Formulário --- */
 .registration .content[b-slmr3s8spi] {
     width: 100%;
-    max-width: 750px;
+    max-width: 900px;
+    /* Aumentei levemente para caber melhor os cards */
     background-color: var(--color-primary-background-2);
     border: 1px solid var(--color-secundary-border-2);
     border-radius: var(--border-1);
     box-shadow: var(--shadow-1);
-    padding: 3rem;
+    padding: 2.5rem;
+    /* Ajuste de espaçamento */
     text-align: center;
-    transition: all 0.5s ease;
-
-    /* Garante que o box não estoure a largura */
-    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
-/* ================================
-   2. TIPOGRAFIA E ESTRUTURA
-   ================================ */
-
+/* --- Cabeçalho --- */
 .registration .header[b-slmr3s8spi] {
     margin-bottom: 2rem;
 }
@@ -48,8 +36,7 @@
 .registration .title[b-slmr3s8spi] {
     color: var(--color-gold-2);
     margin-bottom: 0.5rem;
-    /* Clamp: Texto fluido que não fica gigante no mobile nem minúsculo no PC */
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 700;
     line-height: 1.2;
 }
@@ -60,186 +47,247 @@
     font-size: 1.1rem;
 }
 
+/* ============================================================
+   2. FORMULÁRIO E INPUTS
+   ============================================================ */
+
 .registration form[b-slmr3s8spi] {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    /* Ajuste leve para caber melhor em telas médias */
     width: 100%;
 }
 
-/* --- Labels e Inputs Wrapper --- */
-.registration .input-content[b-slmr3s8spi],
-.registration .select-content[b-slmr3s8spi] {
+.registration .input-content[b-slmr3s8spi] {
     display: flex;
     flex-direction: column;
     text-align: left;
-    gap: 0.5rem;
-    position: relative;
     width: 100%;
-    /* Garante largura total */
 }
 
-.registration .select-content h3[b-slmr3s8spi] {
-    color: var(--color-primary-text-2);
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0;
-}
-
-/* --- Estilo das Labels --- */
 .registration label[b-slmr3s8spi] {
     color: var(--color-primary-text-1);
     font-size: 0.95rem;
-    /* Levemente menor para elegância */
-    padding-left: 0.2rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
     cursor: pointer;
 }
 
-.registration .input:focus+label[b-slmr3s8spi],
-.registration .input:focus-within+label[b-slmr3s8spi] {
-    color: var(--color-gold-3);
-    transform: translateX(2px);
-}
-
-/* --- INPUTS GERAIS --- */
-/* Adicionado seletor genérico para input e textarea */
+/* Estilo unificado dos Inputs */
 .registration .input[b-slmr3s8spi] {
     width: 100%;
-    /* Garante que o input preencha o wrapper */
-    box-sizing: border-box;
-    /* Evita que padding aumente a largura */
+    padding: 0.8rem 1rem;
+    background-color: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-secundary-border-2);
+    border-radius: 8px;
+    color: var(--color-primary-text-1);
     font-size: 1rem;
-    /* CRUCIAL: 16px evita zoom automático no iOS */
+    transition: all 0.3s ease;
 }
 
-/* --- Estilo Específico para o Text Area --- */
 .registration textarea.input[b-slmr3s8spi] {
     min-height: 120px;
-    /* Reduzi levemente para mobile */
-    max-height: 300px;
-    /* Limite máximo */
     resize: vertical;
-    font-family: inherit;
-    line-height: 1.6;
 }
 
-/* ================================
-   3. TRANSIÇÕES E EFEITOS (INPUTS)
-   ================================ */
-
+/* Foco e Estados */
 .registration .input:focus[b-slmr3s8spi] {
     outline: none;
     border-color: var(--color-gold-3);
-    box-shadow: 0 0 0 4px var(--color-secundary-translucent-3);
+    box-shadow: 0 0 0 3px var(--color-secundary-translucent-3);
+    background-color: var(--color-primary-translucent-2);
 }
 
-.registration .input[b-slmr3s8spi] {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-/* Estados de Validação */
 .registration .input.invalid[b-slmr3s8spi] {
     border-color: var(--color-red-2);
-}
-
-.registration .input.invalid:focus[b-slmr3s8spi] {
-    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
 }
 
 .registration .input.valid.modified[b-slmr3s8spi] {
     border-color: var(--color-green-2);
 }
 
-.registration .input.valid.modified:focus[b-slmr3s8spi] {
-    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+.validation-message[b-slmr3s8spi] {
+    color: var(--color-red-2);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
 }
 
-/* ================================
-   4. BOTÃO DE ENVIO
-   ================================ */
-
+/* Botão de Envio */
 .registration button[type="submit"][b-slmr3s8spi] {
     width: 100%;
-    /* Botão largura total fica melhor em formulários */
-    max-width: 300px;
-    /* Mas com um limite para não ficar feio em Desktop */
+    max-width: 350px;
     align-self: center;
-    /* Centraliza o botão se tiver max-width */
-
     padding: 1rem 2rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     background-color: var(--color-blue-2);
-    color: var(--color-black-1);
+    color: white;
+    /* Texto branco fica melhor no botão azul */
     border: none;
     border-radius: 10px;
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-2);
     transition: all 0.3s ease;
 }
 
 .registration button[type="submit"]:hover[b-slmr3s8spi] {
-    background-color: var(--color-blue-3);
+    background-color: var(--color-blue-1);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-1);
 }
 
-.registration button[type="submit"]:active[b-slmr3s8spi] {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: var(--color-gold-3);
+/* ============================================================
+   3. CHECKBOXES (DISCIPLINAS)
+   ============================================================ */
+
+.registration .section-block[b-slmr3s8spi] {
+    margin-top: 2rem;
+    text-align: left;
+    border-top: 1px solid var(--color-secundary-border-2);
+    padding-top: 1.5rem;
 }
 
-/* ================================
-   5. RESPONSIVIDADE (MOBILE & TABLET) 📱
-   ================================ */
+.section-block h3[b-slmr3s8spi] {
+    color: var(--color-primary-text-1);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.registration .disciplines-list[b-slmr3s8spi] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.registration .checkbox-item[b-slmr3s8spi] {
+    background: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-secundary-border-2);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.registration .checkbox-item label[b-slmr3s8spi] {
+    margin: 0;
+}
+
+/* ============================================================
+   4. CARDS DE PLANOS (SUBSCRIPTIONS) - REFEITO
+   ============================================================ */
+
+/* Estilo para o card destacado */
+.card.highlight[b-slmr3s8spi] {
+    transform: scale(1.02);
+    position: relative;
+    /* Necessário para posicionar o badge */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do selo "Recomendado" */
+.badge[b-slmr3s8spi] {
+    position: absolute;
+    top: -3px;
+    right: 20px;
+    background-color: var(--color-gold-2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+/* Título do Plano */
+.plan-name[b-slmr3s8spi] {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-primary-text-1);
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Preços */
+.price-container[b-slmr3s8spi] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.fake-price[b-slmr3s8spi] {
+    font-size: 0.9rem;
+    color: var(--color-primary-text-2);
+    /* Cor mais apagada */
+    text-decoration: line-through;
+}
+
+.real-price[b-slmr3s8spi] {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-green-2);
+    /* Destaque em azul */
+}
+
+.period[b-slmr3s8spi] {
+    font-size: 0.8rem;
+    color: var(--color-primary-text-2);
+}
+
+/* Descrição e Lista */
+.plan-description[b-slmr3s8spi] {
+    font-size: 0.9rem;
+    color: var(--color-primary-text-1);
+    font-style: italic;
+}
+
+.divider[b-slmr3s8spi] {
+    height: 1px;
+    background-color: var(--color-secundary-border-2);
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.features-list[b-slmr3s8spi] {
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--color-primary-text-1);
+}
+
+.features-list li[b-slmr3s8spi] {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.check-icon[b-slmr3s8spi] {
+    color: var(--color-green-2);
+    font-weight: bold;
+    margin-right: 8px;
+    min-width: 15px;
+}
+
+/* ============================================================
+   5. RESPONSIVIDADE
+   ============================================================ */
 
 @media (max-width: 768px) {
     .registration .container[b-slmr3s8spi] {
-        /* MUDANÇA CRÍTICA:
-           Em mobile, removemos o 'center' vertical. 
-           Isso permite que o topo do formulário não seja cortado 
-           se o conteúdo for maior que a tela (ex: teclado aberto).
-        */
         display: block;
         height: auto;
-        min-height: 100dvh;
         padding: 1rem;
     }
 
     .registration .content[b-slmr3s8spi] {
-        /* Margem superior para não colar no topo */
         margin-top: 2rem;
-        margin-bottom: 2rem;
-
         padding: 1.5rem 1rem;
-        /* Padding lateral menor */
         box-shadow: none;
-        /* Remove sombra pesada para performance/visual limpo */
-        border: 1px solid var(--color-secundary-border-1);
     }
 
     .registration .title[b-slmr3s8spi] {
-        font-size: 1.75rem;
-    }
-
-    .registration button[type="submit"][b-slmr3s8spi] {
-        max-width: 100%;
-        /* Botão full width no mobile facilita o toque */
-    }
-}
-
-/* Telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 380px) {
-    .registration .content[b-slmr3s8spi] {
-        padding: 1.2rem 0.8rem;
-        margin-top: 1rem;
-    }
-
-    .registration .title[b-slmr3s8spi] {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 }

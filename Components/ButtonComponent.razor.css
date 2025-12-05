@@ -8,6 +8,7 @@
     /* Flex é melhor que inline-flex p/ largura 100% */
     justify-content: center;
     align-items: center;
+    justify-self: center;
 
     width: 100%;
     /* Ocupa largura total no mobile */
@@ -33,7 +34,7 @@
     /* Tipografia */
     color: var(--color-primary-text-1);
     /* Simplifiquei o clamp: mínimo 15px, responsivo, máximo 18px */
-    font-size: clamp(0.9375rem, 4vw, 1.125rem);
+    font-size: clamp(0.9375rem, 4vw, 1rem);
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;

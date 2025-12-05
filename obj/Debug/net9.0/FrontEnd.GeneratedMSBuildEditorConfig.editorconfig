@@ -24,6 +24,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Layout/ScrollToTop.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcU2Nyb2xsVG9Ub3AucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -71,3 +75,7 @@ build_metadata.AdditionalFiles.CssScope = b-swpeewdqbl
 [C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/Registration.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3RyYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-slmr3s8spi
+
+[C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/SubscriptionPlans.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdWJzY3JpcHRpb25QbGFucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-3u3s2x4w05

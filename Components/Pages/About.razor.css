@@ -149,9 +149,12 @@ li,
 .grid {
     display: grid;
     gap: 1.5rem;
-    /* CORREÇÃO: 280px garante que cabe em telas iPhone 5/SE/Fold */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     width: 100%;
+}
+
+.howItWorks .grid {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /* ================================

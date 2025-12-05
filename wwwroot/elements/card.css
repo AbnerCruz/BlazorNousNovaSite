@@ -59,20 +59,20 @@
        Isso faz o conteúdo de texto crescer e ocupar o espaço vazio,
        empurrando o botão (CTA) sempre para o rodapé do card.
     */
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    justify-self: center;
     /* Alinha texto no topo */
 }
 
 .card-title {
     color: var(--color-gold-3);
-    /* Clamp torna o tamanho da fonte fluido entre 1.25rem e 1.5rem */
     font-size: clamp(1.25rem, 4vw, 1.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     transition: color 0.3s ease;
+    text-align: center;
 }
 
 /* Texto do corpo do card */
@@ -90,6 +90,7 @@
 .card-cta {
     /* Impede que o botão fique muito largo em telas grandes, se desejar */
     align-self: center;
+    background-color: var(--color-gold-1);
 
     color: var(--color-gold-2);
     font-weight: 600;
@@ -105,6 +106,15 @@
 
     /* Garante que o texto não quebre em telas minúsculas */
     white-space: nowrap;
+}
+
+.card input[type="radio"] {
+    display: none;
+}
+
+.card:has(input:checked) {
+    border: 2px solid var(--color-green-2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ================================

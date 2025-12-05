@@ -1,0 +1,70 @@
+@using SchoolData.Disciplines
+@page "/subscription"
+
+<section class="plans-section">
+    <div class="container">
+        <div class="header-content">
+            <h2 class="section-title">Investimento no Intelecto</h2>
+            <p class="section-subtitle">Escolha o nível de profundidade e acompanhamento adequado à sua ambição.</p>
+        </div>
+
+        <div class="plans-grid">
+            @foreach (var plan in plans)
+            {
+                <div class="plan-card @(plan.Name == "Pleno" ? "highlight" : "")">
+
+                    @if (plan.Name == "Pleno")
+                    {
+                        <div class="badge">Recomendado</div>
+                    }
+
+                    <div class="plan-header">
+                        <h3 class="plan-name">@plan.Name</h3>
+                        <p class="plan-desc">@plan.Description</p>
+                    </div>
+
+                    <div class="plan-pricing">
+                        <span class="currency">R$</span>
+                        <span class="price">@plan.Price.ToString("N2")</span>
+                        <span class="period">/mês</span>
+
+                        @if (plan.FakePrice > plan.Price)
+                        {
+                            var discount = Math.Round((1 - (plan.Price / plan.FakePrice)) * 100);
+
+                            <div class="fake-price-container">
+                                <div class="fake-price">
+                                    De <span class="strike">R$ @plan.FakePrice.ToString("N2")</span>
+                                </div>
+                                
+                                @if(discount > 0)
+                                {
+                                    <span class="discount-pill">
+                                        @discount% OFF
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <ul class="features-list">
+                        @foreach (var feature in plan.Features)
+                        {
+                            <li>
+                                <span class="icon-check">✦</span>
+                                <span class="feature-text">@feature</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+        <CtaComponent ImageUrl="images/RegistrationCtaImage.png" />
+    </div>
+</section>
+
+@code {
+    private List<PlanDetail> plans = SubscriptionPlanRepository.GetPlans();
+}

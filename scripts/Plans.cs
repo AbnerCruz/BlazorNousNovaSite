@@ -9,13 +9,14 @@ public class PlanDetail
     public decimal FakePrice { get; set; } = 0;
     public string Description { get; set; } = "no description";
     public List<string> Features { get; set; } = new();
+    public bool isSelected;
 }
 
-public class SubscriptionPlanRepository
+public static class SubscriptionPlanRepository
 {
-    private readonly decimal _basePrice = 29.90m;
+    private static readonly decimal _basePrice = 29.90m;
 
-    public List<PlanDetail> GetPlans()
+    public static List<PlanDetail> GetPlans()
     {
         return new List<PlanDetail>()
         {
@@ -23,7 +24,7 @@ public class SubscriptionPlanRepository
             {
                 Name = "Ouvinte",
                 Price = _basePrice * 5,
-                FakePrice = (_basePrice * 5) / 0.8m,
+                FakePrice = (_basePrice * 5) / 0.95m,
                 Description = "Acesso intelectual completo. Ideal para autodidatas disciplinados ou estudantes de outras cidades.",
                 Features = new()
                 {
@@ -37,8 +38,8 @@ public class SubscriptionPlanRepository
             new()
             {
                 Name = "Membro",
-                Price = _basePrice * 10,
-                FakePrice = (_basePrice * 10) / 0.85m,
+                Price = _basePrice * 8,
+                FakePrice = (_basePrice * 8) / 0.90m,
                 Description = "Imersão no ambiente. Para quem precisa da estrutura física e do convívio acadêmico.",
                 Features = new()
                 {
@@ -51,8 +52,8 @@ public class SubscriptionPlanRepository
             new()
             {
                 Name = "Pleno",
-                Price = _basePrice * 15,
-                FakePrice = (_basePrice * 15) / 0.9m,
+                Price = _basePrice * 10,
+                FakePrice = (_basePrice * 10) / 0.75m,
                 Description = "Alta performance. Focado em métricas, competição saudável e eliminação de lacunas.",
                 Features = new()
                 {
@@ -65,8 +66,8 @@ public class SubscriptionPlanRepository
             new()
             {
                 Name = "Elite",
-                Price = _basePrice * 20,
-                FakePrice = (_basePrice * 20) / 0.9m,
+                Price = _basePrice * 15,
+                FakePrice = (_basePrice * 15) / 0.80m,
                 Description = "Acompanhamento cirúrgico individual. O caminho mais rápido e seguro para objetivos de elite.",
                 Features = new()
                 {

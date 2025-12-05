@@ -1,0 +1,257 @@
+/* =========================================
+   Estrutura da Seção
+   ========================================= */
+.plans-section {
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.section-title {
+    color: var(--color-gold-2);
+    /* Dourado da marca */
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: serif;
+    /* Sugestão para ar mais acadêmico */
+}
+
+.section-subtitle {
+    color: var(--color-primary-text-2);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   Grid de Planos
+   ========================================= */
+.plans-grid {
+    display: grid;
+    /* Adaptação para mobile e desktop similar ao seu .grid */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    align-items: stretch;
+}
+
+/* =========================================
+   Card do Plano
+   ========================================= */
+.plan-card {
+    background-color: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-primary-border-1);
+    border-radius: var(--border-1);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    /* Efeito Vidro */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-1);
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover Effect */
+.plan-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-gold-2);
+    box-shadow: var(--shadow-2);
+}
+
+/* Destaque para o plano 'Pleno' */
+.plan-card.highlight {
+    border: 1px solid var(--color-gold-2);
+    background-color: var(--color-primary-translucent-2);
+    box-shadow: 0 0 15px rgba(191, 160, 63, 0.15);
+    /* Glow dourado suave */
+}
+
+/* Badge 'Recomendado' */
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-gold-2);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   Tipografia e Conteúdo
+   ========================================= */
+.plan-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.plan-name {
+    color: var(--color-primary-text-1);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.plan-desc {
+    color: var(--color-primary-text-2);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    min-height: 2.5em;
+    /* Mantém alinhamento mesmo com descrições curtas */
+}
+
+/* Preço */
+.plan-pricing {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.currency {
+    color: var(--color-primary-text-2);
+    font-size: 1rem;
+    vertical-align: top;
+}
+
+.price {
+    color: var(--color-gold-3);
+    /* Dourado mais claro para o preço */
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.period {
+    color: var(--color-primary-text-3);
+    /* Texto mais apagado */
+    font-size: 0.9rem;
+}
+.fake-price-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+.fake-price {
+    margin-top: 0;
+    font-size: 0.95rem;
+    color: var(--color-primary-text-2);
+    opacity: 0.8;
+}
+
+.discount-pill {
+    background-color: rgba(191, 160, 63, 0.15);
+    color: var(--color-gold-2);
+    border: 1px solid var(--color-gold-2);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 5px rgba(191, 160, 63, 0.1);
+}
+
+.strike {
+    text-decoration: line-through;
+    color: var(--color-red-3);
+    /* Um toque sutil de vermelho desbotado ou cinza */
+}
+
+/* Divisor */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold-1), transparent);
+    margin-bottom: 2rem;
+    opacity: 0.3;
+}
+
+/* Lista de Features */
+.features-list {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+    /* Empurra o botão para o fundo */
+}
+
+.features-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    color: var(--color-primary-text-1);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.card:hover .discount-pill {
+    background-color: var(--color-gold-2);
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.icon-check {
+    color: var(--color-gold-2);
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+/* =========================================
+   Botões
+   ========================================= */
+.plan-footer {
+    margin-top: auto;
+    text-align: center;
+}
+
+/* Botão Gold (Destaque) */
+.btn-gold {
+    background-color: var(--color-gold-2);
+    color: var(--color-black-1);
+    border: 1px solid var(--color-gold-2);
+}
+
+.btn-gold:hover {
+    background-color: var(--color-gold-3);
+    box-shadow: 0 0 15px rgba(191, 160, 63, 0.4);
+}
+
+/* Botão Outline (Padrão) */
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-gold-2);
+    border: 1px solid var(--color-gold-2);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-gold-2);
+    color: var(--color-black-1);
+}
+
+/* =========================================
+   Responsividade
+   ========================================= */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .plan-card {
+        padding: 2rem 1.5rem;
+    }
+}
