@@ -1,5 +1,7 @@
 @page "/disciplines/{DisciplineLabel}"
 @using SchoolData
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
 
 <PageTitle>@discipline?.Name</PageTitle>
 
@@ -7,14 +9,8 @@
     @if (discipline != null)
     {
         <section>
-            <CtaComponent 
-                Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em olimpíadas e vestibulares.")
-                ButtonText="Matrícula" 
-                ButtonHref="/ciclo-avancado" 
-                ButtonColor="bggreen-2" 
-                ImageUrl="images/CtaImage.png" 
-                Price="@discipline.Price"
-            />
+            <CtaComponent Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a            capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em   olimpíadas e vestibulares.") ButtonText="Matrícula" ButtonHref="/ciclo-avancado" ButtonColor="bggreen-2"
+                ImageUrl="images/CtaImage.png" Price="@discipline.Price" />
         </section>
         @foreach (var content in discipline.Sections ?? new Dictionary<string, object>())
         {
@@ -51,14 +47,8 @@
             </section>
         }
         <section>
-            <CtaComponent 
-                Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em olimpíadas e vestibulares.")
-                ButtonText="Matrícula" 
-                ButtonHref="/ciclo-avancado" 
-                ButtonColor="bggreen-2" 
-                ImageUrl="images/CtaImage.png" 
-                Price="@discipline.Price"
-            />
+            <CtaComponent Title="Ciclos de Alta Intensidade" Subtitle=@($"Estude {@discipline.Name} e desenvolva a        capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em          olimpíadas e vestibulares.") ButtonText="Matrícula" ButtonHref="/ciclo-avancado" ButtonColor="bggreen-2"
+                ImageUrl="images/CtaImage.png" Price="@discipline.Price" />
         </section>
 
     }
@@ -78,5 +68,23 @@
     protected override void OnInitialized()
     {
         discipline = disciplineData.Disciplines.FirstOrDefault(d => d.Label == DisciplineLabel);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("renderMath");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao renderizar MathJax: {ex.Message}");
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        discipline = disciplineData.Disciplines.FirstOrDefault(d => d.Label == DisciplineLabel);
+        await base.OnParametersSetAsync();
     }
 }

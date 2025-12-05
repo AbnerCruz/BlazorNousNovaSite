@@ -19,397 +19,527 @@ public class DisciplineMath : Discipline
     {
         return new List<Course>
         {
-            // ---------------------------------------------------------
-            // DOMÍNIO A: LÓGICA, FUNDAMENTOS E MATEMÁTICA
-            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Domínio A - Lógica, Fundamentos e Matemática",
+                Name = "Matemática I",
+                // Estimativa Total: ~7 Meses
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Nível I: Alfabetização Lógica",
-                        Duration = "Semestral",
+                        Name = "Sistemas de Numeração e Bases",
+                        Duration = "3 Semanas", // Conceito de base não é trivial para iniciantes
                         Contents = new()
                         {
-                            "Lógica Proposicional Básica (Conectivos, Tabelas-Verdade).",
-                            "Teoria Ingênua dos Conjuntos (Pertinência, Inclusão).",
-                            "Estrutura dos Naturais (N) e Indução Informal."
+                            "Decomposição polinomial de um número",
+                            "Conversão de bases: Decimal - Binário",
+                            "Introdução ao Hexadecimal: relação com o binário",
+                            "Operações básicas diretamente na base 2"
                         }
                     },
                     new()
                     {
-                        Name = "Nível II: Formalismo e Demonstração",
-                        Duration = "Semestral",
+                        Name = "Algoritmos de Aritmética Mental",
+                        Duration = "4 Semanas", // Exige prática repetitiva para fixar
                         Contents = new()
                         {
-                            "Lógica de Predicados (Quantificadores: Para todo, Existe).",
-                            "O Método Axiomático e Regras de Inferência.",
-                            "Relações Binárias (Ordem, Equivalência)."
+                            "Matemática Védica",
+                            "Multiplicação verticalmente e cruzada para 2 digitos",
+                            "Quadrados de números terminados em 5 e próximos a 50",
+                            "Estimativa de Fermi: ordens de grandeza e aproximação rápida"
                         }
                     },
                     new()
                     {
-                        Name = "Nível III: Mapeamentos e Funções (Set-Theoretic)",
-                        Duration = "Semestral",
+                        Name = "Aritmética Estrutural",
+                        Duration = "4 Semanas", // O aluno precisa aprender a provar o óbvio
                         Contents = new()
                         {
-                            "Definição Formal de Função (Domínio, Contradomínio, Imagem).",
-                            "Injetividade, Sobrejetividade e Bijetividade.",
-                            "Famílias de Conjuntos."
+                            "Propriedades axiomáticas das operações",
+                            "Algoritmo da divisão euclidiana",
+                            "Divisibilidade simples: múltiplos, divisores",
+                            "Propriedade fundamental da divisão"
                         }
                     },
                     new()
                     {
-                        Name = "Nível IV: Infinito e Cardinalidade",
-                        Duration = "Semestral",
+                        Name = "Lógica Formal e Conjuntos",
+                        Duration = "5 Semanas", // Lógica Booleana é uma linguagem nova
                         Contents = new()
                         {
-                            "Equipotência e Contabilidade.",
-                            "Aritmética dos Cardinais (Cantor).",
-                            "Hierarquia do Infinito (Alephs)."
+                            "Lógica Booleana: Conectivos e Tabelas-verdade",
+                            "Axiomas de Conjuntos: Pertinência e inclusão",
+                            "Álgebra de Conjuntos (Diagramas de Venn)",
+                            "Conjunto das Partes e Cardinalidade",
+                            "Classificação dos Conjuntos Numéricos"
                         }
                     },
                     new()
                     {
-                        Name = "Nível V: Metamatemática e Sistemas Formais",
-                        Duration = "Semestral",
+                        Name = "Geometria Euclidiana: Fundamentos",
+                        Duration = "4 Semanas",
                         Contents = new()
                         {
-                            "Fundamentos Axiomáticos (ZFC - Zermelo-Fraenkel com Escolha).",
-                            "Consistência e Completude.",
-                            "Limites da Lógica (Teoremas de Gödel - Introdução Conceitual)."
+                            "Polígonos: Classificação e Propriedades",
+                            "Perímetro e contorno",
+                            "Área de triângulo e quadriláteros básicos",
+                            "Análise dimensional e conversão de unidades",
+                            "Teorema da Semelhança"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Geometria Posicional e Tesselações",
+                        Duration = "3 Semanas",
+                        Contents = new()
+                        {
+                            "Plano Cartesiano $\\mathbb{R}^2$: Pontos e métricas",
+                            "Isometrias: Simetria Axial e Radial",
+                            "Tesselações e o recobrimento do plano"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Lógica de Programação e Algoritmos",
+                        Duration = "4 Semanas", // Essencial gastar tempo aqui para facilitar Mat V
+                        Contents = new()
+                        {
+                            "Reconhecimento de Padrões: PA e PG visuais",
+                            "Fluxogramas: Estruturas de Controle",
+                            "Pseudocódigo: Condicionais (Se, então, senão)"
                         }
                     }
                 }
             },
 
-            // ---------------------------------------------------------
-            // DOMÍNIO B: ÁLGEBRA E TEORIA DOS NÚMEROS
-            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Domínio B - Álgebra e Teoria dos Números",
+                Name = "Matemática II",
+                // Estimativa Total: ~8 Meses
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Nível I: Aritmética Operacional",
-                        Duration = "Semestral",
+                        Name = "Teoria Elementar dos Números",
+                        Duration = "4 Semanas",
                         Contents = new()
                         {
-                            "O Sistema Decimal Posicional.",
-                            "Algoritmos das Operações em N.",
-                            "Expressões Numéricas e Ordem de Operações."
+                            "Crivo de Eratóstenes e a primalidade",
+                            "Teorema Fundamental da Aritmética",
+                            "Algoritmo de Euclides para MDC",
+                            "Relação Fundamental entre MMC e MDC"
                         }
                     },
                     new()
                     {
-                        Name = "Nível II: O Anel dos Inteiros (Z)",
-                        Duration = "Semestral",
+                        Name = "O Corpo dos Racionais $\\mathbb{Q}$",
+                        Duration = "3 Semanas",
                         Contents = new()
                         {
-                            "Números Negativos e a Reta Inteira.",
-                            "Divisibilidade (MDC, MMC, Algoritmo de Euclides).",
-                            "Teorema Fundamental da Aritmética (Primos)."
+                            "Fração como classe de equivalência e operador",
+                            "Fração Geratriz e expansão decimal",
+                            "Densidade dos Racionais na reta real"
                         }
                     },
                     new()
                     {
-                        Name = "Nível III: O Corpo dos Racionais (Q)",
-                        Duration = "Semestral",
+                        Name = "Análise Combinatória I",
+                        Duration = "5 Semanas", // Combinatória é difícil de intuir, precisa de tempo
                         Contents = new()
                         {
-                            "Frações como Classes de Equivalência.",
-                            "Dízimas e Expansão Decimal.",
-                            "Potenciação e Radiciação em R."
+                            "Árvore de Decisão e Princípio Fundamental da Contagem",
+                            "Permutações e Fatorial",
+                            "Arranjos e Combinações Simples",
+                            "Introdução a Grafos: 4 Cores e Dijkstra"
                         }
                     },
                     new()
                     {
-                        Name = "Nível IV: Polinômios e Estruturas Algébricas",
-                        Duration = "Semestral",
+                        Name = "Geometria Euclidiana: Dedutiva",
+                        Duration = "5 Semanas", // Foco em demonstração formal
                         Contents = new()
                         {
-                            "O Anel de Polinômios R[x].",
-                            "Fatoração e Produtos Notáveis.",
-                            "Desigualdades Clássicas (Médias, Cauchy-Schwarz)."
+                            "Ângulos e Transversalidade",
+                            "Postulado das Paralelas",
+                            "Soma dos ângulos internos (Polígonos convexos)",
+                            "Desigualdade Triangular",
+                            "Axiomas de Congruência de Triângulos"
                         }
                     },
                     new()
                     {
-                        Name = "Nível V: Álgebra Superior e Complexos",
-                        Duration = "Semestral",
+                        Name = "Fundamentos da Álgebra",
+                        Duration = "6 Semanas", // O ponto crítico onde muitos desistem. Precisa ser lento.
                         Contents = new()
                         {
-                            "O Corpo dos Complexos (C) - Forma Algébrica e Polar.",
-                            "Introdução a Grupos, Anéis e Corpos.",
-                            "Teorema Fundamental da Álgebra."
+                            "Abstração Algébrica",
+                            "Propriedade distributiva e fatoração primária",
+                            "Resolução de Equações Lineares",
+                            "Modelagem de problemas reais",
+                            "Equações Quadráticas: Bhaskara e Discriminante"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Linguagem Algébrica e Paridade",
+                        Duration = "2 Semanas",
+                        Contents = new()
+                        {
+                            "Variável vs. Incógnita vs. Parâmetro",
+                            "Tradução de linguagem natural para algébrica",
+                            "Demonstrações de Paridade (Pares e Ímpares)"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Introdução às Funções Reais",
+                        Duration = "4 Semanas",
+                        Contents = new()
+                        {
+                            "Função Afim e Linearidade",
+                            "Geometria Analítica da Reta (Introdutória)",
+                            "Sistemas Lineares 2x2: Visão Geométrica",
+                            "Função Quadrática: Parábola e Vértice"
                         }
                     }
                 }
             },
 
-            // ---------------------------------------------------------
-            // DOMÍNIO C: GEOMETRIA E ÁLGEBRA LINEAR
-            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Domínio C - Geometria e Álgebra Linear",
+                Name = "Matemática III",
+                // Estimativa Total: ~9 Meses (Conteúdo denso)
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Nível I: Geometria Intuitiva e Topológica",
-                        Duration = "Semestral",
+                        Name = "Sistemas Lineares e Matrizes",
+                        Duration = "5 Semanas",
                         Contents = new()
                         {
-                            "Entes Primitivos (Ponto, Reta, Plano).",
-                            "Ângulos e Polígonos Convexos.",
-                            "Noções de Topologia (Interior, Fronteira, Exterior)."
+                            "Métodos de resolução analíticos",
+                            "Discussão de Sistemas (SPD, SPI, SI)",
+                            "Álgebra Matricial e Determinantes",
+                            "Método de Escalonamento (Gauss)"
                         }
                     },
                     new()
                     {
-                        Name = "Nível II: Geometria Euclidiana Plana",
-                        Duration = "Semestral",
+                        Name = "Teoria dos Polinômios I",
+                        Duration = "4 Semanas",
                         Contents = new()
                         {
-                            "Congruência de Triângulos e Teorema de Tales.",
-                            "Semelhança e Relações Métricas.",
-                            "Área e Círculo."
+                            "Definição formal e Grau",
+                            "Algoritmo da Divisão Polinomial",
+                            "Raízes, Zeros e Multiplicidade",
+                            "Comportamento gráfico local"
                         }
                     },
                     new()
                     {
-                        Name = "Nível III: Geometria Analítica (Plano R2)",
-                        Duration = "Semestral",
+                        Name = "Identidades Algébricas e Séries",
+                        Duration = "5 Semanas", // Binômio de Newton é complexo
                         Contents = new()
                         {
-                            "Sistema Cartesiano e Distância.",
-                            "Estudo da Reta e Circunferência.",
-                            "Vetores no Plano (Operações Geométricas)."
+                            "Operadores de Somatório ($\\Sigma$) e Produtório ($\\Pi$)",
+                            "Teorema do Binômio de Newton",
+                            "Triângulo de Pascal e Combinatória",
+                            "Identidades de Sophie Germain e Lagrange",
+                            "Técnica de Completar Quadrados"
                         }
                     },
                     new()
                     {
-                        Name = "Nível IV: Matrizes e Transformações",
-                        Duration = "Semestral",
+                        Name = "Teoria da Probabilidade",
+                        Duration = "4 Semanas",
                         Contents = new()
                         {
-                            "Álgebra Matricial e Determinantes.",
-                            "Sistemas Lineares.",
-                            "Cônicas (Elipse, Hipérbole, Parábola)."
+                            "Espaço Amostral e Axiomas de Kolmogorov (Intro)",
+                            "Probabilidade de Laplace",
+                            "Eventos Independentes e Condicionais",
+                            "Teorema de Bayes"
                         }
                     },
                     new()
                     {
-                        Name = "Nível V: Espaço (R3) e Vetores",
-                        Duration = "Semestral",
+                        Name = "Desigualdades Analíticas",
+                        Duration = "3 Semanas",
                         Contents = new()
                         {
-                            "Geometria de Posição Espacial (Poliedros).",
-                            "Volumes e Sólidos de Revolução.",
-                            "Produto Escalar e Vetorial no Espaço."
+                            "Médias: MA $\\ge$ MG",
+                            "Desigualdade de Bernoulli",
+                            "Desigualdade Triangular (Módulos)"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Trigonometria Geométrica",
+                        Duration = "4 Semanas",
+                        Contents = new()
+                        {
+                            "Razões Trigonométricas no Triângulo Retângulo",
+                            "Relação Fundamental da Trigonometria",
+                            "Lei dos Senos e Cossenos (Antecipado para Geo)",
+                            "Círculo Trigonométrico: Introdução"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Geometria Métrica Avançada",
+                        Duration = "5 Semanas", // Geometria de competição/Olimpíada
+                        Contents = new()
+                        {
+                            "Pontos Notáveis do Triângulo",
+                            "Teorema de Ceva e Menelaus (Trigonométrico)",
+                            "Potência de Ponto",
+                            "Quadriláteros Cíclicos (Brahmagupta)",
+                            "Relações métricas no círculo"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Aritmética Modular",
+                        Duration = "3 Semanas",
+                        Contents = new()
+                        {
+                            "Congruências e Classes de Resto",
+                            "Critérios de Divisibilidade Avançados",
+                            "Pequeno Teorema de Fermat",
+                            "Teorema Chinês do Resto"
                         }
                     }
                 }
             },
 
-            // ---------------------------------------------------------
-            // DOMÍNIO D: ANÁLISE REAL E CÁLCULO
-            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Domínio D - Análise Real e Cálculo",
+                Name = "Matemática IV",
+                // Estimativa Total: ~8 Meses
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Nível I: Fundamentos da Variação",
-                        Duration = "Semestral",
+                        Name = "Teoria Geral das Funções",
+                        Duration = "3 Semanas",
                         Contents = new()
                         {
-                            "Razão, Proporção e Grandezas.",
-                            "Variação Linear e Afim.",
-                            "Modelagem de Fenômenos Simples."
+                            "Formalismo: Domínio, Contradomínio e Imagem",
+                            "Paridade e Simetria de Funções",
+                            "Funções Bijetoras e Inversas",
+                            "Álgebra de Funções e Composição"
                         }
                     },
                     new()
                     {
-                        Name = "Nível II: Anatomia das Funções",
-                        Duration = "Semestral",
+                        Name = "Equações Algébricas",
+                        Duration = "3 Semanas",
                         Contents = new()
                         {
-                            "Definição Rigorosa de Função Real (f: A -> B).",
-                            "Composição e Inversão de Funções.",
-                            "Análise de Gráficos (Crescimento, Paridade)."
+                            "Dispositivo de Briot-Ruffini",
+                            "Teorema do Resto e D'Alembert",
+                            "Relações de Girard (Vieta)",
+                            "Teorema das Raízes Racionais"
                         }
                     },
                     new()
                     {
-                        Name = "Nível III: Funções Elementares",
-                        Duration = "Semestral",
+                        Name = "O Corpo dos Complexos $\\mathbb{C}$",
+                        Duration = "5 Semanas", // Visualizar Euler e raízes da unidade demora
                         Contents = new()
                         {
-                            "Funções Quadráticas e Modulares.",
-                            "Trigonometria no Ciclo (Funções Circulares).",
-                            "Identidades Trigonométricas."
+                            "Unidade imaginária $i$",
+                            "Forma Polar e Argumento Principal",
+                            "Fórmula de Euler ($e^{i\\theta}$)",
+                            "Teorema de De Moivre",
+                            "Raízes da Unidade e Polígonos Regulares"
                         }
                     },
                     new()
                     {
-                        Name = "Nível IV: Transcendentes e Limites",
-                        Duration = "Semestral",
+                        Name = "Funções Trigonométricas Reais",
+                        Duration = "4 Semanas",
                         Contents = new()
                         {
-                            "Exponenciais e Logaritmos.",
-                            "Sequências e Séries Numéricas.",
-                            "Limites e Continuidade (Definição epsilon-delta)."
+                            "Domínio, Imagem e Periodicidade",
+                            "Gráficos das Funções Circulares",
+                            "Transformações: Amplitude e Fase",
+                            "Identidades Trigonométricas Fundamentais"
                         }
                     },
                     new()
                     {
-                        Name = "Nível V: Cálculo Infinitesimal",
-                        Duration = "Semestral",
+                        Name = "Trigonometria Analítica",
+                        Duration = "4 Semanas", // Manipulação algébrica pesada
                         Contents = new()
                         {
-                            "A Derivada (Taxa de variação e Reta Tangente).",
-                            "A Integral (Área e Teorema Fundamental do Cálculo).",
-                            "Equações Diferenciais Ordinárias (Intro)."
+                            "Redução ao 1º Quadrante",
+                            "Transformações de Arcos (Soma/Diferença)",
+                            "Prostaférese (Fatoração Trigonométrica)",
+                            "Funções Trigonométricas Inversas (Arcsen, Arccos)"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Funções Transcendentes e Assíntotas",
+                        Duration = "5 Semanas", // Base vital para o Cálculo
+                        Contents = new()
+                        {
+                            "Exponenciais e Logaritmos Naturais",
+                            "Propriedades Operatórias",
+                            "Transformações de Gráficos",
+                            "Limites no Infinito e Assíntotas (Intuição)",
+                            "Taxas de Crescimento"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Vetores e Geometria Analítica",
+                        Duration = "4 Semanas",
+                        Contents = new()
+                        {
+                            "Álgebra Vetorial no $\\mathbb{R}^2$",
+                            "Produto Escalar e Projeções",
+                            "Equações da Reta (Vetorial, Paramétrica, Geral)",
+                            "Distância Ponto-Reta"
                         }
                     }
                 }
             },
 
-            // ---------------------------------------------------------
-            // DOMÍNIO E: MATEMÁTICA DISCRETA (COMBINATÓRIA)
-            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Domínio E - Matemática Discreta (Combinatória)",
+                Name = "Matemática V",
+                // Estimativa Total: ~8 Meses (Cálculo I sério)
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Nível I: Lógica de Contagem",
-                        Duration = "Semestral",
+                        Name = "Limites e Continuidade",
+                        Duration = "6 Semanas", // Epsilon-Delta é o maior filtro do cálculo
                         Contents = new()
                         {
-                            "Listagem Sistemática e Árvore de Possibilidades.",
-                            "O Princípio Aditivo.",
-                            "Padrões Numéricos Discretos."
+                            "Definição Formal $\\epsilon-\\delta$",
+                            "Propriedades dos Limites",
+                            "Limites Fundamentais",
+                            "Continuidade e Teorema do Valor Intermediário"
                         }
                     },
                     new()
                     {
-                        Name = "Nível II: Princípios Multiplicativos",
-                        Duration = "Semestral",
+                        Name = "Cálculo Diferencial",
+                        Duration = "5 Semanas",
                         Contents = new()
                         {
-                            "O Princípio Fundamental da Contagem (PFC).",
-                            "Fatorial e Permutações Simples.",
-                            "Arranjos Simples."
+                            "Interpretação Geométrica e Física",
+                            "Regras de Derivação (Cadeia, Produto)",
+                            "Derivação Implícita",
+                            "Diferenciabilidade"
                         }
                     },
                     new()
                     {
-                        Name = "Nível III: Estruturas Combinatórias",
-                        Duration = "Semestral",
+                        Name = "Cálculo Vetorial Diferencial",
+                        Duration = "3 Semanas",
                         Contents = new()
                         {
-                            "Combinação Simples e o Triângulo de Pascal.",
-                            "Permutação com Repetição.",
-                            "Binômio de Newton."
+                            "Curvas Paramétricas Planas",
+                            "Vetores Tangentes e Velocidade",
+                            "Introdução a Campos Vetoriais",
+                            "Curvatura (Intro)"
                         }
                     },
                     new()
                     {
-                        Name = "Nível IV: Combinatória Avançada",
-                        Duration = "Semestral",
+                        Name = "Análise do Comportamento de Funções",
+                        Duration = "4 Semanas",
                         Contents = new()
                         {
-                            "Princípio da Casa dos Pombos (Dirichlet).",
-                            "Princípio da Inclusão-Exclusão.",
-                            "Lemas de Kaplansky."
+                            "Teoremas de Fermat, Rolle e Valor Médio",
+                            "Critérios da 1ª e 2ª Derivada",
+                            "Otimização e Taxas Relacionadas",
+                            "Indeterminações e L'Hôpital"
                         }
                     },
                     new()
                     {
-                        Name = "Nível V: Teoria dos Grafos e Algoritmos",
-                        Duration = "Semestral",
+                        Name = "Cálculo Integral",
+                        Duration = "8 Semanas", // Onde a maioria reprova. Precisa de muito treino técnico.
                         Contents = new()
                         {
-                            "Grafos: Vértices, Arestas, Caminhos e Ciclos.",
-                            "Grafos Eulerianos e Hamiltonianos.",
-                            "Árvores e Algoritmos de Busca."
+                            "Integral Indefinida e Primitivas",
+                            "Integral Definida de Riemann",
+                            "Teorema Fundamental do Cálculo",
+                            "Técnicas: Substituição e Partes",
+                            "Integração de Racionais (Frações Parciais)"
+                        }
+                    },
+                    new()
+                    {
+                        Name = "Geometria Analítica Espacial",
+                        Duration = "4 Semanas",
+                        Contents = new()
+                        {
+                            "Vetores no $\\mathbb{R}^3$ e Produto Vetorial",
+                            "Produto Misto e Volumes",
+                            "Planos e Esferas",
+                            "Superfícies Quádricas"
                         }
                     }
                 }
             },
 
-            // ---------------------------------------------------------
-            // DOMÍNIO F: ESTOCÁSTICA (PROBABILIDADE E ESTATÍSTICA)
-            // ---------------------------------------------------------
             new Course()
             {
-                Name = "Domínio F - Estocástica (Probabilidade e Estatística)",
+                Name = "Matemática VI",
+                // Estimativa Total: ~7-8 Meses (Tópicos Avançados)
                 Curriculum = new()
                 {
                     new()
                     {
-                        Name = "Nível I: Tratamento da Informação",
-                        Duration = "Semestral",
+                        Name = "Álgebra Linear Abstrata",
+                        Duration = "8 Semanas", // Fundamental para Data Science e Engenharia moderna
                         Contents = new()
                         {
-                            "Coleta e Organização de Dados Brutos.",
-                            "Tabelas de Frequência (Absoluta e Relativa).",
-                            "Leitura Crítica de Gráficos Básicos."
+                            "Espaços Vetoriais e Subespaços",
+                            "Base, Dimensão e Coordenadas",
+                            "Transformações Lineares",
+                            "Diagonalização e Teorema Espectral"
                         }
                     },
                     new()
                     {
-                        Name = "Nível II: Estatística Descritiva",
-                        Duration = "Semestral",
+                        Name = "Cálculo Multivariável",
+                        Duration = "8 Semanas",
                         Contents = new()
                         {
-                            "Medidas de Tendência Central (Média, Mediana, Moda).",
-                            "Medidas de Dispersão (Amplitude, Variância, Desvio Padrão).",
-                            "Histogramas e Diagramas de Box-Plot."
+                            "Topologia do $\\mathbb{R}^n$ (Curvas de Nível)",
+                            "Derivadas Parciais e Diferencial Total",
+                            "Gradiente e Direcional",
+                            "Integrais Múltiplas e Mudança de Variável (Polar)"
                         }
                     },
                     new()
                     {
-                        Name = "Nível III: Introdução à Incerteza",
-                        Duration = "Semestral",
+                        Name = "Equações Diferenciais Ordinárias",
+                        Duration = "6 Semanas",
                         Contents = new()
                         {
-                            "Experimentos Aleatórios e Espaço Amostral.",
-                            "Definição Clássica de Probabilidade (Laplace).",
-                            "Eventos Complementares e União."
+                            "EDOs de 1ª ordem e Campos de Direção",
+                            "EDOs Lineares de 2ª ordem",
+                            "Osciladores Harmônicos",
+                            "Transformada de Laplace"
                         }
                     },
                     new()
                     {
-                        Name = "Nível IV: Probabilidade Intermediária",
-                        Duration = "Semestral",
+                        Name = "Estruturas Algébricas e Lógica",
+                        Duration = "6 Semanas", // Abstração pura
                         Contents = new()
                         {
-                            "Probabilidade Condicional.",
-                            "Independência de Eventos.",
-                            "Teorema de Bayes e Probabilidade Total."
-                        }
-                    },
-                    new()
-                    {
-                        Name = "Nível V: Variáveis Aleatórias",
-                        Duration = "Semestral",
-                        Contents = new()
-                        {
-                            "Variáveis Discretas e Valor Esperado.",
-                            "A Distribuição Binomial.",
-                            "A Distribuição Normal (Gaussiana)."
+                            "Métodos Formais de Prova (Indução, Contradição)",
+                            "Introdução à Teoria dos Grupos",
+                            "Grupos Cíclicos e Permutações",
+                            "Isomorfismos (Conceito)"
                         }
                     }
                 }
