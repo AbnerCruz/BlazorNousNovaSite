@@ -44,8 +44,8 @@ public static class SubscriptionPlanRepository
                 Features = new()
                 {
                     "Todos os benefícios de Ouvinte",
-                    "Acesso às aulas presenciais (Auditório)",
-                    "Acesso ao CLUBE DE ESTUDOS (Monitoria em grupo)",
+                    "Acesso às aulas presenciais",
+                    "Acesso a monitoria em grupo",
                 }
             },
 

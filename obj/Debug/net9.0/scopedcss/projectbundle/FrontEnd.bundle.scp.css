@@ -18,7 +18,7 @@
     min-height: 48px;
     /* Acessibilidade: tamanho mínimo p/ toque */
 
-    padding: 0.875rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     /* Rem é mais seguro que fixo */
     margin: 0 auto;
     /* Centraliza o bloco */
@@ -58,6 +58,17 @@
         box-shadow 0.3s ease,
         border-color 0.25s ease,
         color 0.25s ease;
+}
+
+.text[b-k08xr1gmrx] {
+    text-align: center;
+    width: 100%;
+    display: block;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ================================
@@ -124,9 +135,6 @@
         max-width: none;
         /* Remove a trava de 320px */
         min-width: 200px;
-        /* Garante uma presença mínima elegante */
-        padding: 1rem 2.5rem;
-        /* Mais ar nas laterais */
     }
 }
 
@@ -922,6 +930,13 @@ li[b-u28ymlant2],
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     width: 100%;
 }
+}
+/* _content/FrontEnd/Components/Pages/Courses.razor.rz.scp.css */
+.card .content[b-e6p3k14bvl]{
+    border: solid 1px var(--color-primary-translucent-2);
+    border-radius: var(--border-1);
+    margin-bottom: 1rem;
+    padding: 1rem;
 }
 /* _content/FrontEnd/Components/Pages/Disciplines.razor.rz.scp.css */
 /* ================================

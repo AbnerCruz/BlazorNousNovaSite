@@ -1,0 +1,86 @@
+@page "/courses/{DisciplineLabel}/{CourseId}/{TopicId}"
+@using SchoolData
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavManager
+
+<PageTitle>@(topic?.Name ?? "Conteúdo") | Nous Nova</PageTitle>
+
+<div class="topic-page-container" style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem;">
+    @if (topic != null)
+    {
+        <header>
+            <ButtonComponent Href=@($"/courses/{DisciplineLabel}/{CourseId}") Text="Voltar" />
+            <h1>@topic.Name</h1>
+        </header>
+
+        <article class="content-body">
+            @((MarkupString)topic.Body)
+        </article>
+    }
+    else
+    {
+        <p>Tópico não encontrado.</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string DisciplineLabel { get; set; } = string.Empty;
+
+    [Parameter]
+    public string CourseId { get; set; } = string.Empty;
+
+    // ALTERADO: Agora recebemos o ID, não o Name
+    [Parameter]
+    public string TopicId { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+    Discipline? discipline;
+    Course? course;
+    Topic? topic;
+
+    protected override void OnInitialized()
+    {
+        // 1. Busca Disciplina (igual)
+        discipline = disciplineData.Disciplines
+        .FirstOrDefault(d => d.Label.Equals(DisciplineLabel, StringComparison.InvariantCultureIgnoreCase));
+
+        if (discipline != null)
+        {
+            // 2. Busca Curso (igual)
+            // Nota: Idealmente Course também deveria usar ID, mas vamos manter Name por enquanto
+            course = discipline.Courses
+            .FirstOrDefault(c => c.Id.Equals(CourseId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (course != null && course.Curriculum != null)
+            {
+                // 3. Busca Tópico PELO ID
+                foreach (var module in course.Curriculum)
+                {
+                    // AQUI ESTÁ A MUDANÇA: Comparamos t.Id com TopicId
+                    var foundTopic = module.Contents
+                    .FirstOrDefault(t => t.Id.Equals(TopicId, StringComparison.InvariantCultureIgnoreCase));
+
+                    if (foundTopic != null)
+                    {
+                        topic = foundTopic;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("renderMath");
+        }
+        catch (Exception ex)
+        {
+            // Ignora erros de JS se o componente estiver sendo destruído
+            Console.WriteLine($"MathJax Warning: {ex.Message}");
+        }
+    }   
+}
