@@ -34,8 +34,10 @@
         };
     </script>
     <script>
-        window.scrollToTop = () => {
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        window.blazorHelpers = {
+            scrollToTop: function () {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }
         };
     </script>
     <ImportMap />
@@ -44,8 +46,7 @@
 
 <body>
     <Routes />
-    <script src="_framework/blazor.web.js"></script>
-    
+    <script src="_framework/blazor.web.js"></script>    
 </body>
 
 </html>
