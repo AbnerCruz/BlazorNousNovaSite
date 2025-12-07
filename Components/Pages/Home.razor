@@ -1,5 +1,10 @@
 ﻿@page "/"
 @using SchoolData
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+
+
+
 
 <PageTitle>Nous Nova | Centro de Estudos</PageTitle>
 
@@ -10,13 +15,10 @@
                 <h1 class="title">@schoolData.SchoolName</h1>
                 <h2 class="sub-title">@schoolData.SchoolSecondName</h2>
 
-                <CtaComponent 
-                    Title="A Nova Elite Intelectual"
+                <CtaComponent Title="A Nova Elite Intelectual"
                     Subtitle="Supere o ensino mediano. Junte-se a um currículo avançado que busca rigor científico absoluto."
-                    ButtonText="Ver Planos"
-                    ButtonHref="/subscription" ButtonColor="bgblue-1" ImageUrl="images/NousNovaLogo.png" Color="text-dark"
-                    Price="0"
-                />
+                    ButtonText="Ver Planos" ButtonHref="/subscription" ButtonColor="bgblue-1"
+                    ImageUrl="images/NousNovaLogo.png" Color="text-dark" Price="0" />
             </div>
         </div>
     </section>
@@ -69,7 +71,7 @@
     <section class="about-section" id="s2">
         <div class="container">
             <div class="content">
-                <CtaComponent Title="O Ciclo da Maestria" Subtitle=@($"No {schoolData.SchoolName}, transcendemos a             memorização. Nosso método forja a autonomia através de um ciclo inegociável: do Problema à                  Investigação, culminando na Formalização rigorosa e na Transmissão do saber. Preparamos o intelecto            para a universalidade do conhecimento, seja em exames de alta complexidade ou na vida acadêmica.")
+                <CtaComponent Title="O Ciclo da Maestria" Subtitle=@($"No {schoolData.SchoolName}, transcendemos a             memorização. Nosso método forja a autonomia através de um ciclo inegociável: do Problema à                    Investigação, culminando na Formalização rigorosa e na Transmissão do saber. Preparamos o intelecto                  para a universalidade do conhecimento, seja em exames de alta complexidade ou na vida acadêmica.")
                     ButtonText="Leia o Manifesto" ButtonHref="/about">
                 </CtaComponent>
             </div>
@@ -83,4 +85,12 @@
     DepoimentsData depoimentsData = new DepoimentsData();
     SchoolData schoolData = new SchoolData();
     decimal Price = 140m;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
 }

@@ -1,5 +1,9 @@
 @using SchoolData.Disciplines
 @page "/subscription"
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+
+
 
 <section class="plans-section">
     <div class="container">
@@ -67,4 +71,12 @@
 
 @code {
     private List<PlanDetail> plans = SubscriptionPlanRepository.GetPlans();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
 }

@@ -1,5 +1,19 @@
 @page "/admin"
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+
+
 <div>
     <p>/courses/{DisciplineLabel}/{CourseId}</p>
     <p>/courses/{DisciplineLabel}/{CourseName}/{TopicId}</p>
 </div>
+
+@code{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
+}

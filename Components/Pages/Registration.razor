@@ -236,4 +236,12 @@
         public string? Label { get; set; } = string.Empty;
         public bool Selected { get; set; }
     }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
 }

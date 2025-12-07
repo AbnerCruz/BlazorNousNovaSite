@@ -1,5 +1,7 @@
 @page "/about"
 @using SchoolData
+@inject IJSRuntime JS
+@rendermode InteractiveServer
 
 
 <div class="about">
@@ -151,4 +153,12 @@
     TeachersData teachersData = new TeachersData();
     string videoUrl = "";
     decimal Price = 140m;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
 }

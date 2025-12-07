@@ -1,7 +1,9 @@
 @page "/courses/{DisciplineLabel}/{CourseId}/{TopicId}"
 @using SchoolData
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JS
 @inject NavigationManager NavManager
+@rendermode InteractiveServer
+
 
 <PageTitle>@(topic?.Name ?? "Conteúdo") | Nous Nova</PageTitle>
 
@@ -75,12 +77,16 @@
     {
         try
         {
-            await JSRuntime.InvokeVoidAsync("renderMath");
+            await JS.InvokeVoidAsync("renderMath");
         }
         catch (Exception ex)
         {
             // Ignora erros de JS se o componente estiver sendo destruído
             Console.WriteLine($"MathJax Warning: {ex.Message}");
         }
-    }   
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
 }

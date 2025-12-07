@@ -34,11 +34,13 @@
         };
     </script>
     <script>
-        window.blazorHelpers = {
-            scrollToTop: function () {
-                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-            }
-        };
+        window.scrollToTop = () => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        }
     </script>
     <ImportMap />
     <HeadOutlet />

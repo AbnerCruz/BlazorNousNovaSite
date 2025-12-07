@@ -1,6 +1,6 @@
 @page "/disciplines/{DisciplineLabel}"
 @using SchoolData
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JS
 @rendermode InteractiveServer
 
 
@@ -70,11 +70,15 @@
     {
         try
         {
-            await JSRuntime.InvokeVoidAsync("renderMath");
+            await JS.InvokeVoidAsync("renderMath");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Erro ao renderizar MathJax: {ex.Message}");
+        }
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
         }
     }
 

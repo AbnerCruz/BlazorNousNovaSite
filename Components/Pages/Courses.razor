@@ -1,7 +1,7 @@
 @page "/courses/{DisciplineLabel}/{CourseId}"
 @rendermode InteractiveServer
 @using SchoolData
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JS
 @inject NavigationManager NavManager
 
 <PageTitle>@(course?.Name ?? "Curso") | Nous Nova</PageTitle>
@@ -101,11 +101,15 @@
     {
         try
         {
-            await JSRuntime.InvokeVoidAsync("renderMath");
+            await JS.InvokeVoidAsync("renderMath");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Erro ao renderizar MathJax: {ex.Message}");
+        }
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
         }
     }
 }
