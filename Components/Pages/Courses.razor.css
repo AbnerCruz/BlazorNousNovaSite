@@ -1,11 +1,177 @@
-.card .content{
-    border: solid 1px var(--color-primary-translucent-2);
-    border-radius: var(--border-1);
-    margin-bottom: 1rem;
-    padding: 1rem;
+/* ================================
+   UTILITÁRIOS (Helpers)
+   ================================ */
+/* A classe .colgold-3 aparece no seu HTML, então precisamos defini-la
+   caso não exista globalmente */
+.colgold-3 {
+    color: var(--color-gold-3) !important;
 }
 
-.back-button{
-    justify-self: center;
-    margin: 2rem 0;
+/* ================================
+   CONTAINER DA PÁGINA
+   ================================ */
+.course-page-container {
+    width: 100%;
+    padding: 1rem;
+    /* Espaçamento interno seguro para mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Centralização em telas grandes */
+@media (min-width: 992px) {
+    .course-page-container {
+        max-width: 1200px;
+        /* Limita a largura em telas ultra-wide */
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}
+
+/* ================================
+   CABEÇALHO (Breadcrumbs e Título)
+   ================================ */
+.course-page-container header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Navegação (Breadcrumbs) */
+.course-page-container nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Quebra linha se o nome do curso for longo no mobile */
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    /* 14px */
+    color: var(--color-black-4);
+}
+
+/* Links do Breadcrumb */
+.course-page-container nav a {
+    color: var(--color-gold-3);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.course-page-container nav a:hover {
+    text-decoration: underline;
+    filter: brightness(1.2);
+}
+
+/* Símbolo separador (>) */
+.course-page-container nav span {
+    opacity: 0.7;
+}
+
+/* Oculta o <hr> original do HTML pois usamos border-bottom no header */
+.course-page-container nav hr {
+    display: none;
+}
+
+/* Título Principal do Curso */
+.course-page-container header h1 {
+    font-size: 1.5rem;
+    /* Mobile */
+    margin: 0;
+    line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+    .course-page-container header h1 {
+        font-size: 2.25rem;
+    }
+}
+
+/* ================================
+   CONTEÚDO INTERNO DOS CARDS
+   ================================ */
+/* Nota: Não estamos mexendo na classe .card, mas sim 
+   na div filha direta onde estão o Título e a Duração 
+*/
+
+.card>div:first-child {
+    display: flex;
+    flex-direction: column;
+    /* Empurra o botão para o rodapé do card se houver altura fixa */
+    flex: 1;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+/* Título do Módulo */
+.card h3 {
+    font-size: 1.125rem;
+    margin: 0;
+    line-height: 1.3;
+    /* Garante altura mínima para alinhamento visual em grid */
+    min-height: 3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limita a 2 linhas com ... */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Ícone e Texto de Duração */
+.card span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-black-4);
+    /* Cor mais suave para metadados */
+    font-weight: 500;
+}
+
+/* ================================
+   BOTÕES DE AÇÃO E VOLTAR
+   ================================ */
+
+/* Botão de Voltar (Rodapé da página) */
+.back-button {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Ajuste específico para o componente de botão dentro do card 
+   para garantir que ele ocupe a largura correta no mobile */
+.card ButtonComponent {
+    width: 100%;
+    /* No mobile, botões full width são melhores para o toque */
+}
+
+/* Mensagens de Erro / Vazio */
+.course-page-container p {
+    color: var(--color-black-4);
+    font-style: italic;
+}
+
+.course-page-container h2 {
+    color: var(--color-red-2);
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   AJUSTES RESPONSIVOS FINAIS
+   ================================ */
+@media (min-width: 768px) {
+    /* Em desktop, o botão dentro do card pode ser menor se desejar, 
+       mas o estilo inline do componente (Width="50%") terá precedência.
+       Aqui apenas ajustamos alinhamentos. */
+
+    .card>div:first-child {
+        /* Aumenta espaçamento interno no desktop */
+        margin-bottom: 2rem;
+    }
 }

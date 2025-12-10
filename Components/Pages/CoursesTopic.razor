@@ -6,11 +6,11 @@
 
 <PageTitle>@(topic?.Name ?? "Conteúdo") | Nous Nova</PageTitle>
 
-<div style="max-width: 90%; margin: 0 auto; padding: 1rem 2rem; box-shadow:var(--shadow-2)">
+<div class="topic-container">
     @if (topic != null && module != null && course != null && discipline != null)
     {
         <article>
-            <nav>
+            <nav class="topic-breadcrumbs">
                 <div>
                     <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
                     <span>&rsaquo;</span>
@@ -23,12 +23,12 @@
                 <hr/>
             </nav>
 
-            <div style="padding:2rem 5rem;">
+            <div class="topic-body">
                 @((MarkupString)topic.Body)
             </div>
         </article>
 
-        <div class="grid" style="width:100%">
+        <div class="topic-footer grid">
             <div>
                 @if (!string.IsNullOrEmpty(prevTopicUrl))
                 {
@@ -38,11 +38,11 @@
             <div>
                 @if (!string.IsNullOrEmpty(nextTopicUrl))
                 {
-                    <ButtonComponent Href="@nextTopicUrl" Text="Próxima Seção" Width="100%" />
+                    <ButtonComponent Href="@nextTopicUrl" Text="Próximo" Width="100%" />
                 }
                 else
                 {
-                    <ButtonComponent Href=@($"/courses/{DisciplineLabel}/{CourseId}/{ModuleId}") Text="Concluir Módulo" Color="bggreen-2" Width="100%" />
+                    <ButtonComponent Href=@($"/courses/{DisciplineLabel}/{CourseId}/{ModuleId}") Text="Concluir Módulo" Color="--color-green-2" Width="100%" />
                 }
             </div>
         </div>

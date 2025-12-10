@@ -1,114 +1,109 @@
 /* ================================
-   GRID CONTAINER
+   1. GRID LAYOUT SYSTEM
    ================================ */
 .grid {
     display: grid;
-    /* CORREÇÃO PRINCIPAL: 
-       Baixei de 300px para 260px para caber em telas de 320px (iPhone SE/5).
-       O 'auto-fit' garante que ele preencha a linha se sobrar espaço. 
-    */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
     width: 100%;
+
+    /* CONFIGURAÇÃO MOBILE (Padrão) 
+       - 1 Coluna por padrão (Mobile First)
+       - Removemos bordas e paddings excessivos para ganhar área útil em telas pequenas
+    */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
     box-sizing: border-box;
+
+    /* Herança de estilos base */
     background-color: transparent;
-    border-radius: var(--border-1);
-    border: 1px solid var(--color-primary-translucent-3);
+    border: none;
 }
 
 /* ================================
-   CARD COMPONENT
+   2. CARD COMPONENT
    ================================ */
 .card {
-    /* Layout Flex para empurrar o conteúdo */
+    /* Layout Interno */
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
 
-
-    /* Estética Base */
+    /* Estética - Usando suas Variáveis do Root */
     background-color: var(--color-primary-translucent-1);
     border: 1px solid var(--color-black-4);
     border-radius: var(--border-1);
-    padding: 2rem;
+    /* 20px do seu root */
+    padding: 1.5rem;
+    /* Padding confortável para mobile */
     text-align: center;
 
-    /* Efeito de Vidro (Glassmorphism) */
+    /* Glassmorphism */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: var(--shadow-1);
 
-    /* Transições */
+    /* Performance de Animação */
     transition:
         transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
         box-shadow 0.4s ease,
         border-color 0.3s ease,
         background-color 0.3s ease;
-
-    position: relative;
-    overflow: hidden;
 }
 
-/* ================================
-   CONTEÚDO DO CARD
-   ================================ */
-
+/* --- Conteúdo do Card --- */
 .card-content {
-
-    /* IMPORTANTE PARA RESPONSIVIDADE VISUAL:
-       Isso faz o conteúdo de texto crescer e ocupar o espaço vazio,
-       empurrando o botão (CTA) sempre para o rodapé do card.
-    */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    justify-self: center;
-    /* Alinha texto no topo */
+    margin-bottom: 1.5rem;
 }
 
 .card-title {
     color: var(--color-gold-3);
     margin-bottom: 1rem;
     transition: color 0.3s ease;
-    text-align: center;
 }
 
-/* ================================
-   CTA / LINK DO CARD
-   ================================ */
-
+/* --- Botão CTA --- */
 .card-cta {
-    /* Impede que o botão fique muito largo em telas grandes, se desejar */
     align-self: center;
-    background-color: var(--color-gold-1);
-
-    color: var(--color-gold-2);
-    text-transform: uppercase;
-    padding: 0.8rem 1.5rem;
-    /* Aumentei um pouco a área de toque */
-    border-radius: 8px;
-    transition: all 0.3s ease;
     display: inline-block;
-    border: 1px solid transparent;
 
-    /* Garante que o texto não quebre em telas minúsculas */
+    background-color: var(--color-gold-1);
+    color: var(--color-gold-2);
+    /* Contraste pode ser baixo aqui, verifique acessibilidade */
+
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
     white-space: nowrap;
+
+    transition: all 0.3s ease;
 }
 
+/* --- Estados de Seleção (Radio Inputs) --- */
 .card input[type="radio"] {
     display: none;
 }
 
+/* O moderno seletor :has permite estilizar o PAI quando o FILHO está marcado */
 .card:has(input:checked) {
     border: 2px solid var(--color-green-2);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+    /* Glow verde sutil */
+    background-color: var(--color-primary-translucent-2);
+}
+
+span{
+    align-self: center;
+    justify-self: center;
 }
 
 /* ================================
-   INTERATIVIDADE (HOVER EFFECTS)
+   3. INTERATIVIDADE (Desktop Hover)
    ================================ */
-/* Mantive a lógica original, apenas garantindo suporte a hover */
-
 @media (hover: hover) {
     .card.card-hover:hover {
         transform: translateY(-8px);
@@ -122,43 +117,51 @@
     }
 
     .card.card-hover:hover .card-cta {
-        color: var(--color-primary-text-1);
+        color: var(--color-black-1);
+        /* Melhor contraste no hover */
         background-color: var(--color-gold-2);
-        box-shadow: 0 0 10px var(--color-gold-1);
+        box-shadow: 0 0 15px var(--color-gold-1);
     }
 }
 
 /* ================================
-   RESPONSIVIDADE FINA (MEDIA QUERIES)
+   4. RESPONSIVIDADE (Desktop & Tablet)
    ================================ */
 
-/* Tablet e Mobile Grande */
-@media (max-width: 768px) {
+/* Breakpoint para Tablet/Desktop (acima de 768px) */
+@media (min-width: 768px) {
     .grid {
-        padding: 1.5rem;
-        gap: 1.5rem;
-        /* Em telas médias, 2 colunas é melhor que 1 esticada */
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        /* REQUISITO: Limite fixo de 2 colunas */
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 2rem;
+        padding: 2rem;
+
+        /* Borda decorativa apenas em telas grandes */
+        border: 1px solid var(--color-primary-translucent-3);
+        border-radius: var(--border-1);
     }
 
     .card {
-        padding: 1.5rem;
-    }
-}
-
-/* Mobile Pequeno (Celulares em pé) */
-@media (max-width: 480px) {
-    .grid {
-        /* Removemos padding excessivo do container para ganhar espaço */
-        padding: 1rem;
-        gap: 1rem;
-        grid-template-columns: 1fr;
-        /* Força 1 coluna inteira */
-        border: none;
-        /* Remove borda do container para limpar o visual */
+        padding: 2rem;
     }
 
-    .card {
-        padding: 1.25rem;
+    /* LÓGICA DE CENTRALIZAÇÃO DO ÍMPAR:
+       Se o último card for o "ímpar" (ex: 3º, 5º item), ele deve centralizar.
+    */
+    .grid>.card:last-child:nth-child(odd) {
+        /* Faz o card ocupar as duas colunas */
+        grid-column: span 2;
+
+        /* Centraliza o card horizontalmente na "faixa" de 2 colunas */
+        justify-self: center;
+
+        /* TRUQUE MATEMÁTICO:
+           Para ele não ficar "gordo" ocupando 100% da largura, 
+           definimos a largura dele para ser igual à de 1 coluna.
+           Cálculo: 50% da área total - metade do gap.
+        */
+        width: calc(50% - 1rem);
+        /* Obs: 1rem é metade do gap de 2rem definido acima */
     }
 }

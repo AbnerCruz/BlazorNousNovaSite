@@ -1,543 +1,514 @@
 /* _content/FrontEnd/Components/ButtonComponent.razor.rz.scp.css */
 /* ================================
-   BOTÃO BASE — Mobile First
+   COMPONENT: BUTTON (Mobile First)
    ================================ */
 
+/* 1. Reset do NavLink (Wrapper) */
+/* Garante que o link não adicione sublinhados ou cores indesejadas */
+a:has(.button)[b-k08xr1gmrx],
+a .button[b-k08xr1gmrx] {
+    text-decoration: none;
+    /* Remove decorações padrão de link */
+    display: block;
+    /* Garante que o width funcione */
+}
+
+/* 2. O Container do Botão (.button) */
 .button[b-k08xr1gmrx] {
-    /* Layout & Box Model */
+    /* Layout */
     display: flex;
-    /* Flex é melhor que inline-flex p/ largura 100% */
     justify-content: center;
     align-items: center;
+    align-self: center;
     justify-self: center;
-
-    width: 100%;
-    /* Ocupa largura total no mobile */
-    max-width: 320px;
-    /* Limite seguro para mobile */
-    min-height: 48px;
-    /* Acessibilidade: tamanho mínimo p/ toque */
-
-    padding: 0.5rem 1.5rem;
-    /* Rem é mais seguro que fixo */
-    margin: 0 auto;
-    /* Centraliza o bloco */
-    box-sizing: border-box;
-
-    /* Estética */
-    border: 1px solid var(--color-secundary-border-2);
-    border-radius: var(--border-1);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    /* Compatibilidade Safari */
-    box-shadow: var(--shadow-1);
-
-    /* Tipografia */
-    color: var(--color-primary-text-1);
-    /* Simplifiquei o clamp: mínimo 15px, responsivo, máximo 18px */
-    font-size: clamp(0.9375rem, 4vw, 1rem);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    /* Evita quebra de linha feia no texto */
-
-    /* Comportamento */
-    cursor: pointer;
     position: relative;
+    /* Necessário para o efeito de brilho */
     overflow: hidden;
-    user-select: none;
-    touch-action: manipulation;
-    /* Melhora resposta ao toque */
+    /* Mantém o brilho dentro do botão */
+    /* Padding lateral para textos longos */
+    border-radius: 8px;
+    padding: 1rem;
+
+    /* Visual */
+    box-shadow: var(--shadow-2);
+    /* Sombra suave inicial */
+    backdrop-filter: blur(4px);
+    /* Caso use cores translúcidas */
 
     /* Transições */
-    transition:
-        background-color 0.25s ease,
-        transform 0.18s cubic-bezier(.2, .8, .4, 1),
-        box-shadow 0.3s ease,
-        border-color 0.25s ease,
-        color 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Curva de animação "premium" */
+    cursor: pointer;
 }
 
-.text[b-k08xr1gmrx] {
-    text-align: center;
+/* 3. Wrapper do Texto (.button-hover) */
+/* Centraliza o conteúdo caso a altura do botão cresça */
+.button-hover[b-k08xr1gmrx] {
     width: 100%;
-    display: block;
-    line-height: 1.2;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* ================================
-   HOVER / ACTIVE / FOCUS
-   ================================ */
-
-/* Hover apenas em dispositivos que têm mouse */
-@media (hover: hover) {
-    .button:hover[b-k08xr1gmrx] {
-        border-color: var(--color-gold-2);
-        color: var(--color-primary-text-3);
-        transform: translateY(-3px);
-        box-shadow:
-            var(--shadow-2),
-            0 8px 18px rgba(0, 0, 0, 0.18);
-    }
-}
-
-.button:active[b-k08xr1gmrx] {
-    transform: translateY(-1px) scale(0.98);
-    /* Scale 0.97 pode ser muito brusco */
-    box-shadow: none;
-    background-color: var(--color-primary-translucent-2);
-}
-
-.button:focus-visible[b-k08xr1gmrx] {
-    outline: 2px solid var(--color-blue-2);
-    outline-offset: 2px;
-}
-
-/* ================================
-   TEXTO INTERNO
-   ================================ */
-
-.text[b-k08xr1gmrx] {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 2;
-    pointer-events: none;
+    /* Garante que o texto fique acima do efeito de brilho */
+}
+
+/* 4. Tipografia (.text) */
+/* O componente usa H2, então precisamos resetar as margens globais */
+.button .text[b-k08xr1gmrx] {
+    margin: 0;
+    /* Remove margens padrão de cabeçalhos */
+    padding: 0;
+
+    /* Estilo "Elite" */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-align: center;
+
+    /* Contraste */
+    color: #ffffff;
+    /* Branco puro para contraste em fundos coloridos */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* ================================
-   RESPONSIVIDADE (Media Queries)
+   INTERAÇÃO E ANIMAÇÃO
    ================================ */
 
-/* Telas muito pequenas (iPhone SE, Fold, etc) */
-@media (max-width: 360px) {
-    .button[b-k08xr1gmrx] {
-        max-width: 100%;
-        /* Aproveita todo espaço */
-        padding: 0.75rem 1rem;
-        font-size: 0.875rem;
-        /* 14px */
-    }
+/* Hover no NavLink afeta o .button */
+/* Usamos filter: brightness para clarear a cor do background dinamicamente,
+   já que a cor é definida inline no HTML */
+a:hover .button[b-k08xr1gmrx] {
+    transform: translateY(-3px);
+    /* O botão "levanta" */
+    box-shadow: var(--shadow-1);
+    /* Sombra aumenta e fica mais difusa */
+    filter: brightness(1.15);
+    /* Clareia 15% a cor original */
 }
 
-/* Tablet e Desktop (A partir de 768px) */
-/* MUDANÇA CRÍTICA: Botão deixa de ser bloco esticado */
-@media (min-width: 768px) {
-    .button[b-k08xr1gmrx] {
-        display: inline-flex;
-        /* Volta a comportar-se como botão inline */
-        width: auto;
-        /* Largura baseada no conteúdo */
-        max-width: none;
-        /* Remove a trava de 320px */
-        min-width: 200px;
-    }
+/* Active (Clique) */
+a:active .button[b-k08xr1gmrx] {
+    transform: translateY(-1px);
+    /* Afunda levemente */
+    filter: brightness(0.95);
+    box-shadow: none;
 }
 
-/* Telas grandes (Monitores Wide) */
-@media (min-width: 1200px) {
+/* Efeito de "Brilho Passante" (Shine Effect) */
+/* Adiciona um toque de sofisticação ao passar o mouse */
+.button[b-k08xr1gmrx]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    /* Começa fora da tela à esquerda */
+    width: 50%;
+    height: 100%;
+
+    /* Gradiente translúcido inclinado */
+    background: linear-gradient(to right,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    /* Não interfere no clique */
+}
+
+/* Dispara a animação do brilho no hover */
+a:hover .button[b-k08xr1gmrx]::after {
+    left: 120%;
+    /* Move para fora da tela à direita */
+    transition: left 0.6s ease-in-out;
+}
+
+/* ================================
+   MEDIA QUERIES (Ajustes Mobile/Desktop)
+   ================================ */
+@media (max-width: 768px) {
     .button[b-k08xr1gmrx] {
-        font-size: 1.1rem;
-        /* Aumenta um pouco o arredondamento proporcionalmente */
-        border-radius: calc(var(--border-1) * 1.25);
-        transition: transform 0.2s cubic-bezier(.2, .8, .4, 1);
+        width: 100% !important;
+        /* Em mobile, força largura total para facilitar o clique */
+    }
+
+    .button .text[b-k08xr1gmrx] {
+        /* No mobile, se a fonte passada for muito grande (ex: 3rem), 
+           limitamos para não quebrar o layout */
+        font-size: clamp(1rem, 5vw, 1.5rem) !important;
     }
 }
 /* _content/FrontEnd/Components/CtaComponent.razor.rz.scp.css */
 /* ================================
-   CTA SECTION - ESTILO APRIMORADO
+   COMPONENT: CTA SECTION (Compact Center)
    ================================ */
 
+/* 1. O Wrapper Externo (Invisível) 
+   Serve apenas para posicionar o card no centro da tela */
 .cta-section[b-u0mvelfu3t] {
-    /* Layout e Posicionamento */
-    width: 95%;
-    /* Mobile: Aproveita quase toda a tela */
-    max-width: 1200px;
-    margin: 2rem auto;
-
-    /* Padding responsivo: menor no mobile (definido aqui como base) */
-    padding: 2rem 1.5rem;
-
-    display: flex;
-    flex-direction: column;
-    /* Mobile First: empilha nativamente */
-    align-items: center;
-    justify-content: center;
-
-    /* Estilo Visual (Glassmorphism) */
-    background: var(--color-primary-translucent-2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--color-secundary-border-2);
-    border-radius: var(--border-1);
-    box-shadow: var(--shadow-1);
-
-    /* Transições e Otimização */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-
-    /* Otimização de renderização */
-    will-change: transform;
-}
-
-/* Efeito Hover (apenas para dispositivos com mouse) */
-@media (hover: hover) {
-    .cta-section:hover[b-u0mvelfu3t] {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-2), 0 10px 20px rgba(0, 0, 0, 0.1);
-        border-color: var(--color-gold-2);
-    }
-}
-
-.cta-content[b-u0mvelfu3t] {
-    display: flex;
-    flex-direction: column;
-    /* Mobile: Coluna */
     width: 100%;
+    padding: 2rem 1rem;
+    /* Espaçamento vertical e lateral seguro */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 2.5rem;
-    /* Espaço vertical no mobile */
+}
+
+/* O .container aqui serve apenas como pass-through, 
+   mas garantimos que ele centralize o conteúdo */
+.cta-section .container[b-u0mvelfu3t] {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 2. O Card Principal (Onde a mágica acontece) 
+   Movemos a cor e borda para cá para ele "abraçar" o conteúdo */
+.cta-content[b-u0mvelfu3t] {
+    /* Visual (Card Style) */
+    background-color: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-primary-translucent-2);
+    border-radius: var(--border-1);
+    box-shadow: var(--shadow-2);
+
+    /* Layout Mobile (Padrão) */
+    display: flex;
+    flex-direction: column-reverse;
+    /* Imagem em cima ou baixo? (Reverse = Imagem topo) ou Column normal */
+    gap: 1.5rem;
+    padding: 2rem;
+
+    /* Tamanho */
+    width: 100%;
+    max-width: 400px;
+    /* Limita largura no mobile para não ficar esticado feio */
+    box-sizing: border-box;
+    text-align: center;
 }
 
 /* ================================
    ÁREA DE TEXTO
    ================================ */
-
 .text-area[b-u0mvelfu3t] {
-    width: 100%;
-    text-align: center;
-    /* Mobile: centralizado */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Ordem visual: Texto em cima, imagem em baixo no mobile? 
-       Se quiser imagem primeiro, use 'order: 2' aqui */
+    align-items: center;
+    /* Centraliza botões e textos no mobile */
+    gap: 0.75rem;
 }
 
 .cta-title[b-u0mvelfu3t] {
-    /* Clamp ajustado para não ficar gigante em tablets */
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: var(--color-primary-text-1);
+    font-size: 1.5rem;
     line-height: 1.2;
+    color: var(--text-color-1);
+    margin: 0;
 }
 
 .cta-subtitle[b-u0mvelfu3t] {
-    font-size: clamp(0.95rem, 2vw, 1.15rem);
-    margin-bottom: 1.5rem;
-    color: var(--color-primary-text-2);
-    opacity: 0.9;
-    /* Aumentei levemente a legibilidade */
-    line-height: 1.6;
-    max-width: 600px;
-    /* Evita linhas de texto muito longas */
-    margin-left: auto;
-    margin-right: auto;
-    /* Centraliza o bloco de texto */
+    font-size: 1rem;
+    color: var(--color-black-4);
+    margin: 0;
+    line-height: 1.4;
 }
 
 /* ================================
-   ÁREA DE PREÇO E BOTÃO
+   ÁREA DE PREÇO & BOTÃO
    ================================ */
-
-.price-container[b-u0mvelfu3t] {
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    /* Mobile: centraliza */
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    /* Evita quebrar preço em telas minúsculas */
-}
-
 .cta-price[b-u0mvelfu3t] {
+    font-size: 1.5rem;
     color: var(--color-green-2);
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    /* Preço responsivo */
-    font-weight: 900;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    /* Preço antigo embaixo no mobile */
+    align-items: center;
+    line-height: 1;
 }
 
 .cta-oldprice[b-u0mvelfu3t] {
-    color: var(--color-red-3);
-    font-size: 1.1rem;
+    font-size: 0.875rem;
+    color: var(--color-black-3);
     text-decoration: line-through;
-    opacity: 0.7;
+    font-weight: 400;
 }
 
 /* ================================
-   ÁREA DE IMAGEM
+   ÁREA DA IMAGEM
    ================================ */
-
 .image-area[b-u0mvelfu3t] {
-    width: 100%;
-    max-width: 450px;
-    /* Limita o tamanho da imagem */
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
 }
 
 .image-area img[b-u0mvelfu3t] {
+    /* Removemos tamanhos fixos para permitir a fluidez */
     width: 100%;
+    max-width: 180px;
+    /* Um tamanho base bom para mobile */
     height: auto;
-    /* Drop shadow na imagem destaca ela do fundo glass */
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Efeito Hover Imagem (apenas desktop) */
-@media (hover: hover) {
-    .cta-section:hover .image-area img[b-u0mvelfu3t] {
-        transform: scale(1.03) rotate(2deg);
-    }
+    object-fit: contain;
+    border-radius: 8px;
+    /* Opcional: suaviza a imagem */
 }
 
 /* ================================
-   DESKTOP E TABLET (min-width: 768px)
+   MEDIA QUERY: DESKTOP (A Mágica do "Expand from Center")
    ================================ */
-
 @media (min-width: 768px) {
-    .cta-section[b-u0mvelfu3t] {
-        padding: 4rem 3rem;
-        /* Padding maior no desktop */
-        flex-direction: row;
-        /* Volta para linha */
-        width: 90%;
-        /* Largura um pouco menor para estética */
-    }
 
     .cta-content[b-u0mvelfu3t] {
         flex-direction: row;
-        /* Lado a lado */
-        justify-content: space-between;
+        /* Coloca lado a lado */
         align-items: center;
-        text-align: left;
-        gap: 4rem;
-        /* Gap maior no desktop */
+        /* Alinha verticalmente pelo centro */
+        justify-content: center;
+
+        /* O SEGREDO: fit-content faz o box ter o tamanho exato do conteúdo */
+        width: fit-content;
+        max-width: 900px;
+        /* Trava de segurança para não explodir em telas gigantes */
+
+        padding: 2.5rem 3rem;
+        /* Padding interno maior para elegância */
+        gap: 3rem;
+        /* Espaço entre imagem e texto */
     }
 
     .text-area[b-u0mvelfu3t] {
-        text-align: left;
-        /* Alinha à esquerda no desktop */
-        flex: 1;
-        /* Ocupa o espaço disponível */
         align-items: flex-start;
-        /* Alinha itens (botão) à esquerda */
-    }
-
-    .cta-subtitle[b-u0mvelfu3t] {
-        margin-left: 0;
-        /* Remove centralização forçada */
-        margin-right: 0;
-    }
-
-    .price-container[b-u0mvelfu3t] {
-        justify-content: flex-start;
-        /* Preço à esquerda */
-    }
-
-    .image-area[b-u0mvelfu3t] {
+        /* Alinha texto à esquerda */
+        text-align: left;
+        min-width: 300px;
+        /* Garante uma largura mínima pro texto não ficar espremido */
         flex: 1;
-        /* Divide espaço igualmente */
-        max-width: 500px;
-        /* Imagem pode ser maior no desktop */
-        justify-content: flex-end;
-        /* Joga imagem para a direita */
+        /* O texto ocupa o espaço que sobrar/necessário */
+    }
+
+    .cta-title[b-u0mvelfu3t] {
+        font-size: 2rem;
+    }
+
+    .cta-price[b-u0mvelfu3t] {
+        flex-direction: row;
+        /* Preço antigo ao lado */
+        align-items: baseline;
+        gap: 0.75rem;
+    }
+
+    .image-area img[b-u0mvelfu3t] {
+        /* Aqui a imagem dita o tamanho. 
+           Se a imagem for maior, o container cresce. */
+        max-width: 300px;
+        /* Aumentamos o limite da imagem no desktop */
+        width: auto;
+        /* Deixa o tamanho natural da imagem fluir até o max-width */
     }
 }
 /* _content/FrontEnd/Components/Layout/Footer.razor.rz.scp.css */
 /* ================================
-   1. RODAPÉ PRINCIPAL
+   FOOTER COMPONENT
    ================================ */
 
 .footer[b-vx059xxjpe] {
-    /* Usa o token de cor mais escuro para o fundo do rodapé */
-    background-color: var(--color-black-1);
-    padding: 3.5rem 1rem 1.5rem;
-    /* Aumenta o padding superior e reduz o inferior */
-    font-family: 'Inter', sans-serif;
-    color: var(--color-primary-text-3);
-    /* Garante que o texto base seja branco puro no tema escuro */
-    /* Transição para suavizar mudanças de tema se o --color-black-1 for dinâmico */
-    transition: background-color 0.4s ease;
+    width: 100%;
+    background-color: var(--background-1);
+    border-top: 1px solid var(--color-primary-translucent-2);
+    padding: 3rem 1rem 1rem 1rem;
+    margin-top: 4rem;
+    /* Garante separação do conteúdo principal */
+
+    /* Garante que o texto dentro do footer herde a legibilidade */
+    color: var(--text-color-1);
+    font-size: 1rem;
+    /* Base levemente menor que o corpo, mas legível */
 }
 
+/* Container centralizado (caso não tenha um global) */
 .footer .container[b-vx059xxjpe] {
-    max-width: 1300px;
-    /* Aumentado ligeiramente para mais espaço em telas grandes */
-    margin: auto;
-    padding: 0 20px;
-    /* Padding horizontal para telas médias e grandes */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 /* ================================
-   2. GRID E COLUNAS
+   GRID SYSTEM (Mobile: 1 Coluna)
    ================================ */
 
 .footer-grid[b-vx059xxjpe] {
-    /* Mantém a estratégia de grid responsivo */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    /* Reduz o minmax para melhor ajuste em tablets */
-    gap: 3rem;
-    /* Aumenta o espaço entre as colunas */
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    /* Espaçamento generoso entre blocos no mobile */
     margin-bottom: 2rem;
 }
 
 .footer-col[b-vx059xxjpe] {
-    color: var(--color-primary-text-2);
-    /* Cor do texto da coluna: um cinza claro suave */
-    font-size: 0.95rem;
-    line-height: 1.7;
-    /* Mais espaço entre linhas para leitura */
-    transition: color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
+/* ================================
+   TIPOGRAFIA E ELEMENTOS
+   ================================ */
+
+/* Títulos das colunas */
 .footer-title[b-vx059xxjpe] {
-    color: var(--color-gold-2);
-    /* Usa Gold-2 para o título (mais claro e visível) */
-    font-size: 1.3rem;
-    /* Levemente maior */
-    margin-bottom: 1.2rem;
-    font-weight: 700;
+    color: var(--color-gold-3);
+    /* Usa a escala H3 definida anteriormente, mas ajustada para footer */
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
     position: relative;
+    display: inline-block;
 }
 
-/* Efeito de Sublinhado Sutil no Título */
+/* Detalhe decorativo abaixo do título */
 .footer-title[b-vx059xxjpe]::after {
     content: '';
     display: block;
-    width: 30px;
-    height: 3px;
+    width: 40px;
+    height: 2px;
     background-color: var(--color-gold-1);
-    margin-top: 5px;
-    transition: width 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.footer p[b-vx059xxjpe] {
+    /* Ajuste para não ficar gigante no footer, mas manter legibilidade */
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-black-4);
+    /* Cinza claro para suavizar */
+    margin: 0;
+    text-align: left;
+    /* Reset do justify global para footer */
 }
 
 /* ================================
-   3. LINKS E CONTATOS (Micro-Interações)
+   REDES SOCIAIS
    ================================ */
 
-.footer-links li[b-vx059xxjpe],
-.footer-contact li[b-vx059xxjpe] {
-    margin-bottom: 0.8rem;
-    /* Mais espaçamento entre os itens */
+.footer-social[b-vx059xxjpe] {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
-.footer-links a[b-vx059xxjpe] {
-    color: var(--color-primary-text-2);
-    text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
-    /* Adiciona transição para movimento */
-    display: inline-block;
-    /* Permite a transição de padding */
-}
-
-/* Efeito de deslize sutil no hover do link */
-.footer-links a:hover[b-vx059xxjpe] {
-    color: var(--color-gold-3);
-    /* Cor ouro mais brilhante no hover */
-    padding-left: 5px;
-}
-
-.footer-contact i[b-vx059xxjpe] {
-    color: var(--color-gold-3);
-    /* Cor ouro mais brilhante para ícones */
-    margin-right: 0.8rem;
-    /* Aumenta o espaço entre ícone e texto */
-    transition: color 0.3s ease;
-}
-
-/* Redes Sociais com Efeito 3D */
 .footer-social a[b-vx059xxjpe] {
-    margin-right: 1.2rem;
-    /* Mais espaçamento */
-    font-size: 1.6rem;
-    /* Ícones maiores */
-    color: var(--color-gold-2);
-    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    /* Área de toque confortável */
+    height: 45px;
+
+    background-color: var(--color-primary-translucent-2);
+    border: 1px solid var(--color-primary-translucent-3);
+    border-radius: 50%;
+
+    color: var(--color-gold-3);
+    font-size: 1.2rem;
+
+    transition: all 0.3s ease;
 }
 
 .footer-social a:hover[b-vx059xxjpe] {
-    transform: translateY(-3px) scale(1.15);
-    /* Efeito de 'flutuação' sutil */
-    color: var(--color-pink-2);
-    /* Cor de destaque (pink) no hover */
-    text-shadow: 0 0 15px var(--color-pink-2);
-    /* Efeito de brilho */
+    background-color: var(--color-gold-1);
+    color: var(--color-black-1);
+    /* Contraste preto no dourado */
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px var(--color-gold-1);
 }
 
 /* ================================
-   4. SEPARADOR E BOTTOM
+   LISTA DE CONTATO
+   ================================ */
+
+.footer-contact[b-vx059xxjpe] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-contact li[b-vx059xxjpe] {
+    display: flex;
+    align-items: flex-start;
+    /* Alinha ícone ao topo se o texto quebrar */
+    gap: 0.75rem;
+
+    color: var(--color-black-4);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-contact li i[b-vx059xxjpe] {
+    color: var(--color-gold-2);
+    margin-top: 0.25rem;
+    /* Ajuste fino vertical */
+    font-size: 1.1rem;
+}
+
+/* ================================
+   RODAPÉ INFERIOR (Copy)
    ================================ */
 
 .footer-separator[b-vx059xxjpe] {
-    border: none;
-    border-top: 1px solid var(--color-primary-translucent-2);
-    /* Linha mais suave */
-    margin: 3rem 0 1.5rem;
-    /* Aumenta o espaço vertical */
-    opacity: 0.7;
-    transition: border-top 0.4s ease;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--color-primary-translucent-3),
+            transparent);
+    margin: 2rem 0;
 }
 
 .footer-bottom[b-vx059xxjpe] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
     text-align: center;
+    opacity: 0.8;
+}
+
+.footer-bottom p[b-vx059xxjpe] {
     font-size: 0.9rem;
     color: var(--color-black-4);
-    /* Cinza claro para o copyright */
 }
-
-.footer-bottom p:last-child[b-vx059xxjpe] {
-    font-size: 0.85rem;
-    margin-top: 0.6rem;
-}
-
 
 /* ================================
-   5. RESPONSIVIDADE (MOBILE) 📱
+   MEDIA QUERIES (Desktop)
    ================================ */
 
-@media (max-width: 650px) {
+@media (min-width: 768px) {
     .footer[b-vx059xxjpe] {
-        padding: 2.5rem 1rem 1rem;
-        /* Reduz o padding em telas muito pequenas */
+        padding: 4rem 2rem 2rem 2rem;
     }
 
-    .footer .container[b-vx059xxjpe] {
-        padding: 0 15px;
-    }
-
-    /* Reduz o minmax do grid para garantir que as colunas se empilhem mais cedo */
     .footer-grid[b-vx059xxjpe] {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2.5rem 1.5rem;
-        /* Ajuste o gap entre linhas e colunas */
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 Colunas */
+        gap: 3rem;
     }
 
-    /* Garante que o rodapé seja mais legível em telas pequenas, empilhando as colunas */
-    .footer-title[b-vx059xxjpe] {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
+    /* Centraliza visualmente se desejar, ou mantém alinhado à esquerda */
+    .footer-col[b-vx059xxjpe] {
+        align-items: flex-start;
     }
 
-    .footer-title[b-vx059xxjpe]::after {
-        width: 25px;
-        /* Sublinhado menor em mobile */
-    }
-
-    .footer-social a[b-vx059xxjpe] {
-        font-size: 1.4rem;
-        margin-right: 0.8rem;
+    .footer-bottom[b-vx059xxjpe] {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 1rem;
     }
 }
 /* _content/FrontEnd/Components/Layout/MainLayout.razor.rz.scp.css */
@@ -579,695 +550,609 @@
 }
 /* _content/FrontEnd/Components/Layout/Navbar.razor.rz.scp.css */
 /* ================================
-   1. NAVBAR PRINCIPAL (Fixed)
+   NAVBAR COMPONENT
    ================================ */
 
 .navbar[b-ubt05h4dhc] {
-    /* Usaremos um fundo levemente transparente para o efeito blur */
-    background-color: var(--color-primary-background-1);
-
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: var(--header-height);
     z-index: 1000;
-    height: 60px;
+    /* Garante que fique acima de tudo */
 
-    /* Adiciona transição para suavizar mudanças (como a cor de fundo) */
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
+    background-color: rgba(20, 20, 20, 0.95);
+    /* --background-1 com transparência */
+    border-bottom: 1px solid var(--color-primary-translucent-2);
 
-.navbar .container[b-ubt05h4dhc] {
-    width: 100%;
-    max-width: 1400px;
-    /* Largura máxima do conteúdo */
-    height: 100%;
-    margin: 0 auto;
-    /* Centraliza o conteúdo */
-    padding: 0 20px;
+    /* Efeito de vidro fosco (Glassmorphism) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    /* Espaço entre logo e links */
+    padding: 0 1rem;
+    box-shadow: var(--shadow-2);
+}
 
-    /* Efeito de Glassmorphism/Neumorphism Sutil */
-    box-shadow: var(--shadow-1);
-    backdrop-filter: blur(8px);
-    /* Desfoque suave no conteúdo por baixo */
-    -webkit-backdrop-filter: blur(8px);
+/* Container interno para centralizar em telas grandes */
+.navbar .container[b-ubt05h4dhc] {
+    width: 100%;
+    max-width: 1200px;
+    /* Alinha com o resto do site */
+    margin: 0 auto;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* ================================
-   2. LOGOTIPO
+   LOGO AREA
    ================================ */
 
 .navbar-logo[b-ubt05h4dhc] {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     height: 100%;
-    cursor: pointer;
     text-decoration: none;
-    color: var(--color-gold-3);
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
+    /* Remove sublinhado do link pai */
 }
 
 .logo[b-ubt05h4dhc] {
-    width: 35px;
-    height: auto;
-    margin-right: 10px;
-    transition: transform 0.3s ease;
+    height: 36px;
+    /* Tamanho controlado para caber no header de 60px */
+    width: auto;
+    object-fit: contain;
 }
 
-.navbar-logo:hover .logo[b-ubt05h4dhc] {
-    transform: rotate(5deg) scale(1.05);
-    /* Efeito de giro e zoom sutil no hover */
+/* Texto da Logo (SchoolName) */
+.navbar-logo p[b-ubt05h4dhc] {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-gold-3);
+    white-space: nowrap;
+
+    /* MOBILE: Esconde o nome da escola para dar espaço aos links */
+    display: none;
 }
 
 /* ================================
-   3. LINKS DE NAVEGAÇÃO (Horizontal)
+   LINKS DE NAVEGAÇÃO
    ================================ */
 
 .navbar-links[b-ubt05h4dhc] {
-    margin-left: auto;
     display: flex;
     align-items: center;
-    list-style: none;
-    padding: 0 2rem;
-    margin: 0;
+    gap: 1rem;
     height: 100%;
 
-    /* Garante que os links fiquem em uma linha */
-    flex-wrap: nowrap;
+    /* MOBILE: Se faltar espaço, permite scroll horizontal */
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Firefox: Esconde barra de rolagem */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+
+    /* Garante alinhamento à direita se houver sobra de espaço */
+    margin-left: auto;
 }
 
-.nav-item[b-ubt05h4dhc] {
-    padding: 0 15px;
-    /* Espaçamento entre os links */
+/* Esconde barra de rolagem no Chrome/Safari */
+.navbar-links[b-ubt05h4dhc]::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-link[b-ubt05h4dhc] {
-    color: var(--color-primary-text-2);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 5px 0;
-    margin: 0 0.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* O componente NavLink gera uma tag <a> */
+.nav-link a[b-ubt05h4dhc] {
     position: relative;
-    transition: color 0.3s ease;
-    display: block;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 0.5rem;
+
+    color: var(--text-color-1);
+    font-size: 0.95rem;
+    /* Levemente menor no mobile */
+    font-weight: 500;
     white-space: nowrap;
-    /* Impede a quebra de linha dos links */
+    transition: color 0.3s ease;
 }
 
-/* Efeito de Sublinhado Animado no Hover */
-.nav-link[b-ubt05h4dhc]::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--color-gold-2);
-    transition: width 0.3s ease-out;
+/* O texto dentro do link (<p>) */
+.nav-link a p[b-ubt05h4dhc] {
+    margin: 0;
+    /* Remove margens padrão do p */
 }
 
-.nav-link:hover[b-ubt05h4dhc] {
+/* HOVER STATE */
+.nav-link a:hover[b-ubt05h4dhc] {
+    color: var(--color-gold-2);
+    transform: none;
+    /* Anula transform global de links para não mover o menu */
+}
+
+/* ACTIVE STATE (Classe automática do Blazor) */
+.nav-link a.active[b-ubt05h4dhc] {
     color: var(--color-gold-3);
 }
 
-.nav-link:hover[b-ubt05h4dhc]::after {
+/* Indicador visual de ativo (borda inferior) */
+.nav-link a.active[b-ubt05h4dhc]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 3px;
+    background-color: var(--color-gold-1);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: 0 -2px 5px rgba(232, 207, 124, 0.3);
+    /* Glow dourado */
 }
 
 /* ================================
-   4. RESPONSIVIDADE (Ajuste de Espaçamento)
+   MEDIA QUERIES (Desktop - min-width: 768px)
    ================================ */
 
-@media (max-width: 992px) {
-    .navbar .container[b-ubt05h4dhc] {
-        padding: 0 15px;
-    }
-
-    .nav-item[b-ubt05h4dhc] {
-        padding: 0 10px;
-        /* Reduz o espaçamento entre os links em telas menores */
-    }
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .navbar[b-ubt05h4dhc] {
-        height: 50px;
-        /* Reduz ligeiramente a altura em telas pequenas */
+        padding: 0 2rem;
     }
 
-    .navbar-logo[b-ubt05h4dhc]{
-        font-size: 1rem;
+    /* Exibe o nome da escola no desktop */
+    .navbar-logo p[b-ubt05h4dhc] {
+        display: block;
     }
 
-    .nav-link[b-ubt05h4dhc] {
-        font-size: 1rem;
-        /* Reduz a fonte do link */
+    .logo[b-ubt05h4dhc] {
+        height: 40px;
+        /* Logo um pouco maior no desktop */
+    }
+
+    .navbar-links[b-ubt05h4dhc] {
+        gap: 2rem;
+        /* Mais espaço entre os links */
+        overflow-x: visible;
+        /* Remove comportamento de scroll */
+    }
+
+    .nav-link a[b-ubt05h4dhc] {
+        font-size: 1.1rem;
+        /* Fonte maior */
     }
 }
 /* _content/FrontEnd/Components/Pages/About.razor.rz.scp.css */
 /* ================================
-   ESTRUTURA E SEÇÃO
+   LAYOUT E ESTRUTURA (About Specific)
+   ================================ */
+
+/* Wrapper principal da página */
+.about[b-u28ymlant2] {
+    width: 100%;
+    padding-bottom: 4rem;
+}
+
+/* Container centralizador */
+.container[b-u28ymlant2] {
+    width: 100%;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Centraliza o container em telas maiores */
+@media (min-width: 768px) {
+    .container[b-u28ymlant2] {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container[b-u28ymlant2] {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container[b-u28ymlant2] {
+        max-width: 1140px;
+    }
+}
+
+/* ================================
+   SEÇÕES E ESPAÇAMENTOS
    ================================ */
 
 section[b-u28ymlant2] {
-    width: 100%;
-    /* Removemos background transparente desnecessário */
-    /* Padding vertical fixo e horizontal seguro */
-    padding: 4rem 1.5rem;
-    margin: 0;
-    box-sizing: border-box;
+    /* Espaçamento vertical generoso entre seções */
+    margin-bottom: 4rem;
+    /* Adiciona uma separação visual sutil se necessário, 
+       mas aqui deixarei limpo conforme o estilo 'dark' */
 }
 
-section .title[b-u28ymlant2] {
-    margin-bottom: 2rem;
-}
-
-.container[b-u28ymlant2] {
-    width: 100%;
-    /* Centraliza o bloco container na tela */
-    margin-left: auto;
-    margin-right: auto;
-
-    display: flex;
-    flex-direction: column;
-    /* Garante empilhamento vertical padrão */
-    align-items: center;
-    /* Centraliza itens horizontalmente */
-}
-
-.content[b-u28ymlant2] {
-    width: 100%;
-    max-width: 1200px;
+/* Títulos das Seções */
+.title[b-u28ymlant2] {
     text-align: center;
-}
-
-.about[b-u28ymlant2] {
-    width: 100%;
-    /* Mudado de 90% fixo para 100% com max-width no pai */
-    box-shadow: var(--shadow-1);
-    border-radius: var(--border-1);
-    padding: 2rem;
-    /* Adicionado padding interno para o texto não colar na borda */
-    background-color: rgba(255, 255, 255, 0.02);
-    /* Leve tint para ver a área */
-}
-
-/* ================================
-   TIPOGRAFIA
-   ================================ */
-
-h2[b-u28ymlant2] {
     color: var(--color-gold-3);
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    /* Tamanho fluido */
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
+    margin-bottom: 2rem;
+    position: relative;
+
+    /* Adiciona um charme visual no mobile (linha abaixo do titulo) */
+    padding-bottom: 1rem;
 }
 
-h3[b-u28ymlant2] {
-    color: var(--color-gold-2);
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
+.title[b-u28ymlant2]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-gold-1);
+    border-radius: 2px;
 }
 
-/* Garante que o texto use a cor principal */
-p[b-u28ymlant2],
-li[b-u28ymlant2],
-.label[b-u28ymlant2],
-.lead[b-u28ymlant2],
-.values[b-u28ymlant2],
-.howItWorks[b-u28ymlant2] {
-    color: var(--color-primary-text-1);
+/* Subtítulos (H2 dentro das seções) */
+section h2[b-u28ymlant2] {
+    color: var(--text-color-1);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--color-blue-2);
+    padding-left: 1rem;
+}
+
+/* Textos descritivos (.label) */
+.label[b-u28ymlant2] {
+    color: var(--color-text-color-1);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
-.label[b-u28ymlant2],
-.lead[b-u28ymlant2],
-.values[b-u28ymlant2],
-.howItWorks[b-u28ymlant2] {
-    margin-bottom: 1.5rem;
-    text-align: left;
-    transition: opacity 0.5s ease;
+/* Destaques no texto */
+strong[b-u28ymlant2] {
+    color: var(--color-gold-3);
+    font-weight: 700;
 }
 
 /* ================================
-   VÍDEO RESPONSIVO (Moderno)
+   COMPONENTE DE VÍDEO RESPONSIVO
    ================================ */
-
 .video-container[b-u28ymlant2] {
-    /* Centralização robusta (funciona em flex, grid ou block) */
-    margin: 0 auto 2rem auto;
-
-    width: 100%;
-    max-width: 800px;
-
-    /* A MÁGICA: Mantém proporção de TV/YouTube automaticamente */
-    aspect-ratio: 16 / 9;
-    height: auto;
-    /* Remove altura fixa */
-
     position: relative;
-    overflow: hidden;
-    border-radius: var(--border-1);
-    box-shadow: var(--shadow-1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #000;
-    /* Fundo preto enquanto carrega */
-}
+    width: 100%;
+    /* Aspect Ratio moderno (substitui o hack de padding-bottom) */
+    aspect-ratio: 16 / 9;
 
-.video-container:hover[b-u28ymlant2] {
-    transform: scale(1.02);
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-black-1);
+    border-radius: var(--border-1);
+    overflow: hidden;
+    box-shadow: var(--shadow-2);
+    margin-bottom: 2.5rem;
+
+    border: 1px solid var(--color-primary-translucent-3);
 }
 
 .video-container iframe[b-u28ymlant2] {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
 }
 
 /* ================================
-   IMAGEM E GRID
+   ÁREA DOS PROFESSORES (Teachers)
    ================================ */
 
+/* Imagem do professor dentro do Card */
 .teacher-image[b-u28ymlant2] {
-    display: block;
-    /* Garante que margin auto funcione */
-    margin: 0 auto 1rem auto;
-
     width: 120px;
     height: 120px;
-
-    border-radius: 50%;
-    border: 4px solid var(--color-gold-2);
     object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Formato circular para fotos de perfil */
+    border-radius: 50%;
+
+    /* Borda sutil para destacar do fundo do card */
+    border: 3px solid var(--color-gold-1);
+    box-shadow: var(--shadow-1);
+
+    /* Centraliza a imagem no card */
+    display: block;
+    margin: 0 auto 1.5rem auto;
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.teacher-image:hover[b-u28ymlant2] {
-    transform: rotate(3deg) scale(1.05);
-    box-shadow: var(--shadow-2);
+/* Título do Card do Professor (Nome) */
+.card h3.card-title[b-u28ymlant2] {
+    text-align: center;
+    color: var(--color-gold-4);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
-.grid[b-u28ymlant2] {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    width: 100%;
+/* Disciplinas do Professor */
+.card span[b-u28ymlant2] {
+    display: block;
+    /* Garante que fique em linha própria */
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-black-4);
+    font-style: italic;
+    font-weight: 500;
 }
 
-.howItWorks .grid[b-u28ymlant2] {
-    grid-template-columns: repeat(2, 1fr);
+/* Hover Effect na imagem do professor (apenas desktop) */
+@media (hover: hover) {
+    .card:hover .teacher-image[b-u28ymlant2] {
+        transform: scale(1.05);
+        border-color: var(--color-gold-3);
+    }
 }
 
 /* ================================
-   MEDIA QUERIES
+   FOOTER ESPECÍFICO DA PÁGINA
    ================================ */
 
-/* Tablet Portrait e Mobile (Abaixo de 768px) */
-@media (max-width: 768px) {
-    section[b-u28ymlant2] {
-        padding: 3rem 1rem;
-        /* Menos padding lateral */
+/* O container inline style no final do seu HTML 
+   pode ser alvo através de nth-last-child ou uma classe específica.
+   Como você usou inline style no HTML, o CSS abaixo complementa. */
+
+.content>.container:last-child[b-u28ymlant2] {
+    text-align: center;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    padding-top: 2rem;
+}
+
+.content>.container:last-child h3[b-u28ymlant2] {
+    color: var(--color-blue-2);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.content>.container:last-child p[b-u28ymlant2] {
+    text-align: center;
+    /* Sobrescreve o justify global para o footer */
+    color: var(--color-black-4);
+}
+
+/* ================================
+   RESPONSIVIDADE FINA
+   ================================ */
+
+/* Ajustes para telas maiores que tablet */
+@media (min-width: 768px) {
+
+    /* Aumenta o tamanho da fonte dos títulos para impacto visual */
+    .title[b-u28ymlant2] {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
     }
 
-    .about[b-u28ymlant2] {
-        padding: 1.5rem;
-        /* Menos padding interno no card */
-    }
-
-    /* Ajuste de texto para mobile */
-    .label[b-u28ymlant2],
+    /* Melhora a leitura dos textos longos limitando a largura */
     .lead[b-u28ymlant2],
     .values[b-u28ymlant2],
     .howItWorks[b-u28ymlant2] {
-        text-align: left;
-        /* Justify cria buracos feios no mobile, left é melhor */
-        font-size: 0.95rem;
+        max-width: 100%;
     }
 
-    /* Grid vira coluna única se a tela for muito estreita */
-    .grid[b-u28ymlant2] {
-        gap: 1rem;
+    /* Aumenta a imagem do professor um pouco */
+    .teacher-image[b-u28ymlant2] {
+        width: 140px;
+        height: 140px;
     }
-
-    .howItWorks .grid[b-u28ymlant2] {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    width: 100%;
-}
 }
 /* _content/FrontEnd/Components/Pages/Courses.razor.rz.scp.css */
-.card .content[b-e6p3k14bvl]{
-    border: solid 1px var(--color-primary-translucent-2);
-    border-radius: var(--border-1);
-    margin-bottom: 1rem;
-    padding: 1rem;
+/* ================================
+   UTILITÁRIOS (Helpers)
+   ================================ */
+/* A classe .colgold-3 aparece no seu HTML, então precisamos defini-la
+   caso não exista globalmente */
+.colgold-3[b-e6p3k14bvl] {
+    color: var(--color-gold-3) !important;
 }
 
-.back-button[b-e6p3k14bvl]{
-    justify-self: center;
-    margin: 2rem 0;
+/* ================================
+   CONTAINER DA PÁGINA
+   ================================ */
+.course-page-container[b-e6p3k14bvl] {
+    width: 100%;
+    padding: 1rem;
+    /* Espaçamento interno seguro para mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Centralização em telas grandes */
+@media (min-width: 992px) {
+    .course-page-container[b-e6p3k14bvl] {
+        max-width: 1200px;
+        /* Limita a largura em telas ultra-wide */
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}
+
+/* ================================
+   CABEÇALHO (Breadcrumbs e Título)
+   ================================ */
+.course-page-container header[b-e6p3k14bvl] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Navegação (Breadcrumbs) */
+.course-page-container nav[b-e6p3k14bvl] {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Quebra linha se o nome do curso for longo no mobile */
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    /* 14px */
+    color: var(--color-black-4);
+}
+
+/* Links do Breadcrumb */
+.course-page-container nav a[b-e6p3k14bvl] {
+    color: var(--color-gold-3);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.course-page-container nav a:hover[b-e6p3k14bvl] {
+    text-decoration: underline;
+    filter: brightness(1.2);
+}
+
+/* Símbolo separador (>) */
+.course-page-container nav span[b-e6p3k14bvl] {
+    opacity: 0.7;
+}
+
+/* Oculta o <hr> original do HTML pois usamos border-bottom no header */
+.course-page-container nav hr[b-e6p3k14bvl] {
+    display: none;
+}
+
+/* Título Principal do Curso */
+.course-page-container header h1[b-e6p3k14bvl] {
+    font-size: 1.5rem;
+    /* Mobile */
+    margin: 0;
+    line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+    .course-page-container header h1[b-e6p3k14bvl] {
+        font-size: 2.25rem;
+    }
+}
+
+/* ================================
+   CONTEÚDO INTERNO DOS CARDS
+   ================================ */
+/* Nota: Não estamos mexendo na classe .card, mas sim 
+   na div filha direta onde estão o Título e a Duração 
+*/
+
+.card>div:first-child[b-e6p3k14bvl] {
+    display: flex;
+    flex-direction: column;
+    /* Empurra o botão para o rodapé do card se houver altura fixa */
+    flex: 1;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+/* Título do Módulo */
+.card h3[b-e6p3k14bvl] {
+    font-size: 1.125rem;
+    margin: 0;
+    line-height: 1.3;
+    /* Garante altura mínima para alinhamento visual em grid */
+    min-height: 3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limita a 2 linhas com ... */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Ícone e Texto de Duração */
+.card span[b-e6p3k14bvl] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-black-4);
+    /* Cor mais suave para metadados */
+    font-weight: 500;
+}
+
+/* ================================
+   BOTÕES DE AÇÃO E VOLTAR
+   ================================ */
+
+/* Botão de Voltar (Rodapé da página) */
+.back-button[b-e6p3k14bvl] {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Ajuste específico para o componente de botão dentro do card 
+   para garantir que ele ocupe a largura correta no mobile */
+.card ButtonComponent[b-e6p3k14bvl] {
+    width: 100%;
+    /* No mobile, botões full width são melhores para o toque */
+}
+
+/* Mensagens de Erro / Vazio */
+.course-page-container p[b-e6p3k14bvl] {
+    color: var(--color-black-4);
+    font-style: italic;
+}
+
+.course-page-container h2[b-e6p3k14bvl] {
+    color: var(--color-red-2);
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   AJUSTES RESPONSIVOS FINAIS
+   ================================ */
+@media (min-width: 768px) {
+    /* Em desktop, o botão dentro do card pode ser menor se desejar, 
+       mas o estilo inline do componente (Width="50%") terá precedência.
+       Aqui apenas ajustamos alinhamentos. */
+
+    .card>div:first-child[b-e6p3k14bvl] {
+        /* Aumenta espaçamento interno no desktop */
+        margin-bottom: 2rem;
+    }
 }
 /* _content/FrontEnd/Components/Pages/CoursesModule.razor.rz.scp.css */
-.card[b-2l6weae92l]{
-    margin: 2rem 0;
-}
-/* _content/FrontEnd/Components/Pages/CoursesTopic.razor.rz.scp.css */
-article[b-vcmzzwj9ad]{
-    margin-top: 2rem;
-}
-/* _content/FrontEnd/Components/Pages/Disciplines.razor.rz.scp.css */
 /* ================================
-   PÁGINA DE DISCIPLINA
+   ESCOPO: MODULE CONTAINER
    ================================ */
 
-.discipline-page[b-wfnqutia9y] {
-    /* Centraliza o conteúdo principal da página */
+.module-container[b-2l6weae92l] {
+    width: 100%;
     max-width: 1200px;
+    /* Limita a largura em monitores ultrawide */
     margin: 0 auto;
-    /* Padding lateral base */
-    padding: 0 1.5rem;
-    box-sizing: border-box;
-    width: 100%;
+    padding: 0 1rem 2rem 1rem;
+    /* Padding lateral seguro */
+    animation: fadeIn-b-2l6weae92l 0.3s ease-in-out;
 }
 
-/* Estilo para todas as seções de conteúdo */
-.discipline-page section[b-wfnqutia9y] {
-    padding: 3rem 0;
-    /* Usando REM para consistência */
-    margin: 0;
-    border-bottom: 1px solid var(--color-primary-translucent-3);
-    transition: background-color 0.3s ease;
-}
-
-.discipline-page section:last-of-type[b-wfnqutia9y] {
-    border-bottom: none;
-    padding-bottom: 5rem;
-}
-
-/* Títulos de Seção (o H1 dentro de <section>) */
-.discipline-page section h1[b-wfnqutia9y] {
-    /* MÁGICA FLUIDA: O texto escala entre 1.8rem e 2.5rem automaticamente */
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    font-weight: 700;
-    color: var(--color-gold-3);
-    margin-bottom: 1.5rem;
-    text-align: center;
-    line-height: 1.2;
-    /* Evita quebra de linha feia em títulos longos */
-    transition: color 0.3s ease;
-}
-
-/* Parágrafos de texto */
-.discipline-page section p[b-wfnqutia9y] {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--color-primary-text-1);
-    max-width: 800px;
-    margin: 0 auto 2rem auto;
-    opacity: 0.9;
-    text-align: center;
-}
-
-/* Estilo para a mensagem de "Discipline not found" */
-.discipline-page>p[b-wfnqutia9y] {
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--color-red-2);
-    margin-top: 3rem;
-}
-
-/* ================================
-   CURRÍCULO (dentro dos cards)
-   ================================ */
-
-.curriculum-section[b-wfnqutia9y] {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px dashed var(--color-secundary-border-1);
-}
-
-.curriculum-section h3[b-wfnqutia9y] {
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    /* Garante contraste se estiver no dark mode */
-    color: var(--color-primary-text-1);
-}
-
-/* Lista de Tópicos do Currículo */
-.curriculum-section ul[b-wfnqutia9y] {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-}
-
-.curriculum-section li[b-wfnqutia9y] {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    padding: 0.35rem 0;
-    /* Área de clique melhorada */
-    color: var(--color-primary-text-2);
-    position: relative;
-    padding-left: 1.25rem;
-    /* Espaço para o bullet */
-}
-
-.curriculum-section li[b-wfnqutia9y]::before {
-    content: "•";
-    color: var(--color-gold-2);
-    font-weight: bold;
-    position: absolute;
-    /* Posicionamento absoluto é mais seguro para bullets customizados */
-    left: 0;
-    top: 0.35rem;
-    /* Alinha visualmente com o texto */
-    transition: color 0.3s ease;
-}
-
-.curriculum-section li:hover[b-wfnqutia9y] {
-    color: var(--color-gold-3);
-    cursor: default;
-}
-
-/* ================================
-   CORREÇÃO DO GRID 🚧
-   ================================ */
-.grid[b-wfnqutia9y] {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-}
-
-/* ================================
-   RESPONSIVIDADE (MOBILE) 📱
-   ================================ */
-
-@media (max-width: 768px) {
-    .discipline-page[b-wfnqutia9y] {
-        padding: 0 1rem;
-        /* Padding menor para ganhar área útil */
-    }
-
-    .discipline-page section[b-wfnqutia9y] {
-        padding: 2rem 0;
-    }
-
-    /* Melhoria de Leitura:
-       Texto centralizado é ruim de ler em celular.
-       Mudamos para alinhamento à esquerda (ou justify) em telas pequenas. */
-    .discipline-page section p[b-wfnqutia9y] {
-        font-size: 1rem;
-        text-align: left;
-        padding: 0;
-        /* Removemos padding extra desnecessário */
-    }
-
-    /* Caso tenha subtítulos centralizados, forçamos esquerda também */
-    .discipline-page section h1[b-wfnqutia9y] {
-        text-align: center;
-        /* Título pode manter centro */
-        margin-bottom: 1rem;
-    }
-
-    /* Ajuste fino para listas */
-    .curriculum-section li[b-wfnqutia9y] {
-        font-size: 0.9rem;
-    }
-
-    .grid[b-wfnqutia9y] {
-        gap: 1rem;
-        grid-template-columns: 1fr;
-    }
-}
-/* _content/FrontEnd/Components/Pages/Home.razor.rz.scp.css */
-/* ================================
-   ESTILOS GERAIS DE SEÇÃO & LAYOUT
-   ================================ */
-
-/* Container principal */
-.homePage[b-swpeewdqbl] {
-    width: 100%;
-    overflow-x: hidden;
-    /* Previne scroll lateral indesejado */
-}
-
-/* Configuração base das seções */
-section[b-swpeewdqbl] {
-    /* Muda de height fixa para min-height para não cortar conteúdo em telas pequenas */
-    min-height: 100vh;
-    width: 100%;
-    padding: 4rem 2%;
-    /* Mais respiro vertical */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    position: relative;
-}
-
-/* Títulos e textos genéricos de seção */
-section h1[b-swpeewdqbl],
-section h2[b-swpeewdqbl] {
-    text-align: center;
-    line-height: 1.2;
-    /* Efeito sutil de sombra no texto para destacar do fundo */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-section p[b-swpeewdqbl] {
-    margin: 1.5rem 0;
-    text-align: center;
-    max-width: 800px;
-    /* Limite em pixels é melhor que % para leitura */
-    line-height: 1.6;
-    color: var(--color-primary-text-2);
-}
-
-/* Fundos alternados com suas variáveis */
-#s1[b-swpeewdqbl] {
-    background-color: var(--color-primary-background-1);
-}
-
-#s2[b-swpeewdqbl] {
-    background-color: var(--color-primary-background-2);
-}
-
-/* ================================
-   HERO SECTION / WELCOME (Efeito Vidro)
-   ================================ */
-
-.wellcome-section[b-swpeewdqbl] {
-    background-image: url("images/ClassRoomBackground.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Adiciona um overlay escuro sutil para garantir leitura se a imagem for clara */
-    background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.wellcome-section .container[b-swpeewdqbl] {
-    /* Glassmorphism Profissional */
-    background: rgba(255, 255, 255, 0.05);
-    /* Transparência sutil */
-    backdrop-filter: blur(12px);
-    /* Desfoque mais forte */
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: var(--border-1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Borda de vidro */
-    box-shadow: var(--shadow-1);
-
-    padding: 3rem;
-    max-width: 90%;
-    width: auto;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    /* Animação de entrada suave */
-    animation: fadeUp-b-swpeewdqbl 1s ease-out forwards;
-}
-
-.wellcome-section .container .content .title[b-swpeewdqbl] {
-    width: 100%;
-    margin: 0;
-    font-weight: 800;
-    /* Responsividade mágica: mínimo 3rem, ideal 8vw, máximo 8rem */
-    font-size: clamp(3rem, 8vw, 8rem);
-    color: var(--color-primary-text-3);
-    text-align: center;
-    letter-spacing: -2px;
-}
-
-.wellcome-section .container .content .sub-title[b-swpeewdqbl] {
-    width: 100%;
-    margin-top: 1rem;
-    font-weight: 300;
-    font-size: clamp(1.5rem, 4vw, 4rem);
-    color: var(--color-gold-2);
-    /* Usando sua cor de destaque */
-    text-align: center;
-}
-
-/* ================================
-   GRID DE CURSOS / DISCIPLINAS
-   ================================ */
-
-.disciplinas[b-swpeewdqbl] {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.courses-section .container[b-swpeewdqbl],
-.depoiments-section .container[b-swpeewdqbl] {
-    width: 100%;
-    max-width: 1200px;
-    /* Container centralizado padrão */
-    padding: 1rem;
-}
-
-.depoiments-section p[b-swpeewdqbl]{
-    justify-self: center;
-}
-
-.grid[b-swpeewdqbl] {
-    display: grid;
-    gap: 2rem;
-    overflow-y: auto;
-    /* Estilização sutil na área de scroll */
-    background: var(--color-primary-translucent-1);
-}
-
-/* ================================
-   ANIMAÇÕES (KEYFRAMES)
-   ================================ */
-
-@keyframes fadeUp-b-swpeewdqbl {
+@keyframes fadeIn-b-2l6weae92l {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(10px);
     }
 
     to {
@@ -1277,23 +1162,672 @@ section p[b-swpeewdqbl] {
 }
 
 /* ================================
-   MEDIA QUERIES (Ajustes Finos)
+   CABEÇALHO & NAVEGAÇÃO (Breadcrumbs)
    ================================ */
 
-@media (max-width: 768px) {
-    section[b-swpeewdqbl] {
-        padding: 2rem 1rem;
+.module-container header[b-2l6weae92l] {
+    margin-bottom: 2rem;
+}
+
+/* Área dos links de navegação */
+.module-container header nav[b-2l6weae92l] {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebrar linha em mobile */
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    /* Texto levemente menor para hierarquia */
+    color: var(--color-black-4);
+    margin-bottom: 1rem;
+}
+
+/* Separadores (>) */
+.module-container header nav span[b-2l6weae92l] {
+    color: var(--color-black-3);
+    user-select: none;
+}
+
+/* O último item (nome do módulo atual) não deve parecer um link */
+.module-container header nav span:last-child[b-2l6weae92l] {
+    color: var(--text-color-1);
+    font-weight: 600;
+}
+
+/* Linha divisória customizada */
+.module-container hr[b-2l6weae92l] {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            var(--color-primary-translucent-3) 0%,
+            transparent 100%);
+    margin: 1.5rem 0;
+}
+
+/* ================================
+   TÍTULO E METADADOS
+   ================================ */
+
+/* Container do H1 e da Duração */
+.module-container header>div:not(nav)[b-2l6weae92l] {
+    display: flex;
+    flex-direction: column;
+    /* Mobile: Empilhado */
+    gap: 0.5rem;
+}
+
+.module-container h1[b-2l6weae92l] {
+    color: var(--color-gold-3);
+    /* Destaque dourado conforme o tema */
+    margin-bottom: 0;
+    /* Remove margem padrão para controle pelo gap */
+}
+
+/* Área da Duração */
+.module-container header .duration-info[b-2l6weae92l] {
+    font-size: 0.9rem;
+    color: var(--color-black-4);
+    display: flex;
+    align-items: center;
+}
+
+.module-container header .duration-info strong[b-2l6weae92l] {
+    color: var(--color-green-3);
+    /* Destaque sutil para o tempo */
+    margin-left: 0.4rem;
+}
+
+/* ================================
+   LISTA DE CAPÍTULOS E TÓPICOS
+   ================================ */
+
+/* Container geral da lista */
+.module-container section>div[b-2l6weae92l] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Espaço entre os cards de capítulos */
+}
+
+/* Ajustes estruturais para o .card (sem mexer no visual dele).
+   Apenas garantindo que o conteúdo interno respire.
+*/
+.module-container .card[b-2l6weae92l] {
+    display: flex;
+    flex-direction: column;
+    /* Caso o card global não tenha padding, adicionamos um respiro interno */
+    padding: 1.5rem;
+}
+
+/* Título do Capítulo (h3) */
+.module-container .card h3[b-2l6weae92l] {
+    font-size: 1.25rem;
+    color: var(--text-color-1);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+/* Container dos Tópicos (Botões) */
+.module-container .card>div[b-2l6weae92l] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    /* Espaço entre os botões de tópicos */
+}
+
+/* Ajuste fino para os wrappers dos botões */
+.module-container .card>div>div[b-2l6weae92l] {
+    width: 100%;
+}
+
+/* Se houver mensagem de "Em breve" ou "Sem capítulos" */
+.module-container section>div>div:not(.card)[b-2l6weae92l] {
+    color: var(--color-black-4);
+    font-style: italic;
+    padding: 1rem;
+    background: var(--color-primary-translucent-1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ================================
+   MEDIA QUERIES (Desktop)
+   ================================ */
+
+@media (min-width: 768px) {
+    .module-container[b-2l6weae92l] {
+        padding-top: 2rem;
     }
 
-    .wellcome-section .container[b-swpeewdqbl] {
-        padding: 1.5rem;
+    /* No desktop, título e duração ficam na mesma linha */
+    .module-container header>div:not(nav)[b-2l6weae92l] {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        /* Alinha pela base do texto */
     }
 
-    /* Grid em mobile vira uma coluna com scroll vertical */
-    .grid[b-swpeewdqbl] {
-        max-height: none;
-        /* Remove limite de altura em mobile se preferir scroll da página */
-        overflow-y: visible;
+    /* Duração alinhada à direita no desktop */
+    .module-container header .duration-info[b-2l6weae92l] {
+        margin-bottom: 0.5rem;
+        /* Ajuste visual com a baseline do H1 */
+    }
+
+    /* Tópicos podem ser exibidos em grid se desejar, 
+       mas mantivemos coluna para leitura fácil */
+}
+/* _content/FrontEnd/Components/Pages/CoursesTopic.razor.rz.scp.css */
+/* ================================
+   CONTAINER PRINCIPAL
+   ================================ */
+.topic-container[b-vcmzzwj9ad] {
+    width: 100%;
+    /* Mobile: Ocupa quase tudo, mas com margem segura */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+
+    background-color: var(--background-1);
+    /* Sombra suave usando sua variável */
+    box-shadow: none;
+    /* Remove sombra no mobile para ganhar espaço */
+}
+
+/* Desktop: Restaura a sombra e limita largura */
+@media (min-width: 768px) {
+    .topic-container[b-vcmzzwj9ad] {
+        max-width: 90%;
+        padding: 2rem;
+        box-shadow: var(--shadow-2);
+        border-radius: 8px;
+        /* Refinamento visual */
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* ================================
+   NAVEGAÇÃO (BREADCRUMBS)
+   ================================ */
+.topic-breadcrumbs[b-vcmzzwj9ad] {
+    margin-bottom: 1.5rem;
+}
+
+.topic-breadcrumbs>div[b-vcmzzwj9ad] {
+    display: flex;
+    flex-wrap: wrap;
+    /* CRUCIAL: Permite quebrar linha no celular */
+    align-items: center;
+    gap: 0.5rem;
+    /* Espaço entre os itens */
+
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-black-4);
+}
+
+/* A setinha (separator) */
+.topic-breadcrumbs span[b-vcmzzwj9ad] {
+    color: var(--color-black-3);
+    font-size: 0.75rem;
+}
+
+/* O último item (tópico atual) */
+.topic-breadcrumbs span:last-child[b-vcmzzwj9ad] {
+    color: var(--color-gold-3);
+    /* Destaque dourado */
+    font-weight: 600;
+}
+
+.topic-breadcrumbs hr[b-vcmzzwj9ad] {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-primary-translucent-3), transparent);
+    margin-top: 1rem;
+}
+
+/* ================================
+   CORPO DO CONTEÚDO (MARKDOWN)
+   ================================ */
+.topic-body[b-vcmzzwj9ad] {
+    /* Mobile: Padding lateral reduzido para aproveitar a tela */
+    padding: 1rem 0;
+
+    /* Tipografia para leitura longa */
+    font-size: 1.05rem;
+    line-height: 1.7;
+    /* Melhor legibilidade */
+    color: var(--text-color-1);
+}
+
+/* Tratamento de Imagens dentro do Markdown */
+/* Garante que imagens grandes não quebrem o layout no celular */
+.topic-body img[b-vcmzzwj9ad] {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-2);
+}
+
+/* Tratamento de Tabelas dentro do Markdown */
+.topic-body table[b-vcmzzwj9ad] {
+    display: block;
+    overflow-x: auto;
+    /* Scroll horizontal se a tabela for grande */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Desktop: Aumenta o padding conforme solicitado no original */
+@media (min-width: 992px) {
+    .topic-body[b-vcmzzwj9ad] {
+        padding: 2rem 5rem;
+        /* Restaura o padding generoso em telas grandes */
+        font-size: 1.125rem;
+    }
+}
+
+/* ================================
+   FOOTER / BOTÕES DE NAV
+   ================================ */
+.topic-footer[b-vcmzzwj9ad] {
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-primary-translucent-2);
+
+    /* Layout Flex para posicionamento */
+    display: flex;
+    flex-direction: column;
+    /* Mobile: Botões empilhados */
+    gap: 1rem;
+}
+
+/* Garante que os containers dos botões ocupem largura total no mobile */
+.topic-footer>div[b-vcmzzwj9ad] {
+    width: 100%;
+}
+
+/* Desktop: Botões lado a lado */
+@media (min-width: 768px) {
+    .topic-footer[b-vcmzzwj9ad] {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .topic-footer>div[b-vcmzzwj9ad] {
+        width: auto;
+        /* Tamanho natural no desktop */
+        min-width: 200px;
+        /* Tamanho mínimo para equilíbrio */
+    }
+
+    /* Se houver apenas o botão "Próximo", joga ele para a direita */
+    .topic-footer>div:only-child[b-vcmzzwj9ad] {
+        margin-left: auto;
+    }
+}
+/* _content/FrontEnd/Components/Pages/Disciplines.razor.rz.scp.css */
+/* ================================
+   ESCOPO: PÁGINA DE DISCIPLINA
+   ================================ */
+
+.discipline-page[b-wfnqutia9y] {
+    width: 100%;
+    padding: 0 1rem 2rem 1rem;
+    margin: 0 auto;
+    animation: fadeIn-b-wfnqutia9y 0.4s ease-out;
+}
+
+@keyframes fadeIn-b-wfnqutia9y {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .discipline-page[b-wfnqutia9y] {
+        max-width: 1200px;
+        padding-top: 2rem;
+    }
+}
+
+/* ================================
+   SEÇÕES (Centralização Geral)
+   ================================ */
+
+.discipline-page section[b-wfnqutia9y] {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    /* NOVO: Centraliza horizontalmente os filhos diretos (H1, CTA, Grid) */
+    align-items: center;
+    /* NOVO: Centraliza o texto por herança */
+    text-align: center;
+}
+
+/* O Grid precisa voltar a esticar para ocupar a largura 
+   porque o align-items: center do pai faria ele encolher */
+.discipline-page section .grid[b-wfnqutia9y] {
+    width: 100%;
+}
+
+/* ================================
+   TIPOGRAFIA DE CONTEÚDO
+   ================================ */
+
+/* Títulos das Seções */
+.discipline-page section>h1[b-wfnqutia9y] {
+    color: var(--color-gold-3);
+    font-size: 1.75rem;
+
+    /* Mantém a borda ocupando a largura, mas o texto centralizado */
+    width: 100%;
+    text-align: center;
+
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Parágrafos descritivos */
+.discipline-page section>p[b-wfnqutia9y] {
+    color: var(--text-color-1);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 80ch;
+
+    /* NOVO: Margem auto é necessária para centralizar blocos com width limitado */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Desktop Fonts */
+@media (min-width: 768px) {
+    .discipline-page section>h1[b-wfnqutia9y] {
+        font-size: 2.25rem;
+    }
+}
+
+/* ================================
+   CONTEÚDO INTERNO DOS CARDS
+   (Centralizando o miolo sem mexer no container .card)
+   ================================ */
+
+/* Título do Curso dentro do Card */
+.card-title[b-wfnqutia9y] {
+    color: var(--text-color-1);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* Já estava, mas reforçando */
+}
+
+/* Container dos itens do currículo */
+.curriculum-section[b-wfnqutia9y] {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-primary-translucent-1);
+    margin-bottom: 0.5rem;
+
+    /* NOVO: Garante que o H3 interno fique no meio */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.curriculum-section:last-of-type[b-wfnqutia9y] {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+/* ================================
+   CLASSES UTILITÁRIAS
+   ================================ */
+
+.colgold-1[b-wfnqutia9y] {
+    color: var(--color-gold-2);
+    font-weight: 500;
+    margin: 0;
+    filter: brightness(1.2);
+    text-align: center;
+    /* Reforço */
+}
+/* _content/FrontEnd/Components/Pages/Home.razor.rz.scp.css */
+/* ================================
+   LAYOUT E CONTAINERS (Mobile First)
+   ================================ */
+
+/* Wrapper principal da página */
+.homePage[b-swpeewdqbl] {
+    width: 100%;
+    overflow-x: hidden;
+    /* Evita scroll horizontal indesejado em mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    /* Espaçamento vertical entre seções */
+    padding-bottom: 4rem;
+}
+
+/* Container responsivo centralizado */
+.container[b-swpeewdqbl] {
+    width: 100%;
+    padding-right: 1.5rem;
+    /* Margem segura lateral no mobile */
+    padding-left: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Centralização de conteúdo padrão nas seções */
+.content[b-swpeewdqbl] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ================================
+   SEÇÃO 1: WELCOME (HERO)
+   ================================ */
+.wellcome-section[b-swpeewdqbl] {
+    padding: 3rem 0;
+    /* Um fundo sutil para destacar a primeira dobra */
+    background: radial-gradient(circle at top center, var(--color-primary-translucent-2) 0%, transparent 70%);
+}
+
+.wellcome-section .title[b-swpeewdqbl] {
+    font-size: 2.25rem;
+    /* ~36px */
+    color: var(--color-gold-3);
+    /* Dourado para o nome da escola */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.wellcome-section .sub-title[b-swpeewdqbl] {
+    font-size: 1.125rem;
+    color: var(--color-black-4);
+    /* Cinza claro para subtítulo */
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-gold-1);
+    /* Detalhe visual elegante */
+    padding-bottom: 1rem;
+    display: inline-block;
+}
+
+/* Ajuste específico para o componente CTA dentro da home */
+.wellcome-section .content[b-swpeewdqbl]  .cta-component {
+    margin-top: 1rem;
+    max-width: 100%;
+}
+
+/* ================================
+   SEÇÃO 2 & 4: COURSES & ABOUT
+   ================================ */
+.courses-section[b-swpeewdqbl],
+.about-section[b-swpeewdqbl] {
+    position: relative;
+}
+
+/* Estilo dos títulos de seção (Domínios do Conhecimento, etc) */
+section>.container>h1[b-swpeewdqbl] {
+    font-size: 1.75rem;
+    color: var(--text-color-1);
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Pequeno detalhe decorativo abaixo dos títulos H1 */
+section>.container>h1[b-swpeewdqbl]::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-blue-2);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+/* 2. Layout Interno (.discipline-div) */
+.discipline-div[b-swpeewdqbl] {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    /* Espaço entre título, subtítulo e CTA */
+    height: 100%;
+}
+
+/* 3. Título da Disciplina */
+.discipline-title[b-swpeewdqbl] {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-blue-2);
+    /* Azul institucional para o nome do curso */
+    margin: 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+/* 4. Subtítulo (Descrição Curta) */
+.discipline-subtitle[b-swpeewdqbl] {
+    font-size: 1rem;
+    color: var(--color-black-4);
+    /* Cinza para texto secundário */
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    flex-grow: 1;
+    /* Empurra o CTA para o final do card se o texto for curto */
+}
+
+/* 5. O Texto CTA (Pseudo-botão) */
+.discipline-cta[b-swpeewdqbl] {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-gold-3);
+    /* Dourado para indicar ação/valor */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    /* Prepara para animação */
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+/* ================================
+   SEÇÃO 3: DEPOIMENTOS
+   ================================ */
+.depoiments-section[b-swpeewdqbl] {
+    background-color: var(--color-primary-translucent-1);
+    /* Fundo levemente destacado */
+    padding: 3rem 0;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+.depoiments>p[b-swpeewdqbl] {
+    text-align: center;
+    font-style: italic;
+    color: var(--color-black-4);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================================
+   MEDIA QUERIES (DESKTOP)
+   ================================ */
+
+/* Breakpoint Tablet (>= 768px) */
+@media (min-width: 768px) {
+    .container[b-swpeewdqbl] {
+        max-width: 720px;
+    }
+
+    .wellcome-section .title[b-swpeewdqbl] {
+        font-size: 3.5rem;
+        /* Maior impacto visual */
+    }
+
+    .wellcome-section .sub-title[b-swpeewdqbl] {
+        font-size: 1.5rem;
+    }
+}
+
+/* Breakpoint Desktop (>= 992px) */
+@media (min-width: 992px) {
+    .container[b-swpeewdqbl] {
+        max-width: 960px;
+    }
+
+    .homePage[b-swpeewdqbl] {
+        gap: 6rem;
+        /* Mais respiro vertical em telas grandes */
+        padding-bottom: 6rem;
+    }
+
+    .wellcome-section[b-swpeewdqbl] {
+        padding: 6rem 0 4rem 0;
+        /* Mais espaço no topo para o Hero */
+    }
+
+    .about-section .content[b-swpeewdqbl] {
+        margin: 0 auto;
+    }
+}
+
+/* Breakpoint Large Desktop (>= 1200px) */
+@media (min-width: 1200px) {
+    .container[b-swpeewdqbl] {
+        max-width: 1140px;
     }
 }
 /* _content/FrontEnd/Components/Pages/Registration.razor.rz.scp.css */

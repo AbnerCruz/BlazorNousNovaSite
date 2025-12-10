@@ -1,197 +1,222 @@
 /* ================================
-   ESTRUTURA E SEÇÃO
+   LAYOUT E ESTRUTURA (About Specific)
+   ================================ */
+
+/* Wrapper principal da página */
+.about[b-u28ymlant2] {
+    width: 100%;
+    padding-bottom: 4rem;
+}
+
+/* Container centralizador */
+.container[b-u28ymlant2] {
+    width: 100%;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Centraliza o container em telas maiores */
+@media (min-width: 768px) {
+    .container[b-u28ymlant2] {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container[b-u28ymlant2] {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container[b-u28ymlant2] {
+        max-width: 1140px;
+    }
+}
+
+/* ================================
+   SEÇÕES E ESPAÇAMENTOS
    ================================ */
 
 section[b-u28ymlant2] {
-    width: 100%;
-    /* Removemos background transparente desnecessário */
-    /* Padding vertical fixo e horizontal seguro */
-    padding: 4rem 1.5rem;
-    margin: 0;
-    box-sizing: border-box;
+    /* Espaçamento vertical generoso entre seções */
+    margin-bottom: 4rem;
+    /* Adiciona uma separação visual sutil se necessário, 
+       mas aqui deixarei limpo conforme o estilo 'dark' */
 }
 
-section .title[b-u28ymlant2] {
-    margin-bottom: 2rem;
-}
-
-.container[b-u28ymlant2] {
-    width: 100%;
-    /* Centraliza o bloco container na tela */
-    margin-left: auto;
-    margin-right: auto;
-
-    display: flex;
-    flex-direction: column;
-    /* Garante empilhamento vertical padrão */
-    align-items: center;
-    /* Centraliza itens horizontalmente */
-}
-
-.content[b-u28ymlant2] {
-    width: 100%;
-    max-width: 1200px;
+/* Títulos das Seções */
+.title[b-u28ymlant2] {
     text-align: center;
-}
-
-.about[b-u28ymlant2] {
-    width: 100%;
-    /* Mudado de 90% fixo para 100% com max-width no pai */
-    box-shadow: var(--shadow-1);
-    border-radius: var(--border-1);
-    padding: 2rem;
-    /* Adicionado padding interno para o texto não colar na borda */
-    background-color: rgba(255, 255, 255, 0.02);
-    /* Leve tint para ver a área */
-}
-
-/* ================================
-   TIPOGRAFIA
-   ================================ */
-
-h2[b-u28ymlant2] {
     color: var(--color-gold-3);
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    /* Tamanho fluido */
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
+    margin-bottom: 2rem;
+    position: relative;
+
+    /* Adiciona um charme visual no mobile (linha abaixo do titulo) */
+    padding-bottom: 1rem;
 }
 
-h3[b-u28ymlant2] {
-    color: var(--color-gold-2);
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
+.title[b-u28ymlant2]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-gold-1);
+    border-radius: 2px;
 }
 
-/* Garante que o texto use a cor principal */
-p[b-u28ymlant2],
-li[b-u28ymlant2],
-.label[b-u28ymlant2],
-.lead[b-u28ymlant2],
-.values[b-u28ymlant2],
-.howItWorks[b-u28ymlant2] {
-    color: var(--color-primary-text-1);
+/* Subtítulos (H2 dentro das seções) */
+section h2[b-u28ymlant2] {
+    color: var(--text-color-1);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--color-blue-2);
+    padding-left: 1rem;
+}
+
+/* Textos descritivos (.label) */
+.label[b-u28ymlant2] {
+    color: var(--color-text-color-1);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
-.label[b-u28ymlant2],
-.lead[b-u28ymlant2],
-.values[b-u28ymlant2],
-.howItWorks[b-u28ymlant2] {
-    margin-bottom: 1.5rem;
-    text-align: left;
-    transition: opacity 0.5s ease;
+/* Destaques no texto */
+strong[b-u28ymlant2] {
+    color: var(--color-gold-3);
+    font-weight: 700;
 }
 
 /* ================================
-   VÍDEO RESPONSIVO (Moderno)
+   COMPONENTE DE VÍDEO RESPONSIVO
    ================================ */
-
 .video-container[b-u28ymlant2] {
-    /* Centralização robusta (funciona em flex, grid ou block) */
-    margin: 0 auto 2rem auto;
-
-    width: 100%;
-    max-width: 800px;
-
-    /* A MÁGICA: Mantém proporção de TV/YouTube automaticamente */
-    aspect-ratio: 16 / 9;
-    height: auto;
-    /* Remove altura fixa */
-
     position: relative;
-    overflow: hidden;
-    border-radius: var(--border-1);
-    box-shadow: var(--shadow-1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #000;
-    /* Fundo preto enquanto carrega */
-}
+    width: 100%;
+    /* Aspect Ratio moderno (substitui o hack de padding-bottom) */
+    aspect-ratio: 16 / 9;
 
-.video-container:hover[b-u28ymlant2] {
-    transform: scale(1.02);
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-black-1);
+    border-radius: var(--border-1);
+    overflow: hidden;
+    box-shadow: var(--shadow-2);
+    margin-bottom: 2.5rem;
+
+    border: 1px solid var(--color-primary-translucent-3);
 }
 
 .video-container iframe[b-u28ymlant2] {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
 }
 
 /* ================================
-   IMAGEM E GRID
+   ÁREA DOS PROFESSORES (Teachers)
    ================================ */
 
+/* Imagem do professor dentro do Card */
 .teacher-image[b-u28ymlant2] {
-    display: block;
-    /* Garante que margin auto funcione */
-    margin: 0 auto 1rem auto;
-
     width: 120px;
     height: 120px;
-
-    border-radius: 50%;
-    border: 4px solid var(--color-gold-2);
     object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Formato circular para fotos de perfil */
+    border-radius: 50%;
+
+    /* Borda sutil para destacar do fundo do card */
+    border: 3px solid var(--color-gold-1);
+    box-shadow: var(--shadow-1);
+
+    /* Centraliza a imagem no card */
+    display: block;
+    margin: 0 auto 1.5rem auto;
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.teacher-image:hover[b-u28ymlant2] {
-    transform: rotate(3deg) scale(1.05);
-    box-shadow: var(--shadow-2);
+/* Título do Card do Professor (Nome) */
+.card h3.card-title[b-u28ymlant2] {
+    text-align: center;
+    color: var(--color-gold-4);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
-.grid[b-u28ymlant2] {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    width: 100%;
+/* Disciplinas do Professor */
+.card span[b-u28ymlant2] {
+    display: block;
+    /* Garante que fique em linha própria */
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-black-4);
+    font-style: italic;
+    font-weight: 500;
 }
 
-.howItWorks .grid[b-u28ymlant2] {
-    grid-template-columns: repeat(2, 1fr);
+/* Hover Effect na imagem do professor (apenas desktop) */
+@media (hover: hover) {
+    .card:hover .teacher-image[b-u28ymlant2] {
+        transform: scale(1.05);
+        border-color: var(--color-gold-3);
+    }
 }
 
 /* ================================
-   MEDIA QUERIES
+   FOOTER ESPECÍFICO DA PÁGINA
    ================================ */
 
-/* Tablet Portrait e Mobile (Abaixo de 768px) */
-@media (max-width: 768px) {
-    section[b-u28ymlant2] {
-        padding: 3rem 1rem;
-        /* Menos padding lateral */
+/* O container inline style no final do seu HTML 
+   pode ser alvo através de nth-last-child ou uma classe específica.
+   Como você usou inline style no HTML, o CSS abaixo complementa. */
+
+.content>.container:last-child[b-u28ymlant2] {
+    text-align: center;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    padding-top: 2rem;
+}
+
+.content>.container:last-child h3[b-u28ymlant2] {
+    color: var(--color-blue-2);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.content>.container:last-child p[b-u28ymlant2] {
+    text-align: center;
+    /* Sobrescreve o justify global para o footer */
+    color: var(--color-black-4);
+}
+
+/* ================================
+   RESPONSIVIDADE FINA
+   ================================ */
+
+/* Ajustes para telas maiores que tablet */
+@media (min-width: 768px) {
+
+    /* Aumenta o tamanho da fonte dos títulos para impacto visual */
+    .title[b-u28ymlant2] {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
     }
 
-    .about[b-u28ymlant2] {
-        padding: 1.5rem;
-        /* Menos padding interno no card */
-    }
-
-    /* Ajuste de texto para mobile */
-    .label[b-u28ymlant2],
+    /* Melhora a leitura dos textos longos limitando a largura */
     .lead[b-u28ymlant2],
     .values[b-u28ymlant2],
     .howItWorks[b-u28ymlant2] {
-        text-align: left;
-        /* Justify cria buracos feios no mobile, left é melhor */
-        font-size: 0.95rem;
+        max-width: 100%;
     }
 
-    /* Grid vira coluna única se a tela for muito estreita */
-    .grid[b-u28ymlant2] {
-        gap: 1rem;
+    /* Aumenta a imagem do professor um pouco */
+    .teacher-image[b-u28ymlant2] {
+        width: 140px;
+        height: 140px;
     }
-
-    .howItWorks .grid[b-u28ymlant2] {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    width: 100%;
-}
 }

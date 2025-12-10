@@ -1,205 +1,168 @@
 /* ================================
-   CTA SECTION - ESTILO APRIMORADO
+   COMPONENT: CTA SECTION (Compact Center)
    ================================ */
 
+/* 1. O Wrapper Externo (Invisível) 
+   Serve apenas para posicionar o card no centro da tela */
 .cta-section[b-u0mvelfu3t] {
-    /* Layout e Posicionamento */
-    width: 95%;
-    /* Mobile: Aproveita quase toda a tela */
-    max-width: 1200px;
-    margin: 2rem auto;
-
-    /* Padding responsivo: menor no mobile (definido aqui como base) */
-    padding: 2rem 1.5rem;
-
-    display: flex;
-    flex-direction: column;
-    /* Mobile First: empilha nativamente */
-    align-items: center;
-    justify-content: center;
-
-    /* Estilo Visual (Glassmorphism) */
-    background: var(--color-primary-translucent-2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--color-secundary-border-2);
-    border-radius: var(--border-1);
-    box-shadow: var(--shadow-1);
-
-    /* Transições e Otimização */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-
-    /* Otimização de renderização */
-    will-change: transform;
-}
-
-/* Efeito Hover (apenas para dispositivos com mouse) */
-@media (hover: hover) {
-    .cta-section:hover[b-u0mvelfu3t] {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-2), 0 10px 20px rgba(0, 0, 0, 0.1);
-        border-color: var(--color-gold-2);
-    }
-}
-
-.cta-content[b-u0mvelfu3t] {
-    display: flex;
-    flex-direction: column;
-    /* Mobile: Coluna */
     width: 100%;
+    padding: 2rem 1rem;
+    /* Espaçamento vertical e lateral seguro */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 2.5rem;
-    /* Espaço vertical no mobile */
+}
+
+/* O .container aqui serve apenas como pass-through, 
+   mas garantimos que ele centralize o conteúdo */
+.cta-section .container[b-u0mvelfu3t] {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 2. O Card Principal (Onde a mágica acontece) 
+   Movemos a cor e borda para cá para ele "abraçar" o conteúdo */
+.cta-content[b-u0mvelfu3t] {
+    /* Visual (Card Style) */
+    background-color: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-primary-translucent-2);
+    border-radius: var(--border-1);
+    box-shadow: var(--shadow-2);
+
+    /* Layout Mobile (Padrão) */
+    display: flex;
+    flex-direction: column-reverse;
+    /* Imagem em cima ou baixo? (Reverse = Imagem topo) ou Column normal */
+    gap: 1.5rem;
+    padding: 2rem;
+
+    /* Tamanho */
+    width: 100%;
+    max-width: 400px;
+    /* Limita largura no mobile para não ficar esticado feio */
+    box-sizing: border-box;
+    text-align: center;
 }
 
 /* ================================
    ÁREA DE TEXTO
    ================================ */
-
 .text-area[b-u0mvelfu3t] {
-    width: 100%;
-    text-align: center;
-    /* Mobile: centralizado */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Ordem visual: Texto em cima, imagem em baixo no mobile? 
-       Se quiser imagem primeiro, use 'order: 2' aqui */
+    align-items: center;
+    /* Centraliza botões e textos no mobile */
+    gap: 0.75rem;
 }
 
 .cta-title[b-u0mvelfu3t] {
-    /* Clamp ajustado para não ficar gigante em tablets */
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: var(--color-primary-text-1);
+    font-size: 1.5rem;
     line-height: 1.2;
+    color: var(--text-color-1);
+    margin: 0;
 }
 
 .cta-subtitle[b-u0mvelfu3t] {
-    font-size: clamp(0.95rem, 2vw, 1.15rem);
-    margin-bottom: 1.5rem;
-    color: var(--color-primary-text-2);
-    opacity: 0.9;
-    /* Aumentei levemente a legibilidade */
-    line-height: 1.6;
-    max-width: 600px;
-    /* Evita linhas de texto muito longas */
-    margin-left: auto;
-    margin-right: auto;
-    /* Centraliza o bloco de texto */
+    font-size: 1rem;
+    color: var(--color-black-4);
+    margin: 0;
+    line-height: 1.4;
 }
 
 /* ================================
-   ÁREA DE PREÇO E BOTÃO
+   ÁREA DE PREÇO & BOTÃO
    ================================ */
-
-.price-container[b-u0mvelfu3t] {
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    /* Mobile: centraliza */
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    /* Evita quebrar preço em telas minúsculas */
-}
-
 .cta-price[b-u0mvelfu3t] {
+    font-size: 1.5rem;
     color: var(--color-green-2);
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    /* Preço responsivo */
-    font-weight: 900;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    /* Preço antigo embaixo no mobile */
+    align-items: center;
+    line-height: 1;
 }
 
 .cta-oldprice[b-u0mvelfu3t] {
-    color: var(--color-red-3);
-    font-size: 1.1rem;
+    font-size: 0.875rem;
+    color: var(--color-black-3);
     text-decoration: line-through;
-    opacity: 0.7;
+    font-weight: 400;
 }
 
 /* ================================
-   ÁREA DE IMAGEM
+   ÁREA DA IMAGEM
    ================================ */
-
 .image-area[b-u0mvelfu3t] {
-    width: 100%;
-    max-width: 450px;
-    /* Limita o tamanho da imagem */
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
 }
 
 .image-area img[b-u0mvelfu3t] {
+    /* Removemos tamanhos fixos para permitir a fluidez */
     width: 100%;
+    max-width: 180px;
+    /* Um tamanho base bom para mobile */
     height: auto;
-    /* Drop shadow na imagem destaca ela do fundo glass */
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Efeito Hover Imagem (apenas desktop) */
-@media (hover: hover) {
-    .cta-section:hover .image-area img[b-u0mvelfu3t] {
-        transform: scale(1.03) rotate(2deg);
-    }
+    object-fit: contain;
+    border-radius: 8px;
+    /* Opcional: suaviza a imagem */
 }
 
 /* ================================
-   DESKTOP E TABLET (min-width: 768px)
+   MEDIA QUERY: DESKTOP (A Mágica do "Expand from Center")
    ================================ */
-
 @media (min-width: 768px) {
-    .cta-section[b-u0mvelfu3t] {
-        padding: 4rem 3rem;
-        /* Padding maior no desktop */
-        flex-direction: row;
-        /* Volta para linha */
-        width: 90%;
-        /* Largura um pouco menor para estética */
-    }
 
     .cta-content[b-u0mvelfu3t] {
         flex-direction: row;
-        /* Lado a lado */
-        justify-content: space-between;
+        /* Coloca lado a lado */
         align-items: center;
-        text-align: left;
-        gap: 4rem;
-        /* Gap maior no desktop */
+        /* Alinha verticalmente pelo centro */
+        justify-content: center;
+
+        /* O SEGREDO: fit-content faz o box ter o tamanho exato do conteúdo */
+        width: fit-content;
+        max-width: 900px;
+        /* Trava de segurança para não explodir em telas gigantes */
+
+        padding: 2.5rem 3rem;
+        /* Padding interno maior para elegância */
+        gap: 3rem;
+        /* Espaço entre imagem e texto */
     }
 
     .text-area[b-u0mvelfu3t] {
-        text-align: left;
-        /* Alinha à esquerda no desktop */
-        flex: 1;
-        /* Ocupa o espaço disponível */
         align-items: flex-start;
-        /* Alinha itens (botão) à esquerda */
-    }
-
-    .cta-subtitle[b-u0mvelfu3t] {
-        margin-left: 0;
-        /* Remove centralização forçada */
-        margin-right: 0;
-    }
-
-    .price-container[b-u0mvelfu3t] {
-        justify-content: flex-start;
-        /* Preço à esquerda */
-    }
-
-    .image-area[b-u0mvelfu3t] {
+        /* Alinha texto à esquerda */
+        text-align: left;
+        min-width: 300px;
+        /* Garante uma largura mínima pro texto não ficar espremido */
         flex: 1;
-        /* Divide espaço igualmente */
-        max-width: 500px;
-        /* Imagem pode ser maior no desktop */
-        justify-content: flex-end;
-        /* Joga imagem para a direita */
+        /* O texto ocupa o espaço que sobrar/necessário */
+    }
+
+    .cta-title[b-u0mvelfu3t] {
+        font-size: 2rem;
+    }
+
+    .cta-price[b-u0mvelfu3t] {
+        flex-direction: row;
+        /* Preço antigo ao lado */
+        align-items: baseline;
+        gap: 0.75rem;
+    }
+
+    .image-area img[b-u0mvelfu3t] {
+        /* Aqui a imagem dita o tamanho. 
+           Se a imagem for maior, o container cresce. */
+        max-width: 300px;
+        /* Aumentamos o limite da imagem no desktop */
+        width: auto;
+        /* Deixa o tamanho natural da imagem fluir até o max-width */
     }
 }

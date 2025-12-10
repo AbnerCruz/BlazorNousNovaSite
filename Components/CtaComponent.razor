@@ -5,7 +5,8 @@
         <div class="cta-content">
             <div class="text-area">
                 <h2 class="cta-title @Color">@Title</h2>
-                <p class="cta-subtitle">@Subtitle</p>
+                
+                <p class="cta-subtitle"><hr>@Subtitle<hr></p>
                 @if (!string.IsNullOrEmpty(ButtonText))
                 {
                     @if (Price != 0m)
@@ -21,7 +22,7 @@
             @if (!string.IsNullOrEmpty(ImageUrl))
             {
                 <div class="image-area">
-                    <img src="@ImageUrl" alt="Imagem de chamada" />
+                    <img src="@ImageUrl" alt="Imagem de chamada" style="width: 200px;" />
                 </div>
             }
         </div>
@@ -33,7 +34,7 @@
     [Parameter] public string Subtitle { get; set; } = "Domine os conteúdos com propósito e método.";
     [Parameter] public string ButtonText { get; set; } = "Matricule-se";
     [Parameter] public string ButtonHref { get; set; } = "/";
-    [Parameter] public string ButtonColor { get; set; } = "bggold-2";
+    [Parameter] public string ButtonColor { get; set; } = "--color-gold-2";
     [Parameter] public string ImageUrl { get; set; } = "";
     [Parameter] public string Color { get; set; } = "";
     [Parameter] public decimal Price { get; set; } = 0;

@@ -1,3 +1,182 @@
-.card{
-    margin: 2rem 0;
+/* ================================
+   ESCOPO: MODULE CONTAINER
+   ================================ */
+
+.module-container {
+    width: 100%;
+    max-width: 1200px;
+    /* Limita a largura em monitores ultrawide */
+    margin: 0 auto;
+    padding: 0 1rem 2rem 1rem;
+    /* Padding lateral seguro */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   CABEÇALHO & NAVEGAÇÃO (Breadcrumbs)
+   ================================ */
+
+.module-container header {
+    margin-bottom: 2rem;
+}
+
+/* Área dos links de navegação */
+.module-container header nav {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebrar linha em mobile */
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    /* Texto levemente menor para hierarquia */
+    color: var(--color-black-4);
+    margin-bottom: 1rem;
+}
+
+/* Separadores (>) */
+.module-container header nav span {
+    color: var(--color-black-3);
+    user-select: none;
+}
+
+/* O último item (nome do módulo atual) não deve parecer um link */
+.module-container header nav span:last-child {
+    color: var(--text-color-1);
+    font-weight: 600;
+}
+
+/* Linha divisória customizada */
+.module-container hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            var(--color-primary-translucent-3) 0%,
+            transparent 100%);
+    margin: 1.5rem 0;
+}
+
+/* ================================
+   TÍTULO E METADADOS
+   ================================ */
+
+/* Container do H1 e da Duração */
+.module-container header>div:not(nav) {
+    display: flex;
+    flex-direction: column;
+    /* Mobile: Empilhado */
+    gap: 0.5rem;
+}
+
+.module-container h1 {
+    color: var(--color-gold-3);
+    /* Destaque dourado conforme o tema */
+    margin-bottom: 0;
+    /* Remove margem padrão para controle pelo gap */
+}
+
+/* Área da Duração */
+.module-container header .duration-info {
+    font-size: 0.9rem;
+    color: var(--color-black-4);
+    display: flex;
+    align-items: center;
+}
+
+.module-container header .duration-info strong {
+    color: var(--color-green-3);
+    /* Destaque sutil para o tempo */
+    margin-left: 0.4rem;
+}
+
+/* ================================
+   LISTA DE CAPÍTULOS E TÓPICOS
+   ================================ */
+
+/* Container geral da lista */
+.module-container section>div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Espaço entre os cards de capítulos */
+}
+
+/* Ajustes estruturais para o .card (sem mexer no visual dele).
+   Apenas garantindo que o conteúdo interno respire.
+*/
+.module-container .card {
+    display: flex;
+    flex-direction: column;
+    /* Caso o card global não tenha padding, adicionamos um respiro interno */
+    padding: 1.5rem;
+}
+
+/* Título do Capítulo (h3) */
+.module-container .card h3 {
+    font-size: 1.25rem;
+    color: var(--text-color-1);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+/* Container dos Tópicos (Botões) */
+.module-container .card>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    /* Espaço entre os botões de tópicos */
+}
+
+/* Ajuste fino para os wrappers dos botões */
+.module-container .card>div>div {
+    width: 100%;
+}
+
+/* Se houver mensagem de "Em breve" ou "Sem capítulos" */
+.module-container section>div>div:not(.card) {
+    color: var(--color-black-4);
+    font-style: italic;
+    padding: 1rem;
+    background: var(--color-primary-translucent-1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ================================
+   MEDIA QUERIES (Desktop)
+   ================================ */
+
+@media (min-width: 768px) {
+    .module-container {
+        padding-top: 2rem;
+    }
+
+    /* No desktop, título e duração ficam na mesma linha */
+    .module-container header>div:not(nav) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        /* Alinha pela base do texto */
+    }
+
+    /* Duração alinhada à direita no desktop */
+    .module-container header .duration-info {
+        margin-bottom: 0.5rem;
+        /* Ajuste visual com a baseline do H1 */
+    }
+
+    /* Tópicos podem ser exibidos em grid se desejar, 
+       mas mantivemos coluna para leitura fácil */
 }

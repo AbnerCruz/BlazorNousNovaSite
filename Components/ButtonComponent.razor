@@ -1,5 +1,5 @@
 <NavLink ActiveClass="" href="@Href">
-    <div class="button @Color" style="width: @Width;">
+    <div class="button" style="width: @Width; background-color: var(@Color);">
         <div class="button-hover">
             <h2 class="text" style="font-size:@FontSize;">@Text</h2>
         </div>
@@ -9,7 +9,7 @@
 @code {
     [Parameter] public string Href { get; set; } = "/";
     [Parameter] public string Text { get; set; } = "";
-    [Parameter] public string Color { get; set; } = "bggold-2";
+    [Parameter] public string Color { get; set; } = "--color-gold-2";
     [Parameter] public string FontSize { get; set; } = "2rem";
     [Parameter] public string Width { get; set; } = "100%";
 }

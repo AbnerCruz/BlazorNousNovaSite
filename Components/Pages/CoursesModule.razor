@@ -48,8 +48,8 @@
                                     {
                                         // Constrói a URL completa: Curso -> Módulo -> Capítulo -> Tópico
                                         var topicUrl = $"/courses/{DisciplineLabel}/{CourseId}/{ModuleId}/{chapter.Id}/{topic.Id}";
-                                        <div class="card">
-                                            <ButtonComponent Href=@($"/courses/{@DisciplineLabel}/{@CourseId}/{@ModuleId}/{@chapter.Id}/{@topic.Id}") Text="@topic.Name"/>
+                                        <div>  
+                                            <ButtonComponent Href=@($"/courses/{@DisciplineLabel}/{@CourseId}/{@ModuleId}/{@chapter.Id}/{@topic.Id}") Text="@topic.Name" Color="--color-black-2"/>
                                         </div>
                                     }
                                 }
@@ -82,19 +82,6 @@
         </div>
     }
 </div>
-
-@* --- CSS Local para dar polimento na lista --- *@
-<style>
-    .topic-link {
-        transition: all 0.2s ease;
-        border-left: 3px solid transparent;
-    }
-    .topic-link:hover {
-        background-color: #f8f9fa; /* Cinza bem claro */
-        border-left: 3px solid #0d6efd; /* Azul Bootstrap */
-        padding-left: 1.5rem !important; /* Pequeno movimento para a direita */
-    }
-</style>
 
 @code {
     [Parameter]

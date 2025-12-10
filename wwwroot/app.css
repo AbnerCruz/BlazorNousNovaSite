@@ -7,7 +7,7 @@
     --shadow-1: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
     --shadow-2: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 
-    /* Paletas */
+    /* Cores (Mantidas iguais) */
     --color-black-1: #0f0f0f;
     --color-black-2: #333333;
     --color-black-3: #666666;
@@ -38,462 +38,20 @@
     --color-red-3: #fca5a5;
     --color-red-4: #fee2e2;
 
-    /* Scrollbar */
-    --scroll-bg: rgba(255, 255, 255, 0.04);
-    --scroll-thumb: var(--color-gold-2);
-    --scroll-thumb-hover: var(--color-pink-2);
-    --scroll-thumb-active: #c9943a;
-    --scroll-width: 12px;
-    --scroll-radius: 10px;
-
-    /* Layout Variables (Novo) */
-    --container-padding: 1rem;
-    --header-height: 50px;
-}
-
-
-/* =============== LIGHT MODE =============== */
-[data-theme="light"] {
     --color-primary-translucent-1: #ffffff05;
     --color-primary-translucent-2: #ffffff10;
     --color-primary-translucent-3: #ffffff30;
 
-    --color-primary-background-1: #858585;
-    --color-primary-background-2: #cccccc;
+    --background-1: #141414;
+    --text-color-1: #dfdfdf;
 
-    --color-primary-text-1: #222222;
-    --color-primary-text-2: #111111;
+    /* Váriaveis de espaçamento seguro */
+    --header-height: 60px;
 }
-
-
-/* =============== DARK MODE =============== */
-[data-theme="dark"] {
-    --color-primary-translucent-1: #ffffff05;
-    --color-primary-translucent-2: #ffffff10;
-    --color-primary-translucent-3: #ffffff30;
-
-    --color-secundary-translucent-1: #00a2ff05;
-    --color-secundary-translucent-2: #00a2ff10;
-    --color-secundary-translucent-3: #00a2ff50;
-
-    --color-primary-background-1: #1a1a1a;
-    --color-primary-background-2: #1d1d1d;
-
-    --color-secundary-background-1: #ffffff;
-    --color-secundary-background-2: #d8d8d8;
-
-    --color-primary-border-1: #e9e8e89d;
-
-    --color-secundary-border-1: #fff13030;
-    --color-secundary-border-2: #fff13040;
-    --color-secundary-border-3: #fff13050;
-
-    --color-primary-text-1: #d4d4d4;
-    --color-primary-text-2: #e0e0e0;
-    --color-primary-text-3: #ffffff;
-}
-
-
-/* ================================
-   UTILIDADES DE BACKGROUND E TEXTO
-   ================================ */
-
-/* gera classes bg[color]-[n] */
-[class^="bg"][class*="-"] {
-    color: inherit;
-}
-
-/* ... (Mantive suas classes de utilitários aqui para economizar espaço, elas estão ok) ... */
-.bgblack-1 {
-
-    background: var(--color-black-1);
-
-}
-
-
-
-.bgblack-2 {
-
-    background: var(--color-black-2);
-
-}
-
-
-
-.bgblack-3 {
-
-    background: var(--color-black-3);
-
-}
-
-
-
-.bgblack-4 {
-
-    background: var(--color-black-4);
-
-}
-
-
-
-.bgblue-1 {
-
-    background: var(--color-blue-1);
-
-}
-
-
-
-.bgblue-2 {
-
-    background: var(--color-blue-2);
-
-}
-
-
-
-.bgblue-3 {
-
-    background: var(--color-blue-3);
-
-}
-
-
-
-.bgblue-4 {
-
-    background: var(--color-blue-4);
-
-}
-
-
-
-.bggold-1 {
-
-    background: var(--color-gold-1);
-
-}
-
-
-
-.bggold-2 {
-
-    background: var(--color-gold-2);
-
-}
-
-
-
-.bggold-3 {
-
-    background: var(--color-gold-3);
-
-}
-
-
-
-.bggold-4 {
-
-    background: var(--color-gold-4);
-
-}
-
-
-
-.bgpink-1 {
-
-    background: var(--color-pink-1);
-
-}
-
-
-
-.bgpink-2 {
-
-    background: var(--color-pink-2);
-
-}
-
-
-
-.bgpink-3 {
-
-    background: var(--color-pink-3);
-
-}
-
-
-
-.bgpink-4 {
-
-    background: var(--color-pink-4);
-
-}
-
-
-
-.bggreen-1 {
-
-    background: var(--color-green-1);
-
-}
-
-
-
-.bggreen-2 {
-
-    background: var(--color-green-2);
-
-}
-
-
-
-.bggreen-3 {
-
-    background: var(--color-green-3);
-
-}
-
-
-
-.bggreen-4 {
-
-    background: var(--color-green-4);
-
-}
-
-
-
-.bgred-1 {
-
-    background: var(--color-red-1);
-
-}
-
-
-
-.bgred-2 {
-
-    background: var(--color-red-2);
-
-}
-
-
-
-.bgred-3 {
-
-    background: var(--color-red-3);
-
-}
-
-
-
-.bgred-4 {
-
-    background: var(--color-red-4);
-
-}
-
-
-
-/* cores do texto */
-
-.colblack-1 {
-
-    color: var(--color-black-1);
-
-}
-
-
-
-.colblack-2 {
-
-    color: var(--color-black-2);
-
-}
-
-
-
-.colblack-3 {
-
-    color: var(--color-black-3);
-
-}
-
-
-
-.colblack-4 {
-
-    color: var(--color-black-4);
-
-}
-
-
-
-.colblue-1 {
-
-    color: var(--color-blue-1);
-
-}
-
-
-
-.colblue-2 {
-
-    color: var(--color-blue-2);
-
-}
-
-
-
-.colblue-3 {
-
-    color: var(--color-blue-3);
-
-}
-
-
-
-.colblue-4 {
-
-    color: var(--color-blue-4);
-
-}
-
-
-
-.colgold-1 {
-
-    color: var(--color-gold-1);
-
-}
-
-
-
-.colgold-2 {
-
-    color: var(--color-gold-2);
-
-}
-
-
-
-.colgold-3 {
-
-    color: var(--color-gold-3);
-
-}
-
-
-
-.colgold-4 {
-
-    color: var(--color-gold-4);
-
-}
-
-
-
-.colpink-1 {
-
-    color: var(--color-pink-1);
-
-}
-
-
-
-.colpink-2 {
-
-    color: var(--color-pink-2);
-
-}
-
-
-
-.colpink-3 {
-
-    color: var(--color-pink-3);
-
-}
-
-
-
-.colpink-4 {
-
-    color: var(--color-pink-4);
-
-}
-
-
-
-.colgreen-1 {
-
-    color: var(--color-green-1);
-
-}
-
-
-
-.colgreen-2 {
-
-    color: var(--color-green-2);
-
-}
-
-
-
-.colgreen-3 {
-
-    color: var(--color-green-3);
-
-}
-
-
-
-.colgreen-4 {
-
-    color: var(--color-green-4);
-
-}
-
-
-
-.colred-1 {
-
-    color: var(--color-red-1);
-
-}
-
-
-
-.colred-2 {
-
-    color: var(--color-red-2);
-
-}
-
-
-
-.colred-3 {
-
-    color: var(--color-red-3);
-
-}
-
-
-
-.colred-4 {
-
-    color: var(--color-red-4);
-
-}
-
 
 /* ================================
    CONFIGURAÇÕES GERAIS & RESET
    ================================ */
-
-/* Melhoria no Box Sizing para evitar que padding quebre o layout */
 *,
 *::before,
 *::after {
@@ -504,95 +62,89 @@ html,
 body {
     width: 100%;
     min-height: 100%;
-    /* Mudado de height para min-height para evitar cortes em scroll */
     margin: 0;
     padding: 0;
-    background: var(--color-primary-background-2);
-    color: var(--color-primary-text-1);
+    background: var(--background-1);
+    color: var(--text-color-1);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
-    /* Melhora legibilidade */
-    font-size: 16px;
-    /* Base para REM */
+    /* Tamanho base padrão */
+    font-size: 1rem;
 }
 
 body {
-    /* Uso de padding-top em vez de margin para evitar collapse margins */
     padding-top: var(--header-height);
 }
 
-a {
-    /* Remove a formatação padrão do navegador (azul/sublinhado) */
-    text-decoration: none;
-
-    /* Aplica sua cor */
-    color: var(--color-gold-3);
-
-    /* Cursor e Fonte */
-    cursor: pointer;
-    /* Cuidado: isso vai afetar TODOS os links, inclusive em textos pequenos */
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-    position: relative;
-}
-
-/* Estado Hover (Mouse em cima) */
-a:hover {
-    filter: brightness(1.2);
-    transform: translateY(-2px);
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
-    font-size: 1.25rem;
-}
-
-/* Estado Active (No momento do clique) */
-a:active {
-    transform: translateY(0);
-    /* Volta para o lugar */
-    filter: brightness(0.9);
-    /* Escurece um pouco */
-}
-
-/* Acessibilidade (Quando navega por Tab) */
-a:focus-visible {
-    outline: 2px solid var(--color-gold-3);
-    outline-offset: 4px;
-    border-radius: 4px;
+/* ================================
+   TIPOGRAFIA (Mobile First - Escala Aumentada)
+   ================================ */
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+a,
+span {
+    /* Garante que a fonte renderize com nitidez em tamanhos maiores */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
 h2,
 h3,
-h4,
-p {
+h4 {
     margin: 0;
     padding: 0;
-    font-weight: 600;
+    font-weight: 700;
+    /* Peso extra para compensar o tamanho */
+    line-height: 1.2;
+    /* Títulos grandes pedem entrelinha menor */
 }
 
-/* Tipografia Responsiva (clamp: min, ideal, max) */
+/* ESCALA MOBILE (Base: 18px)
+   -------------------------
+   p  = 1.125rem (18px)
+   h4 = 1.35rem  (~21px)
+   h3 = 1.6rem   (~25px)
+   h2 = 2rem     (32px)
+   h1 = 2.5rem   (40px)
+*/
+
 h1 {
-    font-size: 4vw;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+    /* Títulos gigantes ficam melhores com letras próximas */
 }
 
 h2 {
-    font-size: 3vw;
+    font-size: 2rem;
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
 }
 
 h3 {
-    font-size: 2.5vw;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
 }
 
 h4 {
-    font-size: 2vw;
+    font-size: 1.35rem;
 }
 
-p {
-    margin: 0.5rem 0;
-    font-size: 2vw;
+p,
+li {
+    margin: 0.75rem 0;
+    font-size: 1.125rem;
+    /* Aumento significativo para leitura (18px) */
+    line-height: 1.75;
+    /* Entrelinha mais generosa para o texto maior */
+    text-align: justify;
+    color: var(--text-color-1);
 }
 
 ul {
@@ -600,139 +152,138 @@ ul {
     margin: 0;
     padding: 0;
 }
-li{
-    font-size: 2vw;
-    text-align: left;
-}
 
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+        /* ~56px - Impacto visual forte */
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        /* ~40px */
+    }
+
+    h3 {
+        font-size: 2rem;
+        /* ~32px */
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        /* ~24px */
+    }
+
+    p,
+    li {
+        font-size: 1.25rem;
+        /* 20px - Leitura extremamente confortável */
+        line-height: 1.8;
+    }
+}
 
 /* ================================
-   SISTEMA DE GRID E LAYOUT (NOVO)
+   LINKS & INTERAÇÃO
    ================================ */
-
-/* Container centralizado responsivo */
-.container {
-    width: 100%;
-    padding-right: var(--container-padding);
-    padding-left: var(--container-padding);
-    margin-right: auto;
-    margin-left: auto;
+a {
+    text-decoration: none;
+    color: var(--color-gold-3);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    display: inline-block;
+    font-size: 1.125rem;
 }
 
-/* Grid básico responsivo */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -0.5rem;
-    margin-left: -0.5rem;
+a:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    /* REMOVIDO: font-size: 1.25rem; 
+       Motivo: Mudar tamanho de fonte no hover quebra o layout (layout shift) */
 }
 
-.col {
-    flex: 1 0 0%;
-    padding: 0 0.5rem;
+a:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
 }
 
-.col-full {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding: 0 0.5rem;
+a:focus-visible {
+    outline: 2px solid var(--color-gold-3);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
-
 
 /* ================================
    INPUTS
    ================================ */
-
 .registration .input {
     width: 100%;
-    padding: 0.8rem 1rem;
     background: var(--color-primary-translucent-1);
-    border: 1px solid var(--color-secundary-border-2);
+    border: 1px solid var(--color-secundary-border-2, #444);
+    /* Fallback de cor */
     border-radius: 8px;
-    color: var(--color-primary-text-1);
-    font-size: 1rem;
+    color: var(--text-color-1);
     /* 16px evita zoom automático no iOS */
     transition: border-color .3s ease, box-shadow .3s ease;
+    padding: 1rem 1.2rem;
+    font-size: 1.125rem;
 }
 
-/* Foco acessível */
 .registration .input:focus {
     outline: none;
     border-color: var(--color-blue-2);
     box-shadow: 0 0 0 3px var(--color-primary-translucent-2);
 }
 
-
-/* ================================
-   SCROLLBAR
-   ================================ */
-/* Mantido original, apenas garantindo que não quebre layout */
-*::-webkit-scrollbar {
-    width: var(--scroll-width);
-    height: var(--scroll-width);
-}
-
-*::-webkit-scrollbar-track {
-    background: var(--scroll-bg);
-    border-radius: var(--scroll-radius);
-    margin: 4px;
-}
-
-*::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--scroll-thumb), var(--scroll-thumb-active));
-    border-radius: var(--scroll-radius);
-    border: 3px solid transparent;
-    background-clip: padding-box;
-    transition: transform .18s ease, background .18s ease;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-    background: var(--scroll-thumb-hover);
-}
-
-*::-webkit-scrollbar-thumb:active {
-    transform: scale(0.95);
-}
-
-
 /* ================================
    BLAZOR E FORMULÁRIOS
    ================================ */
-/* Mantido, com ajuste de responsividade na imagem de erro */
+
 .valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+    outline: 1px solid var(--color-green-2);
 }
 
 .invalid {
-    outline: 1px solid #e50000;
+    outline: 1px solid var(--color-red-2);
 }
 
 .validation-message {
-    color: #e50000;
+    color: var(--color-red-2);
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
 
+/* Blazor Error Boundary - Abordagem Mobile First */
 .blazor-error-boundary {
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0...) no-repeat 1rem/1.8rem, #b32121;
-    padding: 1rem 1rem 1rem 3.7rem;
+    /* Estilo Base (Mobile) */
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0...) no-repeat center top 1rem, #b32121;
+    background-size: 1.8rem;
+    /* Define tamanho explícito do ícone */
     color: white;
     border-radius: 4px;
     margin: 1rem 0;
-}
 
-/* Ajuste para mobile da mensagem de erro */
-@media (max-width: 576px) {
-    .blazor-error-boundary {
-        padding: 1rem;
-        background-position: center top 1rem;
-        text-align: center;
-        padding-top: 3.5rem;
-    }
+    /* Layout Mobile: Texto centralizado abaixo do ícone */
+    padding: 3.5rem 1rem 1rem 1rem;
+    text-align: center;
 }
 
 .blazor-error-boundary::after {
     content: "An error has occurred.";
+    display: block;
+    /* Garante que fique em linha própria */
+}
+
+/* Ajuste para Desktop (acima de 576px) */
+@media (min-width: 576px) {
+    .blazor-error-boundary {
+        /* Layout Desktop: Ícone à esquerda, texto ao lado */
+        background-position: 1rem center;
+        padding: 1rem 1rem 1rem 3.7rem;
+        text-align: left;
+    }
 }
 
 .darker-border-checkbox.form-check-input {
@@ -740,54 +291,11 @@ li{
 }
 
 .form-floating .form-control::placeholder {
-    color: var(--bs-secondary-color);
+    color: var(--color-black-4);
+    /* Fallback para bs-secondary */
     text-align: end;
 }
 
 .form-floating .form-control:focus::placeholder {
     text-align: start;
-}
-
-
-/* ================================
-   MEDIA QUERIES (BREAKPOINTS)
-   ================================ */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-    .container {
-        max-width: 540px;
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .container {
-        max-width: 720px;
-    }
-
-    /* Grid vira 2 colunas em tablets, por exemplo */
-    .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .container {
-        max-width: 960px;
-    }
-
-    /* Aumenta margem do topo em telas grandes */
-    body {
-        padding-top: 70px;
-    }
-}
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
-    }
 }

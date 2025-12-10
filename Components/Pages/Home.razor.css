@@ -1,179 +1,225 @@
 /* ================================
-   ESTILOS GERAIS DE SEÇÃO & LAYOUT
+   LAYOUT E CONTAINERS (Mobile First)
    ================================ */
 
-/* Container principal */
+/* Wrapper principal da página */
 .homePage {
     width: 100%;
     overflow-x: hidden;
-    /* Previne scroll lateral indesejado */
-}
-
-/* Configuração base das seções */
-section {
-    /* Muda de height fixa para min-height para não cortar conteúdo em telas pequenas */
-    min-height: 100vh;
-    width: 100%;
-    padding: 4rem 2%;
-    /* Mais respiro vertical */
+    /* Evita scroll horizontal indesejado em mobile */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 4rem;
+    /* Espaçamento vertical entre seções */
+    padding-bottom: 4rem;
+}
+
+/* Container responsivo centralizado */
+.container {
+    width: 100%;
+    padding-right: 1.5rem;
+    /* Margem segura lateral no mobile */
+    padding-left: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Centralização de conteúdo padrão nas seções */
+.content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ================================
+   SEÇÃO 1: WELCOME (HERO)
+   ================================ */
+.wellcome-section {
+    padding: 3rem 0;
+    /* Um fundo sutil para destacar a primeira dobra */
+    background: radial-gradient(circle at top center, var(--color-primary-translucent-2) 0%, transparent 70%);
+}
+
+.wellcome-section .title {
+    font-size: 2.25rem;
+    /* ~36px */
+    color: var(--color-gold-3);
+    /* Dourado para o nome da escola */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.wellcome-section .sub-title {
+    font-size: 1.125rem;
+    color: var(--color-black-4);
+    /* Cinza claro para subtítulo */
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-gold-1);
+    /* Detalhe visual elegante */
+    padding-bottom: 1rem;
+    display: inline-block;
+}
+
+/* Ajuste específico para o componente CTA dentro da home */
+.wellcome-section .content ::deep .cta-component {
+    margin-top: 1rem;
+    max-width: 100%;
+}
+
+/* ================================
+   SEÇÃO 2 & 4: COURSES & ABOUT
+   ================================ */
+.courses-section,
+.about-section {
     position: relative;
 }
 
-/* Títulos e textos genéricos de seção */
-section h1,
-section h2 {
+/* Estilo dos títulos de seção (Domínios do Conhecimento, etc) */
+section>.container>h1 {
+    font-size: 1.75rem;
+    color: var(--text-color-1);
     text-align: center;
-    line-height: 1.2;
-    /* Efeito sutil de sombra no texto para destacar do fundo */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
 
-section p {
-    margin: 1.5rem 0;
-    text-align: center;
-    max-width: 800px;
-    /* Limite em pixels é melhor que % para leitura */
-    line-height: 1.6;
-    color: var(--color-primary-text-2);
+/* Pequeno detalhe decorativo abaixo dos títulos H1 */
+section>.container>h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-blue-2);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
 }
 
-/* Fundos alternados com suas variáveis */
-#s1 {
-    background-color: var(--color-primary-background-1);
-}
-
-#s2 {
-    background-color: var(--color-primary-background-2);
-}
-
-/* ================================
-   HERO SECTION / WELCOME (Efeito Vidro)
-   ================================ */
-
-.wellcome-section {
-    background-image: url("images/ClassRoomBackground.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Adiciona um overlay escuro sutil para garantir leitura se a imagem for clara */
-    background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.wellcome-section .container {
-    /* Glassmorphism Profissional */
-    background: rgba(255, 255, 255, 0.05);
-    /* Transparência sutil */
-    backdrop-filter: blur(12px);
-    /* Desfoque mais forte */
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: var(--border-1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Borda de vidro */
-    box-shadow: var(--shadow-1);
-
-    padding: 3rem;
-    max-width: 90%;
-    width: auto;
-
+/* 2. Layout Interno (.discipline-div) */
+.discipline-div {
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    /* Animação de entrada suave */
-    animation: fadeUp 1s ease-out forwards;
+    text-align: center;
+    gap: 1rem;
+    /* Espaço entre título, subtítulo e CTA */
+    height: 100%;
 }
 
-.wellcome-section .container .content .title {
-    width: 100%;
+/* 3. Título da Disciplina */
+.discipline-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-blue-2);
+    /* Azul institucional para o nome do curso */
     margin: 0;
-    font-weight: 800;
-    /* Responsividade mágica: mínimo 3rem, ideal 8vw, máximo 8rem */
-    font-size: clamp(3rem, 8vw, 8rem);
-    color: var(--color-primary-text-3);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+/* 4. Subtítulo (Descrição Curta) */
+.discipline-subtitle {
+    font-size: 1rem;
+    color: var(--color-black-4);
+    /* Cinza para texto secundário */
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    flex-grow: 1;
+    /* Empurra o CTA para o final do card se o texto for curto */
+}
+
+/* 5. O Texto CTA (Pseudo-botão) */
+.discipline-cta {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-gold-3);
+    /* Dourado para indicar ação/valor */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    /* Prepara para animação */
+    transition: border-color 0.3s ease;
     text-align: center;
-    letter-spacing: -2px;
 }
 
-.wellcome-section .container .content .sub-title {
-    width: 100%;
-    margin-top: 1rem;
-    font-weight: 300;
-    font-size: clamp(1.5rem, 4vw, 4rem);
-    color: var(--color-gold-2);
-    /* Usando sua cor de destaque */
+/* ================================
+   SEÇÃO 3: DEPOIMENTOS
+   ================================ */
+.depoiments-section {
+    background-color: var(--color-primary-translucent-1);
+    /* Fundo levemente destacado */
+    padding: 3rem 0;
+    border-top: 1px solid var(--color-primary-translucent-2);
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+.depoiments>p {
     text-align: center;
+    font-style: italic;
+    color: var(--color-black-4);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ================================
-   GRID DE CURSOS / DISCIPLINAS
+   MEDIA QUERIES (DESKTOP)
    ================================ */
 
-.disciplinas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.courses-section .container,
-.depoiments-section .container {
-    width: 100%;
-    max-width: 1200px;
-    /* Container centralizado padrão */
-    padding: 1rem;
-}
-
-.depoiments-section p{
-    justify-self: center;
-}
-
-.grid {
-    display: grid;
-    gap: 2rem;
-    overflow-y: auto;
-    /* Estilização sutil na área de scroll */
-    background: var(--color-primary-translucent-1);
-}
-
-/* ================================
-   ANIMAÇÕES (KEYFRAMES)
-   ================================ */
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+/* Breakpoint Tablet (>= 768px) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .wellcome-section .title {
+        font-size: 3.5rem;
+        /* Maior impacto visual */
+    }
+
+    .wellcome-section .sub-title {
+        font-size: 1.5rem;
     }
 }
 
-/* ================================
-   MEDIA QUERIES (Ajustes Finos)
-   ================================ */
-
-@media (max-width: 768px) {
-    section {
-        padding: 2rem 1rem;
+/* Breakpoint Desktop (>= 992px) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
     }
 
-    .wellcome-section .container {
-        padding: 1.5rem;
+    .homePage {
+        gap: 6rem;
+        /* Mais respiro vertical em telas grandes */
+        padding-bottom: 6rem;
     }
 
-    /* Grid em mobile vira uma coluna com scroll vertical */
-    .grid {
-        max-height: none;
-        /* Remove limite de altura em mobile se preferir scroll da página */
-        overflow-y: visible;
+    .wellcome-section {
+        padding: 6rem 0 4rem 0;
+        /* Mais espaço no topo para o Hero */
+    }
+
+    .about-section .content {
+        margin: 0 auto;
+    }
+}
+
+/* Breakpoint Large Desktop (>= 1200px) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
     }
 }

@@ -1,164 +1,133 @@
 /* ================================
-   PÁGINA DE DISCIPLINA
+   ESCOPO: PÁGINA DE DISCIPLINA
    ================================ */
 
 .discipline-page {
-    /* Centraliza o conteúdo principal da página */
-    max-width: 1200px;
+    width: 100%;
+    padding: 0 1rem 2rem 1rem;
     margin: 0 auto;
-    /* Padding lateral base */
-    padding: 0 1.5rem;
-    box-sizing: border-box;
-    width: 100%;
+    animation: fadeIn 0.4s ease-out;
 }
 
-/* Estilo para todas as seções de conteúdo */
-.discipline-page section {
-    padding: 3rem 0;
-    /* Usando REM para consistência */
-    margin: 0;
-    border-bottom: 1px solid var(--color-primary-translucent-3);
-    transition: background-color 0.3s ease;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.discipline-page section:last-of-type {
-    border-bottom: none;
-    padding-bottom: 5rem;
-}
-
-/* Títulos de Seção (o H1 dentro de <section>) */
-.discipline-page section h1 {
-    /* MÁGICA FLUIDA: O texto escala entre 1.8rem e 2.5rem automaticamente */
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    font-weight: 700;
-    color: var(--color-gold-3);
-    margin-bottom: 1.5rem;
-    text-align: center;
-    line-height: 1.2;
-    /* Evita quebra de linha feia em títulos longos */
-    transition: color 0.3s ease;
-}
-
-/* Parágrafos de texto */
-.discipline-page section p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--color-primary-text-1);
-    max-width: 800px;
-    margin: 0 auto 2rem auto;
-    opacity: 0.9;
-    text-align: center;
-}
-
-/* Estilo para a mensagem de "Discipline not found" */
-.discipline-page>p {
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--color-red-2);
-    margin-top: 3rem;
-}
-
-/* ================================
-   CURRÍCULO (dentro dos cards)
-   ================================ */
-
-.curriculum-section {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px dashed var(--color-secundary-border-1);
-}
-
-.curriculum-section h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    /* Garante contraste se estiver no dark mode */
-    color: var(--color-primary-text-1);
-}
-
-/* Lista de Tópicos do Currículo */
-.curriculum-section ul {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-}
-
-.curriculum-section li {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    padding: 0.35rem 0;
-    /* Área de clique melhorada */
-    color: var(--color-primary-text-2);
-    position: relative;
-    padding-left: 1.25rem;
-    /* Espaço para o bullet */
-}
-
-.curriculum-section li::before {
-    content: "•";
-    color: var(--color-gold-2);
-    font-weight: bold;
-    position: absolute;
-    /* Posicionamento absoluto é mais seguro para bullets customizados */
-    left: 0;
-    top: 0.35rem;
-    /* Alinha visualmente com o texto */
-    transition: color 0.3s ease;
-}
-
-.curriculum-section li:hover {
-    color: var(--color-gold-3);
-    cursor: default;
-}
-
-/* ================================
-   CORREÇÃO DO GRID 🚧
-   ================================ */
-.grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-}
-
-/* ================================
-   RESPONSIVIDADE (MOBILE) 📱
-   ================================ */
-
-@media (max-width: 768px) {
+/* Desktop */
+@media (min-width: 992px) {
     .discipline-page {
-        padding: 0 1rem;
-        /* Padding menor para ganhar área útil */
+        max-width: 1200px;
+        padding-top: 2rem;
     }
+}
 
-    .discipline-page section {
-        padding: 2rem 0;
-    }
+/* ================================
+   SEÇÕES (Centralização Geral)
+   ================================ */
 
-    /* Melhoria de Leitura:
-       Texto centralizado é ruim de ler em celular.
-       Mudamos para alinhamento à esquerda (ou justify) em telas pequenas. */
-    .discipline-page section p {
-        font-size: 1rem;
-        text-align: left;
-        padding: 0;
-        /* Removemos padding extra desnecessário */
-    }
+.discipline-page section {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    /* Caso tenha subtítulos centralizados, forçamos esquerda também */
-    .discipline-page section h1 {
-        text-align: center;
-        /* Título pode manter centro */
-        margin-bottom: 1rem;
-    }
+    /* NOVO: Centraliza horizontalmente os filhos diretos (H1, CTA, Grid) */
+    align-items: center;
+    /* NOVO: Centraliza o texto por herança */
+    text-align: center;
+}
 
-    /* Ajuste fino para listas */
-    .curriculum-section li {
-        font-size: 0.9rem;
-    }
+/* O Grid precisa voltar a esticar para ocupar a largura 
+   porque o align-items: center do pai faria ele encolher */
+.discipline-page section .grid {
+    width: 100%;
+}
 
-    .grid {
-        gap: 1rem;
-        grid-template-columns: 1fr;
+/* ================================
+   TIPOGRAFIA DE CONTEÚDO
+   ================================ */
+
+/* Títulos das Seções */
+.discipline-page section>h1 {
+    color: var(--color-gold-3);
+    font-size: 1.75rem;
+
+    /* Mantém a borda ocupando a largura, mas o texto centralizado */
+    width: 100%;
+    text-align: center;
+
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Parágrafos descritivos */
+.discipline-page section>p {
+    color: var(--text-color-1);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 80ch;
+
+    /* NOVO: Margem auto é necessária para centralizar blocos com width limitado */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Desktop Fonts */
+@media (min-width: 768px) {
+    .discipline-page section>h1 {
+        font-size: 2.25rem;
     }
+}
+
+/* ================================
+   CONTEÚDO INTERNO DOS CARDS
+   (Centralizando o miolo sem mexer no container .card)
+   ================================ */
+
+/* Título do Curso dentro do Card */
+.card-title {
+    color: var(--text-color-1);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* Já estava, mas reforçando */
+}
+
+/* Container dos itens do currículo */
+.curriculum-section {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-primary-translucent-1);
+    margin-bottom: 0.5rem;
+
+    /* NOVO: Garante que o H3 interno fique no meio */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.curriculum-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+/* ================================
+   CLASSES UTILITÁRIAS
+   ================================ */
+
+.colgold-1 {
+    color: var(--color-gold-2);
+    font-weight: 500;
+    margin: 0;
+    filter: brightness(1.2);
+    text-align: center;
+    /* Reforço */
 }

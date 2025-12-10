@@ -1,148 +1,140 @@
 /* ================================
-   BOTÃO BASE — Mobile First
+   COMPONENT: BUTTON (Mobile First)
    ================================ */
 
+/* 1. Reset do NavLink (Wrapper) */
+/* Garante que o link não adicione sublinhados ou cores indesejadas */
+a:has(.button)[b-k08xr1gmrx],
+a .button[b-k08xr1gmrx] {
+    text-decoration: none;
+    /* Remove decorações padrão de link */
+    display: block;
+    /* Garante que o width funcione */
+}
+
+/* 2. O Container do Botão (.button) */
 .button[b-k08xr1gmrx] {
-    /* Layout & Box Model */
+    /* Layout */
     display: flex;
-    /* Flex é melhor que inline-flex p/ largura 100% */
     justify-content: center;
     align-items: center;
+    align-self: center;
     justify-self: center;
-
-    width: 100%;
-    /* Ocupa largura total no mobile */
-    max-width: 320px;
-    /* Limite seguro para mobile */
-    min-height: 48px;
-    /* Acessibilidade: tamanho mínimo p/ toque */
-
-    padding: 0.5rem 1.5rem;
-    /* Rem é mais seguro que fixo */
-    margin: 0 auto;
-    /* Centraliza o bloco */
-    box-sizing: border-box;
-
-    /* Estética */
-    border: 1px solid var(--color-secundary-border-2);
-    border-radius: var(--border-1);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    /* Compatibilidade Safari */
-    box-shadow: var(--shadow-1);
-
-    /* Tipografia */
-    color: var(--color-primary-text-1);
-    /* Simplifiquei o clamp: mínimo 15px, responsivo, máximo 18px */
-    font-size: clamp(0.9375rem, 4vw, 1rem);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    /* Evita quebra de linha feia no texto */
-
-    /* Comportamento */
-    cursor: pointer;
     position: relative;
+    /* Necessário para o efeito de brilho */
     overflow: hidden;
-    user-select: none;
-    touch-action: manipulation;
-    /* Melhora resposta ao toque */
+    /* Mantém o brilho dentro do botão */
+    /* Padding lateral para textos longos */
+    border-radius: 8px;
+    padding: 1rem;
+
+    /* Visual */
+    box-shadow: var(--shadow-2);
+    /* Sombra suave inicial */
+    backdrop-filter: blur(4px);
+    /* Caso use cores translúcidas */
 
     /* Transições */
-    transition:
-        background-color 0.25s ease,
-        transform 0.18s cubic-bezier(.2, .8, .4, 1),
-        box-shadow 0.3s ease,
-        border-color 0.25s ease,
-        color 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Curva de animação "premium" */
+    cursor: pointer;
 }
 
-.text[b-k08xr1gmrx] {
-    text-align: center;
+/* 3. Wrapper do Texto (.button-hover) */
+/* Centraliza o conteúdo caso a altura do botão cresça */
+.button-hover[b-k08xr1gmrx] {
     width: 100%;
-    display: block;
-    line-height: 1.2;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* ================================
-   HOVER / ACTIVE / FOCUS
-   ================================ */
-
-/* Hover apenas em dispositivos que têm mouse */
-@media (hover: hover) {
-    .button:hover[b-k08xr1gmrx] {
-        border-color: var(--color-gold-2);
-        color: var(--color-primary-text-3);
-        transform: translateY(-3px);
-        box-shadow:
-            var(--shadow-2),
-            0 8px 18px rgba(0, 0, 0, 0.18);
-    }
-}
-
-.button:active[b-k08xr1gmrx] {
-    transform: translateY(-1px) scale(0.98);
-    /* Scale 0.97 pode ser muito brusco */
-    box-shadow: none;
-    background-color: var(--color-primary-translucent-2);
-}
-
-.button:focus-visible[b-k08xr1gmrx] {
-    outline: 2px solid var(--color-blue-2);
-    outline-offset: 2px;
-}
-
-/* ================================
-   TEXTO INTERNO
-   ================================ */
-
-.text[b-k08xr1gmrx] {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 2;
-    pointer-events: none;
+    /* Garante que o texto fique acima do efeito de brilho */
+}
+
+/* 4. Tipografia (.text) */
+/* O componente usa H2, então precisamos resetar as margens globais */
+.button .text[b-k08xr1gmrx] {
+    margin: 0;
+    /* Remove margens padrão de cabeçalhos */
+    padding: 0;
+
+    /* Estilo "Elite" */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-align: center;
+
+    /* Contraste */
+    color: #ffffff;
+    /* Branco puro para contraste em fundos coloridos */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* ================================
-   RESPONSIVIDADE (Media Queries)
+   INTERAÇÃO E ANIMAÇÃO
    ================================ */
 
-/* Telas muito pequenas (iPhone SE, Fold, etc) */
-@media (max-width: 360px) {
-    .button[b-k08xr1gmrx] {
-        max-width: 100%;
-        /* Aproveita todo espaço */
-        padding: 0.75rem 1rem;
-        font-size: 0.875rem;
-        /* 14px */
-    }
+/* Hover no NavLink afeta o .button */
+/* Usamos filter: brightness para clarear a cor do background dinamicamente,
+   já que a cor é definida inline no HTML */
+a:hover .button[b-k08xr1gmrx] {
+    transform: translateY(-3px);
+    /* O botão "levanta" */
+    box-shadow: var(--shadow-1);
+    /* Sombra aumenta e fica mais difusa */
+    filter: brightness(1.15);
+    /* Clareia 15% a cor original */
 }
 
-/* Tablet e Desktop (A partir de 768px) */
-/* MUDANÇA CRÍTICA: Botão deixa de ser bloco esticado */
-@media (min-width: 768px) {
-    .button[b-k08xr1gmrx] {
-        display: inline-flex;
-        /* Volta a comportar-se como botão inline */
-        width: auto;
-        /* Largura baseada no conteúdo */
-        max-width: none;
-        /* Remove a trava de 320px */
-        min-width: 200px;
-    }
+/* Active (Clique) */
+a:active .button[b-k08xr1gmrx] {
+    transform: translateY(-1px);
+    /* Afunda levemente */
+    filter: brightness(0.95);
+    box-shadow: none;
 }
 
-/* Telas grandes (Monitores Wide) */
-@media (min-width: 1200px) {
+/* Efeito de "Brilho Passante" (Shine Effect) */
+/* Adiciona um toque de sofisticação ao passar o mouse */
+.button[b-k08xr1gmrx]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    /* Começa fora da tela à esquerda */
+    width: 50%;
+    height: 100%;
+
+    /* Gradiente translúcido inclinado */
+    background: linear-gradient(to right,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    /* Não interfere no clique */
+}
+
+/* Dispara a animação do brilho no hover */
+a:hover .button[b-k08xr1gmrx]::after {
+    left: 120%;
+    /* Move para fora da tela à direita */
+    transition: left 0.6s ease-in-out;
+}
+
+/* ================================
+   MEDIA QUERIES (Ajustes Mobile/Desktop)
+   ================================ */
+@media (max-width: 768px) {
     .button[b-k08xr1gmrx] {
-        font-size: 1.1rem;
-        /* Aumenta um pouco o arredondamento proporcionalmente */
-        border-radius: calc(var(--border-1) * 1.25);
-        transition: transform 0.2s cubic-bezier(.2, .8, .4, 1);
+        width: 100% !important;
+        /* Em mobile, força largura total para facilitar o clique */
+    }
+
+    .button .text[b-k08xr1gmrx] {
+        /* No mobile, se a fonte passada for muito grande (ex: 3rem), 
+           limitamos para não quebrar o layout */
+        font-size: clamp(1rem, 5vw, 1.5rem) !important;
     }
 }

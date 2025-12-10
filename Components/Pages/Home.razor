@@ -17,7 +17,7 @@
 
                 <CtaComponent Title="A Nova Elite Intelectual"
                     Subtitle="Supere o ensino mediano. Junte-se a um currículo avançado que busca rigor científico absoluto."
-                    ButtonText="Ver Planos" ButtonHref="/subscription" ButtonColor="bgblue-1"
+                    ButtonText="Ver Planos" ButtonHref="/subscription" ButtonColor="--color-blue-1"
                     ImageUrl="images/NousNovaLogo.png" Color="text-dark" Price="0" />
             </div>
         </div>
@@ -35,9 +35,9 @@
                             {
                                 <NavLink class="card card-hover" href=@($"/disciplines/{discipline.Label}") ActiveClass="">
                                     <div class="discipline-div">
-                                        <h2 class="card-title">@discipline.Name</h2>
-                                        <p class="card-content">@discipline.Subtitle</p>
-                                        <p class="card-cta">Examinar Programa</p>
+                                        <h2 class="discipline-title">@discipline.Name</h2>
+                                        <p class="discipline-subtitle">@discipline.Subtitle</p>
+                                        <p class="discipline-cta">Clique para Saber Mais</p>
                                     </div>
                                 </NavLink>
                             }
@@ -72,7 +72,7 @@
         <div class="container">
             <div class="content">
                 <CtaComponent Title="O Ciclo da Maestria" Subtitle=@($"No {schoolData.SchoolName}, transcendemos a             memorização. Nosso método forja a autonomia através de um ciclo inegociável: do Problema à                    Investigação, culminando na Formalização rigorosa e na Transmissão do saber. Preparamos o intelecto                  para a universalidade do conhecimento, seja em exames de alta complexidade ou na vida acadêmica.")
-                    ButtonText="Leia o Manifesto" ButtonHref="/about">
+                    ButtonText="Leia o Manifesto" ButtonHref="/about" ImageUrl="images/InstituitionClassicIcon.png">
                 </CtaComponent>
             </div>
         </div>

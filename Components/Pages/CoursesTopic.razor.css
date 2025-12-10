@@ -1,3 +1,152 @@
-article{
+/* ================================
+   CONTAINER PRINCIPAL
+   ================================ */
+.topic-container {
+    width: 100%;
+    /* Mobile: Ocupa quase tudo, mas com margem segura */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+
+    background-color: var(--background-1);
+    /* Sombra suave usando sua variável */
+    box-shadow: none;
+    /* Remove sombra no mobile para ganhar espaço */
+}
+
+/* Desktop: Restaura a sombra e limita largura */
+@media (min-width: 768px) {
+    .topic-container {
+        max-width: 90%;
+        padding: 2rem;
+        box-shadow: var(--shadow-2);
+        border-radius: 8px;
+        /* Refinamento visual */
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* ================================
+   NAVEGAÇÃO (BREADCRUMBS)
+   ================================ */
+.topic-breadcrumbs {
+    margin-bottom: 1.5rem;
+}
+
+.topic-breadcrumbs>div {
+    display: flex;
+    flex-wrap: wrap;
+    /* CRUCIAL: Permite quebrar linha no celular */
+    align-items: center;
+    gap: 0.5rem;
+    /* Espaço entre os itens */
+
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-black-4);
+}
+
+/* A setinha (separator) */
+.topic-breadcrumbs span {
+    color: var(--color-black-3);
+    font-size: 0.75rem;
+}
+
+/* O último item (tópico atual) */
+.topic-breadcrumbs span:last-child {
+    color: var(--color-gold-3);
+    /* Destaque dourado */
+    font-weight: 600;
+}
+
+.topic-breadcrumbs hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-primary-translucent-3), transparent);
+    margin-top: 1rem;
+}
+
+/* ================================
+   CORPO DO CONTEÚDO (MARKDOWN)
+   ================================ */
+.topic-body {
+    /* Mobile: Padding lateral reduzido para aproveitar a tela */
+    padding: 1rem 0;
+
+    /* Tipografia para leitura longa */
+    font-size: 1.05rem;
+    line-height: 1.7;
+    /* Melhor legibilidade */
+    color: var(--text-color-1);
+}
+
+/* Tratamento de Imagens dentro do Markdown */
+/* Garante que imagens grandes não quebrem o layout no celular */
+.topic-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-2);
+}
+
+/* Tratamento de Tabelas dentro do Markdown */
+.topic-body table {
+    display: block;
+    overflow-x: auto;
+    /* Scroll horizontal se a tabela for grande */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Desktop: Aumenta o padding conforme solicitado no original */
+@media (min-width: 992px) {
+    .topic-body {
+        padding: 2rem 5rem;
+        /* Restaura o padding generoso em telas grandes */
+        font-size: 1.125rem;
+    }
+}
+
+/* ================================
+   FOOTER / BOTÕES DE NAV
+   ================================ */
+.topic-footer {
+    width: 100%;
     margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-primary-translucent-2);
+
+    /* Layout Flex para posicionamento */
+    display: flex;
+    flex-direction: column;
+    /* Mobile: Botões empilhados */
+    gap: 1rem;
+}
+
+/* Garante que os containers dos botões ocupem largura total no mobile */
+.topic-footer>div {
+    width: 100%;
+}
+
+/* Desktop: Botões lado a lado */
+@media (min-width: 768px) {
+    .topic-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .topic-footer>div {
+        width: auto;
+        /* Tamanho natural no desktop */
+        min-width: 200px;
+        /* Tamanho mínimo para equilíbrio */
+    }
+
+    /* Se houver apenas o botão "Próximo", joga ele para a direita */
+    .topic-footer>div:only-child {
+        margin-left: auto;
+    }
 }
