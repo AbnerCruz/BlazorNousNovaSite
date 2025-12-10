@@ -14,7 +14,7 @@ public class PlanDetail
 
 public static class SubscriptionPlanRepository
 {
-    private static readonly decimal _basePrice = 29.90m;
+    private static readonly decimal _basePrice = 19.99m;
 
     public static List<PlanDetail> GetPlans()
     {

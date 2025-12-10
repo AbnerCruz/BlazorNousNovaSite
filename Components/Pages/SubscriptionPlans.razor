@@ -12,10 +12,10 @@
             <p class="section-subtitle">Escolha o nível de profundidade e acompanhamento adequado à sua ambição.</p>
         </div>
 
-        <div class="plans-grid">
+        <div class="grid">
             @foreach (var plan in plans)
             {
-                <div class="plan-card @(plan.Name == "Pleno" ? "highlight" : "")">
+                <div class="card @(plan.Name == "Pleno" ? "highlight" : "")">
 
                     @if (plan.Name == "Pleno")
                     {
