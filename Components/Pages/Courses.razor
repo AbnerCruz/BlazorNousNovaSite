@@ -11,10 +11,12 @@
     {
         <header>
             <nav>
-                <ButtonComponent Href="@($"/disciplines/{discipline.Label}")" Width="10%" Text="Voltar"
-                    FontSize="1rem" />
+                <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
+                <span>&rang;</span>
+                <span>@course.Name</span>
+                <hr/>
             </nav>
-            <h1 class="colgold-1">@course.Name</h1>
+            <h1 class="colgold-3">@course.Name</h1>
         </header>
 
         <section>
@@ -25,27 +27,17 @@
                     {
                         <div class="card">
                             <div>
-                                <h3 class="colgold-1">@module.Name</h3>
+                                <h3 class="colgold-3">@module.Name</h3>
                                 <span>
                                     ⏱ @module.Duration
                                 </span>
                             </div>
-
-                            @if (module.Contents != null)
-                            {
-                                @foreach (Topic topic in module.Contents)
-                                {
-                                    <div class="content">
-                                        <p>@topic.Name</p>
-                                        <ButtonComponent 
-                                            Text="Acessar" 
-                                            FontSize="0.8rem"
-                                            Width="50%"
-                                            Color="bgblue-1"
-                                            Href="@($"/courses/{discipline.Label}/{course.Id}/{topic.Id}")"/>
-                                    </div>
-                                }
-                            }
+                            <ButtonComponent 
+                                Text="Acessar" 
+                                FontSize="0.8rem"
+                                Width="50%"
+                                Color="bgblue-1"
+                                Href="@($"/courses/{discipline.Label}/{course.Id}/{module.Id}")"/>
                         </div>
                     }
                 </div>
@@ -55,6 +47,9 @@
                 <p>O currículo deste curso está sendo atualizado.</p>
             }
         </section>
+        <div class="back-button">
+            <ButtonComponent Href="@($"/disciplines/{discipline.Label}")" Width="10%" Text="Voltar" FontSize="1rem" />
+        </div>
     }
     else if (discipline == null)
     {

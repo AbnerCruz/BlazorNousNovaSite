@@ -523,8 +523,41 @@ body {
 }
 
 a {
-    all: unset;
+    /* Remove a formatação padrão do navegador (azul/sublinhado) */
+    text-decoration: none;
+
+    /* Aplica sua cor */
+    color: var(--color-gold-3);
+
+    /* Cursor e Fonte */
     cursor: pointer;
+    /* Cuidado: isso vai afetar TODOS os links, inclusive em textos pequenos */
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+/* Estado Hover (Mouse em cima) */
+a:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    font-size: 1.25rem;
+}
+
+/* Estado Active (No momento do clique) */
+a:active {
+    transform: translateY(0);
+    /* Volta para o lugar */
+    filter: brightness(0.9);
+    /* Escurece um pouco */
+}
+
+/* Acessibilidade (Quando navega por Tab) */
+a:focus-visible {
+    outline: 2px solid var(--color-gold-3);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 h1,

@@ -82,8 +82,9 @@ C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-No
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\FrontEnd.sourcelink.json
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\SubscriptionPlans.razor.rz.scp.css
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\Courses.razor.rz.scp.css
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\CoursesContent.razor.rz.scp.css
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\ctwso3o80w-rzu7cig2wh.gz
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\t481byrqko-tm2bhndf6a.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-n1sefs2c97.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-n1sefs2c97.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\CoursesTopic.razor.rz.scp.css
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\CoursesModule.razor.rz.scp.css
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-dz7yqjlwzs.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-dz7yqjlwzs.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\ctwso3o80w-rhlfqa9qnp.gz

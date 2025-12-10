@@ -1,0 +1,133 @@
+@page "/courses/{DisciplineLabel}/{CourseId}/{ModuleId}/{ChapterId}/{TopicId}"
+@rendermode InteractiveServer
+@using SchoolData
+@inject IJSRuntime JS
+@inject NavigationManager NavManager
+
+<PageTitle>@(topic?.Name ?? "Conteúdo") | Nous Nova</PageTitle>
+
+<div style="max-width: 1000px;">
+    @if (topic != null && module != null && course != null && discipline != null)
+    {
+        <article>
+            <nav>
+                <div>
+                    <a href="/disciplines/@DisciplineLabel">
+                        @discipline.Name
+                    </a>
+                    <span>&rsaquo;</span>
+
+                    <a href="/courses/@DisciplineLabel/@CourseId">
+                        @course.Name
+                    </a>
+                    <span>&rsaquo;</span>
+                    <a href="/courses/@DisciplineLabel/@CourseId/@ModuleId">
+                        @module.Name
+                    </a>
+                    <span>&rsaquo;</span>
+                    <span>@topic.Name</span>
+                </div>
+                <hr />
+            </nav>
+
+            <div>
+                @((MarkupString)topic.Body)
+            </div>
+        </article>
+
+        <div>
+            <ButtonComponent Text="Proxima Seção" />
+        </div>
+    }
+    else
+    {
+        <div>
+            <p>Tópico não encontrado.</p>
+            <p>Caminho verificado: Módulo <em>@ModuleId</em> &rarr; Capítulo <em>@ChapterId</em> &rarr; Tópico
+                <em>@TopicId</em>.
+            </p>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string DisciplineLabel { get; set; } = string.Empty;
+
+    [Parameter]
+    public string CourseId { get; set; } = string.Empty;
+
+    [Parameter]
+    public string ModuleId { get; set; } = string.Empty;
+
+    [Parameter]
+    public string ChapterId { get; set; } = string.Empty;
+
+    [Parameter]
+    public string TopicId { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+
+    // --- VARIÁVEIS DE CLASSE (Global para a página) ---
+    Discipline? discipline;
+    Course? course;
+    Module? module; // ADICIONADO AQUI
+    Topic? topic;
+
+    string currentChapterName = "";
+
+    protected override void OnInitialized()
+    {
+        // 1. Busca Disciplina
+        discipline = disciplineData.Disciplines
+        .FirstOrDefault(d => d.Label.Equals(DisciplineLabel, StringComparison.InvariantCultureIgnoreCase));
+
+        if (discipline != null)
+        {
+            // 2. Busca Curso
+            course = discipline.Courses
+            .FirstOrDefault(c => c.Id.Equals(CourseId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (course != null && course.Curriculum != null)
+            {
+                // 3. Busca Módulo
+                // REMOVIDO O 'var' DAQUI PARA USAR A VARIÁVEL DE CLASSE
+                module = course.Curriculum
+                .FirstOrDefault(m => m.Id.Equals(ModuleId, StringComparison.InvariantCultureIgnoreCase));
+
+                if (module != null)
+                {
+                    // 4. Busca Capítulo
+                    var chapter = module.Chapters
+                    .FirstOrDefault(c => c.Id.Equals(ChapterId, StringComparison.InvariantCultureIgnoreCase));
+
+                    if (chapter != null)
+                    {
+                        currentChapterName = chapter.Name ?? "Capítulo";
+
+                        // 5. Busca Tópico
+                        topic = chapter.Topics
+                        .FirstOrDefault(t => t.Id.Equals(TopicId, StringComparison.InvariantCultureIgnoreCase));
+                    }
+                }
+            }
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("renderMath");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"MathJax Warning: {ex.Message}");
+        }
+
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
+}

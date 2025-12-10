@@ -68,9 +68,13 @@ build_metadata.AdditionalFiles.CssScope = b-u28ymlant2
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-e6p3k14bvl
 
-[C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/CoursesContent.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VzQ29udGVudC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-2fos4o53tp
+[C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/CoursesModule.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VzTW9kdWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-2l6weae92l
+
+[C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/CoursesTopic.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VzVG9waWMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-vcmzzwj9ad
 
 [C:/Users/Abner/Desktop/Abner/Core/scripts/ASPDOTNET-Studies/aspdotnet-study-5-NousNova-Site/FrontEnd/Components/Pages/Disciplines.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaXNjaXBsaW5lcy5yYXpvcg==

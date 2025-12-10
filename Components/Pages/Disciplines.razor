@@ -30,12 +30,14 @@
                         {
                             <div class="card">
                                 <h2 class="card-title">@course.Name</h2>
-                                @foreach (Content curriculum in course.Curriculum)
+                                @foreach (Module curriculum in course.Curriculum)
                                 {
                                     <div class="curriculum-section">
                                         <h3 class="colgold-1">@curriculum.Name</h3>
                                     </div>
                                 }
+                                <ButtonComponent Text="Acessar" FontSize="0.8rem" Width="50%" Color="bgblue-1"
+                                    Href="@($"/courses/{discipline.Label}/{course.Id}")" />
                             </div>
                         }
                     </div>

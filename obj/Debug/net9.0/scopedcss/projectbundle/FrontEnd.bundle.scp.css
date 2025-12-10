@@ -938,7 +938,19 @@ li[b-u28ymlant2],
     margin-bottom: 1rem;
     padding: 1rem;
 }
-/* _content/FrontEnd/Components/Pages/CoursesContent.razor.rz.scp.css */
+
+.back-button[b-e6p3k14bvl]{
+    justify-self: center;
+    margin: 2rem 0;
+}
+/* _content/FrontEnd/Components/Pages/CoursesModule.razor.rz.scp.css */
+.card[b-2l6weae92l]{
+    margin: 2rem 0;
+}
+/* _content/FrontEnd/Components/Pages/CoursesTopic.razor.rz.scp.css */
+article[b-vcmzzwj9ad]{
+    margin-top: 2rem;
+}
 /* _content/FrontEnd/Components/Pages/Disciplines.razor.rz.scp.css */
 /* ================================
    PÁGINA DE DISCIPLINA
