@@ -539,33 +539,37 @@ p {
 
 /* Tipografia Responsiva (clamp: min, ideal, max) */
 h1 {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: 4vw;
     margin-bottom: 1rem;
 }
 
 h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 0.75rem;
+    font-size: 3vw;
+    margin-bottom: 1rem;
 }
 
 h3 {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    margin-bottom: 0.5rem;
+    font-size: 2.5vw;
+    margin-bottom: 1rem;
 }
 
 h4 {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: 2vw;
 }
 
 p {
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-size: 2vw;
 }
 
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+li{
+    font-size: 2vw;
+    text-align: left;
 }
 
 

@@ -7,17 +7,17 @@
 
 <PageTitle>@(topic?.Name ?? "Conteúdo") | Nous Nova</PageTitle>
 
-<div class="topic-page-container" style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem;">
+<div class="topic-page-container" style="max-width: 1000px; margin: 0 auto; padding: 2rem 1rem;">
     @if (topic != null)
     {
         <header>
             <ButtonComponent Href=@($"/courses/{DisciplineLabel}/{CourseId}") Text="Voltar" />
-            <h1>@topic.Name</h1>
         </header>
 
         <article class="content-body">
             @((MarkupString)topic.Body)
         </article>
+        <ButtonComponent Text="Proxima Seção"/>
     }
     else
     {

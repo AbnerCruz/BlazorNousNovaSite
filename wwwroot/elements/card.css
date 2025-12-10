@@ -68,19 +68,9 @@
 
 .card-title {
     color: var(--color-gold-3);
-    font-size: clamp(1.25rem, 4vw, 1.5rem);
-    font-weight: 700;
     margin-bottom: 1rem;
     transition: color 0.3s ease;
     text-align: center;
-}
-
-/* Texto do corpo do card */
-.card p {
-    color: var(--color-primary-text-2);
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 1rem;
 }
 
 /* ================================
@@ -93,10 +83,7 @@
     background-color: var(--color-gold-1);
 
     color: var(--color-gold-2);
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
     padding: 0.8rem 1.5rem;
     /* Aumentei um pouco a área de toque */
     border-radius: 8px;
@@ -173,9 +160,5 @@
 
     .card {
         padding: 1.25rem;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
     }
 }
