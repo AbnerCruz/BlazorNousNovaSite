@@ -19,16 +19,37 @@
             }
         };
     </script>
+    <script>
+        // Quando o script MathJax carregar, ele dispara "MathJax = { startup: { ... } }"
+        // Usamos isso para sinalizar ao Blazor que o MathJax está pronto.
+        window.mathJaxReady = new Promise(resolve => {
+            window.MathJax = {
+                tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+                svg: { fontCache: 'global' },
+                startup: {
+                    ready: () => {
+                        MathJax.startup.defaultReady();
+                        resolve();
+                    }
+                }
+            };
+        });
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
         window.renderMath = async () => {
-            // Verifica se o MathJax está carregado
+            await window.mathJaxReady;
+
             if (window.MathJax && window.MathJax.typesetPromise) {
                 try {
-                    // Pede para o MathJax processar a página novamente
-                    await window.MathJax.typesetPromise();
+                    // Limpa fórmulas antigas para SPA
+                    MathJax.startup.document.clear();
+                    MathJax.startup.document.updateDocument();
+
+                    // Re-renderiza tudo
+                    await MathJax.typesetPromise();
                 } catch (err) {
-                    console.log('MathJax typeset error: ', err);
+                    console.log("MathJax typeset error:", err);
                 }
             }
         };
