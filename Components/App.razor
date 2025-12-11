@@ -9,51 +9,63 @@
     <link rel="stylesheet" href="@Assets["elements/card.css"]" />
     <link rel="stylesheet" href="@Assets["elements/button.css"]" />
     <link rel="stylesheet" href="@Assets["FrontEnd.styles.css"]" />
+
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
             },
             svg: {
-                fontCache: 'global'
+                fontCache: 'global', // Otimiza o tamanho reutilizando fontes
+                scale: 1,
+                displayAlign: 'center'
+            },
+            startup: {
+                // Impede que o MathJax rode automaticamente no load inicial
+                // Nós vamos controlar isso manualmente via Blazor para evitar condições de corrida
+                typeset: false 
             }
         };
     </script>
+
     <script>
-        // Quando o script MathJax carregar, ele dispara "MathJax = { startup: { ... } }"
-        // Usamos isso para sinalizar ao Blazor que o MathJax está pronto.
         window.mathJaxReady = new Promise(resolve => {
-            window.MathJax = {
-                tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-                svg: { fontCache: 'global' },
-                startup: {
+            if (window.MathJax) {
+                 window.MathJax.startup = {
+                    ...window.MathJax.startup,
                     ready: () => {
                         MathJax.startup.defaultReady();
                         resolve();
                     }
-                }
-            };
+                };
+            }
         });
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
     <script>
         window.renderMath = async () => {
+            // Espera o script baixar e inicializar
             await window.mathJaxReady;
 
             if (window.MathJax && window.MathJax.typesetPromise) {
                 try {
-                    // Limpa fórmulas antigas para SPA
-                    MathJax.startup.document.clear();
-                    MathJax.startup.document.updateDocument();
-
-                    // Re-renderiza tudo
+                    // Reseta o estado interno do MathJax para ele não achar que já processou a página
+                    // Em SVG, limpar o documento é menos crítico que CHTML, mas é boa prática em SPA
+                    MathJax.startup.document.state(0); 
+                    
+                    // Manda renderizar tudo de novo
                     await MathJax.typesetPromise();
                 } catch (err) {
-                    console.log("MathJax typeset error:", err);
+                    console.error("Erro no MathJax typeset:", err);
                 }
             }
         };
     </script>
+
     <script>
         window.scrollToTop = () => {
             window.scrollTo({

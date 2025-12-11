@@ -86,5 +86,5 @@ C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-No
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\scopedcss\Components\Pages\CoursesModule.razor.rz.scp.css
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\t481byrqko-p8egq7qo2l.gz
 C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\ctwso3o80w-p6vqno4boc.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-z9g75toy97.gz
-C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-z9g75toy97.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\c37tlh1per-6jlo3jlbj6.gz
+C:\Users\Abner\Desktop\Abner\Core\scripts\ASPDOTNET-Studies\aspdotnet-study-5-NousNova-Site\FrontEnd\obj\Debug\net9.0\compressed\r2fmi8kqb1-6jlo3jlbj6.gz
