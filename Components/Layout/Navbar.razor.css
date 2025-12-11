@@ -110,7 +110,6 @@
     height: 100%;
     padding: 0 0.5rem;
 
-    color: var(--text-color-1);
     font-size: 0.95rem;
     /* Levemente menor no mobile */
     font-weight: 500;
@@ -121,13 +120,15 @@
 /* O texto dentro do link (<p>) */
 .nav-link a p {
     margin: 0;
+    color: var(--color-gold-2);
     /* Remove margens padrão do p */
 }
 
 /* HOVER STATE */
 .nav-link a:hover {
-    color: var(--color-gold-2);
+    color: var(--color-blue-2);
     transform: none;
+    text-shadow: 0 0 8px var(--color-blue-3);
     /* Anula transform global de links para não mover o menu */
 }
 

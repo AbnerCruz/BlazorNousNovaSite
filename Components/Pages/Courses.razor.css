@@ -55,7 +55,6 @@
 
 /* Links do Breadcrumb */
 .course-page-container nav a {
-    color: var(--color-gold-3);
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.5px;

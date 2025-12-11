@@ -7,7 +7,7 @@
 <div class="about">
     <div class="container">
         <div class="content">
-            
+
             <section class="aboutUs">
                 <h1 class="title">Sobre Nós</h1>
                 @if (videoUrl != "")
@@ -18,48 +18,51 @@
                             allowfullscreen>
                         </iframe>
                     </div>
-                    <CtaComponent 
-                        Title="Domine a Arte de Aprender" 
-                        Subtitle="Não decoramos fórmulas. Aplicamos o ciclo: Problema, Investigação, Formalização e Transmissão. Aprenda a pensar como um cientista." 
-                        ButtonText="Saber Mais" 
-                        ButtonHref="/registration" 
-                        ButtonColor="bgblue-1" 
-                        ImageUrl="images/CtaImage.png" 
-                        Price="0"
-                    />
+                    <CtaComponent Title="Domine a Arte de Aprender"
+                        Subtitle="Não decoramos fórmulas. Aplicamos o ciclo: Problema, Investigação, Formalização e Transmissão. Aprenda a pensar como um cientista."
+                        ButtonHref="/registration" ButtonColor="--color-green-2" ImageUrl="images/CtaImage.png" />
                 }
 
                 <div class="lead">
                     <h2>I. Nossa Razão de Ser: Contra a Superficialidade</h2>
                     <p class="label">
-                        Vivemos em uma era de fragmentação e pressa. A educação tradicional, refém de testes padronizados e
+                        Vivemos em uma era de fragmentação e pressa. A educação tradicional, refém de testes
+                        padronizados e
                         resultados imediatos, abandonou sua missão primordial: a construção sólida do intelecto.
                         O <strong>Centro de Estudos Nous Nova</strong> nasce como uma resposta a esse cenário.
                     </p>
                     <p class="label">
                         Não somos um reforço escolar. Somos uma escola de pensamento.
-                        Existimos para resgatar a profundidade e a seriedade no ato de aprender. Rejeitamos a noção de que o
-                        estudo deve ser "fácil" ou meramente lúdico. Acreditamos que o conhecimento real é uma conquista, e
-                        que a satisfação intelectual advinda do domínio de um conceito complexo é superior a qualquer entretenimento.
+                        Existimos para resgatar a profundidade e a seriedade no ato de aprender. Rejeitamos a noção de
+                        que o
+                        estudo deve ser "fácil" ou meramente lúdico. Acreditamos que o conhecimento real é uma
+                        conquista, e
+                        que a satisfação intelectual advinda do domínio de um conceito complexo é superior a qualquer
+                        entretenimento.
                     </p>
                 </div>
 
                 <div class="values">
                     <h2>II. A Universalidade do Conhecimento</h2>
                     <p class="label">
-                        Nossa ambição não conhece fronteiras disciplinares. Embora o rigor lógico seja nosso alicerce, nosso teto
-                        é o conhecimento universal. No Nous Nova, entendemos que todas as áreas do saber — das Ciências Exatas às
+                        Nossa ambição não conhece fronteiras disciplinares. Embora o rigor lógico seja nosso alicerce,
+                        nosso teto
+                        é o conhecimento universal. No Nous Nova, entendemos que todas as áreas do saber — das Ciências
+                        Exatas às
                         Humanidades, das Artes à Tecnologia — exigem a mesma disciplina mental.
                     </p>
-                    
+
                     <div class="grid">
                         <div class="card">
                             <h3>Unidade Teórica</h3>
-                            <p class="label">O método que usamos para desvendar uma equação diferencial é o mesmo que aplicaremos para dissecar a História Clássica ou a Teoria Musical.</p>
+                            <p class="label">O método que usamos para desvendar uma equação diferencial é o mesmo que
+                                aplicaremos para dissecar a História Clássica ou a Teoria Musical.</p>
                         </div>
                         <div class="card">
                             <h3>Excelência Global</h3>
-                            <p class="label">Seja na educação infantil ou em níveis avançados, nosso objetivo é formar indivíduos capazes de transitar com competência e elegância por qualquer campo do conhecimento humano.</p>
+                            <p class="label">Seja na educação infantil ou em níveis avançados, nosso objetivo é formar
+                                indivíduos capazes de transitar com competência e elegância por qualquer campo do
+                                conhecimento humano.</p>
                         </div>
                     </div>
                 </div>
@@ -74,34 +77,33 @@
                     <div class="grid" id>
                         <div class="card">
                             <h3>1. O Problema</h3>
-                            <p class="label">O aprendizado começa com o desafio. Apresentamos situações complexas que exigem mais do que memória; exigem raciocínio.</p>
+                            <p class="label">O aprendizado começa com o desafio. Apresentamos situações complexas que
+                                exigem mais do que memória; exigem raciocínio.</p>
                         </div>
                         <div class="card">
                             <h3>2. A Investigação</h3>
-                            <p class="label">O aluno é guiado a buscar respostas, formular hipóteses e enfrentar a "luta produtiva". O erro é parte essencial da construção do acerto.</p>
+                            <p class="label">O aluno é guiado a buscar respostas, formular hipóteses e enfrentar a "luta
+                                produtiva". O erro é parte essencial da construção do acerto.</p>
                         </div>
                         <div class="card">
                             <h3>3. A Formalização</h3>
-                            <p class="label">A intuição não basta. Exigimos que o conhecimento seja estruturado com a linguagem técnica precisa. O rigor na comunicação é o espelho da clareza do pensamento.</p>
+                            <p class="label">A intuição não basta. Exigimos que o conhecimento seja estruturado com a
+                                linguagem técnica precisa. O rigor na comunicação é o espelho da clareza do pensamento.
+                            </p>
                         </div>
                         <div class="card">
                             <h3>4. A Transmissão</h3>
-                            <p class="label">O ciclo só se encerra quando o aluno é capaz de ensinar o que aprendeu. A prova final de domínio é a capacidade de transmitir o conhecimento com clareza.</p>
+                            <p class="label">O ciclo só se encerra quando o aluno é capaz de ensinar o que aprendeu. A
+                                prova final de domínio é a capacidade de transmitir o conhecimento com clareza.</p>
                         </div>
                     </div>
                 </div>
 
-                 @if (videoUrl == "")
+                @if (videoUrl == "")
                 {
-                    <CtaComponent 
-                        Title="Domine a Arte de Aprender" 
-                        Subtitle="Não decoramos fórmulas. Aplicamos o ciclo: Problema, Investigação, Formalização e Transmissão. Aprenda a pensar como um cientista." 
-                        ButtonText="Saber Mais" 
-                        ButtonHref="/registration" 
-                        ButtonColor="bgblue-1" 
-                        ImageUrl="images/CtaImage.png" 
-                        Price="0"
-                    />
+                    <CtaComponent Title="Domine a Arte de Aprender"
+                        Subtitle="Não decoramos fórmulas. Aplicamos o ciclo: Problema, Investigação, Formalização e Transmissão. Aprenda a pensar como um cientista."
+                        ButtonHref="/registration" ButtonColor="--color-green-2" ImageUrl="images/CtaImage.png"/>
                 }
             </section>
 
@@ -109,19 +111,24 @@
                 <h1 class="title">IV. Quem Buscamos</h1>
                 <div class="lead">
                     <p class="label">
-                        O Nous Nova é um ambiente de alta exigência, mas de portas abertas para quem tem a atitude correta.
-                        Não buscamos apenas o "gênio" nato. Buscamos, acima de tudo, a <strong>vontade de potência</strong>.
+                        O Nous Nova é um ambiente de alta exigência, mas de portas abertas para quem tem a atitude
+                        correta.
+                        Não buscamos apenas o "gênio" nato. Buscamos, acima de tudo, a <strong>vontade de
+                            potência</strong>.
                     </p>
                 </div>
 
                 <div class="grid">
                     <div class="card">
                         <h3>O Aluno Nous Nova</h3>
-                        <p class="label">É aquele disposto a dedicar horas ao estudo profundo, que encontra prazer na superação de obstáculos intelectuais e que não se contenta com o mediano.</p>
+                        <p class="label">É aquele disposto a dedicar horas ao estudo profundo, que encontra prazer na
+                            superação de obstáculos intelectuais e que não se contenta com o mediano.</p>
                     </div>
                     <div class="card">
                         <h3>O Convite</h3>
-                        <p class="label">Se você acredita que a educação é um processo de construção lenta, sólida e rigorosa; se você valoriza o silêncio, a concentração e o esforço deliberado, este é o seu lugar.</p>
+                        <p class="label">Se você acredita que a educação é um processo de construção lenta, sólida e
+                            rigorosa; se você valoriza o silêncio, a concentração e o esforço deliberado, este é o seu
+                            lugar.</p>
                     </div>
                 </div>
             </section>
@@ -139,7 +146,7 @@
                     }
                 </div>
             </section>
-            
+
             <div class="container" style="flex-direction: column; margin-top: 4rem; margin-bottom: 2rem;">
                 <h3>Centro de Estudos Nous Nova</h3>
                 <p style="font-style: italic;">Construindo a Alta Cultura Científica.</p>

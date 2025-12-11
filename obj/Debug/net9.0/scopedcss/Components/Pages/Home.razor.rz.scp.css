@@ -117,8 +117,7 @@ section>.container>h1[b-swpeewdqbl]::after {
 .discipline-title[b-swpeewdqbl] {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-blue-2);
-    /* Azul institucional para o nome do curso */
+    color: var(--text-color-1);
     margin: 0;
     line-height: 1.2;
     text-transform: uppercase;
@@ -142,7 +141,7 @@ section>.container>h1[b-swpeewdqbl]::after {
     margin-top: 1.5rem;
     font-size: 0.875rem;
     font-weight: 700;
-    color: var(--color-gold-3);
+    color: var(--color-blue-2);
     /* Dourado para indicar ação/valor */
     text-transform: uppercase;
     letter-spacing: 0.05em;

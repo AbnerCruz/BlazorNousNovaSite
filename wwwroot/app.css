@@ -187,7 +187,7 @@ ul {
    ================================ */
 a {
     text-decoration: none;
-    color: var(--color-gold-3);
+    color: var(--color-blue-2);
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
@@ -199,7 +199,6 @@ a {
 a:hover {
     filter: brightness(1.2);
     transform: translateY(-2px);
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
     /* REMOVIDO: font-size: 1.25rem; 
        Motivo: Mudar tamanho de fonte no hover quebra o layout (layout shift) */
 }

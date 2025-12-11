@@ -12,7 +12,7 @@
         <header>
             <nav>
                 <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
-                <span>&rang;</span>
+                <span>&rsaquo;</span>
                 <span>@course.Name</span>
                 <hr/>
             </nav>
@@ -20,6 +20,11 @@
         </header>
 
         <section>
+            <section>
+                <CtaComponent Title="Garanta seu acesso!" Subtitle="@($"Escolha o plano ideal e domine {discipline?.Name}")"
+                    ButtonText="Ver Planos" ButtonHref="/subscription" ButtonColor="--color-gold-2"
+                    ImageUrl="images/SubscriptionsCtaImage.png" />
+            </section>
             @if (course.Curriculum != null && course.Curriculum.Any())
             {
                 <div class="grid"> 

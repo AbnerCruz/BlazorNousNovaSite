@@ -95,7 +95,6 @@
 
 /* Título do Curso dentro do Card */
 .card-title {
-    color: var(--text-color-1);
     font-size: 1.5rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -124,7 +123,7 @@
    ================================ */
 
 .colgold-1 {
-    color: var(--color-gold-2);
+    color: var(--text-color-1);
     font-weight: 500;
     margin: 0;
     filter: brightness(1.2);
