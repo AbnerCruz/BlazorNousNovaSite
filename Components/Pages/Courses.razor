@@ -13,7 +13,7 @@
             <nav>
                 <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
                 <span>&rsaquo;</span>
-                <span>@course.Name</span>
+                <span class="current-page">@course.Name</span>
                 <hr/>
             </nav>
             <h1 class="colgold-3">@course.Name</h1>
@@ -37,12 +37,17 @@
                                     ⏱ @module.Duration
                                 </span>
                             </div>
-                            <ButtonComponent 
-                                Text="Acessar" 
-                                FontSize="0.8rem"
-                                Width="50%"
-                                Color="--color-blue-1"
-                                Href="@($"/courses/{discipline.Label}/{course.Id}/{module.Id}")"/>
+                            @if(module.Active){
+                                <ButtonComponent 
+                                    Text="Acessar" 
+                                    FontSize="0.8rem"
+                                    Width="50%"
+                                    Color="--color-blue-1"
+                                    Href="@($"/courses/{discipline.Label}/{course.Id}/{module.Id}")"/>    
+                            }
+                            else{
+                                <span>Em Breve</span>
+                            }
                         </div>
                     }
                 </div>

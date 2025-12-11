@@ -30,6 +30,7 @@ public class DisciplineMath : Discipline
                     {
                         Id="module-1",
                         Name = "Sistemas de Numeração e Bases",
+                        Active=true,
                         Duration = "3 Semanas",
                         Chapters = new()
                         {

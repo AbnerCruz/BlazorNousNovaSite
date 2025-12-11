@@ -49,11 +49,12 @@
 .module-container header nav span {
     color: var(--color-black-3);
     user-select: none;
+    font-size: 0.75rem;
 }
 
 /* O último item (nome do módulo atual) não deve parecer um link */
-.module-container header nav span:last-child {
-    color: var(--text-color-1);
+.module-container header nav .current-page {
+    color: var(--color-gold-3);
     font-weight: 600;
 }
 

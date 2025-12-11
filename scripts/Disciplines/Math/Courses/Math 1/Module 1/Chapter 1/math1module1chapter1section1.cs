@@ -6,6 +6,7 @@ public static class Math1Module1Chapter1Section1
     {
         Id = "correspondencia-e-agrupamento",
         Name = "1.1 Correspondência e Agrupamento",
+        Active = true,
         Body = """
             <h3>1.1 Correspondência e Agrupamento</h3>
             <p style="text-indent: 4em; text-align: justify">Eu gostaria que você fizesse um experimento rápido: Imagine que eu coloco 4 maçãs sobre a mesa e cubro-as com um pano. Se eu levantar o pano por meio segundo, você saberá instantaneamente que são 4. Você não precisa dizer "um, dois, três, quatro". Você vê a "quantidade" da cena.</p>

@@ -50,13 +50,13 @@
 /* A setinha (separator) */
 .topic-breadcrumbs span {
     color: var(--color-black-3);
+    user-select: none;
     font-size: 0.75rem;
 }
 
 /* O último item (tópico atual) */
-.topic-breadcrumbs span:last-child {
+.topic-breadcrumbs .current-page {
     color: var(--color-gold-3);
-    /* Destaque dourado */
     font-weight: 600;
 }
 

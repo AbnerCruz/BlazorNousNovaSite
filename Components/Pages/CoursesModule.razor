@@ -18,7 +18,7 @@
 
                 <a  href="/courses/@DisciplineLabel/@CourseId">@course.Name</a>
                 <span>&rsaquo;</span>
-                <span>@module.Name</span>
+                <span class="current-page">@module.Name</span>
                 <hr />
             </nav>
             <div>
@@ -47,11 +47,14 @@
                                 {
                                     @foreach (var topic in chapter.Topics)
                                     {
-                                        // Constrói a URL completa: Curso -> Módulo -> Capítulo -> Tópico
-                                        var topicUrl = $"/courses/{DisciplineLabel}/{CourseId}/{ModuleId}/{chapter.Id}/{topic.Id}";
-                                        <div>  
-                                            <ButtonComponent Href=@($"/courses/{@DisciplineLabel}/{@CourseId}/{@ModuleId}/{@chapter.Id}/{@topic.Id}") Text="@topic.Name" Color="--color-black-2"/>
-                                        </div>
+                                        @if(@topic.Active){
+                                            <div>  
+                                                <ButtonComponent Href=@($"/courses/{@DisciplineLabel}/{@CourseId}/{@ModuleId}/{@chapter.Id}/{@topic.Id}") Text="@topic.Name" Color="--color-black-2"/>
+                                            </div>  
+                                        }
+                                        else{
+                                            <span>Em Breve - @topic.Name</span>
+                                        }
                                     }
                                 }
                                 else

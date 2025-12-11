@@ -67,7 +67,14 @@
 
 /* Símbolo separador (>) */
 .course-page-container nav span {
-    opacity: 0.7;
+    color: var(--color-black-3);
+    user-select: none;
+    font-size: 0.75rem;
+}
+
+.course-page-container nav .current-page{
+    color: var(--color-gold-3);
+    font-weight: 600;
 }
 
 /* Oculta o <hr> original do HTML pois usamos border-bottom no header */
