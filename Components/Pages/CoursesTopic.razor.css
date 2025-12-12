@@ -8,7 +8,7 @@
    - Padding lateral para não colar na borda do celular
 */
 .topic-container {
-    width: 90vw;
+    width: 95vw;
     /* Largura de leitura ideal */
     margin: 0 auto;
     padding: 1.5rem 1.25rem 4rem 1.25rem;
@@ -88,7 +88,7 @@
    CORPO DO CONTEÚDO (.topic-body)
    ================================ */
 .topic-body {
-    padding: 1rem 5vw;
+    padding: 1rem 3vw;
     /* Garante que imagens e equações não vazem a tela */
     overflow-wrap: break-word;
     word-wrap: break-word;
