@@ -143,7 +143,7 @@ h4 {
 p,
 li {
     margin: 0.75rem 0;
-    font-size: 1.125rem;
+    font-size: 1rem;
     /* Aumento significativo para leitura (18px) */
     line-height: 1.75;
     /* Entrelinha mais generosa para o texto maior */
@@ -159,7 +159,8 @@ ul {
 
 
 
-ul li strong {
+ul li strong,
+ol li strong {
     color: var(--color-gold-3);
 }
 
@@ -249,6 +250,30 @@ a:focus-visible {
     outline: none;
     border-color: var(--color-blue-2);
     box-shadow: 0 0 0 3px var(--color-primary-translucent-2);
+}
+
+/* Garante que o container da equação não ultrapasse a tela */
+mjx-container {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    /* Adiciona rolagem se for muito grande */
+    overflow-y: hidden;
+    /* Corrige alinhamento em alguns browsers */
+}
+
+/* Garante que a imagem SVG tente se ajustar, mantendo a proporção */
+mjx-container svg {
+    max-width: 100%;
+    height: auto !important;
+    margin: 0 auto;
+}
+
+/* Ajuste específico para Mobile: Reduz levemente a fonte das equações */
+@media (max-width: 768px) {
+    mjx-container {
+        font-size: 0.9rem !important;
+        /* Reduz para 90% do tamanho do texto ao redor */
+    }
 }
 
 /* ================================

@@ -194,6 +194,169 @@
     width: 100%;
 }
 
+/* =========================================
+   SEÇÃO DE EXERCÍCIOS — MOBILE FIRST
+   ========================================= */
+
+.exercises-section {
+    margin-top: 2.5rem;
+    padding: 1rem 0.5rem;
+    border-radius: var(--border-1);
+    background: var(--color-primary-translucent-1);
+}
+
+/* Título da seção */
+.exercises-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-gold-2);
+    text-align: left;
+}
+
+/* =========================================
+   CARD DO EXERCÍCIO
+   ========================================= */
+
+.exercise-card {
+    background: var(--color-primary-translucent-2);
+    border-radius: var(--border-1);
+    padding: 1.25rem 1rem;
+    box-shadow: var(--shadow-2);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-primary-translucent-3);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.exercise-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-1);
+}
+
+/* =========================================
+   CABEÇALHO DO EXERCÍCIO
+   ========================================= */
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.exercise-header span {
+    font-weight: 600;
+    color: var(--color-gold-3);
+    font-size: 1.2rem;
+}
+
+/* Botão "Marcar como Resolvido" */
+.solve-button {
+    background: var(--color-green-3);
+    color: var(--color-green-1);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.solve-button:hover {
+    filter: brightness(1.08);
+}
+
+.solve-button:active {
+    transform: scale(0.97);
+}
+
+/* Estado quando já está resolvido */
+.solve-button.solved {
+    background: var(--color-green-2);
+    color: white;
+}
+
+/* =========================================
+   ENUNCIADO DO EXERCÍCIO
+   ========================================= */
+
+.exercise-statement {
+    margin: 1rem 0;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-color-1);
+}
+
+/* =========================================
+   BOTÃO DE SOLUÇÃO
+   ========================================= */
+
+.solution-button {
+    background: var(--color-blue-1);
+    color: var(--color-blue-4);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.solution-button:hover {
+    filter: brightness(1.1);
+}
+
+.solution-button:active {
+    transform: scale(0.97);
+}
+
+/* =========================================
+   SOLUÇÃO VISÍVEL
+   ========================================= */
+
+.exercise-solution {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--color-primary-translucent-2);
+    border: 1px solid var(--color-blue-3);
+    color: var(--text-color-1);
+    line-height: 1.7;
+}
+
+/* =========================================
+   DESKTOP (≥768px)
+   ========================================= */
+
+@media (min-width: 768px) {
+
+    .exercises-section {
+        padding: 2rem 1rem;
+    }
+
+    .exercise-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .exercise-header span {
+        font-size: 1.4rem;
+    }
+
+    .solve-button,
+    .solution-button {
+        padding: 0.7rem 1.3rem;
+        font-size: 1.1rem;
+    }
+
+    .exercise-statement,
+    .exercise-solution {
+        font-size: 1.2rem;
+        line-height: 1.9;
+    }
+}
+
 /* ================================
    MEDIA QUERIES (Tablet e Desktop)
    ================================ */
@@ -235,8 +398,4 @@
         /* Garante que, se for o único botão, fique na direita */
         grid-column: 2;
     }
-}
-
-li bold {
-    color: var(--gold-2);
 }

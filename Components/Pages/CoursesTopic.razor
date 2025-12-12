@@ -25,6 +25,35 @@
 
             <div class="topic-body">
                 @((MarkupString)topic.Body)
+                @if (topic.Problems != null && topic.Problems.Any())
+                {
+                    <section class="exercises-section">
+                        <h2>Exercícios</h2>
+
+                        @foreach (var p in topic.Problems)
+                        {
+                            <div class="exercise-card">
+                                <div class="exercise-header">
+                                    <span>Exercício @p.Id</span>
+                                </div>
+
+                                <p class="exercise-statement">@((MarkupString)p.Statement)</p>
+
+                                <button class="solution-button" @onclick="() => ToggleSolution(p.Id)">
+                                    @(VisibleSolutions.Contains(p.Id) ? "Ocultar solução" : "Mostrar solução")
+                                </button>
+
+                                @if (VisibleSolutions.Contains(p.Id))
+                                {
+                                    <div class="exercise-solution">
+                                        @((MarkupString)p.Solution)
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </section>
+                }
+
             </div>
         </article>
 
@@ -154,4 +183,27 @@
         try { await JS.InvokeVoidAsync("renderMath"); } catch { }
         if (firstRender) { await JS.InvokeVoidAsync("scrollToTop"); }
     }
+
+    // Estado dos flashcards
+    HashSet<string> VisibleSolutions = new();
+    HashSet<string> Solved = new();
+
+    void ToggleSolution(string id)
+    {
+        if (VisibleSolutions.Contains(id))
+            VisibleSolutions.Remove(id);
+        else
+            VisibleSolutions.Add(id);
+    }
+
+    void ToggleSolved(string id)
+    {
+        if (Solved.Contains(id))
+            Solved.Remove(id);
+        else
+            Solved.Add(id);
+    }
+
+    bool IsSolved(string id) => Solved.Contains(id);
+
 }
