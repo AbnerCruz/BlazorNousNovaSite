@@ -157,16 +157,18 @@ ul {
     padding: 0;
 }
 
-ul li {
-    margin-left: 2rem;
-    list-style-type: disc;
-}
+
 
 ul li strong {
     color: var(--color-gold-3);
 }
 
 @media (min-width: 768px) {
+    ul li {
+        margin-left: 2rem;
+        list-style-type: disc;
+    }
+
     h1 {
         font-size: 3.5rem;
         /* ~56px - Impacto visual forte */
