@@ -118,6 +118,7 @@ h1 {
     font-size: 2.5rem;
     margin-bottom: 1.25rem;
     letter-spacing: -0.02em;
+    color: var(--color-gold-2);
     /* Títulos gigantes ficam melhores com letras próximas */
 }
 
@@ -125,15 +126,18 @@ h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
+    color: var(--color-gold-2);
 }
 
 h3 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
+    color: var(--color-gold-2);
 }
 
 h4 {
     font-size: 1.35rem;
+    color: var(--color-gold-2);
 }
 
 p,
@@ -151,6 +155,15 @@ ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+ul li {
+    margin-left: 4em;
+    list-style-type: disc;
+}
+
+ul li strong {
+    color: var(--color-gold-3);
 }
 
 @media (min-width: 768px) {

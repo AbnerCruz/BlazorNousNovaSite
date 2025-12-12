@@ -104,7 +104,7 @@
 /* Container dos itens do currículo */
 .curriculum-section {
     padding: 0.5rem 0;
-    border-bottom: 1px solid var(--color-primary-translucent-1);
+    border-bottom: 1px solid var(--color-primary-translucent-2);
     margin-bottom: 0.5rem;
 
     /* NOVO: Garante que o H3 interno fique no meio */

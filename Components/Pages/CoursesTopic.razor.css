@@ -1,152 +1,242 @@
 /* ================================
-   CONTAINER PRINCIPAL
+   LAYOUT DO TÓPICO (Mobile First)
    ================================ */
-.topic-container {
-    width: 100%;
-    /* Mobile: Ocupa quase tudo, mas com margem segura */
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1rem;
 
-    background-color: var(--background-1);
-    /* Sombra suave usando sua variável */
-    box-shadow: none;
-    /* Remove sombra no mobile para ganhar espaço */
+/* Container Principal
+   - Centraliza o conteúdo
+   - Limita a largura para leitura confortável (max 800px é o padrão ouro para texto)
+   - Padding lateral para não colar na borda do celular
+*/
+.topic-container {
+    width: 90vw;
+    /* Largura de leitura ideal */
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem 1.25rem;
+    /* Padding inferior maior para scroll */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Desktop: Restaura a sombra e limita largura */
-@media (min-width: 768px) {
-    .topic-container {
-        max-width: 90%;
-        padding: 2rem;
-        box-shadow: var(--shadow-2);
-        border-radius: 8px;
-        /* Refinamento visual */
-        margin-top: 1rem;
-        margin-bottom: 2rem;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 /* ================================
-   NAVEGAÇÃO (BREADCRUMBS)
+   BREADCRUMBS (Navegação de topo)
    ================================ */
 .topic-breadcrumbs {
-    margin-bottom: 1.5rem;
-}
-
-.topic-breadcrumbs>div {
-    display: flex;
-    flex-wrap: wrap;
-    /* CRUCIAL: Permite quebrar linha no celular */
-    align-items: center;
-    gap: 0.5rem;
-    /* Espaço entre os itens */
-
-    font-size: 0.875rem;
-    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
     color: var(--color-black-4);
 }
 
-/* A setinha (separator) */
-.topic-breadcrumbs span {
-    color: var(--color-black-3);
-    user-select: none;
-    font-size: 0.75rem;
+.topic-breadcrumbs div {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebrar linha em telas pequenas */
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.6;
 }
 
-/* O último item (tópico atual) */
+.topic-breadcrumbs a {
+    color: var(--color-blue-3);
+    /* Azul claro para contraste no dark mode */
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.topic-breadcrumbs a:hover {
+    color: var(--color-blue-2);
+    border-bottom-color: var(--color-blue-2);
+    transform: none;
+    /* Remove o pulo do a global para breadcrumbs */
+}
+
+/* Separador (>) */
+.topic-breadcrumbs span:not(.current-page) {
+    color: var(--color-black-3);
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+/* Página Atual */
 .topic-breadcrumbs .current-page {
     color: var(--color-gold-3);
     font-weight: 600;
+    pointer-events: none;
 }
 
+/* Linha separadora decorativa */
 .topic-breadcrumbs hr {
+    margin-top: 1rem;
     border: 0;
     height: 1px;
     background: linear-gradient(90deg, var(--color-primary-translucent-3), transparent);
-    margin-top: 1rem;
 }
 
 /* ================================
-   CORPO DO CONTEÚDO (MARKDOWN)
+   CORPO DO CONTEÚDO (.topic-body)
    ================================ */
 .topic-body {
-    /* Mobile: Padding lateral reduzido para aproveitar a tela */
-    padding: 1rem 0;
-
-    /* Tipografia para leitura longa */
-    font-size: 1.05rem;
-    line-height: 1.7;
-    /* Melhor legibilidade */
-    color: var(--text-color-1);
+    padding: 1rem 5vw;
+    /* Garante que imagens e equações não vazem a tela */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-/* Tratamento de Imagens dentro do Markdown */
-/* Garante que imagens grandes não quebrem o layout no celular */
-.topic-body img {
+/* Ajustes finos para a tipografia vinda do HTML/Razor */
+.topic-body h3 {
+    color: var(--color-gold-4);
+    margin-top: 2.5rem;
+    /* Mais respiro antes de novos subtítulos */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+/* Tratamento para as equações do MathJax */
+.topic-body mjx-container,
+.topic-body .MathJax {
+    overflow-x: auto;
+    /* Scroll horizontal se a equação for longa */
+    overflow-y: hidden;
     max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 1rem 0;
+    margin: 1.5rem 0 !important;
+    padding: 0.5rem 0;
+}
+
+/* Estilização do Card de Definição/Axioma 
+   (Baseado nas classes "card" encontradas no seu texto C#) 
+*/
+.topic-body .card {
+    background-color: var(--color-primary-translucent-2);
+    border: 1px solid var(--color-primary-translucent-3);
+    border-left: 4px solid var(--color-gold-2);
+    /* Destaque lateral dourado */
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
     box-shadow: var(--shadow-2);
 }
 
-/* Tratamento de Tabelas dentro do Markdown */
-.topic-body table {
-    display: block;
-    overflow-x: auto;
-    /* Scroll horizontal se a tabela for grande */
-    width: 100%;
-    border-collapse: collapse;
+.topic-body .card p:first-child {
+    font-weight: 700;
+    color: var(--color-gold-3);
+    margin-top: 0;
+    text-indent: 0 !important;
+    /* Remove indentação forçada no título do card */
 }
 
-/* Desktop: Aumenta o padding conforme solicitado no original */
-@media (min-width: 992px) {
-    .topic-body {
-        padding: 2rem 5rem;
-        /* Restaura o padding generoso em telas grandes */
-        font-size: 1.125rem;
-    }
+/* Listas dentro do conteúdo */
+.topic-body ul,
+.topic-body ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.topic-body li {
+    margin-bottom: 0.8rem;
+    color: var(--text-color-1);
+    list-style-position: outside;
+}
+
+/* Marcadores de lista personalizados */
+.topic-body ul li::marker {
+    color: var(--color-blue-3);
+}
+
+/* Imagens responsivas caso venham no HTML */
+.topic-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 2rem auto;
+    box-shadow: var(--shadow-1);
+}
+
+/* Blockquotes (Citações) */
+.topic-body blockquote {
+    font-style: italic;
+    color: var(--color-black-4);
+    border-left: 3px solid var(--color-blue-2);
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    background: linear-gradient(90deg, var(--color-primary-translucent-1), transparent);
 }
 
 /* ================================
-   FOOTER / BOTÕES DE NAV
+   RODAPÉ E NAVEGAÇÃO (.topic-footer)
    ================================ */
 .topic-footer {
-    width: 100%;
-    margin-top: 2rem;
+    margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--color-primary-translucent-2);
 
-    /* Layout Flex para posicionamento */
-    display: flex;
-    flex-direction: column;
-    /* Mobile: Botões empilhados */
+    /* Mobile: Grid de 1 coluna (Empilhado) */
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 
-/* Garante que os containers dos botões ocupem largura total no mobile */
+/* Estilos de container dos botões para garantir largura total no mobile */
 .topic-footer>div {
     width: 100%;
 }
 
-/* Desktop: Botões lado a lado */
+/* ================================
+   MEDIA QUERIES (Tablet e Desktop)
+   ================================ */
 @media (min-width: 768px) {
+
+    .topic-container {
+        padding: 3rem 2rem 6rem 2rem;
+    }
+
+    /* Breadcrumbs em linha única */
+    .topic-breadcrumbs div {
+        flex-wrap: nowrap;
+    }
+
+    /* --- AJUSTE DOS BOTÕES --- */
     .topic-footer {
-        flex-direction: row;
-        justify-content: space-between;
+        /* Cria duas colunas: uma para esquerda, outra para direita */
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
         align-items: center;
     }
 
+    /* Sobrescreve a largura de 100% do mobile. 
+       "auto" faz a div do botão ter apenas o tamanho do texto do botão. */
     .topic-footer>div {
         width: auto;
-        /* Tamanho natural no desktop */
-        min-width: 200px;
-        /* Tamanho mínimo para equilíbrio */
     }
 
-    /* Se houver apenas o botão "Próximo", joga ele para a direita */
-    .topic-footer>div:only-child {
-        margin-left: auto;
+    /* Grudado na Esquerda (Botão Anterior) */
+    .topic-footer>div:first-child {
+        justify-self: start;
+        /* Garante que, se for o único botão, fique na esquerda */
+        grid-column: 1;
     }
+
+    /* Grudado na Direita (Botão Próximo/Concluir) */
+    .topic-footer>div:last-child {
+        justify-self: end;
+        /* Garante que, se for o único botão, fique na direita */
+        grid-column: 2;
+    }
+}
+
+li bold {
+    color: var(--gold-2);
 }
