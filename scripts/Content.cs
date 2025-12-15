@@ -28,7 +28,6 @@ public class Topic
 
 public class Problems
 {
-    //Estilo Flashcard
     public string Id { get; set; } = string.Empty;
     public string? Statement { get; set; } = string.Empty;
     public string? Solution { get; set; } = string.Empty;

@@ -9,35 +9,35 @@ public static class Math1Module1Chapter1Section1
         Active = true,
         Body = """
             <h3>1.1 Sistemas de Agrupamento e Bases Numéricas</h3>
-            <p style="text-indent:2rem">Vamos começar com uma pequena dinâmica. No momento quero que você esqueça tudo o que sabe sobre números. Esqueça o dígito "5", a palavra "cinco", o numeral romano "V". Esqueça a tabuada e a calculadora do seu celular.</p>
-            <p style="text-indent:2rem">Agora estamos no final do Paleolítico Superior ou, talvez, no alvorecer da revolução agrícola na Suméria arcaica. O sol está se pondo, tingindo de laranja a poeira que se levanta do chão árido. Você é um pastor. Sua sobrevivência, e a da sua família, depende inteiramente de um fato simples: o rebanho que você levou para pastar pela manhã deve voltar intacto para o cercado à noite.</p>
-            <p style="text-indent:2rem">Você olha para o grupo de animais se movendo à sua frente. Sua mente percebe que são "muitos". Se houvessem três ovelhas, você vê "três". Se houver quatro, sabe que são "quatro". Mas acima disso? Em certas quantidades tudo se funde em um borrão indistinto de "muitos". A mente humana primitiva — e até mesmo a moderna se não tem treinamento — sofre de um limite de subitização (a capacidade de reconhecer quantidades instantaneamente) que raramente passa de cinco elementos se estão desorganizados.</p>
-            <p style="text-indent:2rem">Se um lobo tiver levado uma ovelha durante o dia, como você saberia? Sem palavras para números, você não pode contar "cinquenta e três" e depois verificar se ainda há "cinquenta e três". A abstração numérica não existe. Você sente a massa do rebanho, mas a precisão lhe escapa. A falha da memória humana colide com a necessidade de sobrevivência. Precisamos de um método de verificação que seja à prova de falhas e que não dependa da linguagem.</p>
+            <p>Vamos começar com uma pequena dinâmica. No momento quero que você esqueça tudo o que sabe sobre números. Esqueça o dígito "5", a palavra "cinco", o numeral romano "V". Esqueça a tabuada e a calculadora do seu celular.</p>
+            <p>Agora estamos no final do Paleolítico Superior ou, talvez, no alvorecer da revolução agrícola na Suméria arcaica. O sol está se pondo, tingindo de laranja a poeira que se levanta do chão árido. Você é um pastor. Sua sobrevivência, e a da sua família, depende inteiramente de um fato simples: o rebanho que você levou para pastar pela manhã deve voltar intacto para o cercado à noite.</p>
+            <p>Você olha para o grupo de animais se movendo à sua frente. Sua mente percebe que são "muitos". Se houvessem três ovelhas, você vê "três". Se houver quatro, sabe que são "quatro". Mas acima disso? Em certas quantidades tudo se funde em um borrão indistinto de "muitos". A mente humana primitiva — e até mesmo a moderna se não tem treinamento — sofre de um limite de subitização (a capacidade de reconhecer quantidades instantaneamente) que raramente passa de cinco elementos se estão desorganizados.</p>
+            <p>Se um lobo tiver levado uma ovelha durante o dia, como você saberia? Sem palavras para números, você não pode contar "cinquenta e três" e depois verificar se ainda há "cinquenta e três". A abstração numérica não existe. Você sente a massa do rebanho, mas a precisão lhe escapa. A falha da memória humana colide com a necessidade de sobrevivência. Precisamos de um método de verificação que seja à prova de falhas e que não dependa da linguagem.</p>
             <p>Precisamos inventar a matemática.</p>
             <br>
             <h4>A Intuição e a Primeira Tentativa</h4>
-            <p style="text-indent:2rem">A solução que a humanidade encontrou foi brilhante em sua simplicidade física. Se você não pode contar as ovelhas mentalmente, você precisa de um substituto palpável para cada animal.</p>
-            <p style="text-indent:4em>Você pega uma bolsa de couro e senta-se à entrada do cercado. Pela manhã, conforme cada ovelha sai para o pasto, você pega uma pequena pedra e a coloca dentro da bolsa. Em latim essa pedra se chamava calculus a origem da palavra "cálculo"</p>
+            <p>A solução que a humanidade encontrou foi brilhante em sua simplicidade física. Se você não pode contar as ovelhas mentalmente, você precisa de um substituto palpável para cada animal.</p>
+            <p>Você pega uma bolsa de couro e senta-se à entrada do cercado. Pela manhã, conforme cada ovelha sai para o pasto, você pega uma pequena pedra e a coloca dentro da bolsa. Em latim essa pedra se chamava calculus a origem da palavra "cálculo"</p>
             <ul>
                 <li><strong>Ovelha passa</strong> $\rightarrow$ <strong>Pedra na bolsa.</strong></li>
                 <li><strong>Outra Ovelha passa</strong> $\rightarrow$ <strong>Pedra na bolsa.</strong></li>
             </ul>
-            <p style="text-indent:2rem">À noite, você reverte o processo. Para cada ovelha que entra, você retira uma pedra da bolsa de couro. Se o rebanho estiver todo dentro do cercado e a bolsa estiver vazia: Invariância Preservada. Todos estão a salvo. Se sobrar uma pedra na bolsa: Perda. Uma ovelha não entrou no cercado pois ficou para trás. Se não houver pedra e passar uma última ovelha: Ganho. (Provavelmente, uma ovelha do vizinho se misturou ao seu rebanho).</p>
+            <p>À noite, você reverte o processo. Para cada ovelha que entra, você retira uma pedra da bolsa de couro. Se o rebanho estiver todo dentro do cercado e a bolsa estiver vazia: Invariância Preservada. Todos estão a salvo. Se sobrar uma pedra na bolsa: Perda. Uma ovelha não entrou no cercado pois ficou para trás. Se não houver pedra e passar uma última ovelha: Ganho. (Provavelmente, uma ovelha do vizinho se misturou ao seu rebanho).</p>
             <br>
-            <p style="text-indent:2rem">O que você acabou de realizar intuitivamente é um dos conceitos mais poderosos da matemática moderna: a Correspondência Biunívoca ("um-para-um"). Você não precisa saber quantas ovelhas existem. Você só precisa garantir que o "Conjunto das Ovelhas" e o "Conjunto das Pedras" tenham a mesma magnitude.</p>
+            <p>O que você acabou de realizar intuitivamente é um dos conceitos mais poderosos da matemática moderna: a Correspondência Biunívoca ("um-para-um"). Você não precisa saber quantas ovelhas existem. Você só precisa garantir que o "Conjunto das Ovelhas" e o "Conjunto das Pedras" tenham a mesma magnitude.</p>
             <br>
             <h4>O Problema das Escalas</h4>
-            <p style="text-indent:2rem">Esse sistema funcionou perfeitamente por milênios. Mas a civilização é vítima de seu próprio sucesso. Com a agricultura e as cidades, os rebanhos cresceram. Um rei não possui apenas 50 ovelhas; ele possui 5.000.</p>
+            <p>Esse sistema funcionou perfeitamente por milênios. Mas a civilização é vítima de seu próprio sucesso. Com a agricultura e as cidades, os rebanhos cresceram. Um rei não possui apenas 50 ovelhas; ele possui 5.000.</p>
             <p>Tente aplicar o método das pedras agora. Carregar uma bolsa com 5.000 pedras é logisticamente impossível. "Tudo bem", você diz, "vamos fazer marcas em um osso ou argila (talhas)". Você começa a riscar: $|||||||||||||...$</p>
-            <p style="text-indent:2rem">Rapidamente, você atinge um limite novamente. Ler cinco mil riscos na parede é tão impossível quanto contar as todas as ovelhas a olho nu. O cérebro não processa a repetição linear infinita. O método "um-para-um" é excelente, mas tem seus limites. Como entendemos matemáticamente o que o pastor fez?</p>
+            <p>Rapidamente, você atinge um limite novamente. Ler cinco mil riscos na parede é tão impossível quanto contar as todas as ovelhas a olho nu. O cérebro não processa a repetição linear infinita. O método "um-para-um" é excelente, mas tem seus limites. Como entendemos matemáticamente o que o pastor fez?</p>
             <br>
             <h4>Cardinalidade e Bijeção</h4>
-            <p style="text-indent:2rem">O pastor percebeu que a “quantidade” não pertence a cada ovelha individualmente, mas ao conjunto como um todo. Ela é uma noção abstrata que expressa quantos elementos há em um grupo. Chamamos isso de Cardinalidade.</p>
+            <p>O pastor percebeu que a “quantidade” não pertence a cada ovelha individualmente, mas ao conjunto como um todo. Ela é uma noção abstrata que expressa quantos elementos há em um grupo. Chamamos isso de Cardinalidade.</p>
             <br>
-            <p style="text-indent:2rem">Para que dois conjuntos tenham a mesma cardinalidade, precisamos provar que eles correspondem perfeitamente.</p>
+            <p>Para que dois conjuntos tenham a mesma cardinalidade, precisamos provar que eles correspondem perfeitamente. Uma “regra de correspondência” é o que a matemática chama de função. Ainda não vamos entrar nos detalhes, mas a ideia é simples: cada ovelha recebe uma e só uma pedra.</p>
             <div class="card">
                 <h3>Definição 1.1.1 Correspondência Biunívoca (Bijeção)</h3>
-                <p style="text-indent:2rem">Dizemos que dois conjuntos $A$ e $B$ têm a mesma cardinalidade, denotada por $|A| = |B|$, se, e somente se, existe uma regra de correspondência (função) $f: A \to B$ que seja bijetora.<p>
+                <p>Dizemos que dois conjuntos $A$ e $B$ têm a mesma cardinalidade, denotada por $|A| = |B|$, se, e somente se, existe uma regra de correspondência (função) $f: A \to B$ que seja bijetora.</p>
                 <h4>Para ser uma bijeção, a função precisa cumprir dois requisitos rígidos:</h4>
                 <ul>
                     <li>
@@ -62,8 +62,8 @@ public static class Math1Module1Chapter1Section1
             </div>
             <br>
             <h4>A Estrutura de Bases e O Algoritmo da Divisão</h4>
-            <p style="text-indent:2rem">Para resolver o problema das 5.000 ovelhas, a mente humana inventou o Agrupamento Hierárquico. Em vez de contar apenas unidades, começamos a agrupar e contar grupos e grupos de grupos. Pense por exemplo em grupos de 1.000 ovelhas, teriamos um total de 5 grupos.</p>
-            <p style="text-indent:2rem">A grande pergunta é qual quantidade ideal para os nossos grupos? Qual quantidade que atenda a todas as nossas necessidades, ou pelo menos a maioria delas?</p>
+            <p>Para resolver o problema das 5.000 ovelhas, a mente humana inventou o Agrupamento Hierárquico. Em vez de contar apenas unidades, começamos a agrupar e contar grupos e grupos de grupos. Pense por exemplo em grupos de 1.000 ovelhas, teriamos um total de 5 grupos.</p>
+            <p>A grande pergunta é qual quantidade ideal para os nossos grupos? Qual quantidade que atenda a todas as nossas necessidades, ou pelo menos a maioria delas?</p>
             <ul>
                 <li><strong>Base 10:</strong> Óbvia e mais simples pois temos 10 dedos.</li>
                 <li><strong>Base 12:</strong> Olhe para a palma da sua mão. Use o polegar para contar as falanges (ossos) dos outros quatro dedos. 3 falanges x 4 dedos = 12. É uma base tátil excelente.</li>
@@ -74,7 +74,7 @@ public static class Math1Module1Chapter1Section1
             <br>
             <div class="card">
                 <h3>Teorema 1.1.1 Divisão Euclidiana</h3>
-                <p style="text-indent:2rem">Para quaisquer inteiros $a$ (total de elementos) e $b$ (o tamanho do grupo/base), com $b > 0$, existem inteiros únicos $q$ (quociente/grupos) e $r$ (resto) tais que:</p>
+                <p>Para quaisquer inteiros $a$ (total de elementos) e $b$ (o tamanho do grupo/base), com $b > 0$, existem inteiros únicos $q$ (quociente/grupos) e $r$ (resto) tais que:</p>
                 <p>$$a = q \cdot b + r \quad \text{onde} \quad 0 \leq r < b$$</p>
             </div>
             <br>
@@ -88,19 +88,19 @@ public static class Math1Module1Chapter1Section1
             <p>Ao fazer isso, reduzimos as limitações. Não vemos mais 5.000 unidades. Vemos "83 grupos grandes e 20 unidades soltas" ($83 \times 60 + 20 = 5000$). Comprimimos os dados.</p>
             <br>
             <h4>Aplicação 1.1.1</h4>
-            <p style="text-indent:2rem">A batalha entre a representação "um-para-um" e o "agrupamento eficiente" acontece agora mesmo, em seu celular, computador, televisão etc.</p>
-            <p style="text-indent:4em>Os computadores são como o pastor primitivo usando pedrinhas. Eles usam o sistema Binário (Base 2): 0 ou 1, ligado ou desligado. Imagine um número do sistema decimal como o 255 (duzentos e cinquenta e cinco). Em binário, ele é 11111111. Agora imagine um engenheiro de software tentando ler um código de erro: 1011011001101... É ilegível. Caímos no mesmo problema das bolsas de bolsas lotadas de "calculus" (pedrinhas)</p>
-            <p style="text-indent:2rem">A solução? Agrupamento. Usamos Hexadecimal (Base 16). Por que 16? Porque $16 = 2^4$. Isso significa que podemos agrupar cada 4 "pedras" binárias em um único símbolo elegante.</p>
+            <p>A batalha entre a representação "um-para-um" e o "agrupamento eficiente" acontece agora mesmo, em seu celular, computador, televisão etc.</p>
+            <p>Os computadores são como o pastor primitivo usando pedrinhas. Eles usam o sistema Binário (Base 2): 0 ou 1, ligado ou desligado. Imagine um número do sistema decimal como o 255 (duzentos e cinquenta e cinco). Em binário, ele é 11111111. Agora imagine um engenheiro de software tentando ler um código de erro: 1011011001101... É ilegível. Caímos no mesmo problema das bolsas de bolsas lotadas de "calculus" (pedrinhas)</p>
+            <p>A solução? Agrupamento. Usamos Hexadecimal (Base 16). Por que 16? Porque $16 = 2^4$. Isso significa que podemos agrupar cada 4 "pedras" binárias em um único símbolo elegante.</p>
             <ul>
                 <li><strong>Binário:</strong> 1111 (4 dígitos, difícil de ler em massa).</li>
                 <li><strong>Hexadecimal:</strong> F (1 símbolo, denso em informação).</li>
             </ul>
-            <p style="text-indent:2rem">O Hexadecimal não é "mágica"; é apenas uma técnica de empacotamento para salvar o cérebro do programador, exatamente como os sumérios fizeram com seus rebanhos.</p>
+            <p>O Hexadecimal não é "mágica"; é apenas uma técnica de empacotamento para salvar o cérebro do programador, exatamente como os sumérios fizeram com seus rebanhos.</p>
             <br>
             <h4>Aplicação 1.1.2</h4>
-            <p style="text-indent:2rem">Por que não vendemos ovos em pacotes de 10 (Base 10)? Afinal, usamos o sistema decimal para dinheiro.</p>
-            <p style="text-indent:2rem">Olhe para o número 10. Seus divisores são $\{1, 2, 5, 10\}$. Você só pode dividir 10 ovos ao meio ou em grupos de 5. Geometricamente, uma caixa com 10 só pode ser arranjada como $2 \times 5$. É uma estrutura rígida e pobre.</p>
-            <p style="text-indent:2rem">Agora olhe para o número 12 (uma dúzia). Seus divisores são $\{1, 2, 3, 4, 6, 12\}$. Isso é um sonho logístico! Você pode embalar 12 ovos em retângulos de $3 \times 4$, $2 \times 6$, $4 \times 3$, etc. A Base 12 sobrevive no comércio e na logística porque ela oferece mais "opções de empacotamento" (fatoração) do que a nossa base decimal biológica.</p>
+            <p>Por que não vendemos ovos em pacotes de 10 (Base 10)? Afinal, usamos o sistema decimal para dinheiro.</p>
+            <p>Olhe para o número 10. Seus divisores são $\{1, 2, 5, 10\}$. Você só pode dividir 10 ovos ao meio ou em grupos de 5. Geometricamente, uma caixa com 10 só pode ser arranjada como $2 \times 5$. É uma estrutura rígida e pobre.</p>
+            <p>Agora olhe para o número 12 (uma dúzia). Seus divisores são $\{1, 2, 3, 4, 6, 12\}$. Isso é um sonho logístico! Você pode embalar 12 ovos em retângulos de $3 \times 4$, $2 \times 6$, $4 \times 3$, etc. A Base 12 sobrevive no comércio e na logística porque ela oferece mais "opções de empacotamento" (fatoração) do que a nossa base decimal biológica.</p>
             <br>
             <h4>Resumo</h4>
             <div class="card">
@@ -114,7 +114,7 @@ public static class Math1Module1Chapter1Section1
             </div>
             <br>
             <h3>Faça Você Mesmo</h3>
-            <p style="text-indent:2rem">A melhor forma de entender que "números são apenas representações de quantidades" é manipulando essas quantidades fisicamente, sem usar os símbolos que você conhece.</p>
+            <p>A melhor forma de entender que "números são apenas representações de quantidades" é manipulando essas quantidades fisicamente, sem usar os símbolos que você conhece.</p>
             
             <div class="card">
                 <h4>Experimento: O Mercador de Grãos</h4>
@@ -143,7 +143,7 @@ public static class Math1Module1Chapter1Section1
                         <p>$$5 \times q_5 + r_5 \quad \text{deve ser igual a} \quad 12 \times q_{12} + r_{12}$$</p>
                     </li>
                 </ol>
-                <p style="text-indent:2rem"><strong>Conclusão:</strong> Se a igualdade for verdadeira, você acabou de provar fisicamente que a quantidade ($a$) existe independentemente de como a embalamos ($b$). Você realizou a mudança de base numérica manualmente.</p>
+                <p><strong>Conclusão:</strong> Se a igualdade for verdadeira, você acabou de provar fisicamente que a quantidade ($a$) existe independentemente de como a embalamos ($b$). Você realizou a mudança de base numérica manualmente.</p>
             </div>
             <br>
         """,
@@ -363,12 +363,12 @@ public static class Math1Module1Chapter1Section1
             new()
             {
                 Id="19",
-            Statement= """
-                <p>Um estudante afirma: "A quantidade de ovelhas muda dependendo se eu as conto em base 10 ou base 12". Use o conceito do texto para corrigir esse estudante.</p>
-            """,
-            Solution= """
-                <p>A afirmação está incorreta. A magnitude ($a$) é invariante e existe independentemente da representação. Base 10 e Base 12 são apenas "embalagens" ou "linguagens" diferentes para descrever a mesma realidade física. O número de ovelhas é o mesmo; o que muda são os coeficientes $q$ e $r$ usados para descrevê-lo.</p>
-            """
+                Statement= """
+                    <p>Um estudante afirma: "A quantidade de ovelhas muda dependendo se eu as conto em base 10 ou base 12". Use o conceito do texto para corrigir esse estudante.</p>
+                """,
+                Solution= """
+                    <p>A afirmação está incorreta. A magnitude ($a$) é invariante e existe independentemente da representação. Base 10 e Base 12 são apenas "embalagens" ou "linguagens" diferentes para descrever a mesma realidade física. O número de ovelhas é o mesmo; o que muda são os coeficientes $q$ e $r$ usados para descrevê-lo.</p>
+                """
             },
             new()
             {
