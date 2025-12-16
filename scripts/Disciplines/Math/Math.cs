@@ -49,7 +49,8 @@ public class DisciplineMath : Discipline
                                 Name="Capítulo 2 Lógica Binária e Computacional",
                                 Topics = new()
                                 {
-                                    new(),
+                                    Math1Module1Chapter2Section1.Topic,
+                                    Math1Module1Chapter2Section2.Topic,
                                 }
                             }
 
