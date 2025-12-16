@@ -23,7 +23,6 @@ public class DisciplineMath : Discipline
             {
                 Id="math1",
                 Name = "Matemática I",
-                // Estimativa Total: ~7 Meses
                 Curriculum = new()
                 {
                     new()
@@ -42,6 +41,7 @@ public class DisciplineMath : Discipline
                                 {
                                     Math1Module1Chapter1Section1.Topic,
                                     Math1Module1Chapter1Section2.Topic,
+                                    Math1Module1Chapter1Section3.Topic,
                                 }
                             },
                             new(){
