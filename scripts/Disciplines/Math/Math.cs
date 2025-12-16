@@ -51,6 +51,7 @@ public class DisciplineMath : Discipline
                                 {
                                     Math1Module1Chapter2Section1.Topic,
                                     Math1Module1Chapter2Section2.Topic,
+                                    Math1Module1Chapter2Section3.Topic,
                                 }
                             }
 

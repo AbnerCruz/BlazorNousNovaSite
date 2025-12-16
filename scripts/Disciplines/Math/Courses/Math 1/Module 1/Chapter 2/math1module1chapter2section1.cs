@@ -8,6 +8,7 @@ public class Math1Module1Chapter2Section1
         Name = "2.1 Minimização de Estados",
         Active = true,
         Body = """
+            <p>Reconhecemos que as seções seguintes são muito avançadas e difíceis de entender, porém nunca nos propomos a ensinar uma matemática qualquer com fórmulas decoradas, então é possivel que você precise ler repetidas vezes e realizar varias pesquisas para compreender a lógica dos computadores. Entretanto é possivel que você se questione: por que estudar isso em um curso de matemática? O motivo é que estamos vivendo na era digital e a compreensão desses fundamentos é um diferencial competitivo que poucos estão dispostos a ensinar mas que empresas trilhonarias brigam por engenheiros os dominam.</p>
             <h3>2.1 Minimização de Estados</h3>
             <p>No capítulo anterior, nós celebramos o sistema Decimal. Vimos como ele é uma maravilha da "eficiência de escrita": com apenas dez símbolos, podemos escrever o número de átomos no universo em uma única linha de papel.</p>
             <p>Mas, em meados do século XX, quando matemáticos e engenheiros tentaram tirar os números do papel e colocá-los dentro de máquinas elétricas, eles colidiram com uma barreira fundamental. Eles descobriram que o que é eficiente para a mente humana é catastrófico para a engenharia física.</p>
