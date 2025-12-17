@@ -1,0 +1,96 @@
+﻿@page "/"
+@using SchoolData
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+
+
+
+
+<PageTitle>Nous Nova | Centro de Estudos</PageTitle>
+
+<div class="homePage">
+    <section class="wellcome-section" id="s2">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">@schoolData.SchoolName</h1>
+                <h2 class="sub-title">@schoolData.SchoolSecondName</h2>
+
+                <CtaComponent Title="A Nova Elite Intelectual"
+                    Subtitle="Supere o ensino mediano. Junte-se a um currículo avançado que busca rigor científico absoluto."
+                    ButtonHref="/registration" ButtonColor="--color-green-2"
+                    ImageUrl="images/NousNovaLogo.png" Price="0" />
+            </div>
+        </div>
+    </section>
+
+    <section class="courses-section" id="s2">
+        <div class="container">
+            <h1>Domínios do Conhecimento</h1>
+            <div class="content">
+                <div class="disciplines">
+                    <div class="grid">
+                        @foreach (Discipline discipline in disciplinesData.Disciplines)
+                        {
+                            @if (discipline.Active)
+                            {
+                                <NavLink class="card card-hover" href=@($"/disciplines/{discipline.Label}") ActiveClass="">
+                                    <div class="discipline-div">
+                                        <h2 class="discipline-title">@discipline.Name</h2>
+                                        <p class="discipline-subtitle">@discipline.Subtitle</p>
+                                        <p class="discipline-cta">Clique para Saber Mais</p>
+                                    </div>
+                                </NavLink>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoiments-section" id="s1">
+        <div class="container">
+            <h1>Nossas Histórias</h1>
+            <div class="depoiments">
+                <p>Preservamos a identidade de nossos alunos para priorizar seus resultados</p>
+                <ul class="grid">
+                    @foreach (var depoiment in depoimentsData.Depoiments)
+                    {
+                        <div class="card">
+                            <div class="depoiments-dive">
+                                <h2 class="card-title">@depoiment.Key</h2>
+                                <p class="card-content">@depoiment.Value</p>
+                            </div>
+                        </div>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="s2">
+        <div class="container">
+            <div class="content">
+                <CtaComponent Title="O Ciclo da Maestria" Subtitle=@($"No {schoolData.SchoolName}, transcendemos a             memorização. Nosso método forja a autonomia através de um ciclo inegociável: do Problema à                    Investigação, culminando na Formalização rigorosa e na Transmissão do saber. Preparamos o intelecto                  para a universalidade do conhecimento, seja em exames de alta complexidade ou na vida acadêmica.")
+                    ButtonText="Sobre Nós" ButtonHref="/about" ImageUrl="images/InstituitionClassicIcon.png" ButtonColor="--color-blue-1">
+                </CtaComponent>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@code {
+    DisciplinesData disciplinesData = new DisciplinesData();
+    DepoimentsData depoimentsData = new DepoimentsData();
+    SchoolData schoolData = new SchoolData();
+    decimal Price = 140m;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
+}

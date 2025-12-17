@@ -1,0 +1,140 @@
+@page "/courses/{DisciplineLabel}/{CourseId}/{ModuleId}"
+@rendermode InteractiveServer
+@using SchoolData
+@using SchoolData.Disciplines
+@inject NavigationManager NavManager
+@inject IJSRuntime JS
+
+<PageTitle>@(module?.Name ?? "Módulo") | Nous Nova</PageTitle>
+
+<div class="module-container">
+
+    @if (module != null)
+    {
+        <header>
+            <nav>
+                <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
+                <span>&rsaquo;</span>
+
+                <a  href="/courses/@DisciplineLabel/@CourseId">@course.Name</a>
+                <span>&rsaquo;</span>
+                <span class="current-page">@module.Name</span>
+                <hr />
+            </nav>
+            <div>
+                <h1>@module.Name</h1>
+                @if (!string.IsNullOrEmpty(module.Duration))
+                {
+                    <div>
+                        <span>Duração estimada: <strong>@module.Duration</strong></span>
+                    </div>
+                }
+            </div>
+            <hr/>
+        </header>
+        
+        <section>
+            @if (module.Chapters != null && module.Chapters.Any())
+            {
+                <div>
+                    @foreach (var chapter in module.Chapters)
+                    {
+                        <div class="card">
+                            <h3>@chapter.Name</h3>
+                            
+                            <div>
+                                @if (chapter.Topics != null && chapter.Topics.Any())
+                                {
+                                    @foreach (var topic in chapter.Topics)
+                                    {
+                                        @if(@topic.Active){
+                                            <div>  
+                                                <ButtonComponent Href=@($"/courses/{@DisciplineLabel}/{@CourseId}/{@ModuleId}/{@chapter.Id}/{@topic.Id}") Text="@topic.Name" Color="--color-black-2"/>
+                                            </div>  
+                                        }
+                                        else{
+                                            <span>Em Breve - @topic.Name</span>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <div>
+                                        Em breve...
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div>
+                    Este módulo ainda não possui capítulos cadastrados.
+                </div>
+            }
+        </section>
+    }
+    else
+    {
+        <div>
+            <h4>Módulo não encontrado</h4>
+            <p>Não foi possível localizar o módulo com ID <strong>@ModuleId</strong>.</p>
+            <hr>
+            <ButtonComponent Href=@($"/courses/{DisciplineLabel}/{CourseId}") Text="Voltar"/>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string DisciplineLabel { get; set; } = string.Empty;
+
+    [Parameter]
+    public string CourseId { get; set; } = string.Empty;
+
+    [Parameter]
+    public string ModuleId { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+    
+    Discipline? discipline;
+    Course? course;
+    Module? module;
+
+    protected override void OnInitialized()
+    {
+        discipline = disciplineData.Disciplines
+            .FirstOrDefault(d => d.Label.Equals(DisciplineLabel, StringComparison.InvariantCultureIgnoreCase));
+
+        if (discipline != null)
+        {
+            course = discipline.Courses
+                .FirstOrDefault(c => c.Id.Equals(CourseId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (course != null && course.Curriculum != null)
+            {
+                // Busca o módulo correto
+                module = course.Curriculum
+                    .FirstOrDefault(m => m.Id.Equals(ModuleId, StringComparison.InvariantCultureIgnoreCase));
+            }
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("renderMath");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao renderizar MathJax: {ex.Message}");
+        }
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
+}

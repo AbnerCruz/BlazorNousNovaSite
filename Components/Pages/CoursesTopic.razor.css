@@ -1,0 +1,432 @@
+/* ================================
+   LAYOUT DO TÓPICO (Mobile First)
+   ================================ */
+
+/* Container Principal
+   - Centraliza o conteúdo
+   - Limita a largura para leitura confortável (max 800px é o padrão ouro para texto)
+   - Padding lateral para não colar na borda do celular
+*/
+.topic-container {
+    width: 95vw;
+    /* Largura de leitura ideal */
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem 1.25rem;
+    /* Padding inferior maior para scroll */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   BREADCRUMBS (Navegação de topo)
+   ================================ */
+.topic-breadcrumbs {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--color-black-4);
+}
+
+.topic-breadcrumbs div {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebrar linha em telas pequenas */
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.6;
+}
+
+.topic-breadcrumbs a {
+    color: var(--color-blue-3);
+    /* Azul claro para contraste no dark mode */
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.topic-breadcrumbs a:hover {
+    color: var(--color-blue-2);
+    border-bottom-color: var(--color-blue-2);
+    transform: none;
+    /* Remove o pulo do a global para breadcrumbs */
+}
+
+/* Separador (>) */
+.topic-breadcrumbs span:not(.current-page) {
+    color: var(--color-black-3);
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+/* Página Atual */
+.topic-breadcrumbs .current-page {
+    color: var(--color-gold-3);
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Linha separadora decorativa */
+.topic-breadcrumbs hr {
+    margin-top: 1rem;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-primary-translucent-3), transparent);
+}
+
+/* ================================
+   CORPO DO CONTEÚDO (.topic-body)
+   ================================ */
+.topic-body ::deep {
+    padding: 1rem 3vw;
+    /* Garante que imagens e equações não vazem a tela */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Ajustes finos para a tipografia vinda do HTML/Razor */
+.topic-body ::deep h3 {
+    color: var(--color-gold-2);
+    margin-top: 2.5rem;
+    /* Mais respiro antes de novos subtítulos */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+/* Tratamento para as equações do MathJax */
+.topic-body ::deep mjx-container,
+.topic-body ::deep .MathJax {
+    overflow-x: auto;
+    /* Scroll horizontal se a equação for longa */
+    overflow-y: hidden;
+    max-width: 100%;
+    margin: 1.5rem 0 !important;
+    padding: 0.5rem 0;
+}
+
+/* Estilização do Card de Definição/Axioma 
+   (Baseado nas classes "card" encontradas no seu texto C#) 
+*/
+.topic-body ::deep .card {
+    background-color: var(--color-primary-translucent-2);
+    border: 1px solid var(--color-primary-translucent-3);
+    border-left: 4px solid var(--color-gold-2);
+    border-radius: 8px;
+    box-shadow: var(--shadow-2);
+}
+
+.topic-body ::deep p {
+    margin: 1rem 0;
+    text-indent: 2em;
+    text-align: justify;
+}
+
+.topic-body ::deep li {
+    margin-bottom: 0.8rem;
+    list-style-position: outside;
+}
+
+/* Marcadores de lista personalizados */
+.topic-body ::deep ul li::marker {
+    color: var(--color-blue-3);
+}
+
+/* ================================
+   ESTILO PARA FIGURAS E LEGENDAS
+   ================================ */
+
+/* Estilo da Figura */
+.topic-body ::deep figure {
+    margin: 2.5rem auto;
+    text-align: center;
+    /* Centraliza a figura e a legenda no layout */
+}
+
+/* Estilo da Imagem dentro da Figura */
+.topic-body ::deep figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: var(--shadow-1);
+    /* Aplica sombra sutil à imagem */
+}
+
+/* Estilo da Legenda da Figura */
+.topic-body ::deep figure figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-black-4);
+    font-style: italic;
+    text-align: center;
+    /* Fonte em itálico e texto centralizado */
+    line-height: 1.4;
+}
+
+/* Blockquotes (Citações) */
+.topic-body ::deep blockquote {
+    font-style: italic;
+    color: var(--color-black-4);
+    border-left: 3px solid var(--color-blue-2);
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    background: linear-gradient(90deg, var(--color-primary-translucent-1), transparent);
+}
+
+.topic-body ::deep strong {
+    color: var(--color-gold-2);
+}
+
+.topic-body ::deep li li strong {
+    color: var(--color-gold-3);
+}
+
+/* ================================
+   RODAPÉ E NAVEGAÇÃO (.topic-footer)
+   ================================ */
+.topic-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-primary-translucent-2);
+
+    /* Mobile: Grid de 1 coluna (Empilhado) */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Estilos de container dos botões para garantir largura total no mobile */
+.topic-footer>div {
+    width: 100%;
+}
+
+/* =========================================
+   SEÇÃO DE EXERCÍCIOS — MOBILE FIRST
+   ========================================= */
+
+.exercises-section {
+    margin-top: 2.5rem;
+    padding: 1rem 0.5rem;
+    border-radius: var(--border-1);
+    background: var(--color-primary-translucent-1);
+}
+
+/* Título da seção */
+.exercises-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-gold-2);
+    text-align: left;
+}
+
+/* =========================================
+   CARD DO EXERCÍCIO
+   ========================================= */
+
+.exercise-card {
+    background: var(--color-primary-translucent-2);
+    border-radius: var(--border-1);
+    padding: 1.25rem 1rem;
+    box-shadow: var(--shadow-2);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-primary-translucent-3);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.exercise-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-1);
+}
+
+/* =========================================
+   CABEÇALHO DO EXERCÍCIO
+   ========================================= */
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.exercise-header span {
+    font-weight: 600;
+    color: var(--color-gold-3);
+    font-size: 1.2rem;
+}
+
+/* Botão "Marcar como Resolvido" */
+.solve-button {
+    background: var(--color-green-3);
+    color: var(--color-green-1);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.solve-button:hover {
+    filter: brightness(1.08);
+}
+
+.solve-button:active {
+    transform: scale(0.97);
+}
+
+/* Estado quando já está resolvido */
+.solve-button.solved {
+    background: var(--color-green-2);
+    color: white;
+}
+
+/* =========================================
+   ENUNCIADO DO EXERCÍCIO
+   ========================================= */
+
+.exercise-statement {
+    margin: 1rem 0;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-color-1);
+}
+
+/* =========================================
+   BOTÃO DE SOLUÇÃO
+   ========================================= */
+
+.solution-button {
+    background: var(--color-blue-1);
+    color: var(--color-blue-4);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.solution-button:hover {
+    filter: brightness(1.1);
+}
+
+.solution-button:active {
+    transform: scale(0.97);
+}
+
+/* =========================================
+   SOLUÇÃO VISÍVEL
+   ========================================= */
+
+.exercise-solution {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--color-primary-translucent-2);
+    border: 1px solid var(--color-blue-3);
+    color: var(--text-color-1);
+    line-height: 1.7;
+}
+
+/* =========================================
+   DESKTOP (≥768px)
+   ========================================= */
+
+@media (min-width: 768px) {
+
+    .exercises-section {
+        padding: 2rem 1rem;
+    }
+
+    .exercise-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .exercise-header span {
+        font-size: 1.4rem;
+    }
+
+    .solve-button,
+    .solution-button {
+        padding: 0.7rem 1.3rem;
+        font-size: 1.1rem;
+    }
+
+    .exercise-statement,
+    .exercise-solution {
+        font-size: 1.2rem;
+        line-height: 1.9;
+    }
+}
+
+/* ================================
+   MEDIA QUERIES (Tablet e Desktop)
+   ================================ */
+@media (min-width: 768px) {
+
+    .topic-container {
+        padding: 3rem 2rem 6rem 2rem;
+    }
+
+    /* Breadcrumbs em linha única */
+    .topic-breadcrumbs div {
+        flex-wrap: nowrap;
+    }
+
+    /* --- AJUSTE DOS BOTÕES --- */
+    .topic-footer {
+        /* Cria duas colunas: uma para esquerda, outra para direita */
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    /* Sobrescreve a largura de 100% do mobile. 
+       "auto" faz a div do botão ter apenas o tamanho do texto do botão. */
+    .topic-footer>div {
+        width: auto;
+    }
+
+    /* Grudado na Esquerda (Botão Anterior) */
+    .topic-footer>div:first-child {
+        justify-self: start;
+        /* Garante que, se for o único botão, fique na esquerda */
+        grid-column: 1;
+    }
+
+    /* Grudado na Direita (Botão Próximo/Concluir) */
+    .topic-footer>div:last-child {
+        justify-self: end;
+        /* Garante que, se for o único botão, fique na direita */
+        grid-column: 2;
+    }
+
+    .topic-body ::deep figure {
+        margin: 3.5rem auto;
+    }
+
+    .topic-body ::deep figure img {
+        max-width: 80%;
+        /* Limita o tamanho da imagem em telas grandes */
+    }
+
+    .topic-body ::deep figure figcaption {
+        font-size: 1rem;
+    }
+}

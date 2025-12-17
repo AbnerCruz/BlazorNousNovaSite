@@ -1,0 +1,167 @@
+/* ================================
+   1. GRID LAYOUT SYSTEM
+   ================================ */
+.grid {
+    display: grid;
+    width: 100%;
+
+    /* CONFIGURAÇÃO MOBILE (Padrão) 
+       - 1 Coluna por padrão (Mobile First)
+       - Removemos bordas e paddings excessivos para ganhar área útil em telas pequenas
+    */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    /* Herança de estilos base */
+    background-color: transparent;
+    border: none;
+}
+
+/* ================================
+   2. CARD COMPONENT
+   ================================ */
+.card {
+    /* Layout Interno */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+
+    /* Estética - Usando suas Variáveis do Root */
+    background-color: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-black-4);
+    border-radius: var(--border-1);
+    /* 20px do seu root */
+    padding: 1.5rem;
+    /* Padding confortável para mobile */
+    text-align: center;
+
+    /* Glassmorphism */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-1);
+
+    /* Performance de Animação */
+    transition:
+        transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.4s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+/* --- Conteúdo do Card --- */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    color: var(--color-gold-3);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* --- Botão CTA --- */
+.card-cta {
+    align-self: center;
+    display: inline-block;
+
+    background-color: var(--color-gold-1);
+    color: var(--color-gold-2);
+    /* Contraste pode ser baixo aqui, verifique acessibilidade */
+
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+
+    transition: all 0.3s ease;
+}
+
+/* --- Estados de Seleção (Radio Inputs) --- */
+.card input[type="radio"] {
+    display: none;
+}
+
+/* O moderno seletor :has permite estilizar o PAI quando o FILHO está marcado */
+.card:has(input:checked) {
+    border: 2px solid var(--color-green-2);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+    /* Glow verde sutil */
+    background-color: var(--color-primary-translucent-2);
+}
+
+span{
+    align-self: center;
+    justify-self: center;
+}
+
+/* ================================
+   3. INTERATIVIDADE (Desktop Hover)
+   ================================ */
+@media (hover: hover) {
+    .card.card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-2), 0 12px 24px rgba(0, 0, 0, 0.15);
+        background-color: var(--color-primary-translucent-2);
+        border-color: var(--color-gold-2);
+    }
+
+    .card.card-hover:hover .card-title {
+        color: var(--color-gold-2);
+    }
+
+    .card.card-hover:hover .card-cta {
+        color: var(--color-black-1);
+        /* Melhor contraste no hover */
+        background-color: var(--color-gold-2);
+        box-shadow: 0 0 15px var(--color-gold-1);
+    }
+}
+
+/* ================================
+   4. RESPONSIVIDADE (Desktop & Tablet)
+   ================================ */
+
+/* Breakpoint para Tablet/Desktop (acima de 768px) */
+@media (min-width: 768px) {
+    .grid {
+        /* REQUISITO: Limite fixo de 2 colunas */
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 2rem;
+        padding: 2rem;
+
+        /* Borda decorativa apenas em telas grandes */
+        border: 1px solid var(--color-primary-translucent-3);
+        border-radius: var(--border-1);
+    }
+
+    .card {
+        padding: 2rem;
+    }
+
+    /* LÓGICA DE CENTRALIZAÇÃO DO ÍMPAR:
+       Se o último card for o "ímpar" (ex: 3º, 5º item), ele deve centralizar.
+    */
+    .grid>.card:last-child:nth-child(odd) {
+        /* Faz o card ocupar as duas colunas */
+        grid-column: span 2;
+
+        /* Centraliza o card horizontalmente na "faixa" de 2 colunas */
+        justify-self: center;
+
+        /* TRUQUE MATEMÁTICO:
+           Para ele não ficar "gordo" ocupando 100% da largura, 
+           definimos a largura dele para ser igual à de 1 coluna.
+           Cálculo: 50% da área total - metade do gap.
+        */
+        width: calc(50% - 1rem);
+        /* Obs: 1rem é metade do gap de 2rem definido acima */
+    }
+}

@@ -1,0 +1,87 @@
+@page "/disciplines/{DisciplineLabel}"
+@using SchoolData
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+
+
+<PageTitle>@discipline?.Name</PageTitle>
+
+<div class="discipline-page">
+    @if (discipline != null)
+    {
+        @foreach (var content in discipline.Sections ?? new Dictionary<string, object>())
+        {
+            <section>
+                <h1>@content.Key</h1>
+
+                @if (content.Value is string text)
+                {
+                    <p>@text</p>
+                }
+                else if (content.Value is List<Course> courses)
+                {
+                    <div class="grid">
+                        @foreach (Course course in courses)
+                        {
+                            <div class="card">
+                                <h2 class="card-title">@course.Name</h2>
+                                @foreach (Module curriculum in course.Curriculum)
+                                {
+                                    <div class="curriculum-section">
+                                        <h3 class="colgold-1">@curriculum.Name</h3>
+                                    </div>
+                                }
+                                <ButtonComponent Text="Acessar" FontSize="0.8rem" Width="50%" Color="--color-blue-1"
+                                    Href="@($"/courses/{discipline.Label}/{course.Id}")" />
+                            </div>
+                        }
+                    </div>
+                }
+            </section>
+        }
+        <section>
+            <CtaComponent Title="Garanta Sua Vaga!" Subtitle=@($"Estude {@discipline.Name} e desenvolva a            capacidade de argumentar, escrever e transmitir conhecimento. Como quem busca o topo das classificações em            olimpíadas e vestibulares.") ButtonText="Matrícula" ButtonHref="/registration" ButtonColor="--color-green-2"
+                ImageUrl="images/RegistrationCtaImage.png"/>
+        </section>
+
+    }
+    else
+    {
+        <p>Discipline not found.</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string DisciplineLabel { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+    Discipline? discipline;
+
+    protected override void OnInitialized()
+    {
+        discipline = disciplineData.Disciplines.FirstOrDefault(d => d.Label == DisciplineLabel);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("renderMath");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao renderizar MathJax: {ex.Message}");
+        }
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        discipline = disciplineData.Disciplines.FirstOrDefault(d => d.Label == DisciplineLabel);
+        await base.OnParametersSetAsync();
+    }
+}

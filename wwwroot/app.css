@@ -1,0 +1,340 @@
+/* ================================
+   PALETA GLOBAL DE CORES E TOKENS
+   ================================ */
+:root {
+    --border-1: 20px;
+
+    --shadow-1: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    --shadow-2: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+
+    /* Cores (Mantidas iguais) */
+    --color-black-1: #0f0f0f;
+    --color-black-2: #333333;
+    --color-black-3: #666666;
+    --color-black-4: #b3b3b3;
+
+    --color-blue-1: #1e40af;
+    --color-blue-2: #3b82f6;
+    --color-blue-3: #93c5fd;
+    --color-blue-4: #dbeafe;
+
+    --color-gold-1: #94782c;
+    --color-gold-2: #bfa03f;
+    --color-gold-3: #e8cf7c;
+    --color-gold-4: #f5eac1;
+
+    --color-pink-1: #E0569A;
+    --color-pink-2: #f37ab2;
+    --color-pink-3: #f8bcd8;
+    --color-pink-4: #fde6f0;
+
+    --color-green-1: #166534;
+    --color-green-2: #22c55e;
+    --color-green-3: #a7f3d0;
+    --color-green-4: #d1fae5;
+
+    --color-red-1: #991b1b;
+    --color-red-2: #ef4444;
+    --color-red-3: #fca5a5;
+    --color-red-4: #fee2e2;
+
+    --color-primary-translucent-1: #ffffff05;
+    --color-primary-translucent-2: #ffffff10;
+    --color-primary-translucent-3: #ffffff30;
+
+    --background-1: #141414;
+    --text-color-1: #dfdfdf;
+
+    /* Váriaveis de espaçamento seguro */
+    --header-height: 60px;
+}
+
+/* ================================
+   CONFIGURAÇÕES GERAIS & RESET
+   ================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--background-1);
+    color: var(--text-color-1);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    /* Tamanho base padrão */
+    font-size: 1rem;
+}
+
+body {
+    padding-top: var(--header-height);
+}
+
+/* ================================
+   TIPOGRAFIA (Mobile First - Escala Aumentada)
+   ================================ */
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+a,
+span {
+    /* Garante que a fonte renderize com nitidez em tamanhos maiores */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    /* Peso extra para compensar o tamanho */
+    line-height: 1.2;
+    /* Títulos grandes pedem entrelinha menor */
+}
+
+/* ESCALA MOBILE (Base: 18px)
+   -------------------------
+   p  = 1.125rem (18px)
+   h4 = 1.35rem  (~21px)
+   h3 = 1.6rem   (~25px)
+   h2 = 2rem     (32px)
+   h1 = 2.5rem   (40px)
+*/
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+    color: var(--color-gold-2);
+    /* Títulos gigantes ficam melhores com letras próximas */
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--color-gold-2);
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--color-gold-2);
+}
+
+h4 {
+    font-size: 1.35rem;
+    color: var(--color-gold-2);
+}
+
+p,
+li {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    /* Aumento significativo para leitura (18px) */
+    line-height: 1.75;
+    /* Entrelinha mais generosa para o texto maior */
+    text-align: justify;
+    color: var(--text-color-1);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+ul li strong,
+ol li strong {
+    color: var(--color-gold-3);
+}
+
+@media (min-width: 768px) {
+    ul li {
+        margin-left: 2rem;
+        list-style-type: disc;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        /* ~56px - Impacto visual forte */
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        /* ~40px */
+    }
+
+    h3 {
+        font-size: 2rem;
+        /* ~32px */
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        /* ~24px */
+    }
+
+    p,
+    li {
+        font-size: 1.25rem;
+        /* 20px - Leitura extremamente confortável */
+        line-height: 1.8;
+    }
+}
+
+/* ================================
+   LINKS & INTERAÇÃO
+   ================================ */
+a {
+    text-decoration: none;
+    color: var(--color-blue-2);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    display: inline-block;
+    font-size: 1.125rem;
+}
+
+a:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    /* REMOVIDO: font-size: 1.25rem; 
+       Motivo: Mudar tamanho de fonte no hover quebra o layout (layout shift) */
+}
+
+a:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--color-gold-3);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* ================================
+   INPUTS
+   ================================ */
+.registration .input {
+    width: 100%;
+    background: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-secundary-border-2, #444);
+    /* Fallback de cor */
+    border-radius: 8px;
+    color: var(--text-color-1);
+    /* 16px evita zoom automático no iOS */
+    transition: border-color .3s ease, box-shadow .3s ease;
+    padding: 1rem 1.2rem;
+    font-size: 1.125rem;
+}
+
+.registration .input:focus {
+    outline: none;
+    border-color: var(--color-blue-2);
+    box-shadow: 0 0 0 3px var(--color-primary-translucent-2);
+}
+
+/* Garante que o container da equação não ultrapasse a tela */
+mjx-container {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    /* Adiciona rolagem se for muito grande */
+    overflow-y: hidden;
+    /* Corrige alinhamento em alguns browsers */
+}
+
+/* Garante que a imagem SVG tente se ajustar, mantendo a proporção */
+mjx-container svg {
+    max-width: 100%;
+    height: auto !important;
+    margin: 0 auto;
+}
+
+/* Ajuste específico para Mobile: Reduz levemente a fonte das equações */
+@media (max-width: 768px) {
+    mjx-container {
+        font-size: 0.9rem !important;
+        /* Reduz para 90% do tamanho do texto ao redor */
+    }
+}
+
+/* ================================
+   BLAZOR E FORMULÁRIOS
+   ================================ */
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid var(--color-green-2);
+}
+
+.invalid {
+    outline: 1px solid var(--color-red-2);
+}
+
+.validation-message {
+    color: var(--color-red-2);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Blazor Error Boundary - Abordagem Mobile First */
+.blazor-error-boundary {
+    /* Estilo Base (Mobile) */
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0...) no-repeat center top 1rem, #b32121;
+    background-size: 1.8rem;
+    /* Define tamanho explícito do ícone */
+    color: white;
+    border-radius: 4px;
+    margin: 1rem 0;
+
+    /* Layout Mobile: Texto centralizado abaixo do ícone */
+    padding: 3.5rem 1rem 1rem 1rem;
+    text-align: center;
+}
+
+.blazor-error-boundary::after {
+    content: "An error has occurred.";
+    display: block;
+    /* Garante que fique em linha própria */
+}
+
+/* Ajuste para Desktop (acima de 576px) */
+@media (min-width: 576px) {
+    .blazor-error-boundary {
+        /* Layout Desktop: Ícone à esquerda, texto ao lado */
+        background-position: 1rem center;
+        padding: 1rem 1rem 1rem 3.7rem;
+        text-align: left;
+    }
+}
+
+.darker-border-checkbox.form-check-input {
+    border-color: #929292;
+}
+
+.form-floating .form-control::placeholder {
+    color: var(--color-black-4);
+    /* Fallback para bs-secondary */
+    text-align: end;
+}
+
+.form-floating .form-control:focus::placeholder {
+    text-align: start;
+}

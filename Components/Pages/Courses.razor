@@ -1,0 +1,117 @@
+@page "/courses/{DisciplineLabel}/{CourseId}"
+@rendermode InteractiveServer
+@using SchoolData
+@inject IJSRuntime JS
+@inject NavigationManager NavManager
+
+<PageTitle>@(course?.Name ?? "Curso") | Nous Nova</PageTitle>
+
+<div class="course-page-container">
+    @if (discipline != null && course != null)
+    {
+        <header>
+            <nav>
+                <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
+                <span>&rsaquo;</span>
+                <span class="current-page">@course.Name</span>
+                <hr/>
+            </nav>
+            <h1 class="colgold-3">@course.Name</h1>
+        </header>
+
+        <section>
+            <section>
+                <CtaComponent Title="Garanta seu acesso!" Subtitle="@($"Escolha o plano ideal e domine {discipline?.Name}")"
+                    ButtonText="Ver Planos" ButtonHref="/subscription" ButtonColor="--color-gold-2"
+                    ImageUrl="images/SubscriptionsCtaImage.png" />
+            </section>
+            @if (course.Curriculum != null && course.Curriculum.Any())
+            {
+                <div class="grid"> 
+                    @foreach (var module in course.Curriculum)
+                    {
+                        <div class="card">
+                            <div>
+                                <h3 class="colgold-3">@module.Name</h3>
+                                <span>
+                                    ⏱ @module.Duration
+                                </span>
+                            </div>
+                            @if(module.Active){
+                                <ButtonComponent 
+                                    Text="Acessar" 
+                                    FontSize="0.8rem"
+                                    Width="50%"
+                                    Color="--color-blue-1"
+                                    Href="@($"/courses/{discipline.Label}/{course.Id}/{module.Id}")"/>    
+                            }
+                            else{
+                                <span>Em Breve</span>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>O currículo deste curso está sendo atualizado.</p>
+            }
+        </section>
+    }
+    else if (discipline == null)
+    {
+        <div>
+            <h2>Disciplina não encontrada</h2>
+            <ButtonComponent Href="/" Text="Voltar ao Início" />
+        </div>
+    }
+    else
+    {
+        <div>
+            <h2>Curso não encontrado em @discipline.Name</h2>
+            <ButtonComponent Href="@($"/disciplines/{discipline.Label}")" Text="Ver cursos disponíveis"/>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string DisciplineLabel { get; set; } = string.Empty;
+
+    // A mudança que causou o erro (CourseName -> CourseId). 
+    // Após reiniciar o app, funcionará.
+    [Parameter]
+    public string CourseId { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+    Discipline? discipline;
+    Course? course;
+
+    protected override void OnInitialized()
+    {
+        discipline = disciplineData.Disciplines
+            .FirstOrDefault(d => d.Label.Equals(DisciplineLabel, StringComparison.InvariantCultureIgnoreCase));
+
+        if (discipline != null)
+        {
+            course = discipline.Courses
+                .FirstOrDefault(c => c.Id.Equals(CourseId, StringComparison.InvariantCultureIgnoreCase));
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("renderMath");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao renderizar MathJax: {ex.Message}");
+        }
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToTop");
+        }
+    }
+}

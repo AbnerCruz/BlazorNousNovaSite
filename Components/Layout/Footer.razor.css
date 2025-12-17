@@ -1,0 +1,202 @@
+/* ================================
+   FOOTER COMPONENT
+   ================================ */
+
+.footer {
+    width: 100%;
+    background-color: var(--background-1);
+    border-top: 1px solid var(--color-primary-translucent-2);
+    padding: 3rem 1rem 1rem 1rem;
+    margin-top: 4rem;
+    /* Garante separação do conteúdo principal */
+
+    /* Garante que o texto dentro do footer herde a legibilidade */
+    color: var(--text-color-1);
+    font-size: 1rem;
+    /* Base levemente menor que o corpo, mas legível */
+}
+
+/* Container centralizado (caso não tenha um global) */
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ================================
+   GRID SYSTEM (Mobile: 1 Coluna)
+   ================================ */
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    /* Espaçamento generoso entre blocos no mobile */
+    margin-bottom: 2rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ================================
+   TIPOGRAFIA E ELEMENTOS
+   ================================ */
+
+/* Títulos das colunas */
+.footer-title {
+    color: var(--color-gold-3);
+    /* Usa a escala H3 definida anteriormente, mas ajustada para footer */
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe decorativo abaixo do título */
+.footer-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-gold-1);
+    margin-top: 0.5rem;
+}
+
+.footer p {
+    /* Ajuste para não ficar gigante no footer, mas manter legibilidade */
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-black-4);
+    /* Cinza claro para suavizar */
+    margin: 0;
+    text-align: left;
+    /* Reset do justify global para footer */
+}
+
+/* ================================
+   REDES SOCIAIS
+   ================================ */
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    /* Área de toque confortável */
+    height: 45px;
+
+    background-color: var(--color-primary-translucent-2);
+    border: 1px solid var(--color-primary-translucent-3);
+    border-radius: 50%;
+
+    color: var(--color-gold-3);
+    font-size: 1.2rem;
+
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: var(--color-gold-1);
+    color: var(--color-black-1);
+    /* Contraste preto no dourado */
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px var(--color-gold-1);
+}
+
+/* ================================
+   LISTA DE CONTATO
+   ================================ */
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    /* Alinha ícone ao topo se o texto quebrar */
+    gap: 0.75rem;
+
+    color: var(--color-black-4);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-contact li i {
+    color: var(--color-gold-2);
+    margin-top: 0.25rem;
+    /* Ajuste fino vertical */
+    font-size: 1.1rem;
+}
+
+/* ================================
+   RODAPÉ INFERIOR (Copy)
+   ================================ */
+
+.footer-separator {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--color-primary-translucent-3),
+            transparent);
+    margin: 2rem 0;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: var(--color-black-4);
+}
+
+/* ================================
+   MEDIA QUERIES (Desktop)
+   ================================ */
+
+@media (min-width: 768px) {
+    .footer {
+        padding: 4rem 2rem 2rem 2rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 Colunas */
+        gap: 3rem;
+    }
+
+    /* Centraliza visualmente se desejar, ou mantém alinhado à esquerda */
+    .footer-col {
+        align-items: flex-start;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 1rem;
+    }
+}

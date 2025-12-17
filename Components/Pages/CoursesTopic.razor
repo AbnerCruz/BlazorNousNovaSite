@@ -1,0 +1,198 @@
+@page "/courses/{DisciplineLabel}/{CourseId}/{ModuleId}/{ChapterId}/{TopicId}"
+@rendermode InteractiveServer
+@using SchoolData
+@inject IJSRuntime JS
+@inject NavigationManager NavManager
+
+<PageTitle>@(topic?.Name ?? "Conteúdo") | Nous Nova</PageTitle>
+
+<div class="topic-container">
+    @if (topic != null && module != null && course != null && discipline != null)
+    {
+        <article>
+            <nav class="topic-breadcrumbs">
+                <div>
+                    <a href="/disciplines/@DisciplineLabel">@discipline.Name</a>
+                    <span>&rsaquo;</span>
+                    <a href="/courses/@DisciplineLabel/@CourseId">@course.Name</a>
+                    <span>&rsaquo;</span>
+                    <a href="/courses/@DisciplineLabel/@CourseId/@ModuleId">@module.Name</a>
+                    <span>&rsaquo;</span>
+                    <span class="current-page">@topic.Name</span>
+                </div>
+                <hr/>
+            </nav>
+
+            <div class="topic-body">
+                @((MarkupString)topic.Body)
+                @if (topic.Problems != null && topic.Problems.Any())
+                {
+                    <section class="exercises-section">
+                        <h2>Exercícios</h2>
+
+                        @foreach (var p in topic.Problems)
+                        {
+                            <div class="exercise-card">
+                                <div class="exercise-header">
+                                    <span>Exercício @p.Id</span>
+                                </div>
+
+                                <p class="exercise-statement">@((MarkupString)p.Statement)</p>
+
+                                <button class="solution-button" @onclick="() => ToggleSolution(p.Id)">
+                                    @(VisibleSolutions.Contains(p.Id) ? "Ocultar solução" : "Mostrar solução")
+                                </button>
+
+                                @if (VisibleSolutions.Contains(p.Id))
+                                {
+                                    <div class="exercise-solution">
+                                        @((MarkupString)p.Solution)
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </section>
+                }
+
+            </div>
+        </article>
+
+        <div class="topic-footer grid">
+            <div>
+                @if (!string.IsNullOrEmpty(prevTopicUrl))
+                {
+                    <ButtonComponent Href="@prevTopicUrl" Color="--color-black-2" Text="Anterior" Width="100%" />
+                }
+            </div>
+            <div>
+                @if (!string.IsNullOrEmpty(nextTopicUrl))
+                {
+                    <ButtonComponent Href="@nextTopicUrl" Color="--color-black-2" Text="Próximo" Width="100%" />
+                }
+                else
+                {
+                    <ButtonComponent Href=@($"/courses/{DisciplineLabel}/{CourseId}/{ModuleId}") Text="Concluir Módulo" Color="--color-green-2" Width="100%" />
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            <p>Tópico não encontrado.</p>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public string DisciplineLabel { get; set; } = string.Empty;
+    [Parameter] public string CourseId { get; set; } = string.Empty;
+    [Parameter] public string ModuleId { get; set; } = string.Empty;
+    [Parameter] public string ChapterId { get; set; } = string.Empty;
+    [Parameter] public string TopicId { get; set; } = string.Empty;
+
+    DisciplinesData disciplineData = new DisciplinesData();
+    
+    // Variáveis de Dados
+    Discipline? discipline;
+    Course? course;
+    Module? module;
+    Chapter? chapter;
+    Topic? topic;
+
+    // Variáveis de Navegação
+    string nextTopicUrl = "";
+    string prevTopicUrl = "";
+
+    protected override void OnInitialized()
+    {
+        // 1. Carrega toda a hierarquia de dados
+        discipline = disciplineData.Disciplines.FirstOrDefault(d => d.Label.Equals(DisciplineLabel, StringComparison.InvariantCultureIgnoreCase));
+        if (discipline == null) return;
+
+        course = discipline.Courses.FirstOrDefault(c => c.Id.Equals(CourseId, StringComparison.InvariantCultureIgnoreCase));
+        if (course == null || course.Curriculum == null) return;
+
+        module = course.Curriculum.FirstOrDefault(m => m.Id.Equals(ModuleId, StringComparison.InvariantCultureIgnoreCase));
+        if (module == null) return;
+
+        chapter = module.Chapters.FirstOrDefault(c => c.Id.Equals(ChapterId, StringComparison.InvariantCultureIgnoreCase));
+        if (chapter == null) return;
+
+        topic = chapter.Topics.FirstOrDefault(t => t.Id.Equals(TopicId, StringComparison.InvariantCultureIgnoreCase));
+        
+        // 2. Se achou o tópico, calcula os links de navegação
+        if (topic != null)
+        {
+            CalculateNavigation();
+        }
+    }
+
+    private void CalculateNavigation()
+    {
+        if (module == null || chapter == null || topic == null) return;
+
+        int currentChapterIndex = module.Chapters.IndexOf(chapter);
+        int currentTopicIndex = chapter.Topics.IndexOf(topic);
+
+        // --- Lógica do ANTERIOR ---
+        if (currentTopicIndex > 0)
+        {
+            // Mesmo capítulo, tópico anterior
+            var prevTopic = chapter.Topics[currentTopicIndex - 1];
+            prevTopicUrl = BuildUrl(chapter.Id, prevTopic.Id);
+        }
+        else if (currentChapterIndex > 0)
+        {
+            // Capítulo anterior, último tópico dele
+            var prevChapter = module.Chapters[currentChapterIndex - 1];
+            if (prevChapter.Topics.Any())
+            {
+                var lastTopicOfPrevChapter = prevChapter.Topics.Last();
+                prevTopicUrl = BuildUrl(prevChapter.Id, lastTopicOfPrevChapter.Id);
+            }
+        }
+
+        // --- Lógica do PRÓXIMO ---
+        if (currentTopicIndex < chapter.Topics.Count - 1)
+        {
+            // Mesmo capítulo, próximo tópico
+            var nextTopic = chapter.Topics[currentTopicIndex + 1];
+            nextTopicUrl = BuildUrl(chapter.Id, nextTopic.Id);
+        }
+        else if (currentChapterIndex < module.Chapters.Count - 1)
+        {
+            // Próximo capítulo, primeiro tópico dele
+            var nextChapter = module.Chapters[currentChapterIndex + 1];
+            if (nextChapter.Topics.Any())
+            {
+                var firstTopicOfNextChapter = nextChapter.Topics.First();
+                nextTopicUrl = BuildUrl(nextChapter.Id, firstTopicOfNextChapter.Id);
+            }
+        }
+    }
+
+    // Helper para montar a string da URL
+    private string BuildUrl(string targetChapterId, string targetTopicId)
+    {
+        return $"/courses/{DisciplineLabel}/{CourseId}/{ModuleId}/{targetChapterId}/{targetTopicId}";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try { await JS.InvokeVoidAsync("renderMath"); } catch { }
+        if (firstRender) { await JS.InvokeVoidAsync("scrollToTop"); }
+    }
+
+    // Estado dos flashcards
+    HashSet<string> VisibleSolutions = new();
+    HashSet<string> Solved = new();
+
+    void ToggleSolution(string id)
+    {
+        if (VisibleSolutions.Contains(id))
+            VisibleSolutions.Remove(id);
+        else
+            VisibleSolutions.Add(id);
+    }
+}
