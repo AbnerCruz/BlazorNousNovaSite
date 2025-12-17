@@ -53,8 +53,16 @@ public class DisciplineMath : Discipline
                                     Math1Module1Chapter2Section2.Topic,
                                     Math1Module1Chapter2Section3.Topic,
                                 }
+                            },
+                            new()
+                            {
+                                Id="abstracao-e-hexadecimal",
+                                Name="Capítulo 3 Abstração e Hexadecimal",
+                                Topics = new()
+                                {
+                                    Math1Module1Chapter3Section1.Topic,
+                                }
                             }
-
                         },
                     },
                     new()
