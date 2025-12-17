@@ -1,0 +1,168 @@
+/* ================================
+   COMPONENT: CTA SECTION (Compact Center)
+   ================================ */
+
+/* 1. O Wrapper Externo (Invisível) 
+   Serve apenas para posicionar o card no centro da tela */
+.cta-section[b-u0mvelfu3t] {
+    width: 100%;
+    padding: 2rem 1rem;
+    /* Espaçamento vertical e lateral seguro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* O .container aqui serve apenas como pass-through, 
+   mas garantimos que ele centralize o conteúdo */
+.cta-section .container[b-u0mvelfu3t] {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 2. O Card Principal (Onde a mágica acontece) 
+   Movemos a cor e borda para cá para ele "abraçar" o conteúdo */
+.cta-content[b-u0mvelfu3t] {
+    /* Visual (Card Style) */
+    background-color: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-primary-translucent-2);
+    border-radius: var(--border-1);
+    box-shadow: var(--shadow-2);
+
+    /* Layout Mobile (Padrão) */
+    display: flex;
+    flex-direction: column-reverse;
+    /* Imagem em cima ou baixo? (Reverse = Imagem topo) ou Column normal */
+    gap: 1.5rem;
+    padding: 2rem;
+
+    /* Tamanho */
+    width: 100%;
+    max-width: 400px;
+    /* Limita largura no mobile para não ficar esticado feio */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ================================
+   ÁREA DE TEXTO
+   ================================ */
+.text-area[b-u0mvelfu3t] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Centraliza botões e textos no mobile */
+    gap: 0.75rem;
+}
+
+.cta-title[b-u0mvelfu3t] {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--text-color-1);
+    margin: 0;
+}
+
+.cta-subtitle[b-u0mvelfu3t] {
+    font-size: 1rem;
+    color: var(--color-black-4);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ================================
+   ÁREA DE PREÇO & BOTÃO
+   ================================ */
+.cta-price[b-u0mvelfu3t] {
+    font-size: 1.5rem;
+    color: var(--color-green-2);
+    font-weight: 700;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    /* Preço antigo embaixo no mobile */
+    align-items: center;
+    line-height: 1;
+}
+
+.cta-oldprice[b-u0mvelfu3t] {
+    font-size: 0.875rem;
+    color: var(--color-black-3);
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+/* ================================
+   ÁREA DA IMAGEM
+   ================================ */
+.image-area[b-u0mvelfu3t] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-area img[b-u0mvelfu3t] {
+    /* Removemos tamanhos fixos para permitir a fluidez */
+    width: 100%;
+    max-width: 180px;
+    /* Um tamanho base bom para mobile */
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    /* Opcional: suaviza a imagem */
+}
+
+/* ================================
+   MEDIA QUERY: DESKTOP (A Mágica do "Expand from Center")
+   ================================ */
+@media (min-width: 768px) {
+
+    .cta-content[b-u0mvelfu3t] {
+        flex-direction: row;
+        /* Coloca lado a lado */
+        align-items: center;
+        /* Alinha verticalmente pelo centro */
+        justify-content: center;
+
+        /* O SEGREDO: fit-content faz o box ter o tamanho exato do conteúdo */
+        width: fit-content;
+        max-width: 900px;
+        /* Trava de segurança para não explodir em telas gigantes */
+
+        padding: 2.5rem 3rem;
+        /* Padding interno maior para elegância */
+        gap: 3rem;
+        /* Espaço entre imagem e texto */
+    }
+
+    .text-area[b-u0mvelfu3t] {
+        align-items: flex-start;
+        /* Alinha texto à esquerda */
+        text-align: left;
+        min-width: 300px;
+        /* Garante uma largura mínima pro texto não ficar espremido */
+        flex: 1;
+        /* O texto ocupa o espaço que sobrar/necessário */
+    }
+
+    .cta-title[b-u0mvelfu3t] {
+        font-size: 2rem;
+    }
+
+    .cta-price[b-u0mvelfu3t] {
+        flex-direction: row;
+        /* Preço antigo ao lado */
+        align-items: baseline;
+        gap: 0.75rem;
+    }
+
+    .image-area img[b-u0mvelfu3t] {
+        /* Aqui a imagem dita o tamanho. 
+           Se a imagem for maior, o container cresce. */
+        max-width: 300px;
+        /* Aumentamos o limite da imagem no desktop */
+        width: auto;
+        /* Deixa o tamanho natural da imagem fluir até o max-width */
+    }
+}

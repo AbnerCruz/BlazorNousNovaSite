@@ -1,0 +1,132 @@
+/* ================================
+   ESCOPO: PÁGINA DE DISCIPLINA
+   ================================ */
+
+.discipline-page[b-wfnqutia9y] {
+    width: 100%;
+    padding: 0 1rem 2rem 1rem;
+    margin: 0 auto;
+    animation: fadeIn-b-wfnqutia9y 0.4s ease-out;
+}
+
+@keyframes fadeIn-b-wfnqutia9y {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .discipline-page[b-wfnqutia9y] {
+        max-width: 1200px;
+        padding-top: 2rem;
+    }
+}
+
+/* ================================
+   SEÇÕES (Centralização Geral)
+   ================================ */
+
+.discipline-page section[b-wfnqutia9y] {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    /* NOVO: Centraliza horizontalmente os filhos diretos (H1, CTA, Grid) */
+    align-items: center;
+    /* NOVO: Centraliza o texto por herança */
+    text-align: center;
+}
+
+/* O Grid precisa voltar a esticar para ocupar a largura 
+   porque o align-items: center do pai faria ele encolher */
+.discipline-page section .grid[b-wfnqutia9y] {
+    width: 100%;
+}
+
+/* ================================
+   TIPOGRAFIA DE CONTEÚDO
+   ================================ */
+
+/* Títulos das Seções */
+.discipline-page section>h1[b-wfnqutia9y] {
+    color: var(--color-gold-3);
+    font-size: 1.75rem;
+
+    /* Mantém a borda ocupando a largura, mas o texto centralizado */
+    width: 100%;
+    text-align: center;
+
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Parágrafos descritivos */
+.discipline-page section>p[b-wfnqutia9y] {
+    color: var(--text-color-1);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 80ch;
+
+    /* NOVO: Margem auto é necessária para centralizar blocos com width limitado */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Desktop Fonts */
+@media (min-width: 768px) {
+    .discipline-page section>h1[b-wfnqutia9y] {
+        font-size: 2.25rem;
+    }
+}
+
+/* ================================
+   CONTEÚDO INTERNO DOS CARDS
+   (Centralizando o miolo sem mexer no container .card)
+   ================================ */
+
+/* Título do Curso dentro do Card */
+.card-title[b-wfnqutia9y] {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* Já estava, mas reforçando */
+}
+
+/* Container dos itens do currículo */
+.curriculum-section[b-wfnqutia9y] {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    margin-bottom: 0.5rem;
+
+    /* NOVO: Garante que o H3 interno fique no meio */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.curriculum-section:last-of-type[b-wfnqutia9y] {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+/* ================================
+   CLASSES UTILITÁRIAS
+   ================================ */
+
+.colgold-1[b-wfnqutia9y] {
+    color: var(--text-color-1);
+    font-weight: 500;
+    margin: 0;
+    filter: brightness(1.2);
+    text-align: center;
+    /* Reforço */
+}
