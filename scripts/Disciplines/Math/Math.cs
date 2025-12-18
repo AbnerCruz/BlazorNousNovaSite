@@ -41,7 +41,6 @@ public class DisciplineMath : Discipline
                                 {
                                     Math1Module1Chapter1Section1.Topic,
                                     Math1Module1Chapter1Section2.Topic,
-                                    Math1Module1Chapter1Section3.Topic,
                                 }
                             },
                             new(){
@@ -61,6 +60,8 @@ public class DisciplineMath : Discipline
                                 Topics = new()
                                 {
                                     Math1Module1Chapter3Section1.Topic,
+                                    Math1Module1Chapter3Section2.Topic,
+                                    Math1Module1Chapter3Section3.Topic,
                                 }
                             }
                         },

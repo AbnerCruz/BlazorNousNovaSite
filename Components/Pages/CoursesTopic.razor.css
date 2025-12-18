@@ -133,7 +133,7 @@
 }
 
 .topic-body ::deep li {
-    margin-bottom: 0.8rem;
+    margin: 0 0 0 1em;
     list-style-position: outside;
 }
 
@@ -428,5 +428,10 @@
 
     .topic-body ::deep figure figcaption {
         font-size: 1rem;
+    }
+
+    .topic-body ::deep li {
+        margin: 0 0 0 3em;
+        list-style-position: outside;
     }
 }

@@ -6,7 +6,7 @@ public class Math1Module1Chapter2Section3
     {
         Id = "aritmetica-binaria",
         Name = "2.3 Aritmética Binária",
-        Active = true,
+        Active = false,
         Body = """
             <h3>2.3 Aritmética Binária</h3>
             <p>Quando os inventores começaram a tentar mecanizar o cálculo — desde a Pascalina de Blaise Pascal até os gigantes de engrenagens de Charles Babbage, e finalmente os tubos de vácuo do ENIAC — eles esbarraram com o problema do Custo da Subtração.</p>
@@ -48,7 +48,7 @@ public class Math1Module1Chapter2Section3
             </div>
             <p>Isso parece abstrato? Vamos tornar operacional. Graças à álgebra modular, descobrimos um atalho computacional brilhante para encontrar esse valor sem fazer subtrações:</p>
             <div class="card">
-                <h3>Teorema 2.3.1 Teorema Operacional do Inverso:</h3>
+                <h3>Teorema 2.3.1 Operacional do Inverso:</h3>
                 <p>$$-x = \bar{x} + 1$$</p>
                 <p>Onde $\bar{x}$ representa a inversão bit a bit (NOT lógico) de $x$.</p>
             </div>

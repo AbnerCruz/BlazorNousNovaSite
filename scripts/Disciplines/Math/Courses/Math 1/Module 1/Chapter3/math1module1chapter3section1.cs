@@ -6,7 +6,7 @@ public class Math1Module1Chapter3Section1
     {
         Id = "interface-humano-maquina",
         Name = "3.1 Interface Humano-Máquina",
-        Active = true,
+        Active = false,
         Body = """
             <h3>3.1 Interface Humano-Máquina</h3>
             <p>Estamos em 1975, ou talvez um pouco antes, em 1948. O ar na sala é frio e seco, mantido assim para proteger as válvulas termiônicas ou os primeiros transistores frágeis. O cheiro é de ozônio e metal aquecido. Você está diante de um computador como o Altair 8800 ou, voltando mais no tempo, o colossal ENIAC. Não existe tela. Não existe teclado QWERTY. O que existe é um painel frontal — uma parede metálica coberta de fileiras de interruptores e pequenas lâmpadas de neon que piscam incessantemente (blinkenlights).</p>
@@ -97,11 +97,11 @@ public class Math1Module1Chapter3Section1
             <br>
             <h4>Resumo</h4>
             <div class="card">
-                <p>Lei de Miller: O cérebro humano só processa eficientemente ~7 itens por vez. Binário puro viola essa regra biológica.</p>
-                <p>Ineficácia Decimal: Converter binário para base 10 é computacionalmente caro (divisões) e esconde a topologia dos bits (255 vs 256).</p>
-                <p>Teorema das Bases Potência: Uma base $B$ compacta perfeitamente uma base $b$ se $B = b^k$.</p>
-                <p>Nibble: Um grupo de 4 bits ($k=4$). É a unidade atômica do sistema Hexadecimal.</p>
-                <p>Hexadecimal: A interface padrão da computação de baixo nível, pois $16$ ($2^4$) divide simetricamente os tamanhos de palavra modernos (8, 16, 32, 64 bits).</p>
+                <p><strong>Lei de Miller:</strong> O cérebro humano só processa eficientemente ~7 itens por vez. Binário puro viola essa regra biológica.</p>
+                <p><strong>Ineficácia Decimal:</strong> Converter binário para base 10 é computacionalmente caro (divisões) e esconde a topologia dos bits (255 vs 256).</p>
+                <p><strong>Teorema das Bases Potência:</strong> Uma base $B$ compacta perfeitamente uma base $b$ se $B = b^k$.</p>
+                <p><strong>Nibble:</strong> Um grupo de 4 bits ($k=4$). É a unidade atômica do sistema Hexadecimal.</p>
+                <p><strong>Hexadecimal:</strong> A interface padrão da computação de baixo nível, pois $16$ ($2^4$) divide simetricamente os tamanhos de palavra modernos (8, 16, 32, 64 bits).</p>
             </div>
         """,
         Problems = new()

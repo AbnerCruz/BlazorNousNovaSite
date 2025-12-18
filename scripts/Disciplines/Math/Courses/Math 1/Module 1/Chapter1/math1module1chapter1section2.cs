@@ -4,424 +4,379 @@ public static class Math1Module1Chapter1Section2
 {
     public static Topic Topic = new()
     {
-        Id = "o-principio-posicional",
-        Name = "1.2 O Princípio Posicional",
-        Active = true,
+        Id = "igualdade-e-relacoes",
+        Name = "1.2 Igualdade e Relações",
+        Active = false,
         Body = """
-            <h3>1.2 O Princípio Posicional</h3>
-            <p>Imagine que estamos na Babilônia, por volta de 1800 a.C. O ar é seco, e você é um escriba do rei encarregado de registrar a colheita de grãos do império. O problema não é a falta de grãos; é o excesso. As quantidades são na grandeza de montanhas.</p>
-            <p>Para calcular, você usa uma ferramenta física, talvez um antecessor do ábaco ou apenas sulcos desenhados na areia. Nesses sulcos, você coloca pedras. Uma pedra no primeiro sulco vale 1. A mesma pedra, movida para o segundo sulco, vale 60 (os babilônios amavam a base 60). A posição da pedra dita seu valor. É um sistema tátil, visual e intuitivo.</p>
-            <figure>
-                <img src="images/Courses/Math/Math1/Module1/Chapter1/Section1.2/Fig1.2.1.png" alt="Figura 1.2.1: Sistema de numeração posicional na areia">
-                <figcaption>Figura 1.2.1: Sistema de numeração posicional na areia</figcaption>
-            </figure>
-            <p>Mas agora, o rei exige um registro permanente. Você precisa transferir a configuração das pedras na areia para uma tábua de argila úmida. E aqui reside a tragédia que atormentou a humanidade por milênios: Como você desenha o lugar onde não há pedra alguma?</p>
-            <p>Se você tem duas pedras na posição das centenas e duas na posição das unidades, mas nenhuma na posição das dezenas, como você escreve isso?</p>
-            <figure>
-                <img src="images/Courses/Math/Math1/Module1/Chapter1/Section1.2/Fig1.2.2.png" alt="Figura 1.2.2: Representação sem um símbolo para o ''nada''">
-                <figcaption>Figura 1.2.2: Representação sem um símbolo para o "nada"</figcaption>
-            </figure>            
-            <p>Sem um símbolo para o "nada", a bijeção entre o pensamento (o número real) e a escrita quebrava. Esse era o paradoxo da Ambiguidade da Ausência. Como podemos representar a ausência de valor sem deixar de escrever algo? Se eu não escrevo nada, o leitor não sabe se eu esqueci o número ou se o valor é nulo. Se eu junto os símbolos, o valor colapsa e o que deveria representar uma centena e uma unidade se torna 11.</p>
-            <p>Durante séculos, a aritmética escrita foi um jogo de adivinhação contextual, enquanto a aritmética física (ábacos) fluía suavemente. O mundo precisava de uma maneira de capturar o "nada" da coluna vazia.</p>
-            <p>A primeira reação da humanidade foi improvisar. Os babilônios, percebendo o perigo de confundir $1$ (uma unidade) e $60$ (um grupo), tentaram uma solução tipográfica do espaço vazio</p>
-            <p>Parece razoável, certo? Mas pense, o quão largo deve ser esse espaço? Se você escrever rápido e sua mão escorregar, aquele espaço vira um espaço simples? E se fossem dois zeros seguidos (1001)? Você deixaria um espaço duplo 1&nbsp;&nbsp;1? Que número é esse 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1?</p>
-            <p>A frustração foi tamanha que civilizações inteiras, como os Gregos e os Romanos, abandonaram a ideia de posição. Eles optaram pela Força Bruta Simbólica. Se o número é grande, invente um símbolo novo.</p>
+            <h1>1.2 Igualdade e Relações</h1>
+            <p>Como vimos nas seção anterior a linguagem humana, com a qual escrevíamos matemática há milênios, era ambígua demais para sustentar a lógica moderna. Em português, usamos a mesma palavra para duas situações completamente diferentes:</p>
             <ul>
-                <li>10? Use <strong>$X$.</strong></li>
-                <li>100? Use <strong>$C$.</strong></li>
-                <li>1.000? Use <strong>$M$.</strong></li>
+                <li>Predicação (Propriedade): "Sócrates é mortal." (Aqui, "mortal" é apenas uma característica de Sócrates).</li>
+                <li>Identidade (Igualdade): "A Estrela da Manhã é a Estrela da Tarde." (Aqui, estamos dizendo que dois nomes diferentes se referem exatamente ao mesmo objeto físico, o planeta Vênus).</li>
             </ul>
-            <p>Isso resolve a ambiguidade, mas cria outro problema lógico que é a limitação do alfabeto. Para representar números infinitamente grandes, você precisaria memorizar infinitos símbolos. Tentar multiplicar MDCCXL por XVII isso é uma tortura. O progresso matemático estagnou porque a ferramenta de escrita era ineficiente.</p>
+            <p>Essa confusão era fatal. Se não conseguíssemos definir com rigor absoluto o que significa "ser igual" (identidade), jamais conseguiríamos definir o que é o número 1, ou o 2, ou como a aritmética funciona. Como podemos construir os Números Naturais se não sabemos nem dizer se um número é ele mesmo? Precisávamos limpar essa bagunça. Precisávamos de uma definição sintática de igualdade.</p>
             <br>
-            <h4>O Zero</h4>
-            <p>A solução para esse problema veio da Índia, entre os séculos V e VII d.C., com matemáticos como Brahmagupta. Eles perceberam que o vazio não é apenas a falta de algo; ele é uma entidade. Eles o chamaram de Sunya (vazio) mas nós o chamamos de Zero.</p>
-            <p>O zero não altera a quantidade total quando somado, mas sua função crítica aqui é posicional, ocupar espaço para empurrar os outros dígitos para suas posições corretas, dessa forma podemos representar um grupo de cem mais uma unidade sem correr o risco de estarmos registrando $12$.</p>
+            <p>Euclides, em seus famosos Elementos, estabeleceu o que chamou de "Noções Comuns". A mais famosa delas dizia: "Coisas iguais a uma mesma coisa são iguais entre si."</p>
+            <p>Durante mais de dois mil anos, isso bastou. A intuição era geométrica e visual (superposição). Se eu recortasse um triângulo de madeira e ele cobrisse perfeitamente outro triângulo, eles eram "iguais".</p>
+            <p>O problema é que a matemática parou de tratar apenas de triângulos de madeira e começou a tratar de conceitos abstratos, infinitos e invisíveis. Sem uma regra rígida, matemáticos caíam na Armadilha da Substituição: eles assumiam que podiam trocar uma coisa pela outra em equações, mas às vezes isso gerava paradoxos absurdos. A intuição de "parecer igual" não era suficiente. Precisávamos de uma regra que dissesse: "Se estes dois objetos são iguais, eles são indistinguíveis em qualquer universo lógico possível."</p>
+            <br>
+            <p>Para resolver a crise, a lógica moderna parou de tratar a igualdade como uma noção óbvia e passou a tratá-la como um Predicado Lógico Primitivo. Não se assuste com o nome. Um predicado é apenas uma pergunta que resulta em Verdadeiro ou Falso. A igualdade ($=$) é a pergunta mais fundamental de todas. Para que ela funcione, precisamos de apenas dois pilares (axiomas).</p>
+            <p>O primeiro passo é admitir que o universo é consistente. Todo objeto é idêntico a si mesmo. Parece óbvio, mas precisa ser dito.</p>
             <div class="card">
-                <h3>Definição 1.2.1 Zero Posicional</h3>
-                <p>Em uma cadeia de caracteres numéricos, o símbolo $0$ atua como o elemento identidade da soma ($x+0=x$) em valor absoluto, mas atua como um operador de deslocamento para os dígitos à sua esquerda, preservando a potência da base $b^k$ associada a eles.</p>
+                <h3>Axioma 1.2.1</h3>
+                <p>$$\forall x (x = x)$$</p>
             </div>
-            <p>Sem o zero, o dígito $1$ em "10" se confunde com a posição das unidades. O zero é a entidade que segura a estrutura.</p>
-            <br>
-            <h4>O Princípio da Economia de Simbolos</h4>
-            <p>Ao contrário dos romanos que precisavam de infinitos símbolos, nós provamos com o zero que, para qualquer base $b$, precisamos apenas de $b$ símbolos únicos.</p>
-            <div class="Card">
-                <h3>Definição 1.2.2 O Alfabeto do Sistema Posicional</h3>
-                <p>Seja $b \in \mathbb{N}$ tal que $b > 1$. O sistema de numeração base-$b$ é univocamente determinado por um alfabeto finito $\Sigma$ (Sigma) de cardinalidade $b$ de modo que:</p>
-                <p>$$\Sigma = \{0, 1, 2, \dots, b-1\}$$</p>
-                <p>Qualquer quantidade expressa número real $N$ pode ser representado por uma sequência ordenada de dígitos $d_i \in \Sigma$.</p>
-            <div>
-            <p>Para entender considere que:</p>
+            <p>Dissecando a Notação:</p>
             <ul>
-                <li>$\Sigma$: Denota o conjunto de todos os símbolos permitidos.</li>
-                <li>$b-1$: O maior dígito é sempre um a menos que a base. Na base 10, o maior símbolo é 9. Por quê? Porque se você tiver uma quantidade igual a $b$, você não cria um símbolo novo; você "zera" a posição atual e incrementa a próxima. Isso é o mecanismo do "vai um".</li>
+                <li>$\forall$ (Quantificador Universal): Lê-se "Para todo". Estamos dizendo que isso vale para qualquer coisa no universo.</li>
+                <li>$x$: É a nossa variável, o objeto.</li>
+                <li>$(x = x)$: É a afirmação de identidade. "X é igual a X".</li>
             </ul>
-            <p>Isso nos leva à distinção mais crítica deste capítulo</p>
+            <p>O filósofo e matemático Gottfried Wilhelm Leibniz sonhou com uma "característica universal". Ele propôs o princípio da Indiscernibilidade dos Idênticos. A ideia é poderosa: se $x$ e $y$ são realmente a mesma coisa, então não pode existir nenhuma propriedade que $x$ tenha e $y$ não tenha. Se houver uma única diferença, eles não são iguais.</p>
             <div class="card">
-                <h3>Teorema 1.2.1 Valor Absoluto vs. Valor Relativo</h3>
-                <p>Para um dígito $d_k$ em uma posição $k$:</p>
-                <ul>
-                    <li><strong>Valor Absoluto (Facial):</strong> É o valor intrínseco do glifo. Ex: O desenho "5" sempre evoca a ideia de cinco unidades.</li>
-                    <li><strong>Valor Relativo (Posicional):</strong> É o valor projetado pela sua localização.</li>
-                </ul>
-                <p>$$V(d_k) = d_k \cdot b^k$$</p>
+                <h3>Axioma 1.2.2</h3>
+                <p>$$\forall x \forall y (x = y \to (\varphi(x) \leftrightarrow \varphi(y)))$$</p>
             </div>
+            <p>Dissecando a Notação:</p>
+            <ul>
+                <li>$\forall x \forall y$: "Para quaisquer dois objetos x e y..."</li>
+                <li>$\to$: Símbolo de Implicação. "Se isso for verdade, então..."</li>
+                <li>$\varphi$ (Letra grega Phi): Representa uma fórmula ou propriedade qualquer. Pode ser "ser vermelho", "ser par", ou "ser maior que 3".</li>
+                <li>$\leftrightarrow$: Símbolo de Equivalência. "É verdadeiro se, e somente se, o outro também for".</li>
+            </ul>
+            <p>Tradução: "Se $x$ é igual a $y$, então qualquer propriedade $\varphi$ que seja verdadeira para $x$ TAMBÉM deve ser verdadeira para $y$."</p>
+            <br>
+            <h4>Exemplo</h4>
+            <p>Você aprende na escola que a igualdade tem três propriedades: Reflexiva, Simétrica e Transitiva. Mas eu só te dei a Reflexiva e a Lei de Leibniz. Cadê as outras duas? Nós não precisamos aceitá-las como fé. Nós podemos prová-las.</p>
+            <p>Vamos provar a Simetria ($Se\ x = y,\ ent\tilde{a}o\ y = x$) usando apenas a Lei de Leibniz. Acompanhe o raciocínio:</p>
+            <ul>
+                <li>Assuma que $x = y$.</li>
+                <li>Pela Lei de Leibniz, se $x = y$, então para qualquer predicado $P$, $P(x)$ é verdadeiro se, e somente se, $P(y)$ for verdadeiro.</li>
+                <p>$$\forall P \ (x = y \implies (P(x) \iff P(y)))$$</p>
+                <li>Vamos escolher uma propriedade muito específica. Seja a propriedade $\varphi(z)$ definida como "ser igual a $x$" ($z = x$).</li>
+                <li>Sabemos que $x$ tem essa propriedade (pois $x = x$, pela Reflexividade).</li>
+                <p>$$\varphi(x) \iff x = x$$</p>
+                <li>Como assumimos que $x = y$, pela Lei de Leibniz, o que é verdade para $x$ deve ser verdade para $y$. Como $\varphi(x)$ é verdadeiro, então $\varphi(y)$ deve ser verdadeiro.</li>
+                <li>Substituindo $y$ na definição do predicado $\varphi$:</li>
+                <p>$$\varphi(y) \iff y = x$$</p>
+            </ul>
+            <p>Portanto: $y = x$</p>
+            <br>
+            <p>Antes de avançarmos, precisamos evitar uma confusão comum trazida pela computação. Na programação, você vê coisas como: x = x + 1</p>
+            <p>Para um matemático do século XIX isso é uma abominação. Um número $x$ nunca pode ser igual ao seu sucessor.</p>
+            <ul>
+                <li>Em Lógica Matemática o simbolo $=$ significa Identidade Eterna.</li>
+                <li>Em Programação o simbolo $=$ significa Atribuição ("Pegue o valor antigo, some 1 e guarde no lugar do novo").</li>
+                <li>Em Lógica, usamos $:=$ ou $\equiv$ para definições, mas $=$ é quase que sagrado.</li>
+            </ul>
             <br>
             <h4>Aplicações</h4>
-            <p><strong>Aplicação 1.2.1</strong> Vamos visualizar a construção do número $101$ na base 10. Para isso devemos pensar como podemos representar uma centena e uma unidade utilizando o alfabeto matemático $\Sigma = \{0, 1, \dots, 9\}$?</p>
+            <p><strong>Aplicação 1.2.1 </strong>A Lei de Leibniz é a regra física de como a memória do seu computador funciona. Imagine dois ponteiros, ptrA e ptrB. Se dizemos que ptrA == ptrB (eles apontam para o mesmo endereço de memória), estamos invocando a Indiscernibilidade. Se eu altero o objeto através do ptrA (digamos, mudo a cor de um personagem num jogo), e depois leio o objeto pelo ptrB, a cor precisa ter mudado. Se não mudasse, a igualdade seria falsa e o seu software estaria "quebrado". A lógica de Leibniz garante que referências diferentes para o mesmo objeto se comportem de maneira consistente.</p>
+            <p><strong>Aplicação 1.2.2 </strong>Estamos prestes a construir a aritmética. Queremos provar que $1 + 1 = 2$. Isso só é possível graças à Transitividade (que, como vimos, deriva de Leibniz). O raciocínio será:</p>
             <ul>
-                <li>
-                    <strong>Posição 0 (Unidades):</strong> Temos 1 item. Usamos o glifo $1$.
-                    <ul>
-                        <li><strong>Valor:</strong> $1 \cdot 10^0 = 1$.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Posição 1 (Dezenas):</strong> Não temos grupos de dez.
-                    <ul>
-                        <li><strong>A Tentativa Antiga:</strong> Não escreva nada. Resultado: "1 1".</li>
-                        <li><strong>A Solução Moderna:</strong> Usamos o vazio $0 \in \Sigma$.</li>
-                        <li><strong>Valor:</strong> $0 \cdot 10^1 = 0$. (Ele não adiciona quantidade, mas ocupa o lugar).</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Posição 2 (Centenas):</strong> Temos 1 grupo de cem. Usamos o glifo $1$.
-                    <ul>
-                        <li><strong>Valor:</strong> $1 \cdot 10^2 = 100$.</li>
-                    </ul>
-                </li>
+                <li>$1 + 1$ é igual a "Sucessor de 1".</li>
+                <li>"Sucessor de 1" é igual a $2$.</li>
+                <li>Logo (por transitividade/substituição), $1 + 1 = 2$. Sem essa definição rigorosa de igualdade, a matemática colapsaria antes mesmo de chegarmos à soma.</li>
             </ul>
-            <p>A mágica acontece quando lemos a string $S = (101)_{10}$. O zero central diz: "Pule esta ordem de magnitude! O 1 à esquerda vale cem vezes mais que o 1 à direita!".</p>
-            <p><strong>Contraexemplo:</strong> Existe um sistema chamado Bijetivo Base-10, que não usa o zero e usa os dígitos $\{1, 2, \dots, 9, A\}$ onde A vale dez. Nele, o número dez é escrito como "A", e onze é "11". Vinte é "1A". É matematicamente possível, mas aritmeticamente horrível para somas e multiplicações. O zero posicional venceu pela pura eficiência algorítmica.</p>
-            <br>
-            <p><strong>Aplicação 1.2.2:</strong> Seus computadores operam em Base 2 ($b=2$). O alfabeto é minúsculo: $\Sigma = \{0, 1\}$. Dentro do processador, não existem "números". Existem apenas transistores que estão ligados (1) ou desligados (0).</p>
-            <p>Como um computador sabe a diferença entre o número 1 e o número 8?</p>
-            <ul>
-                <li>$1 = (0001)_2$ (O fio ligado está na posição 0).</li>
-                <li>$8 = (1000)_2$ (O fio ligado está na posição 3).</li>
-            </ul>
-            <p>O mesmo componente físico representa valores completamente diferentes dependendo de onde ele está soldado no barramento. Sem o princípio posicional, precisaríamos de voltagens diferentes para cada número, o que seria fisicamente impossível.</p>
-            <p><strong>Aplicação 1.2.3:</strong> Pense no odômetro de um carro antigo ou em um Array (Vetor) em programação. Quando você pede ao computador o valor de lista[5], ele não procura a lista inteira. Ele usa aritmética posicional pura. Ele sabe onde a lista começa (Endereço Base) e calcula:</p>
-            <p>$$\text{Endereço Alvo} = \text{Base} + (5 \times \text{Tamanho do Item})$$</p>
-            <p>Ele salta diretamente para a "posição" 5. Essa velocidade instantânea de acesso à memória só é possível porque tratamos a memória como um sistema posicional gigante.</p>
+            <p><strong>Aplicação 1.2.3 </strong>Quando um sistema busca seu usuário pelo CPF ou ID, ele confia na unicidade. Um banco de dados relacional funciona sob a premissa de que se a Chave Primária é igual, o registro é o mesmo. A integridade dos dados bancários mundiais depende dessa definição estrita: não aceitamos "quase igual" quando se trata do seu dinheiro.</p>
             <br>
             <h4>Resumo</h4>
             <div class="card">
-                <p><strong>O Problema Histórico:</strong> A incapacidade de registrar a "ausência" em sistemas escritos causava ambiguidade (1 vs 10 vs 100).</p>
-                <p><strong>O Salto Cognitivo:</strong> A invenção do Zero Posicional não como valor, mas como operador sintático (guardião de lugar).</p>
-                <p><strong>Economia de Simbolos:</strong> Um sistema de base $b$ requer exatamente $b$ símbolos (alfabeto $\Sigma$). Não precisamos inventar novos símbolos para números maiores.</p>
-                <p><strong>A Equação:</strong> O valor de um dígito é dinâmico: $d \cdot b^{\text{posição}}$.</p>
+                <p><strong>Problema da linguagem: </strong>A linguagem natural ("é") confunde propriedade com identidade. Precisávamos de rigor.</p>
+                <p><strong>A Solução: </strong>A Igualdade é um predicado lógico baseado em dois axiomas.</p>
+                <p><strong>Reflexividade: </strong>$\forall x (x = x)$. Tudo é espelho de si mesmo.</p>
+                <p><strong>Leibniz (Substitutividade): </strong>$\forall x \forall y (x = y \to (\varphi(x) \leftrightarrow \varphi(y)))$. Se são iguais, compartilham todas as propriedades.</p>
+                <p><strong>O Poder:</strong> Desses dois, nascem a Simetria e a Transitividade, permitindo a substituição segura em equações.</p>
             </div>
-            <br>
         """,
         Problems = new()
         {
+            // --- NÍVEL 1: FIXAÇÃO (FÁCIL) ---
             new()
             {
-                Id="1",
-                Statement= """
-                    <p>De acordo com a Definição 1.2.1 apresentada no texto, o zero possui duas funções distintas em uma cadeia de caracteres numéricos. Quais são elas?</p>
+                Id = "1",
+                Statement = """
+                    <p>O texto diferencia dois usos do verbo "ser" na linguagem natural que causavam confusão lógica. Qual é a diferença fundamental entre "Sócrates é mortal" e "A Estrela da Manhã é a Estrela da Tarde"?</p>
                 """,
-                Solution= """
+                Solution = """
                     <ul>
-                        <li>Elemento de Identidade: Em valor absoluto (soma), o zero não altera o valor ($x + 0 = x$).</li>
-                        <li>Operador de Deslocamento: Sua função principal é ocupar espaço físico ("guardião de lugar") para empurrar os outros dígitos para suas posições corretas (potências de base $b^k$ à esquerda), evitando ambiguidades como confundir "1" com "10".</li>
+                        <li><strong>Predicação:</strong> "Sócrates é mortal" descreve uma propriedade ou característica do sujeito.</li>
+                        <li><strong>Identidade:</strong> "A Estrela da Manhã é a Estrela da Tarde" afirma que dois nomes diferentes referem-se exatamente ao mesmo objeto (igualdade).</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="2",
-                Statement= """
-                    <p>Explique o que era a "Ambiguidade da Ausência" enfrentada pelos escribas babilônicos ao tentar transferir contagens de pedras para tábuas de argila.</p>
+                Id = "2",
+                Statement = """
+                    <p>Antes da formalização moderna, qual era o método intuitivo utilizado desde Euclides para determinar se duas figuras geométricas eram iguais?</p>
                 """,
-                Solution= """
-                    <p>O paradoxo residia na dificuldade de representar o "nada" por escrito.</p>
+                Solution = """
                     <ul>
-                        <li>Fisicamente (na areia), a ausência de uma pedra em um sulco era clara.</li>
-                        <li>Na escrita, não havia símbolo para o vazio. Se o escriba deixasse um espaço em branco, o leitor poderia interpretar como esquecimento ou erro. Se juntasse os símbolos, os valores posicionais colapsavam (ex: 101 virava 11). A bijeção entre o número real e sua representação escrita quebrava.</li>
+                        <li>O método era a <b>superposição</b>.</li>
+                        <li>A ideia era que se uma figura pudesse ser movida para cobrir perfeitamente a outra, elas eram consideradas iguais.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="3",
-                Statement= """
-                    <p>Considere o número $55$ na base 10. Diferencie o "Valor Absoluto" do "Valor Relativo" de cada um dos dois dígitos 5, conforme o Teorema 1.2.1.</p>
+                Id = "3",
+                Statement = """
+                    <p>Qual é o enunciado formal e a notação do <b>Axioma da Reflexividade</b> apresentado no texto?</p>
                 """,
-                Solution= """
+                Solution = """
                     <ul>
-                        <li>
-                            Dígito 5 (Direita/Unidades):
-                            <ul>
-                                <li>Valor Absoluto: 5 (a ideia intrínseca de "cinco").</li>
-                                <li>Valor Relativo: $5 \times 10^0 = 5$.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Dígito 5 (Esquerda/Dezenas):
-                            <ul>
-                                <li>Valor Absoluto: 5 (o desenho é o mesmo).</li>
-                                <li>Valor Relativo: $5 \times 10^1 = 50$. A distinção crucial é que o valor relativo depende da posição $k$ ($d \cdot b^k$).</li>
-                            </ul>
-                        </li>
+                        <li>O axioma afirma que todo objeto é idêntico a si mesmo.</li>
+                        <li>Notação: $\forall x (x = x)$</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="4",
-                Statement= """
-                    <p>Segundo o texto, quantos símbolos únicos (glifos) são necessários para criar um sistema de numeração em Base 8? Liste o alfabeto $\Sigma$ correspondente.</p>
+                Id = "4",
+                Statement = """
+                    <p>O texto introduz a Lei de Leibniz como um pilar da igualdade. Qual é o conceito central desta lei, também conhecida como "Indiscernibilidade dos Idênticos"?</p>
                 """,
-                Solution= """
-                    <p>Para qualquer base $b$, precisamos exatamente de $b$ símbolos únicos.</p>
+                Solution = """
                     <ul>
-                        <li>Para Base 8 ($b=8$), precisamos de 8 símbolos.</li>
-                        <li>O alfabeto é $\Sigma = \{0, 1, 2, 3, 4, 5, 6, 7\}$.</li>
-                        <li>Nota: O maior dígito é sempre $b-1$ (neste caso, 7).</li>
+                        <li>O conceito é que se $x$ e $y$ são a mesma coisa, eles devem compartilhar <b>todas</b> as propriedades.</li>
+                        <li>Não pode existir nenhuma propriedade que $x$ tenha e $y$ não tenha.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="5",
-                Statement= """
-                    <p>Qual foi a solução "Força Bruta" adotada por Romanos e Gregos para lidar com números grandes, em contraste com o sistema posicional?</p>
+                Id = "5",
+                Statement = """
+                    <p>Por que a expressão <code>x = x + 1</code> é considerada válida em programação, mas uma "abominação" na lógica matemática clássica apresentada?</p>
                 """,
-                Solution= """
-                    <p>Eles optaram pela criação de novos símbolos para cada nova ordem de grandeza, em vez de reutilizar os mesmos símbolos em posições diferentes.</p>
+                Solution = """
                     <ul>
-                        <li>Exemplo: Usar 'X' para 10, 'C' para 100, 'M' para 1000.</li>
-                        <li>O texto classifica isso como ineficiente pois exigiria memorizar infinitos símbolos para representar números infinitamente grandes.</li>
+                        <li>Em programação, o símbolo <code>=</code> representa <b>atribuição</b> (mudança de estado no tempo).</li>
+                        <li>Em matemática lógica, o símbolo $=$ representa <b>identidade eterna</b>. Um número não pode ser igual ao seu sucessor.</li>
+                    </ul>
+                """
+            },
+
+            // --- NÍVEL 2: APLICAÇÃO (MÉDIO) ---
+            // Nota: O prompt solicitava exercícios de divisão euclidiana/base, mas o Texto fornecido é sobre Lógica/Igualdade. 
+            // Para manter a coerência pedagógica e a utilidade do código, os exercícios de aplicação foram adaptados 
+            // ao conteúdo real do texto (Lógica de 1ª Ordem e Aplicações Computacionais de Igualdade).
+
+            new()
+            {
+                Id = "6",
+                Statement = """
+                    <p>Considere a Lei de Leibniz: $\forall x \forall y (x = y \to (\varphi(x) \leftrightarrow \varphi(y)))$. Se definirmos a propriedade $\varphi(k)$ como "o ponteiro $k$ aponta para o endereço de memória 0xFA3", e assumirmos que $a = b$. O que podemos concluir logicamente?</p>
+                """,
+                Solution = """
+                    <ul>
+                        <li>Pela Lei de Leibniz, se $a = b$, eles compartilham todas as propriedades.</li>
+                        <li>Se $\varphi(a)$ é verdade (a aponta para 0xFA3), então $\varphi(b)$ <b>obrigatoriamente</b> deve ser verdade.</li>
+                        <li>Conclusão: O ponteiro $b$ também aponta para o endereço 0xFA3.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="6",
-                Statement= """
-                    <p>Um pastor tem 13 ovelhas. Converta esse valor para a Base 5 (sistema quinário) usando o agrupamento posicional.</p>
+                Id = "7",
+                Statement = """
+                    <p>Utilize a Lei de Leibniz para demonstrar formalmente a propriedade da <b>Transitividade</b>: Se $x = y$ e $y = z$, prove que $x = z$.</p>
                 """,
-                Solution= """
-                    <p>Precisamos agrupar as 13 unidades em potências de 5 ($5^0=1, 5^1=5, 5^2=25...$).</p>
+                Solution = """
                     <ul>
-                        <li>
-                            Quantos grupos de 5 cabem em 13?
-                            <ul>
-                                <li>$13 \div 5 = 2$ com resto $3$.</li>
-                            </ul>
-                        </li>
-                        <li>Isso significa que temos 2 grupos de cinco e 3 unidades soltas.</li>
-                        <li>Posição 1 (pesos de 5): Dígito 2.</li>
-                        <li>Posição 0 (pesos de 1): Dígito 3.</li>
-                        <li>Resultado: $23_5$ (Lê-se "dois-três na base cinco").</li>
+                        <li>Premissa: $x = y$ e $y = z$.</li>
+                        <li>Defina a propriedade $\varphi(w)$ como "$x = w$".</li>
+                        <li>Sabemos que $\varphi(y)$ é verdade (pois nossa premissa diz $x = y$).</li>
+                        <li>Como $y = z$, pela Lei de Leibniz, podemos substituir $y$ por $z$ na propriedade.</li>
+                        <li>Logo, $\varphi(z)$ deve ser verdade.</li>
+                        <li>Substituindo na definição de $\varphi$: $x = z$.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="7",
-                Statement= """
-                    <p>Represente o número decimal 26 na Base 12 (Duodecimal).</p>
+                Id = "8",
+                Statement = """
+                    <p>No contexto de Banco de Dados Relacionais, explique como o axioma da igualdade garante a integridade de uma Chave Primária (Primary Key).</p>
                 """,
-                Solution= """
-                    <p>Base 12 agrupa em dúzias ($12^1$) e unidades ($12^0$).</p>
+                Solution = """
                     <ul>
-                        <li>
-                            Dividimos 26 por 12.
-                            <ul>
-                                <li>$26 \div 12 = 2$ com resto $2$.</li>
-                            </ul>
-                        </li>
-                        <li>Temos 2 dúzias completas e sobram 2 unidades.</li>
-                        <li>Resultado: $22_{12}$. Verificação: $(2 \times 12^1) + (2 \times 12^0) = 24 + 2 = 26$.</li>
+                        <li>O banco de dados assume a premissa de unicidade baseada na igualdade estrita.</li>
+                        <li>Se $ID_{registroA} = ID_{registroB}$, o sistema assume que se trata do <b>mesmo</b> registro (Reflexividade e Unicidade).</li>
+                        <li>Isso impede duplicidade e garante que uma atualização no registro A afete o que é lido como registro B (Leibniz).</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="8",
-                Statement= """
-                    <p>Utilize a fórmula $V(d_k) = d_k \cdot b^k$ para decompor explicitamente o número 4096 na base 10.</p>
+                Id = "9",
+                Statement = """
+                    <p>Se a intuição visual de "superposição" era funcional para Euclides, por que ela falha ao analisarmos o conceito de limites de funções ou séries infinitas?</p>
                 """,
-                Solution= """
-                    <p>O número tem 4 dígitos, ocupando as posições $k=0$ a $k=3$.</p>
+                Solution = """
                     <ul>
-                        <li>$d_0 = 6$ (posição 0) $\rightarrow 6 \times 10^0$</li>
-                        <li>$d_1 = 9$ (posição 1) $\rightarrow 9 \times 10^1$</li>
-                        <li>$d_2 = 0$ (posição 2) $\rightarrow 0 \times 10^2$</li>
-                        <li>$d_3 = 4$ (posição 3) $\rightarrow 4 \times 10^3$</li>
-                        <li>Expressão Decomposta: $4 \cdot 10^3 + 0 \cdot 10^2 + 9 \cdot 10^1 + 6 \cdot 10^0$.</li>
+                        <li>A superposição exige objetos físicos ou geométricos finitos e estáticos.</li>
+                        <li>Funções ou séries podem convergir para o mesmo valor sem serem a mesma função.</li>
+                        <li>A "Armadilha da Substituição" ocorre quando assumimos igualdade baseada em aparência (aproximação) em vez de identidade lógica rigorosa.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="9",
-                Statement= """
-                    <p>Conforme a Aplicação 1.2.2 (computadores), converta o número binário $(1101)_2$ para decimal.</p>
+                Id = "10",
+                Statement = """
+                    <p>Traduza a seguinte sentença para a notação formal de Lógica de Primeira Ordem apresentada no texto: "Se dois objetos $a$ e $b$ são iguais, então se $a$ é um número par, $b$ também é um número par."</p>
                 """,
-                Solution= """
-                    <p>Mapeamos os dígitos às potências de 2, da direita para a esquerda (começando do índice 0):</p>
+                Solution = """
                     <ul>
-                        <li>$1 \times 2^3 = 1 \times 8 = 8$</li>
-                        <li>$1 \times 2^2 = 1 \times 4 = 4$</li>
-                        <li>$0 \times 2^1 = 0 \times 2 = 0$</li>
-                        <li>$1 \times 2^0 = 1 \times 1 = 1$</li>
-                        <li>Soma: $8 + 4 + 0 + 1 = 13$.</li>
+                        <li>Defina $P(k)$ como "k é par".</li>
+                        <li>A sentença é uma aplicação direta da Lei de Leibniz.</li>
+                        <li>Notação: $a = b \to (P(a) \leftrightarrow P(b))$</li>
+                        <li>Ou mais especificamente: $a = b \land P(a) \to P(b)$.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="10",
-                Statement= """
-                    <p>Um computador precisa armazenar o número 6. Quais transistores (bits) estariam ligados (1) ou desligados (0) em um sistema de 4 bits?</p>
+                Id = "11",
+                Statement = """
+                    <p>Analise o seguinte trecho de código em C#: <code>string s1 = "ola"; string s2 = "ola";</code>. Embora tenham o mesmo valor, em algumas linguagens antigas eles poderiam ser objetos diferentes na memória. Se a linguagem não garantir a "Indiscernibilidade dos Idênticos" para strings, que problema poderia ocorrer?</p>
                 """,
-                Solution= """
-                    <p>Precisamos somar potências de 2 ($8, 4, 2, 1$) para obter 6.</p>
+                Solution = """
                     <ul>
-                        <li>8 é maior que 6? Sim, bit 3 desligado (0).</li>
-                        <li>4 cabe em 6? Sim. Bit 2 ligado (1). Resta $6-4=2$.</li>
-                        <li>2 cabe no resto? Sim. Bit 1 ligado (1). Resta $2-2=0$.</li>
-                        <li>1 cabe no resto? Não. Bit 0 desligado (0).</li>
-                        <li>Configuração: $0110_2$.</li>
+                        <li>Se a linguagem tratar <code>s1</code> e <code>s2</code> como iguais logicamente ($s1 == s2$) mas eles forem entidades distintas na memória sem sincronia...</li>
+                        <li>Alterar <code>s1</code> poderia não alterar <code>s2</code>.</li>
+                        <li>Isso violaria a Lei de Leibniz: teríamos $s1 = s2$ mas uma propriedade (valor interno) diferente, quebrando a lógica do sistema.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="11",
-                Statement= """
-                    <p>Baseado na Aplicação 1.2.3, imagine um vetor (array) que começa no endereço de memória 1000. Cada item ocupa 4 bytes. Qual é o endereço de memória onde começa o item de índice 5?</p>
+                Id = "12",
+                Statement = """
+                    <p>O texto afirma que a prova de que $1 + 1 = 2$ depende da transitividade. Reconstrua o silogismo lógico apresentado que permite essa conclusão.</p>
                 """,
-                Solution= """
-                    <p>Fórmula: $\text{Endereço Alvo} = \text{Base} + (\text{Índice} \times \text{Tamanho})$.</p>
+                Solution = """
                     <ul>
-                        <li>Base = 1000</li>
-                        <li>Índice = 5</li>
-                        <li>Tamanho = 4</li>
-                        <li>Cálculo: $1000 + (5 \times 4) = 1000 + 20$.</li>
-                        <li>Resultado: Endereço 1020.</li>
+                        <li>Passo 1: $1 + 1$ é definido/igual a "Sucessor de 1".</li>
+                        <li>Passo 2: "Sucessor de 1" é definido/igual a $2$.</li>
+                        <li>Passo 3 (Transitividade): Se A = B e B = C, então A = C.</li>
+                        <li>Conclusão: $1 + 1 = 2$.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="12",
-                Statement= """
-                    <p>Se o endereço calculado para o índice 3 de um vetor é 515 e o vetor começa no endereço 500, qual é o tamanho (em bytes) de cada item armazenado?</p>
+                Id = "13",
+                Statement = """
+                    <p>Qual a diferença técnica entre os símbolos $\leftrightarrow$ (equivalência) e $=$ (igualdade) apresentada no texto?</p>
                 """,
-                Solution= """
+                Solution = """
                     <ul>
-                        <li>Fórmula: $515 = 500 + (3 \times \text{Tamanho})$.</li>
-                        <li>Isolando o termo do tamanho: $15 = 3 \times \text{Tamanho}$.</li>
-                        <li>$\text{Tamanho} = 15 \div 3$.</li>
-                        <li>Resultado: 5 bytes por item.</li>
+                        <li>$=$ (Igualdade) é um predicado que afirma que dois termos referem-se ao <b>mesmo objeto</b>.</li>
+                        <li>$\leftrightarrow$ (Equivalência) é um conectivo lógico que afirma que duas <b>proposições</b> têm o mesmo valor de verdade (ambas V ou ambas F).</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="13",
-                Statement= """
-                    <p>No sistema babilônico (base 60), o que representa uma quantidade maior: A) Um símbolo '1' no segundo sulco (posição 1). B) Cinquenta e nove símbolos '1' no primeiro sulco (posição 0).</p>
+                Id = "14",
+                Statement = """
+                    <p>Explique o conceito de "Aliasing" em computação utilizando a Lei de Leibniz.</p>
                 """,
-                Solution= """
+                Solution = """
                     <ul>
-                        <li>Opção A: $1 \times 60^1 = 60$.</li>
-                        <li>Opção B: $59 \times 60^0 = 59$.</li>
-                        <li>Resultado: A Opção A é maior (60 > 59). Isso ilustra a potência do sistema posicional, onde a posição supera a quantidade absoluta de marcas.</li>
+                        <li>Aliasing ocorre quando dois ponteiros ou referências diferentes ($ptrA$ e $ptrB$) apontam para o mesmo local de memória.</li>
+                        <li>Matematicamente, $ptrA = ptrB$.</li>
+                        <li>Pela Lei de Leibniz, qualquer alteração de estado (propriedade) feita via $ptrA$ deve ser imediatamente observável via $ptrB$, pois são indistinguíveis.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="14",
-                Statement= """
-                    <p>Explique matematicamente por que, na Base 4, o número após "3" torna-se "10".</p>
+                Id = "15",
+                Statement = """
+                    <p>Dado o axioma $\forall x (x = x)$, explique por que a declaração <code>NaN != NaN</code> (Not a Number) em padrões de ponto flutuante (IEEE 754) é uma exceção curiosa à lógica clássica.</p>
                 """,
-                Solution= """
-                    <p>O alfabeto da Base 4 é $\Sigma = \{0, 1, 2, 3\}$.</p>
+                Solution = """
                     <ul>
-                        <li>Ao somar 1 ao dígito máximo (3), atingimos o valor da base (4).</li>
-                        <li>Como não existe símbolo para "4" em $\Sigma$, "zeramos" a posição atual (unidades viram 0) e incrementamos a próxima posição à esquerda.</li>
-                        <li>Resultado: $1$ grupo de quatro e $0$ unidades $\rightarrow 10_4$.</li>
+                        <li>Na lógica clássica (Axioma 1.2.1), a reflexividade é absoluta: tudo é igual a si mesmo.</li>
+                        <li>No padrão IEEE 754, <code>NaN</code> representa um valor indefinido. A computação define que um erro não é igual a outro erro.</li>
+                        <li>Isso ilustra a diferença entre o rigor matemático puro (o texto) e implementações de engenharia pragmática.</li>
+                    </ul>
+                """
+            },
+
+            // --- NÍVEL 3: ANÁLISE (DIFÍCIL) ---
+            new()
+            {
+                Id = "16",
+                Statement = """
+                    <p>Por que os matemáticos modernos preferem derivar a Simetria e a Transitividade a partir da Lei de Leibniz em vez de defini-las como axiomas independentes? Discuta o conceito de "elegância" ou "minimalismo" lógico.</p>
+                """,
+                Solution = """
+                    <ul>
+                        <li>Na axiomática, busca-se o número <b>mínimo</b> de pressupostos necessários.</li>
+                        <li>Se a Simetria e Transitividade podem ser provadas usando apenas Reflexividade e Leibniz, transformá-las em axiomas seria redundante.</li>
+                        <li>Um sistema com menos axiomas é mais robusto ("elegante") e mais fácil de verificar quanto à consistência.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="15",
-                Statement="""
-                    <p>Se um número é escrito como $100$ na Base 7, qual é o seu valor em decimal?</p>
+                Id = "17",
+                Statement = """
+                    <p>Imagine um sistema lógico onde a Lei de Leibniz fosse falsa (existem objetos iguais com propriedades diferentes). Descreva uma consequência catastrófica para a aritmética básica (ex: soma) nesse universo.</p>
                 """,
-                Solution= """
-                    <p>Aplicamos a fórmula do valor relativo: $1 \cdot 7^2 + 0 \cdot 7^1 + 0 \cdot 7^0$ $= 1 \cdot 49 + 0 + 0$</p>
-                    <p>Resultado: 49.</p>
-                """
-            },
-            new()
-            {
-                Id="16",
-                Statement= """
-                    <p>O texto menciona o "Sistema Bijetivo Base-10" onde o dez é representado por 'A' e não existe zero. Por que o texto afirma que esse sistema é "aritmeticamente horrível" para somas e multiplicações em comparação ao sistema com Zero Posicional?</p>
-                """,
-                Solution="""
-                    <p>No sistema com Zero (convencional), a multiplicação por 10 é uma operação trivial de deslocamento (shift): basta adicionar um 0 ao final ($5 \times 10 = 50$). No sistema bijetivo, multiplicar '5' por 'A' (dez) resultaria em '50' (cinquenta)? Não, resultaria em uma representação que exigiria recálculo complexo de todos os símbolos, perdendo a propriedade simples onde a posição do dígito está diretamente atrelada à potência da base de forma limpa. O zero atua como um operador sintático que facilita algoritmos mecânicos; sem ele, cada operação requer tabelas de conversão ad-hoc.</p>
-                """
-            },
-            new()
-            {
-                Id="17",
-                Statement= """
-                    <p>Se a Base 60 (Babilônica) é mais compacta (guarda mais informação por dígito) que a Base 10, por que a humanidade convergiu globalmente para bases menores (como 10 ou 12) em vez de manter a base 60 ou adotar a base 100? Baseie-se no "Princípio da Economia de Símbolos".</p>
-                """,
-                Solution= """
-                    <p>O Princípio da Economia de Símbolos dita que uma base $b$ requer $b$ símbolos únicos para ser memorizada.</p>
+                Solution = """
                     <ul>
-                        <li>Base 10 exige memorizar 10 glifos ($0-9$).</li>
-                        <li>Base 60 exigiria memorizar 60 glifos únicos distintos para ser um sistema posicional puro. A carga cognitiva para aprender e distinguir 60 (ou 100) símbolos diferentes é muito alta para a alfabetização em massa. Bases menores equilibram a compactação do número com a capacidade de memorização do alfabeto.</li>
+                        <li>Se $x = y$ mas eles pudessem ter propriedades diferentes, a substituição falharia.</li>
+                        <li>Poderíamos ter $2 + 2 = 4$ sendo verdade para o "4 da esquerda", mas falso para o "4 da direita".</li>
+                        <li>O resultado de uma conta deixaria de ser único, destruindo a confiabilidade de qualquer cálculo matemático.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="18",
-                Statement="""
-                    <p>Como o princípio posicional explicado na "Aplicação 1.2.3" é responsável pela eficiência $O(1)$ (tempo constante) no acesso a dados em computadores, e como isso seria diferente se a memória funcionasse como um pergaminho (sistema não posicional)?</p>
+                Id = "18",
+                Statement = """
+                    <p>O texto menciona que a falta de rigor na igualdade impedia a construção dos Números Naturais. Como a definição de "Sucessor" ($S(n)$) depende intrinsecamente da noção de igualdade?</p>
                 """,
-                Solution= """
-                    <p>O princípio posicional permite o cálculo direto do local da informação ($\text{Base} + \text{Offset}$) sem a necessidade de percorrer os dados anteriores.</p>
+                Solution = """
                     <ul>
-                        <li>Se a memória fosse como um pergaminho (fita sequencial ou lista ligada), para ler o item 1000, o computador teria que ler e desenrolar os 999 itens anteriores.</li>
-                        <li>Graças à matemática posicional, o computador "salta" para o endereço exato instantaneamente. A eficiência da computação moderna depende dessa propriedade aritmética do endereçamento.</li>
+                        <li>Para definir uma função $S(n)$ (sucessor), precisamos garantir que ela seja uma <b>função</b> bem definida.</li>
+                        <li>Isso significa que se $a = b$, então $S(a)$ <b>deve</b> ser igual a $S(b)$.</li>
+                        <li>Sem a igualdade rigorosa (substitutividade), o sucessor de um número poderia ser ambíguo, impedindo a sequência 1, 2, 3...</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="19",
-                Statement= """
-                    <p>O texto afirma: "O vazio não é apenas a falta de algo; ele é uma entidade". Analise essa afirmação contrastando a representação "1 1" (com espaço vazio) com "101". O que o símbolo '0' fornece que o espaço em branco falha em fornecer?</p>
+                Id = "19",
+                Statement = """
+                    <p>Analise a afirmação: "A crise dos fundamentos foi uma crise de sintaxe, não de semântica". Com base no texto, concorda ou discorda? Justifique.</p>
                 """,
-                Solution= """
-                    <p>O espaço em branco é ambíguo e passivo; ele é definido pelo que não está lá. Ele não tem dimensões padronizadas (um espaço duplo parece dois espaços simples?). O símbolo '0' é uma entidade ativa e explícita. Ele:</p>
+                Solution = """
                     <ul>
-                        <li>Define inequivocamente que a ordem de magnitude existe, mas está vazia.</li>
-                        <li>Mantém a integridade estrutural da string numérica, independente da caligrafia ou espaçamento.</li>
-                        <li>Transforma a ausência em um dado processável (é um símbolo que pode ser lido, copiado e computado).</li>
+                        <li><b>Concorda.</b> O texto destaca que a intuição (semântica) existia e funcionava para casos simples (triângulos).</li>
+                        <li>O problema era a linguagem (sintaxe) ambígua do "ser" e a falta de regras formais de manipulação de símbolos.</li>
+                        <li>A solução foi criar uma definição sintática (axiomas formais) para controlar o raciocínio.</li>
                     </ul>
                 """
             },
             new()
             {
-                Id="20",
-                Statement="""
-                    <p>Suponha que você precise multiplicar dois números na casa dos milhões usando algarismos romanos ($M, \bar{M}$, etc.). Qual é o impedimento fundamental descrito no texto que estagnou o progresso matemático com esse sistema, além da dificuldade das regras de soma?</p>
+                Id = "20",
+                Statement = """
+                    <p>Na Programação Orientada a Objetos, temos a distinção entre "Reference Equality" e "Value Equality" (ex: método <code>.Equals()</code> vs operador <code>==</code>). Relacione isso com a tensão histórica entre "Identidade" e "Superposição" descrita no texto.</p>
                 """,
-                Solution="""
-                    <p>O impedimento é a limitação do alfabeto finito e não-recursivo. No sistema posicional, podemos representar números arbitrariamente grandes reutilizando o conjunto finito $\Sigma = \{0..9\}$. No sistema romano (Força Bruta Simbólica), números maiores exigem a invenção constante de novos símbolos ou notações (barras sobre letras) para continuar crescendo. Isso torna impossível criar algoritmos gerais de multiplicação (como a nossa multiplicação em colunas) que funcionem para qualquer número, pois as regras mudam conforme os símbolos mudam.</p>
+                Solution = """
+                    <ul>
+                        <li><b>Reference Equality</b> é análoga à Identidade Lógica estrita (é o mesmo objeto/átomo no universo?).</li>
+                        <li><b>Value Equality</b> é análoga à Superposição Euclidiana (eles têm a mesma "forma" ou valor, mesmo sendo objetos distintos?).</li>
+                        <li>A computação moderna resolveu a tensão mantendo ambas as definições, mas obrigando o programador a ser explícito sobre qual está usando.</li>
+                    </ul>
                 """
             }
         }
