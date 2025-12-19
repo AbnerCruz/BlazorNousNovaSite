@@ -41,6 +41,8 @@ public class DisciplineMath : Discipline
                                 {
                                     Math1Module1Chapter1Section1.Topic,
                                     Math1Module1Chapter1Section2.Topic,
+                                    Math1Module1Chapter1Section3.Topic,
+                                    Math1Module1Chapter1Section4.Topic,
                                 }
                             },
                             new(){

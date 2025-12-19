@@ -85,11 +85,13 @@ public static class Math1Module1Chapter1Section2
             <p>Criamos o conceito de "quantidade". Mas ainda falta uma peça. Sabemos o que é o número, mas como organizá-los? Como sabemos que o 4 vem depois do 3? Para isso, precisaremos sair do mundo dos Cardinais e entrar no reino da Ordem. Mas isso é assunto para a próxima seção.</p>
             <h4>Resumo</h4>
             <div class="card">
-                <p>Correspondência física (pedras) não funciona à distância. Necessidade de um padrão mental.</p>
-                <p>A propriedade de "quantidade" compartilhada por conjuntos que podem ser mapeados um-para-um (bijeção).</p>
-                <p>$Card(A) = Card(B) \iff A \sim B$. O número é definido pela possibilidade de pareamento, não pela contagem verbal.</p>
-                <p>O número "5" é uma caixa abstrata de todos os grupos de cinco coisas no universo.</p>
-                <p>O número de elementos não muda se você os reorganiza ou substitui os objetos, desde que a quantidade se mantenha (bijeção preservada).</p>
+                <ul>
+                    <li>Correspondência física (pedras) não funciona à distância. Necessidade de um padrão mental.</li>
+                    <li>A propriedade de "quantidade" compartilhada por conjuntos que podem ser mapeados um-para-um (bijeção).</li>
+                    <li>$Card(A) = Card(B) \iff A \sim B$. O número é definido pela possibilidade de pareamento, não pela contagem verbal.</li>
+                    <li>O número "5" é uma caixa abstrata de todos os grupos de cinco coisas no universo.</li>
+                    <li>O número de elementos não muda se você os reorganiza ou substitui os objetos, desde que a quantidade se mantenha (bijeção preservada).</li>
+                </ul>
             </div>
         """,
         Problems = new()

@@ -8,7 +8,7 @@ public class Math1Module1Chapter1Section3
         Name = "1.3 Algoritmo da Contagem",
         Active = true,
         Body = """
-            <h3>1.3 Algoritmo da Contagem</h3>
+            <h1>1.3 Algoritmo da Contagem</h1>
             <p>Imagine que estamos de volta à era neolítica, sentados ao lado daquele pastor que conhecemos na seção anterior. Graças à correspondência biunívoca (o ato de emparelhar pedras com ovelhas), ele sabe se perdeu algum animal. Ele tem uma pilha de pedras que representa, exatamente, a Cardinalidade (o tamanho) do seu rebanho. Mas como vimos surgiu um problema novo.</p>
             <p>O pastor precisa ir até a aldeia vizinha comprar mantimentos. O mercador pergunta: "Quantas ovelhas você tem para trocar por trigo?". O pastor congela. A pilha de pedras ficou na caverna. As ovelhas estão no pasto. Ele sabe a quantidade, mas não consegue transportá-la. Ele não pode levar as ovelhas, e carregar um saco pesado de pedras é inviável.</p>
             <p>Para resolver isso, a humanidade precisou inventar algo revolucionário: uma "pilha de pedras mental". Uma coleção de símbolos padronizados que todos conhecessem e que pudesse ser carregada dentro da cabeça. Mas, diferentemente de um saco de pedras bagunçado, essa coleção mental precisava de uma regra rígida: Ordem.</p>
@@ -92,10 +92,12 @@ public class Math1Module1Chapter1Section3
             <p><strong>Aplicação 1.3.2</strong> Em um hospital ou em um servidor web, saber quantas pessoas estão na fila (Cardinal: 100 pessoas) é importante para o espaço. Mas saber quem é o primeiro (Ordinal: Senha nº 1) é vital para a justiça e o funcionamento do sistema. O conceito de "Primeiro a Entrar, Primeiro a Sair" (FIFO - First In, First Out) depende inteiramente da Ordem Linear Estrita que definimos acima.</p>
             <h4>Resumo</h4>
             <div class="card">
-                <p>Ordinalidade é a imposição de uma hierarquia ("primeiro, segundo...") sobre um grupo de objetos. É transformar uma nuvem em uma linha.</p>
-                <p>Contagem é um algoritmo (processo temporal) que cria uma correspondência biunívoca entre objetos reais e uma lista padrão de números mentais.</p>
-                <p>Princípio do Sucessor é a regra lógica ($n \to n+1$) que garante que nunca ficaremos sem números para contar.</p>
-                <p>Teorema da Invariância (Teorema 1.3.1) diz que não importa por onde você comece a contar, se você não pular nenhum objeto e não contar nenhum duas vezes, o número final será sempre o mesmo.</p>
+                <ul>
+                    <li>Ordinalidade é a imposição de uma hierarquia ("primeiro, segundo...") sobre um grupo de objetos. É transformar uma nuvem em uma linha.</li>
+                    <li>Contagem é um algoritmo (processo temporal) que cria uma correspondência biunívoca entre objetos reais e uma lista padrão de números mentais.</li>
+                    <li>Princípio do Sucessor é a regra lógica ($n \to n+1$) que garante que nunca ficaremos sem números para contar.</li>
+                    <li>Teorema da Invariância (Teorema 1.3.1) diz que não importa por onde você comece a contar, se você não pular nenhum objeto e não contar nenhum duas vezes, o número final será sempre o mesmo.</li>
+                </ul>
             </div>
             <p>Tudo o que vimos até agora funciona perfeitamente para coisas que são separadas e distintas: ovelhas, pedras, dias, moedas. Chamamos isso de grandezas Discretas. Mas... como você contaria a água em um copo? Como você conta a distância entre duas cidades? Não há "pedras" individuais ali, apenas um fluxo contínuo. Na próxima seção, veremos o que acontece quando nossa "fita métrica de números naturais" falha em medir o mundo real. Bem-vindos ao abismo entre o Discreto e o Contínuo.</p>
         """,
