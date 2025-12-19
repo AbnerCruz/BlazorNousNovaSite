@@ -4,104 +4,107 @@ public static class Math1Module1Chapter1Section2
 {
     public static Topic Topic = new()
     {
-        Id = "igualdade-e-relacoes",
-        Name = "1.2 Igualdade e Relações",
-        Active = false,
+        Id = "cardinalidade-e-abstracao",
+        Name = "1.2 Cardinalidade e Abstração",
+        Active = true,
         Body = """
-            <h1>1.2 Igualdade e Relações</h1>
-            <p>Como vimos nas seção anterior a linguagem humana, com a qual escrevíamos matemática há milênios, era ambígua demais para sustentar a lógica moderna. Em português, usamos a mesma palavra para duas situações completamente diferentes:</p>
+            <h1>1.2 Cardinalidade e Abstração</h1>
+            <p>Na seção anterior, nós celebramos uma grande vitória humana: a invenção da Correspondência Biunívoca. Descobrimos que não precisávamos ser gênios para saber se o rebanho estava completo; bastava ter um saco de pedras (ou ossos com entalhes) onde cada pedra correspondia a uma ovelha. Se sobrasse pedra, faltava ovelha. Problema resolvido, certo?</p>
+            <p>Errado.</p>
+            <p>A sociedade evoluiu. As cidades-estado de Ur e Uruk começaram a crescer. O comércio deixou de ser apenas entre vizinhos e passou a cruzar desertos. Agora, imagine o problema: você é um rico proprietário de terras em Uruk e quer vender todo o seu rebanho — digamos, 500 cabeças de gado — para um comprador na distante cidade de Eridu. Você viaja até Eridu para negociar. O comprador pergunta: "Qual o tamanho do seu rebanho?"</p>
+            <p>Aqui, a correspondência biunívoca falha catastroficamente.</p>
             <ul>
-                <li>Predicação (Propriedade): "Sócrates é mortal." (Aqui, "mortal" é apenas uma característica de Sócrates).</li>
-                <li>Identidade (Igualdade): "A Estrela da Manhã é a Estrela da Tarde." (Aqui, estamos dizendo que dois nomes diferentes se referem exatamente ao mesmo objeto físico, o planeta Vênus).</li>
+                <li><strong>O Problema da Presença:</strong> Você não trouxe as 500 vacas com você; elas ficaram em Uruk. Você não pode alinhar as vacas com as moedas de prata do comprador.</li>
+                <li><strong>O Problema da Portabilidade:</strong> Você poderia ter trazido o saco com 500 pedras que representam as vacas? Sim, mas é pesado, inconveniente e arriscado. Se você perder uma pedra no caminho, você "perdeu" uma vaca na negociação.</li>
             </ul>
-            <p>Essa confusão era fatal. Se não conseguíssemos definir com rigor absoluto o que significa "ser igual" (identidade), jamais conseguiríamos definir o que é o número 1, ou o 2, ou como a aritmética funciona. Como podemos construir os Números Naturais se não sabemos nem dizer se um número é ele mesmo? Precisávamos limpar essa bagunça. Precisávamos de uma definição sintática de igualdade.</p>
+            <p>A correspondência física (pedra-por-vaca) era limitada ao aqui e agora. Eles precisavam de uma maneira de transportar a quantidade sem transportar a matéria. Precisávamos extrair a "quantidade" do corpo físico das vacas e transformá-la em algo que coubesse na mente. Precisávamos inventar o Número.</p>
             <br>
-            <p>Euclides, em seus famosos Elementos, estabeleceu o que chamou de "Noções Comuns". A mais famosa delas dizia: "Coisas iguais a uma mesma coisa são iguais entre si."</p>
-            <p>Durante mais de dois mil anos, isso bastou. A intuição era geométrica e visual (superposição). Se eu recortasse um triângulo de madeira e ele cobrisse perfeitamente outro triângulo, eles eram "iguais".</p>
-            <p>O problema é que a matemática parou de tratar apenas de triângulos de madeira e começou a tratar de conceitos abstratos, infinitos e invisíveis. Sem uma regra rígida, matemáticos caíam na Armadilha da Substituição: eles assumiam que podiam trocar uma coisa pela outra em equações, mas às vezes isso gerava paradoxos absurdos. A intuição de "parecer igual" não era suficiente. Precisávamos de uma regra que dissesse: "Se estes dois objetos são iguais, eles são indistinguíveis em qualquer universo lógico possível."</p>
+            <p>A mente humana não nasceu pronta para contar. Estudos antropológicos e cognitivos sugerem que, originalmente, nossa percepção de quantidade era muito limitada, quase instintiva. Pense como um caçador primitivo.</p>
+            <ul>
+                <li>Você vê um leão. Seu cérebro registra: Unitário (Perigo!).</li>
+                <li>Você vê dois leões. Seu cérebro registra: Par (Perigo duplo!).</li>
+                <li>Você vê cinco leões. Seu cérebro entra em pânico e registra apenas: Muitos.</li>
+            </ul>
+            <p>Durante milênios, o conceito de número ficou preso a essas distinções visuais ou a partes do corpo (contagem antropomórfica). Usávamos dedos, juntas e até orelhas para marcar quantidades. Mas isso ainda tinha uma falha grave pois ainda é uma forma de correspondência física. Dizer "tenho esta quantidade de ovelhas" mostrando as duas mãos abertas ainda depende das suas mãos. Se eu disser que tenho "três" ovelhas, mas usar pedras para mostrar isso, a ideia de "três" ainda está refém das pedras. A revolução aconteceu quando percebemos que um trio de ovelhas, um trio de pedras e um trio de estrelas compartilham uma "alma" comum. Essa propriedade invisível, que não tem cheiro, nem peso, nem cor, é o que chamamos de Cardinalidade.</p>
             <br>
-            <p>Para resolver a crise, a lógica moderna parou de tratar a igualdade como uma noção óbvia e passou a tratá-la como um Predicado Lógico Primitivo. Não se assuste com o nome. Um predicado é apenas uma pergunta que resulta em Verdadeiro ou Falso. A igualdade ($=$) é a pergunta mais fundamental de todas. Para que ela funcione, precisamos de apenas dois pilares (axiomas).</p>
-            <p>O primeiro passo é admitir que o universo é consistente. Todo objeto é idêntico a si mesmo. Parece óbvio, mas precisa ser dito.</p>
-            <div class="card">
-                <h3>Axioma 1.2.1</h3>
-                <p>$$\forall x (x = x)$$</p>
+            <p>A grande sacada foi dada séculos depois por lógicos como Gottlob Frege e David Hume. Eles perceberam que o número não é uma propriedade do objeto (a ovelha não é "número 3", ela é branca e peluda). O número é uma propriedade do grupo (conjunto). Eles formularam o que chamamos de Princípio de Abstração:</p>
+            <div class="card'>
+                <h3>Princípio de Frege-Hume</h3>
+                <p>O número cardinal de um conjunto $A$ é idêntico ao número cardinal de um conjunto $B$ se, e somente se, é possível estabelecer uma correspondência biunívoca (uma bijeção) entre eles.</p>
+                <p>$$Card(A) = Card(B) \iff A \sim B$$</p>
             </div>
-            <p>Dissecando a Notação:</p>
+            <br>
             <ul>
-                <li>$\forall$ (Quantificador Universal): Lê-se "Para todo". Estamos dizendo que isso vale para qualquer coisa no universo.</li>
-                <li>$x$: É a nossa variável, o objeto.</li>
-                <li>$(x = x)$: É a afirmação de identidade. "X é igual a X".</li>
+                <li>$Card(A)$: Lê-se "o cardinal de A". É o tamanho do conjunto.</li>
+                <li>$\iff$: Lê-se "se, e somente se". Significa que os dois lados são equivalentes; um garante o outro.</li>
+                <li>$A \sim B$: Lê-se "A é equipotente a B". Significa que existe aquela ligação perfeita, um-para-um, que vimos na Seção 1.1</li>
             </ul>
-            <p>O filósofo e matemático Gottfried Wilhelm Leibniz sonhou com uma "característica universal". Ele propôs o princípio da Indiscernibilidade dos Idênticos. A ideia é poderosa: se $x$ e $y$ são realmente a mesma coisa, então não pode existir nenhuma propriedade que $x$ tenha e $y$ não tenha. Se houver uma única diferença, eles não são iguais.</p>
+            <p>Mas o que é o número "3"?</p>
+            <p>Na matemática definimos o número cardinal como uma Classe de Equivalência. Pense no número "3" como sendo uma caixa gigante. Dentro dessa caixa chamada "3", nós jogamos todos os conjuntos do universo que possuem três elementos.</p>
+            <ul>
+                <li>O conjunto dos Três Porquinhos está nessa caixa.</li>
+                <li>O conjunto $\{\text{Sol}, \text{Lua}, \text{Terra}\}$ está nessa caixa.</li>
+                <li>O conjunto das rodas de um triciclo está nessa caixa.</li>
+            </ul>
+            <p>Formalmente, escrevemos assim:</p>
             <div class="card">
-                <h3>Axioma 1.2.2</h3>
-                <p>$$\forall x \forall y (x = y \to (\varphi(x) \leftrightarrow \varphi(y)))$$</p>
+                <h3>Definição 1.2.1</h3>
+                <p>Um número cardinal é a classe de todos os conjuntos que são equipotentes a um conjunto modelo.</p>
+                <p>Por exemplo, definimos o "Três" como:</p>
+                <p>$$3 := \{ S \mid S \sim \{a, b, c\} \}$$</p>
             </div>
-            <p>Dissecando a Notação:</p>
             <ul>
-                <li>$\forall x \forall y$: "Para quaisquer dois objetos x e y..."</li>
-                <li>$\to$: Símbolo de Implicação. "Se isso for verdade, então..."</li>
-                <li>$\varphi$ (Letra grega Phi): Representa uma fórmula ou propriedade qualquer. Pode ser "ser vermelho", "ser par", ou "ser maior que 3".</li>
-                <li>$\leftrightarrow$: Símbolo de Equivalência. "É verdadeiro se, e somente se, o outro também for".</li>
+                <li>$:=$: Significa "é definido como".</li>
+                <li>$\mid$: Significa "de modo que".</li>
+                <li>$\sim$: Significa "equipotênte"</li>
+                <li>Tradução: $3$ é definido como o conjunto S de modo que S é equipotênte a um conjunto de três elementos ${a,b,c}$</li>
             </ul>
-            <p>Tradução: "Se $x$ é igual a $y$, então qualquer propriedade $\varphi$ que seja verdadeira para $x$ TAMBÉM deve ser verdadeira para $y$."</p>
-            <br>
-            <h4>Exemplo</h4>
-            <p>Você aprende na escola que a igualdade tem três propriedades: Reflexiva, Simétrica e Transitiva. Mas eu só te dei a Reflexiva e a Lei de Leibniz. Cadê as outras duas? Nós não precisamos aceitá-las como fé. Nós podemos prová-las.</p>
-            <p>Vamos provar a Simetria ($Se\ x = y,\ ent\tilde{a}o\ y = x$) usando apenas a Lei de Leibniz. Acompanhe o raciocínio:</p>
-            <ul>
-                <li>Assuma que $x = y$.</li>
-                <li>Pela Lei de Leibniz, se $x = y$, então para qualquer predicado $P$, $P(x)$ é verdadeiro se, e somente se, $P(y)$ for verdadeiro.</li>
-                <p>$$\forall P \ (x = y \implies (P(x) \iff P(y)))$$</p>
-                <li>Vamos escolher uma propriedade muito específica. Seja a propriedade $\varphi(z)$ definida como "ser igual a $x$" ($z = x$).</li>
-                <li>Sabemos que $x$ tem essa propriedade (pois $x = x$, pela Reflexividade).</li>
-                <p>$$\varphi(x) \iff x = x$$</p>
-                <li>Como assumimos que $x = y$, pela Lei de Leibniz, o que é verdade para $x$ deve ser verdade para $y$. Como $\varphi(x)$ é verdadeiro, então $\varphi(y)$ deve ser verdadeiro.</li>
-                <li>Substituindo $y$ na definição do predicado $\varphi$:</li>
-                <p>$$\varphi(y) \iff y = x$$</p>
-            </ul>
-            <p>Portanto: $y = x$</p>
-            <br>
-            <p>Antes de avançarmos, precisamos evitar uma confusão comum trazida pela computação. Na programação, você vê coisas como: x = x + 1</p>
-            <p>Para um matemático do século XIX isso é uma abominação. Um número $x$ nunca pode ser igual ao seu sucessor.</p>
-            <ul>
-                <li>Em Lógica Matemática o simbolo $=$ significa Identidade Eterna.</li>
-                <li>Em Programação o simbolo $=$ significa Atribuição ("Pegue o valor antigo, some 1 e guarde no lugar do novo").</li>
-                <li>Em Lógica, usamos $:=$ ou $\equiv$ para definições, mas $=$ é quase que sagrado.</li>
-            </ul>
+            <h4>A Operação de Adjunção</h4>
+            <p>Uma vez que temos o conceito de cardinal, não precisamos contar "um, dois, três" ainda. Podemos definir o "próximo número" puramente através de conjuntos. Isso se chama Soma Unária ou Adjunção.</p>
+            <p>Se temos um conjunto $A$ com cardinal $n$, como criamos o sucessor $n'$ (o próximo número)? Simples: pegamos algo que não está em $A$ (vamos chamar de $x$) e jogamos dentro.</p>
+            <p>$$Card(A \cup \{x\}) = n'$$</p>
+            <p>Isso é poderoso porque define o progresso numérico sem precisar recitar nomes de números. É a base da estrutura lógica da aritmética.</p>
             <br>
             <h4>Aplicações</h4>
-            <p><strong>Aplicação 1.2.1 </strong>A Lei de Leibniz é a regra física de como a memória do seu computador funciona. Imagine dois ponteiros, ptrA e ptrB. Se dizemos que ptrA == ptrB (eles apontam para o mesmo endereço de memória), estamos invocando a Indiscernibilidade. Se eu altero o objeto através do ptrA (digamos, mudo a cor de um personagem num jogo), e depois leio o objeto pelo ptrB, a cor precisa ter mudado. Se não mudasse, a igualdade seria falsa e o seu software estaria "quebrado". A lógica de Leibniz garante que referências diferentes para o mesmo objeto se comportem de maneira consistente.</p>
-            <p><strong>Aplicação 1.2.2 </strong>Estamos prestes a construir a aritmética. Queremos provar que $1 + 1 = 2$. Isso só é possível graças à Transitividade (que, como vimos, deriva de Leibniz). O raciocínio será:</p>
+            <p><strong>Aplicação 1.2.1 </strong>Imagine que você criou uma playlist chamada "Foco" com 10 músicas no seu aplicativo de músicas. Agora, imagine que seu amigo criou uma playlist chamada "Épicas" também com 10 músicas.</p>
+            <p>Para a matemática da Cardinalidade, essas duas playlists são idênticas: ambas têm o cardinal 10. Mas, na realidade física, elas podem ser drasticamente diferentes.</p>
             <ul>
-                <li>$1 + 1$ é igual a "Sucessor de 1".</li>
-                <li>"Sucessor de 1" é igual a $2$.</li>
-                <li>Logo (por transitividade/substituição), $1 + 1 = 2$. Sem essa definição rigorosa de igualdade, a matemática colapsaria antes mesmo de chegarmos à soma.</li>
+                <li>Suas 10 músicas podem ser punk rock curtos (totalizando 20 minutos).</li>
+                <li>As 10 músicas dele podem ser rock progressivo longo (totalizando 1 hora e meia).</li>
             </ul>
-            <p><strong>Aplicação 1.2.3 </strong>Quando um sistema busca seu usuário pelo CPF ou ID, ele confia na unicidade. Um banco de dados relacional funciona sob a premissa de que se a Chave Primária é igual, o registro é o mesmo. A integridade dos dados bancários mundiais depende dessa definição estrita: não aceitamos "quase igual" quando se trata do seu dinheiro.</p>
+            <p>A "quantidade" (10) ignora a "duração". É graças a essa abstração que o aplicativo pode te dizer "Você tem 10 faixas adicionadas", tratando uma música de 1 minuto exatamente igual a uma de 10 minutos. O número cardinal é democrático: ele não se importa com o tamanho do objeto, apenas com a presença dele.</p>
             <br>
+            <p><strong>Aplicação 1.2.2 </strong>Talvez a aplicação mais poderosa da cardinalidade seja social: o Voto. Numa eleição, aplicamos rigorosamente o conceito de cardinalidade abstrata.</p>
+            <ul>
+                <li>O voto da pessoa mais rica do país = 1.</li>
+                <li>O voto de um estudante de 18 anos = 1.</li>
+            </ul>
+            <p>No mundo físico, essas pessoas são muito diferentes (influência, dinheiro, idade). Mas, na urna, a matemática remove todas essas características e deixa sobrar apenas o Unitário. Quando contamos os votos, não estamos somando dinheiro nem inteligência; estamos somando cardinais puros. A democracia só funciona porque concordamos em usar essa abstração matemática onde cada indivíduo conta como uma unidade idêntica, independentemente de quem seja na vida real.</p>
+            <br>
+            <p>A invenção da cardinalidade foi o momento em que a humanidade separou a "alma" da "matéria". Isso permitiu o nascimento da aritmética, da álgebra e de toda a ciência exata. Sem essa abstração, ainda estaríamos presos à troca de pedras. Com ela, ganhamos a capacidade de contar o que não podemos tocar: os dias do ano, as distâncias estelares e as transações financeiras digitais.</p>
+            <p>Criamos o conceito de "quantidade". Mas ainda falta uma peça. Sabemos o que é o número, mas como organizá-los? Como sabemos que o 4 vem depois do 3? Para isso, precisaremos sair do mundo dos Cardinais e entrar no reino da Ordem. Mas isso é assunto para a próxima seção.</p>
             <h4>Resumo</h4>
             <div class="card">
-                <p><strong>Problema da linguagem: </strong>A linguagem natural ("é") confunde propriedade com identidade. Precisávamos de rigor.</p>
-                <p><strong>A Solução: </strong>A Igualdade é um predicado lógico baseado em dois axiomas.</p>
-                <p><strong>Reflexividade: </strong>$\forall x (x = x)$. Tudo é espelho de si mesmo.</p>
-                <p><strong>Leibniz (Substitutividade): </strong>$\forall x \forall y (x = y \to (\varphi(x) \leftrightarrow \varphi(y)))$. Se são iguais, compartilham todas as propriedades.</p>
-                <p><strong>O Poder:</strong> Desses dois, nascem a Simetria e a Transitividade, permitindo a substituição segura em equações.</p>
+                <p>Correspondência física (pedras) não funciona à distância. Necessidade de um padrão mental.</p>
+                <p>A propriedade de "quantidade" compartilhada por conjuntos que podem ser mapeados um-para-um (bijeção).</p>
+                <p>$Card(A) = Card(B) \iff A \sim B$. O número é definido pela possibilidade de pareamento, não pela contagem verbal.</p>
+                <p>O número "5" é uma caixa abstrata de todos os grupos de cinco coisas no universo.</p>
+                <p>O número de elementos não muda se você os reorganiza ou substitui os objetos, desde que a quantidade se mantenha (bijeção preservada).</p>
             </div>
         """,
         Problems = new()
         {
-            // --- NÍVEL 1: FIXAÇÃO (FÁCIL) ---
+            // NÍVEL 1: FIXAÇÃO (1-5)
             new()
             {
                 Id = "1",
                 Statement = """
-                    <p>O texto diferencia dois usos do verbo "ser" na linguagem natural que causavam confusão lógica. Qual é a diferença fundamental entre "Sócrates é mortal" e "A Estrela da Manhã é a Estrela da Tarde"?</p>
+                    <p>De acordo com o texto, quais foram os dois problemas principais identificados na correspondência biunívoca física (pedra-por-vaca) quando o comércio começou a crescer e se expandir para outras cidades?</p>
                 """,
                 Solution = """
                     <ul>
-                        <li><strong>Predicação:</strong> "Sócrates é mortal" descreve uma propriedade ou característica do sujeito.</li>
-                        <li><strong>Identidade:</strong> "A Estrela da Manhã é a Estrela da Tarde" afirma que dois nomes diferentes referem-se exatamente ao mesmo objeto (igualdade).</li>
+                        <li><strong>O Problema da Presença:</strong> A impossibilidade de levar os objetos físicos (vacas) até o local da negociação.</li>
+                        <li><strong>O Problema da Portabilidade:</strong> A inconveniência e o risco de transportar os objetos correspondentes (pedras), que são pesados e podem ser perdidos.</li>
                     </ul>
                 """
             },
@@ -109,12 +112,14 @@ public static class Math1Module1Chapter1Section2
             {
                 Id = "2",
                 Statement = """
-                    <p>Antes da formalização moderna, qual era o método intuitivo utilizado desde Euclides para determinar se duas figuras geométricas eram iguais?</p>
+                    <p>Segundo estudos antropológicos citados no texto, como o cérebro de um caçador primitivo registrava quantidades antes da invenção do número abstrato?</p>
                 """,
                 Solution = """
+                    <p>O cérebro registrava as quantidades de forma instintiva e limitada em três categorias:</p>
                     <ul>
-                        <li>O método era a <b>superposição</b>.</li>
-                        <li>A ideia era que se uma figura pudesse ser movida para cobrir perfeitamente a outra, elas eram consideradas iguais.</li>
+                        <li><strong>Unitário:</strong> Ao ver um leão.</li>
+                        <li><strong>Par:</strong> Ao ver dois leões.</li>
+                        <li><strong>Muitos:</strong> Ao ver cinco ou mais leões (entrando em pânico).</li>
                     </ul>
                 """
             },
@@ -122,261 +127,191 @@ public static class Math1Module1Chapter1Section2
             {
                 Id = "3",
                 Statement = """
-                    <p>Qual é o enunciado formal e a notação do <b>Axioma da Reflexividade</b> apresentado no texto?</p>
+                    <p>Qual é o princípio formulado por Frege e Hume que define a igualdade entre números cardinais de dois conjuntos?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>O axioma afirma que todo objeto é idêntico a si mesmo.</li>
-                        <li>Notação: $\forall x (x = x)$</li>
-                    </ul>
+                    <p>É o <strong>Princípio de Abstração</strong> (ou Princípio de Frege-Hume), que afirma:</p>
+                    <p>$$Card(A) = Card(B) \iff A \sim B$$</p>
+                    <p>Isso significa que o cardinal de $A$ é idêntico ao de $B$ se, e somente se, existe uma correspondência biunívoca entre eles.</p>
                 """
             },
             new()
             {
                 Id = "4",
                 Statement = """
-                    <p>O texto introduz a Lei de Leibniz como um pilar da igualdade. Qual é o conceito central desta lei, também conhecida como "Indiscernibilidade dos Idênticos"?</p>
+                    <p>Conforme a Definição 1.2.1 apresentada no texto, como a matemática define formalmente um "número cardinal"?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>O conceito é que se $x$ e $y$ são a mesma coisa, eles devem compartilhar <b>todas</b> as propriedades.</li>
-                        <li>Não pode existir nenhuma propriedade que $x$ tenha e $y$ não tenha.</li>
-                    </ul>
+                    <p>Um número cardinal é definido como uma <strong>Classe de Equivalência</strong>. É a classe de todos os conjuntos que são equipotentes a um conjunto modelo.</p>
                 """
             },
             new()
             {
                 Id = "5",
                 Statement = """
-                    <p>Por que a expressão <code>x = x + 1</code> é considerada válida em programação, mas uma "abominação" na lógica matemática clássica apresentada?</p>
+                    <p>O texto menciona uma operação chamada "Soma Unária" ou "Adjunção" para definir o próximo número sem precisar contar. Qual é a fórmula apresentada para o sucessor $n'$ de um conjunto $A$?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Em programação, o símbolo <code>=</code> representa <b>atribuição</b> (mudança de estado no tempo).</li>
-                        <li>Em matemática lógica, o símbolo $=$ representa <b>identidade eterna</b>. Um número não pode ser igual ao seu sucessor.</li>
-                    </ul>
+                    <p>A fórmula da Adjunção é:</p>
+                    <p>$$Card(A \cup \{x\}) = n'$$</p>
+                    <p>Onde $x$ é um elemento que não está contido originalmente em $A$.</p>
                 """
             },
 
-            // --- NÍVEL 2: APLICAÇÃO (MÉDIO) ---
-            // Nota: O prompt solicitava exercícios de divisão euclidiana/base, mas o Texto fornecido é sobre Lógica/Igualdade. 
-            // Para manter a coerência pedagógica e a utilidade do código, os exercícios de aplicação foram adaptados 
-            // ao conteúdo real do texto (Lógica de 1ª Ordem e Aplicações Computacionais de Igualdade).
-
+            // NÍVEL 2: APLICAÇÃO (6-15)
             new()
             {
                 Id = "6",
                 Statement = """
-                    <p>Considere a Lei de Leibniz: $\forall x \forall y (x = y \to (\varphi(x) \leftrightarrow \varphi(y)))$. Se definirmos a propriedade $\varphi(k)$ como "o ponteiro $k$ aponta para o endereço de memória 0xFA3", e assumirmos que $a = b$. O que podemos concluir logicamente?</p>
+                    <p>Um comerciante de Uruk viaja para Eridu para vender gado, mas deixa os animais em sua terra natal. Ao tentar negociar, ele percebe que não pode alinhar as vacas com as moedas do comprador. Segundo o texto, este cenário exemplifica qual falha da correspondência biunívoca?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Pela Lei de Leibniz, se $a = b$, eles compartilham todas as propriedades.</li>
-                        <li>Se $\varphi(a)$ é verdade (a aponta para 0xFA3), então $\varphi(b)$ <b>obrigatoriamente</b> deve ser verdade.</li>
-                        <li>Conclusão: O ponteiro $b$ também aponta para o endereço 0xFA3.</li>
-                    </ul>
+                    <p>Este cenário exemplifica o <strong>Problema da Presença</strong>. A correspondência física exige que os objetos a serem contados estejam presentes no "aqui e agora" da negociação.</p>
                 """
             },
             new()
             {
                 Id = "7",
                 Statement = """
-                    <p>Utilize a Lei de Leibniz para demonstrar formalmente a propriedade da <b>Transitividade</b>: Se $x = y$ e $y = z$, prove que $x = z$.</p>
+                    <p>O texto afirma que usar os dedos para contar "três ovelhas" ainda possui uma falha grave similar ao uso de pedras. Por que isso ainda não é considerado uma abstração numérica completa?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Premissa: $x = y$ e $y = z$.</li>
-                        <li>Defina a propriedade $\varphi(w)$ como "$x = w$".</li>
-                        <li>Sabemos que $\varphi(y)$ é verdade (pois nossa premissa diz $x = y$).</li>
-                        <li>Como $y = z$, pela Lei de Leibniz, podemos substituir $y$ por $z$ na propriedade.</li>
-                        <li>Logo, $\varphi(z)$ deve ser verdade.</li>
-                        <li>Substituindo na definição de $\varphi$: $x = z$.</li>
-                    </ul>
+                    <p>Porque ainda é uma forma de <strong>correspondência física</strong> (contagem antropomórfica). A ideia de quantidade ainda está "refém" ou presa ao objeto usado para representar (neste caso, as mãos), em vez de ser uma propriedade invisível e independente.</p>
                 """
             },
             new()
             {
                 Id = "8",
                 Statement = """
-                    <p>No contexto de Banco de Dados Relacionais, explique como o axioma da igualdade garante a integridade de uma Chave Primária (Primary Key).</p>
+                    <p>Considere a notação $3 := \{ S \mid S \sim \{a, b, c\} \}$. Aplique o significado dos símbolos explicados no texto para traduzir esta definição em linguagem natural.</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>O banco de dados assume a premissa de unicidade baseada na igualdade estrita.</li>
-                        <li>Se $ID_{registroA} = ID_{registroB}$, o sistema assume que se trata do <b>mesmo</b> registro (Reflexividade e Unicidade).</li>
-                        <li>Isso impede duplicidade e garante que uma atualização no registro A afete o que é lido como registro B (Leibniz).</li>
-                    </ul>
+                    <p>A tradução baseada nos símbolos do texto é: O número 3 é definido como ($:=$) o conjunto de todos os conjuntos $S$, de modo que ($\mid$) $S$ é equipotente ($\sim$) a um conjunto modelo de três elementos $\{a, b, c\}$.</p>
                 """
             },
             new()
             {
                 Id = "9",
                 Statement = """
-                    <p>Se a intuição visual de "superposição" era funcional para Euclides, por que ela falha ao analisarmos o conceito de limites de funções ou séries infinitas?</p>
+                    <p>No contexto do Princípio de Frege-Hume, se temos dois conjuntos $A$ e $B$ e afirmamos que $Card(A) = Card(B)$, o que necessariamente precisa ser verdadeiro sobre a relação entre $A$ e $B$?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>A superposição exige objetos físicos ou geométricos finitos e estáticos.</li>
-                        <li>Funções ou séries podem convergir para o mesmo valor sem serem a mesma função.</li>
-                        <li>A "Armadilha da Substituição" ocorre quando assumimos igualdade baseada em aparência (aproximação) em vez de identidade lógica rigorosa.</li>
-                    </ul>
+                    <p>Necessariamente, deve ser possível estabelecer uma <strong>correspondência biunívoca</strong> (uma bijeção) entre $A$ e $B$. Em notação matemática do texto: $A \sim B$.</p>
                 """
             },
             new()
             {
                 Id = "10",
                 Statement = """
-                    <p>Traduza a seguinte sentença para a notação formal de Lógica de Primeira Ordem apresentada no texto: "Se dois objetos $a$ e $b$ são iguais, então se $a$ é um número par, $b$ também é um número par."</p>
+                    <p>O texto utiliza o exemplo de playlists de música para ilustrar a cardinalidade. Se uma playlist tem 10 músicas curtas e outra tem 10 músicas longas, por que seus cardinais são idênticos apesar da diferença de tempo?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Defina $P(k)$ como "k é par".</li>
-                        <li>A sentença é uma aplicação direta da Lei de Leibniz.</li>
-                        <li>Notação: $a = b \to (P(a) \leftrightarrow P(b))$</li>
-                        <li>Ou mais especificamente: $a = b \land P(a) \to P(b)$.</li>
-                    </ul>
+                    <p>Porque a cardinalidade ignora características físicas como a "duração" ou o tamanho. O número cardinal preocupa-se apenas com a <strong>presença</strong> dos elementos (unidades), tratando cada música como um item idêntico na contagem, independentemente de suas propriedades individuais.</p>
                 """
             },
             new()
             {
                 Id = "11",
                 Statement = """
-                    <p>Analise o seguinte trecho de código em C#: <code>string s1 = "ola"; string s2 = "ola";</code>. Embora tenham o mesmo valor, em algumas linguagens antigas eles poderiam ser objetos diferentes na memória. Se a linguagem não garantir a "Indiscernibilidade dos Idênticos" para strings, que problema poderia ocorrer?</p>
+                    <p>Na aplicação sobre o Voto Social descrita no texto, o que acontece matematicamente com as características individuais (riqueza, inteligência, idade) de um eleitor ao entrar na urna?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Se a linguagem tratar <code>s1</code> e <code>s2</code> como iguais logicamente ($s1 == s2$) mas eles forem entidades distintas na memória sem sincronia...</li>
-                        <li>Alterar <code>s1</code> poderia não alterar <code>s2</code>.</li>
-                        <li>Isso violaria a Lei de Leibniz: teríamos $s1 = s2$ mas uma propriedade (valor interno) diferente, quebrando a lógica do sistema.</li>
-                    </ul>
+                    <p>A matemática da cardinalidade <strong>remove todas essas características</strong>. O processo de abstração reduz o indivíduo ao conceito de "Unitário", fazendo com que o voto do mais rico e do estudante sejam somados como cardinais puros e idênticos (1).</p>
                 """
             },
             new()
             {
                 Id = "12",
                 Statement = """
-                    <p>O texto afirma que a prova de que $1 + 1 = 2$ depende da transitividade. Reconstrua o silogismo lógico apresentado que permite essa conclusão.</p>
+                    <p>Se utilizarmos a operação de Adjunção para gerar o número sucessor de um conjunto vazio $\emptyset$ (cujo cardinal é 0), qual seria a estrutura da operação, considerando $x$ como um novo elemento?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Passo 1: $1 + 1$ é definido/igual a "Sucessor de 1".</li>
-                        <li>Passo 2: "Sucessor de 1" é definido/igual a $2$.</li>
-                        <li>Passo 3 (Transitividade): Se A = B e B = C, então A = C.</li>
-                        <li>Conclusão: $1 + 1 = 2$.</li>
-                    </ul>
+                    <p>Aplicando a fórmula do texto $Card(A \cup \{x\}) = n'$:</p>
+                    <p>Tomamos $A = \emptyset$. Adicionamos um elemento $x$.</p>
+                    <p>$$Card(\emptyset \cup \{x\}) = 1$$</p>
+                    <p>Isso cria o conceito de "1" através da união de um conjunto com um elemento externo.</p>
                 """
             },
             new()
             {
                 Id = "13",
                 Statement = """
-                    <p>Qual a diferença técnica entre os símbolos $\leftrightarrow$ (equivalência) e $=$ (igualdade) apresentada no texto?</p>
+                    <p>O texto diferencia "Número como propriedade do objeto" de "Número como propriedade do grupo". Se dissermos "Esta ovelha é o número 3", qual erro conceitual estamos cometendo segundo Frege e Hume?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>$=$ (Igualdade) é um predicado que afirma que dois termos referem-se ao <b>mesmo objeto</b>.</li>
-                        <li>$\leftrightarrow$ (Equivalência) é um conectivo lógico que afirma que duas <b>proposições</b> têm o mesmo valor de verdade (ambas V ou ambas F).</li>
-                    </ul>
+                    <p>Estamos cometendo o erro de atribuir o número ao objeto físico. A ovelha em si tem propriedades como "branca" ou "peluda". O "número 3" é uma propriedade do <strong>grupo</strong> (conjunto) ao qual ela pertence, não do indivíduo.</p>
                 """
             },
             new()
             {
                 Id = "14",
                 Statement = """
-                    <p>Explique o conceito de "Aliasing" em computação utilizando a Lei de Leibniz.</p>
+                    <p>Analise a seguinte afirmação com base no texto: "O símbolo $\iff$ indica que se eu sei o tamanho do conjunto, eu sei quais elementos estão nele". Esta afirmação está correta? Justifique usando a definição do símbolo.</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Aliasing ocorre quando dois ponteiros ou referências diferentes ($ptrA$ e $ptrB$) apontam para o mesmo local de memória.</li>
-                        <li>Matematicamente, $ptrA = ptrB$.</li>
-                        <li>Pela Lei de Leibniz, qualquer alteração de estado (propriedade) feita via $ptrA$ deve ser imediatamente observável via $ptrB$, pois são indistinguíveis.</li>
-                    </ul>
+                    <p>Não, está incorreta. O símbolo $\iff$ (se, e somente se) indica <strong>equivalência lógica</strong> entre os dois lados da equação ($Card(A)=Card(B)$ e $A \sim B$). Ele garante que a quantidade é igual se a bijeção existe, mas não diz nada sobre a identidade ou natureza dos elementos dentro dos conjuntos.</p>
                 """
             },
             new()
             {
                 Id = "15",
                 Statement = """
-                    <p>Dado o axioma $\forall x (x = x)$, explique por que a declaração <code>NaN != NaN</code> (Not a Number) em padrões de ponto flutuante (IEEE 754) é uma exceção curiosa à lógica clássica.</p>
+                    <p>O texto afirma que o número é "democrático". Como essa característica é aplicada no exemplo do aplicativo de música?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Na lógica clássica (Axioma 1.2.1), a reflexividade é absoluta: tudo é igual a si mesmo.</li>
-                        <li>No padrão IEEE 754, <code>NaN</code> representa um valor indefinido. A computação define que um erro não é igual a outro erro.</li>
-                        <li>Isso ilustra a diferença entre o rigor matemático puro (o texto) e implementações de engenharia pragmática.</li>
-                    </ul>
+                    <p>A característica "democrática" significa que o número não discrimina o conteúdo. No exemplo, uma música de 1 minuto tem o mesmo "peso" cardinal (1 unidade) que uma música de 10 minutos. Ambas contam igualmente para o total de faixas.</p>
                 """
             },
 
-            // --- NÍVEL 3: ANÁLISE (DIFÍCIL) ---
+            // NÍVEL 3: ANÁLISE (16-20)
             new()
             {
                 Id = "16",
                 Statement = """
-                    <p>Por que os matemáticos modernos preferem derivar a Simetria e a Transitividade a partir da Lei de Leibniz em vez de defini-las como axiomas independentes? Discuta o conceito de "elegância" ou "minimalismo" lógico.</p>
+                    <p>O texto descreve a transição da percepção primitiva ("Unitário, Par, Muitos") para a Cardinalidade. Por que a categoria "Muitos" representava uma falha crítica de precisão para a sobrevivência ou comércio complexo?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Na axiomática, busca-se o número <b>mínimo</b> de pressupostos necessários.</li>
-                        <li>Se a Simetria e Transitividade podem ser provadas usando apenas Reflexividade e Leibniz, transformá-las em axiomas seria redundante.</li>
-                        <li>Um sistema com menos axiomas é mais robusto ("elegante") e mais fácil de verificar quanto à consistência.</li>
-                    </ul>
+                    <p>A categoria "Muitos" é uma resposta de pânico e imprecisão. Ela falha porque não distingue entre, por exemplo, 5 leões e 50 leões. Sem a cardinalidade exata, não é possível planejar defesas adequadas ou realizar transações comerciais justas, pois a percepção visual entra em colapso após pequenas quantidades.</p>
                 """
             },
             new()
             {
                 Id = "17",
                 Statement = """
-                    <p>Imagine um sistema lógico onde a Lei de Leibniz fosse falsa (existem objetos iguais com propriedades diferentes). Descreva uma consequência catastrófica para a aritmética básica (ex: soma) nesse universo.</p>
+                    <p>Analise a frase do texto: "Precisávamos extrair a 'quantidade' do corpo físico das vacas e transformá-la em algo que coubesse na mente". Como essa abstração específica permitiu o surgimento de transações financeiras digitais mencionadas no final do texto?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Se $x = y$ mas eles pudessem ter propriedades diferentes, a substituição falharia.</li>
-                        <li>Poderíamos ter $2 + 2 = 4$ sendo verdade para o "4 da esquerda", mas falso para o "4 da direita".</li>
-                        <li>O resultado de uma conta deixaria de ser único, destruindo a confiabilidade de qualquer cálculo matemático.</li>
-                    </ul>
+                    <p>Ao separar a "alma" (quantidade) da "matéria" (objeto físico), a humanidade permitiu que o valor numérico existisse independentemente do toque físico. Transações digitais são puramente cardinais: elas manipulam números que representam valor sem mover fisicamente ouro ou gado, algo impossível se ainda dependêssemos da correspondência física (pedras).</p>
                 """
             },
             new()
             {
                 Id = "18",
                 Statement = """
-                    <p>O texto menciona que a falta de rigor na igualdade impedia a construção dos Números Naturais. Como a definição de "Sucessor" ($S(n)$) depende intrinsecamente da noção de igualdade?</p>
+                    <p>Critique a seguinte situação usando os conceitos do texto: Um sistema eleitoral onde o voto de uma pessoa com doutorado vale 2, e o de uma pessoa sem escolaridade vale 1. Isso viola qual aplicação da cardinalidade descrita?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li>Para definir uma função $S(n)$ (sucessor), precisamos garantir que ela seja uma <b>função</b> bem definida.</li>
-                        <li>Isso significa que se $a = b$, então $S(a)$ <b>deve</b> ser igual a $S(b)$.</li>
-                        <li>Sem a igualdade rigorosa (substitutividade), o sucessor de um número poderia ser ambíguo, impedindo a sequência 1, 2, 3...</li>
-                    </ul>
+                    <p>Isso viola a <strong>abstração da Cardinalidade no Voto</strong>. A matemática da cardinalidade exige que se ignorem as características qualitativas (como inteligência ou escolaridade) para focar apenas no Unitário. Ao dar pesos diferentes, o sistema reintroduz "propriedades do objeto" na contagem, quebrando a igualdade abstrata onde cada indivíduo é uma unidade idêntica.</p>
                 """
             },
             new()
             {
                 Id = "19",
                 Statement = """
-                    <p>Analise a afirmação: "A crise dos fundamentos foi uma crise de sintaxe, não de semântica". Com base no texto, concorda ou discorda? Justifique.</p>
+                    <p>Com base na seção "A Operação de Adjunção", explique como é possível construir toda a aritmética sem nunca usar nomes de números ("um", "dois") verbalmente.</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li><b>Concorda.</b> O texto destaca que a intuição (semântica) existia e funcionava para casos simples (triângulos).</li>
-                        <li>O problema era a linguagem (sintaxe) ambígua do "ser" e a falta de regras formais de manipulação de símbolos.</li>
-                        <li>A solução foi criar uma definição sintática (axiomas formais) para controlar o raciocínio.</li>
-                    </ul>
+                    <p>A Adjunção define o progresso numérico através da lógica de conjuntos: o "próximo" número é sempre o cardinal do conjunto atual unido a um novo elemento ($Card(A \cup \{x\})$). Isso cria uma cadeia lógica de sucessores baseada puramente na existência de elementos extras, permitindo estruturar a aritmética sem dependência linguística ou cultural de nomes de números.</p>
                 """
             },
             new()
             {
                 Id = "20",
                 Statement = """
-                    <p>Na Programação Orientada a Objetos, temos a distinção entre "Reference Equality" e "Value Equality" (ex: método <code>.Equals()</code> vs operador <code>==</code>). Relacione isso com a tensão histórica entre "Identidade" e "Superposição" descrita no texto.</p>
+                    <p>No parágrafo final, o texto menciona que "criamos o conceito de quantidade", mas que isso não é suficiente para saber se "4 vem depois do 3". O que isso indica sobre a limitação do conceito de Cardinalidade isoladamente?</p>
                 """,
                 Solution = """
-                    <ul>
-                        <li><b>Reference Equality</b> é análoga à Identidade Lógica estrita (é o mesmo objeto/átomo no universo?).</li>
-                        <li><b>Value Equality</b> é análoga à Superposição Euclidiana (eles têm a mesma "forma" ou valor, mesmo sendo objetos distintos?).</li>
-                        <li>A computação moderna resolveu a tensão mantendo ambas as definições, mas obrigando o programador a ser explícito sobre qual está usando.</li>
-                    </ul>
+                    <p>Isso indica que a <strong>Cardinalidade</strong> define apenas o "tamanho" ou a "quantidade" dos grupos, mas não carrega intrinsecamente a informação de posição ou sequência. Saber o tamanho de um conjunto não explica automaticamente a hierarquia ou a sucessão dos números; para isso, é necessário um conceito distinto, que o texto identifica como <strong>Ordem</strong>.</p>
                 """
             }
         }
