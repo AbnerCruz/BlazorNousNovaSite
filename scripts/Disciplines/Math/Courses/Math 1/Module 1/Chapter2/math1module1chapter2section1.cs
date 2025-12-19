@@ -6,7 +6,7 @@ public class Math1Module1Chapter2Section1
     {
         Id = "principio-do-agrupamento",
         Name = "2.1 Princípio do Agrupamento",
-        Active = false,
+        Active = true,
         Body = """
             <h1>2.1 Princípio do Agrupamento</h1>
             <p>Feche os olhos por um momento e imagine que estamos há cerca de 10.000 anos, na fronteira entre o Paleolítico e o Neolítico. Durante milênios, a humanidade sobreviveu muito bem com o Princípio da Correspondência Biunívoca. Se você precisava contar os membros da sua tribo ou as luas até o inverno, bastava fazer um risco em um osso para cada objeto. Um risco, uma coisa. Simples. O osso de Ishango e os bastões de talha são testemunhas silenciosas dessa era. A matemática era tátil, direta e, acima de tudo, unitária. Mas o mundo mudou e de repente, não estamos mais falando de contar 15 pessoas. Estamos falando de controlar um estoque de 5.000 grãos de cevada ou um rebanho real de 400 ovelhas.</p>
